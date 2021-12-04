@@ -27,7 +27,9 @@
             public const ushort
                 Enshrouded = 2593,
                 SoulReaver = 2587,
-                ImmortalSacrifice = 2592;
+                ImmortalSacrifice = 2592,
+                EnhancedGallows = 2589,
+                EnhancedCrossReaping = 2591;
         }
 
         public static class Debuffs
@@ -59,7 +61,12 @@
             if (actionID == RPR.Slice)
             {
                 if (IsEnabled(CustomComboPreset.ReaperGibbetGallowsGuillotineFeature) && (HasEffect(RPR.Buffs.SoulReaver) || HasEffect(RPR.Buffs.Enshrouded)))
+                {
+                    if (IsEnabled(CustomComboPreset.ReaperGibbetGallowsOption) && ((HasEffect(RPR.Buffs.EnhancedGallows) && !HasEffect(RPR.Buffs.Enshrouded)) || (HasEffect(RPR.Buffs.EnhancedCrossReaping) && HasEffect(RPR.Buffs.Enshrouded))))
+                        return OriginalHook(RPR.Gallows);
+
                     return OriginalHook(RPR.Gibbet);
+                }
 
                 if (comboTime > 0)
                 {
@@ -127,7 +134,7 @@
         {
             if (actionID == RPR.ShadowOfDeath)
             {
-                if (HasEffect(RPR.Buffs.SoulReaver) || HasEffect (RPR.Buffs.Enshrouded))
+                if ((HasEffect(RPR.Buffs.SoulReaver) || HasEffect (RPR.Buffs.Enshrouded)) && !IsEnabled(CustomComboPreset.ReaperGibbetGallowsOption))
                 {
                     return OriginalHook(RPR.Gallows);
                 }

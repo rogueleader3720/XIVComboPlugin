@@ -9,7 +9,7 @@ namespace XIVComboExpandedestPlugin
     /// </summary>
     public enum CustomComboPreset
     {
-        // Last enum used: 119
+        // Last enum used: 121
         // ====================================================================================
         #region ALL CLASSES
 
@@ -349,6 +349,10 @@ namespace XIVComboExpandedestPlugin
         [OrderedEnum]
         [CustomComboInfo("Gibbets, Gallows and Guillotines Feature", "Slice, Shadow of Death and Spinning Scythe are replaced with Gibbet, Gallows and Guillotine while Soul Reaver or Shroud is active.\nRequires Slice/Spinning Scythe's respective combos.", RPR.JobID, RPR.Slice, RPR.ShadowOfDeath, RPR.SpinningScythe)]
         ReaperGibbetGallowsGuillotineFeature = 119,
+
+        [OrderedEnum]
+        [CustomComboInfo("GGG Gallows Option", "Slice now turns into Gallows when Gallows is Enhanced, and removes it from Shadow of Death.\nRequires Slice combo and, of course, the Gibbets, Gallows, and Guillotines Feature.", RPR.JobID, RPR.Slice)]
+        ReaperGibbetGallowsOption = 121,
 
         [OrderedEnum]
         [CustomComboInfo("Arcane Circle Harvest Feature", "Replace Arcane Circle with Plentiful Harvest when you have stacks of Immortal Sacrifice.", RPR.JobID, RPR.ArcaneCircle)]
