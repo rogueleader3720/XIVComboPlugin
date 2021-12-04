@@ -2,7 +2,7 @@
 {
     internal static class RPR
     {
-        public const byte JobID = byte.MaxValue;
+        public const byte JobID = 39;
 
         public const uint
             // Single Target
@@ -79,7 +79,7 @@
                         return RPR.NightmareScythe;
                 }
 
-                return RPR.Slice;
+                return RPR.SpinningScythe;
             }
 
             return actionID;
