@@ -78,7 +78,7 @@ namespace XIVComboExpandedestPlugin
         BardStraightShotUpgradeFeature = 42,
 
         [OrderedEnum]
-        [CustomComboInfo("Broken Iron Jaws Feature", "Iron Jaws is replaced with Caustic Bite/Stormbite if one or both are not up.\nAlternates between the two if Iron Jaws isn't available.", BRD.JobID, BRD.IronJaws)]
+        [CustomComboInfo("(BROKEN) Iron Jaws Feature", "Iron Jaws is replaced with Caustic Bite/Stormbite if one or both are not up.\nAlternates between the two if Iron Jaws isn't available.", BRD.JobID, BRD.IronJaws)]
         BardIronJawsFeature = 84,
 
         [OrderedEnum]
