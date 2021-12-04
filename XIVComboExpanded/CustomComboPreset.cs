@@ -9,7 +9,7 @@ namespace XIVComboExpandedestPlugin
     /// </summary>
     public enum CustomComboPreset
     {
-        // Last enum used: 118
+        // Last enum used: 119
         // ====================================================================================
         #region ALL CLASSES
 
@@ -78,7 +78,7 @@ namespace XIVComboExpandedestPlugin
         BardStraightShotUpgradeFeature = 42,
 
         [OrderedEnum]
-        [CustomComboInfo("(BROKEN) Iron Jaws Feature", "Iron Jaws is replaced with Caustic Bite/Stormbite if one or both are not up.\nAlternates between the two if Iron Jaws isn't available.", BRD.JobID, BRD.IronJaws)]
+        [CustomComboInfo("Broken Iron Jaws Feature", "Iron Jaws is replaced with Caustic Bite/Stormbite if one or both are not up.\nAlternates between the two if Iron Jaws isn't available.", BRD.JobID, BRD.IronJaws)]
         BardIronJawsFeature = 84,
 
         [OrderedEnum]
@@ -345,6 +345,10 @@ namespace XIVComboExpandedestPlugin
         [OrderedEnum]
         [CustomComboInfo("Enshroud Communio Feature", "Replace Enshroud with Communio when Enshrouded.", RPR.JobID, RPR.Enshroud)]
         ReaperEnshroudCommunioFeature = 115,
+
+        [OrderedEnum]
+        [CustomComboInfo("Gibbets, Gallows and Guillotines Feature", "Slice, Shadow of Death and Spinning Scythe are replaced with Gibbet, Gallows and Guillotine while Soul Reaver is active.\nRequires Slice/Spinning Scythe's respective combos.", RPR.JobID, RPR.Slice, RPR.ShadowOfDeath, RPR.SpinningScythe)]
+        ReaperGibbetGallowsGuillotineFeature = 119,
 
         #endregion
         // ====================================================================================

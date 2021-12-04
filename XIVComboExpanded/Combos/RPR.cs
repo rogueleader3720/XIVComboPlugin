@@ -9,9 +9,13 @@
             Slice = 24373,
             WaxingSlice = 24374,
             InfernalSlice = 24375,
+            Gibbet = 24382,
+            Gallows = 24383,
+            ShadowOfDeath = 24378,
             // AoE
             SpinningScythe = 24376,
             NightmareScythe = 24377,
+            Guillotine = 24384,
             // Shroud
             Enshroud = 24394,
             Communio = 24398;
@@ -19,7 +23,8 @@
         public static class Buffs
         {
             public const ushort
-                Enshrouded = 2593;
+                Enshrouded = 2593,
+                SoulReaver = 2587;
         }
 
         public static class Debuffs
@@ -49,6 +54,9 @@
         {
             if (actionID == RPR.Slice)
             {
+                if (IsEnabled(CustomComboPreset.ReaperGibbetGallowsGuillotineFeature) && HasEffect(RPR.Buffs.SoulReaver))
+                    return RPR.Gibbet;
+
                 if (comboTime > 0)
                 {
                     if (lastComboMove == RPR.Slice && level >= RPR.Levels.WaxingSlice)
@@ -73,6 +81,9 @@
         {
             if (actionID == RPR.SpinningScythe)
             {
+                if (IsEnabled(CustomComboPreset.ReaperGibbetGallowsGuillotineFeature) && HasEffect(RPR.Buffs.SoulReaver))
+                    return RPR.Guillotine;
+
                 if (comboTime > 0)
                 {
                     if (lastComboMove == RPR.SpinningScythe && level >= RPR.Levels.NightmareScythe)
@@ -98,6 +109,24 @@
                     return RPR.Communio;
 
                 return RPR.Enshroud;
+            }
+
+            return actionID;
+        }
+    }
+
+    internal class GibbetGallowsGuillotineFeature : CustomCombo
+    {
+        protected override CustomComboPreset Preset => CustomComboPreset.ReaperGibbetGallowsGuillotineFeature;
+
+        protected override uint Invoke(uint actionID, uint lastComboMove, float comboTime, byte level)
+        {
+            if (actionID == RPR.ShadowOfDeath)
+            {
+                if (HasEffect(RPR.Buffs.SoulReaver))
+                {
+                    return RPR.Gallows;
+                }
             }
 
             return actionID;
