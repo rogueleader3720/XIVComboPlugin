@@ -43,7 +43,7 @@ If you would like to use this plugin, you can get it from this repo: `https://gi
 * Hide becomes Mug while in combat.
 * Your combos can become Ninjutsu while you are using Mudra (so you don't have to bind Ninjutsu separately, it doesn't actually do the Mudras for you).
 * Bard DoTs alternate between each other and also turn into Iron Jaws when both are up.
-* Burst Shot/Quick Nock***/Ladonsbite*** will turn into Apex Arrow when gauge is full.
+* Burst Shot/Quick Nock/***Ladonsbite*** will turn into Apex Arrow when gauge is full.
 * ***Quick Nock/Ladonsbite will turn into Shadowbite when Shadowbite is ready.***
 * Cascade, Flourish, and both Fan Dances change into dance steps while dancing. This helps ensure you can still dance with combos on, without using auto dance. You can additionally configure which actions you want to be replaced by dance steps, if you so desire.
 
