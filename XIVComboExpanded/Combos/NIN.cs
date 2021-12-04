@@ -152,37 +152,6 @@ namespace XIVComboExpandedestPlugin.Combos
         }
     }
 
-    internal class NinjaAssassinateFeature : CustomCombo
-    {
-        protected override CustomComboPreset Preset => CustomComboPreset.NinjaAssassinateFeature;
-
-        protected override uint Invoke(uint actionID, uint lastComboMove, float comboTime, byte level)
-        {
-            if (actionID == NIN.DreamWithinADream)
-            {
-                if (level >= NIN.Levels.DreamWithinADream)
-                {
-                    var dwad = (NIN.DreamWithinADream, GetCooldown(NIN.DreamWithinADream));
-                    var ass = (NIN.Assassinate, GetCooldown(NIN.Assassinate));
-
-                    // Prioritize whichever is slotted action.
-                    (actionID, _) = actionID switch
-                    {
-                        NIN.DreamWithinADream => CalcBestAction(dwad, ass),
-                        NIN.Assassinate => CalcBestAction(ass, dwad),
-                        _ => throw new NotImplementedException(),
-                    };
-                }
-                else
-                {
-                    return NIN.Assassinate;
-                }
-            }
-
-            return actionID;
-        }
-    }
-
     internal class NinjaNinjutsuFeature : CustomCombo
     {
         protected override CustomComboPreset Preset => CustomComboPreset.NinjaNinjutsuFeature;

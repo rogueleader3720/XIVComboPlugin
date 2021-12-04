@@ -267,10 +267,6 @@ namespace XIVComboExpandedestPlugin
         NinjaHakkeMujinsatsuCombo = 19,
 
         [OrderedEnum]
-        [CustomComboInfo("Dream to Assassinate", "Cycle between Dream within a Dream and Assassinate on the Dream within a Dream action, based on their cooldowns.", NIN.JobID, NIN.DreamWithinADream)]
-        NinjaAssassinateFeature = 45,
-
-        [OrderedEnum]
         [CustomComboInfo("Kassatsu to Trick", "Replaces Kassatsu with Trick Attack while Suiton or Hidden is up.\nCooldown tracking plugin recommended.", NIN.JobID, NIN.Kassatsu)]
         NinjaKassatsuTrickFeature = 81,
 
