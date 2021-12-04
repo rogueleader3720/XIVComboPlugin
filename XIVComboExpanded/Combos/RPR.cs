@@ -18,13 +18,16 @@
             Guillotine = 24384,
             // Shroud
             Enshroud = 24394,
-            Communio = 24398;
+            Communio = 24398,
+            ArcaneCircle = 24405,
+            PlentifulHarvest = 24385;
 
         public static class Buffs
         {
             public const ushort
                 Enshrouded = 2593,
-                SoulReaver = 2587;
+                SoulReaver = 2587,
+                ImmortalSacrifice = 2592;
         }
 
         public static class Debuffs
@@ -127,6 +130,22 @@
                 {
                     return RPR.Gallows;
                 }
+            }
+
+            return actionID;
+        }
+    }
+
+    internal class ReaperHarvestFeature : CustomCombo
+    {
+        protected override CustomComboPreset Preset => CustomComboPreset.ReaperHarvestFeature;
+
+        protected override uint Invoke(uint actionID, uint lastComboMove, float comboTime, byte level)
+        {
+            if (actionID == RPR.ArcaneCircle)
+            {
+                if (HasEffect(RPR.Buffs.ImmortalSacrifice) && level >= RPR.Levels.PlentifulHarvest)
+                    return RPR.PlentifulHarvest;
             }
 
             return actionID;
