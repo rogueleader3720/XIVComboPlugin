@@ -78,7 +78,7 @@ namespace XIVComboExpandedestPlugin
         BardStraightShotUpgradeFeature = 42,
 
         [OrderedEnum]
-        [CustomComboInfo("Iron Jaws Feature", "Iron Jaws is replaced with Caustic Bite/Stormbite if one or both are not up.\nAlternates between the two if Iron Jaws isn't available.", BRD.JobID, BRD.IronJaws)]
+        [CustomComboInfo("(BROKEN) Iron Jaws Feature", "Iron Jaws is replaced with Caustic Bite/Stormbite if one or both are not up.\nAlternates between the two if Iron Jaws isn't available.", BRD.JobID, BRD.IronJaws)]
         BardIronJawsFeature = 84,
 
         [OrderedEnum]
@@ -355,12 +355,12 @@ namespace XIVComboExpandedestPlugin
         RedMageAoECombo = 48,
 
         [OrderedEnum]
-        [CustomComboInfo("Redoublement combo", "Replaces Redoublement with its combo chain, following enchantment rules.", RDM.JobID, RDM.Redoublement)]
+        [CustomComboInfo("Redoublement combo", "Replaces Redoublement with its combo chain, following enchantment rules.", RDM.JobID, RDM.Redoublement, RDM.Moulinet)]
         RedMageMeleeCombo = 49,
 
         [OrderedEnum]
         [SecretCustomCombo]
-        [CustomComboInfo("Redoublement Combo Plus", "Replaces Redoublement with Verflare/Verholy after Enchanted Redoublement, whichever is more appropriate.\nRequires Redoublement Combo.", RDM.JobID, RDM.Redoublement)]
+        [CustomComboInfo("Redoublement Combo Plus", "Replaces Redoublement/Moulinet with Verflare/Verholy after 3 stacks, whichever is more appropriate.\nRequires Redoublement Combo.", RDM.JobID, RDM.Redoublement, RDM.Moulinet)]
         RedMageMeleeComboPlus = 78,
 
         [OrderedEnum]
