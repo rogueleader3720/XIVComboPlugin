@@ -45,6 +45,7 @@
                 InfernalSlice = 30,
                 NightmareScythe = 45,
                 Enshroud = 80,
+                PlentifulHarvest = 88,
                 Communio = 90;
         }
     }
