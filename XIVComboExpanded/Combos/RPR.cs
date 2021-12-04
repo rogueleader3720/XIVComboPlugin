@@ -145,7 +145,8 @@
         {
             if (actionID == RPR.ArcaneCircle)
             {
-                if (HasEffect(RPR.Buffs.ImmortalSacrifice) && level >= RPR.Levels.PlentifulHarvest)
+                var circleCD = GetCooldown(RPR.ArcaneCircle);
+                if (circleCD.CooldownRemaining != 0 && HasEffect(RPR.Buffs.ImmortalSacrifice) && level >= RPR.Levels.PlentifulHarvest)
                     return RPR.PlentifulHarvest;
             }
 
