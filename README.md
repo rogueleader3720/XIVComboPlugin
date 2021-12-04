@@ -29,6 +29,7 @@ If you would like to use this plugin, you can get it from this repo: `https://gi
 * Shoha will replace Iaijutsu/Tsubame when Meditation gauge is full.
 * ***Shoha II will replace Hissatsu: Kyuten when Meditation gauge is full.***
 * Tsubame becomes Iaijutsu when Sen gauge isn't empty.
+* ***Gibbet, Gallows and Guillotine now replace Slice, Shadow of Death and Spinning Scythe while either Soul Reaver is available or you are in Shroud mode.***
 * Fire 1 becomes Fire 3 outside of Astral Fire and when Firestarter proc is up. ~~Also replaces Enochian with Fire 1/3 before you get Fire 4 when in AF (if Enochian is up or you don't have it yet).~~
 * Blizzard 1 becomes Blizzard 3 when outside of Umbral Ice. ~~Freeze now becomes Blizzard 2 when level-synced, as well.~~
 * ***Flare and Freeze will switch depending on if you are in Astral Fire/Umbral Ice.***

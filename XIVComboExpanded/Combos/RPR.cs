@@ -58,7 +58,7 @@
         {
             if (actionID == RPR.Slice)
             {
-                if (IsEnabled(CustomComboPreset.ReaperGibbetGallowsGuillotineFeature) && HasEffect(RPR.Buffs.SoulReaver))
+                if (IsEnabled(CustomComboPreset.ReaperGibbetGallowsGuillotineFeature) && (HasEffect(RPR.Buffs.SoulReaver) || HasEffect(RPR.Buffs.Enshrouded)))
                     return RPR.Gibbet;
 
                 if (comboTime > 0)
@@ -85,7 +85,7 @@
         {
             if (actionID == RPR.SpinningScythe)
             {
-                if (IsEnabled(CustomComboPreset.ReaperGibbetGallowsGuillotineFeature) && HasEffect(RPR.Buffs.SoulReaver))
+                if (IsEnabled(CustomComboPreset.ReaperGibbetGallowsGuillotineFeature) && (HasEffect(RPR.Buffs.SoulReaver) || HasEffect(RPR.Buffs.Enshrouded)))
                     return RPR.Guillotine;
 
                 if (comboTime > 0)
@@ -127,7 +127,7 @@
         {
             if (actionID == RPR.ShadowOfDeath)
             {
-                if (HasEffect(RPR.Buffs.SoulReaver))
+                if (HasEffect(RPR.Buffs.SoulReaver) || HasEffect (RPR.Buffs.Enshrouded))
                 {
                     return RPR.Gallows;
                 }
