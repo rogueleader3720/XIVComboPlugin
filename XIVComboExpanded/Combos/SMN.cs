@@ -28,7 +28,8 @@ namespace XIVComboExpandedestPlugin.Combos
         public static class Buffs
         {
             public const ushort
-                HellishConduit = 1867;
+                HellishConduit = 1867,
+                Aetherflow = 304;
         }
 
         public static class Debuffs
@@ -74,8 +75,8 @@ namespace XIVComboExpandedestPlugin.Combos
         {
             if (actionID == SMN.Fester)
             {
-                var gauge = GetJobGauge<SMNGauge>();
-                if (!gauge.HasAetherflowStacks)
+                // var gauge = GetJobGauge<SMNGauge>();
+                if (!HasEffect(SMN.Buffs.Aetherflow))
                     return SMN.EnergyDrain;
             }
 
@@ -91,8 +92,8 @@ namespace XIVComboExpandedestPlugin.Combos
         {
             if (actionID == SMN.Painflare)
             {
-                var gauge = GetJobGauge<SMNGauge>();
-                if (!gauge.HasAetherflowStacks)
+                // var gauge = GetJobGauge<SMNGauge>();
+                if (!HasEffect(SMN.Buffs.Aetherflow))
                     return SMN.EnergySyphon;
 
                 if (level >= SMN.Levels.Painflare)

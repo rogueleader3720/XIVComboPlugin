@@ -32,6 +32,7 @@
                 Enshrouded = 2593,
                 SoulReaver = 2587,
                 ImmortalSacrifice = 2592,
+                EnhancedGibbet = 2588,
                 EnhancedGallows = 2589,
                 EnhancedCrossReaping = 2591,
                 Threshold = 2595;
@@ -139,7 +140,7 @@
         {
             if (actionID == RPR.ShadowOfDeath)
             {
-                if ((HasEffect(RPR.Buffs.SoulReaver) && !HasEffect (RPR.Buffs.Enshrouded)) && !IsEnabled(CustomComboPreset.ReaperGibbetGallowsOption))
+                if ((HasEffect(RPR.Buffs.SoulReaver) && !HasEffect (RPR.Buffs.Enshrouded)) && (!IsEnabled(CustomComboPreset.ReaperGibbetGallowsOption) || (!HasEffect(RPR.Buffs.EnhancedGallows) && !HasEffect(RPR.Buffs.EnhancedGibbet))))
                 {
                     return OriginalHook(RPR.Gallows);
                 }
