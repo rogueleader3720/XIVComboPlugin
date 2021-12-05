@@ -20,7 +20,11 @@
             Enshroud = 24394,
             Communio = 24398,
             ArcaneCircle = 24405,
-            PlentifulHarvest = 24385;
+            PlentifulHarvest = 24385,
+            // Misc
+            HellsIngress = 24401,
+            HellsEgress = 24402,
+            Regress = 24403;
 
         public static class Buffs
         {
@@ -29,7 +33,8 @@
                 SoulReaver = 2587,
                 ImmortalSacrifice = 2592,
                 EnhancedGallows = 2589,
-                EnhancedCrossReaping = 2591;
+                EnhancedCrossReaping = 2591,
+                Threshold = 2595;
         }
 
         public static class Debuffs
@@ -154,6 +159,21 @@
             {
                 if (HasEffect(RPR.Buffs.ImmortalSacrifice) && level >= RPR.Levels.PlentifulHarvest)
                     return RPR.PlentifulHarvest;
+            }
+
+            return actionID;
+        }
+    }
+
+    internal class ReaperRegressFeature : CustomCombo
+    {
+        protected override CustomComboPreset Preset => CustomComboPreset.ReaperRegressFeature;
+
+        protected override uint Invoke(uint actionID, uint lastComboMove, float comboTime, byte level)
+        {
+            if ((actionID == RPR.HellsEgress || actionID == RPR.HellsIngress) && HasEffect(RPR.Buffs.Threshold))
+            {
+                return RPR.Regress;
             }
 
             return actionID;

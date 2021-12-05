@@ -9,7 +9,7 @@ namespace XIVComboExpandedestPlugin
     /// </summary>
     public enum CustomComboPreset
     {
-        // Last enum used: 121
+        // Last enum used: 122
         // ====================================================================================
         #region ALL CLASSES
 
@@ -357,6 +357,10 @@ namespace XIVComboExpandedestPlugin
         [OrderedEnum]
         [CustomComboInfo("Arcane Circle Harvest Feature", "Replace Arcane Circle with Plentiful Harvest when you have stacks of Immortal Sacrifice.", RPR.JobID, RPR.ArcaneCircle)]
         ReaperHarvestFeature = 120,
+
+        [OrderedEnum]
+        [CustomComboInfo("Regress Feature", "Both Hell's Ingress and Hell's Egress turn into Regress when Threshold is active, instead of just the opposite of the one you used.", RPR.JobID, RPR.HellsIngress, RPR.HellsEgress)]
+        ReaperRegressFeature = 122,
 
         #endregion
         // ====================================================================================
