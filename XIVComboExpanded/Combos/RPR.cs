@@ -67,7 +67,7 @@
             {
                 if (IsEnabled(CustomComboPreset.ReaperGibbetGallowsGuillotineFeature) && (HasEffect(RPR.Buffs.SoulReaver) || HasEffect(RPR.Buffs.Enshrouded)))
                 {
-                    if (IsEnabled(CustomComboPreset.ReaperGibbetGallowsOption) && ((HasEffect(RPR.Buffs.EnhancedGallows) && !HasEffect(RPR.Buffs.Enshrouded)) || (HasEffect(RPR.Buffs.EnhancedCrossReaping) && HasEffect(RPR.Buffs.Enshrouded))))
+                    if ((HasEffect(RPR.Buffs.EnhancedGallows) && !HasEffect(RPR.Buffs.Enshrouded) && IsEnabled(CustomComboPreset.ReaperGibbetGallowsOption)) || (HasEffect(RPR.Buffs.EnhancedCrossReaping) && HasEffect(RPR.Buffs.Enshrouded)))
                         return OriginalHook(RPR.Gallows);
 
                     return OriginalHook(RPR.Gibbet);
@@ -139,7 +139,7 @@
         {
             if (actionID == RPR.ShadowOfDeath)
             {
-                if ((HasEffect(RPR.Buffs.SoulReaver) || HasEffect (RPR.Buffs.Enshrouded)) && !IsEnabled(CustomComboPreset.ReaperGibbetGallowsOption))
+                if ((HasEffect(RPR.Buffs.SoulReaver) && !HasEffect (RPR.Buffs.Enshrouded)) && !IsEnabled(CustomComboPreset.ReaperGibbetGallowsOption))
                 {
                     return OriginalHook(RPR.Gallows);
                 }
