@@ -9,7 +9,7 @@ namespace XIVComboExpandedestPlugin
     /// </summary>
     public enum CustomComboPreset
     {
-        // Last enum used: 122
+        // Last enum used: 123
         // ====================================================================================
         #region ALL CLASSES
 
@@ -398,6 +398,10 @@ namespace XIVComboExpandedestPlugin
         #endregion
         // ====================================================================================
         #region SAGE
+
+        [OrderedEnum]
+        [CustomComboInfo("Kardia Into Soteria", "Kardia turns Soteria when active and Soteria is off-cooldown.", SGE.JobID, SGE.Kardia)]
+        SageKardiaFeature = 123,
 
         #endregion
         // ====================================================================================
