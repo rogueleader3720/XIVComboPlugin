@@ -191,7 +191,7 @@ namespace XIVComboExpandedestPlugin.Combos
             if (actionID == SAM.TsubameGaeshi)
             {
                 var gauge = GetJobGauge<SAMGauge>();
-                if (level >= SAM.Levels.Shoha && gauge.MeditationStacks >= 3)
+                if (level >= SAM.Levels.Shoha && gauge.MeditationStacks >= 3 && OriginalHook(SAM.TsubameGaeshi) == SAM.TsubameGaeshi)
                     return SAM.Shoha;
             }
 
@@ -208,7 +208,7 @@ namespace XIVComboExpandedestPlugin.Combos
             if (actionID == SAM.Iaijutsu)
             {
                 var gauge = GetJobGauge<SAMGauge>();
-                if (level >= SAM.Levels.Shoha && gauge.MeditationStacks >= 3)
+                if (level >= SAM.Levels.Shoha && gauge.MeditationStacks >= 3 && OriginalHook(SAM.TsubameGaeshi) == SAM.TsubameGaeshi)
                     return SAM.Shoha;
             }
 
