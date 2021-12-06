@@ -24,7 +24,9 @@ namespace XIVComboExpandedestPlugin.Combos
             Fester = 181,
             EnergyDrain = 16508,
             Painflare = 3578,
-            EnergySyphon = 16510;
+            EnergySyphon = 16510,
+            SummonCarbuncle = 25798,
+            RadiantAegis = 25799;
 
         public static class Buffs
         {
@@ -76,8 +78,8 @@ namespace XIVComboExpandedestPlugin.Combos
         {
             if (actionID == SMN.Fester)
             {
-                // var gauge = GetJobGauge<SMNGauge>();
-                if (!HasEffect(SMN.Buffs.Aetherflow))
+                var gauge = GetJobGauge<SMNGauge>();
+                if (!gauge.HasAetherflowStacks)
                     return SMN.EnergyDrain;
             }
 
@@ -93,8 +95,8 @@ namespace XIVComboExpandedestPlugin.Combos
         {
             if (actionID == SMN.Painflare)
             {
-                // var gauge = GetJobGauge<SMNGauge>();
-                if (!HasEffect(SMN.Buffs.Aetherflow))
+                var gauge = GetJobGauge<SMNGauge>();
+                if (!gauge.HasAetherflowStacks)
                     return SMN.EnergySyphon;
 
                 if (level >= SMN.Levels.Painflare)
@@ -106,4 +108,21 @@ namespace XIVComboExpandedestPlugin.Combos
             return actionID;
         }
     }
+
+    /*internal class SummonerCarbyFeature : CustomCombo
+    {
+        protected override CustomComboPreset Preset => CustomComboPreset.SummonerCarbyFeature;
+
+        protected override uint Invoke(uint actionID, uint lastComboMove, float comboTime, byte level)
+        {
+            if (actionID == SMN.SummonCarbuncle)
+            {
+                var gauge = GetJobGauge<SMNGauge>();
+                if (gauge.ReturnSummon != SummonPet.NONE)
+                    return SMN.RadiantAegis;
+            }
+
+            return actionID;
+        }
+    }*/
 }
