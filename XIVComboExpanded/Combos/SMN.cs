@@ -15,6 +15,7 @@ namespace XIVComboExpandedestPlugin.Combos
             DreadwyrmTrance = 3581,
             SummonBahamut = 7427,
             SummonPhoenix = 25831,
+            Aethercharge = 25800,
             Ruin1 = 163,
             Ruin3 = 3579,
             BrandOfPurgatory = 16515,
@@ -54,7 +55,7 @@ namespace XIVComboExpandedestPlugin.Combos
         protected override uint Invoke(uint actionID, uint lastComboMove, float comboTime, byte level)
         {
             // Replace demi summons with enkindle
-            if (actionID == SMN.SummonBahamut || actionID == SMN.SummonPhoenix)
+            if (actionID == SMN.SummonBahamut || actionID == SMN.SummonPhoenix || actionID == SMN.DreadwyrmTrance || actionID == SMN.Aethercharge)
             {
                 if (OriginalHook(SMN.Ruin1) == SMN.AstralImpulse && level >= SMN.Levels.SummonBahamut)
                     return SMN.EnkindleBahamut;
