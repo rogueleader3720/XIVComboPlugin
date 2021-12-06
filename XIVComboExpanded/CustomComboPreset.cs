@@ -452,6 +452,10 @@ namespace XIVComboExpandedestPlugin
         SamuraiIaijutsuShohaFeature = 3409,
 
         [OrderedEnum]
+        [CustomComboInfo("Shinten to Shoha", "Replace Hissatsu: Shinten with Shoha when Meditation is full.", SAM.JobID, SAM.Shinten)]
+        SamuraiShohaFeature = 3412,
+
+        [OrderedEnum]
         [CustomComboInfo("Kyuten to Shoha II", "Replace Hissatsu: Kyuten with Shoha II when Meditation is full.", SAM.JobID, SAM.Kyuten)]
         SamuraiShoha2Feature = 3410,
 

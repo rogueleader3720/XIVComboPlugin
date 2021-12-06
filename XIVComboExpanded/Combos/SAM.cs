@@ -17,6 +17,7 @@ namespace XIVComboExpandedestPlugin.Combos
             Mangetsu = 7484,
             Fuga = 7483,
             Oka = 7485,
+            Shinten = 7490,
             Kyuten = 7491,
             MeikyoShisui = 7499,
             Seigan = 7501,
@@ -245,6 +246,23 @@ namespace XIVComboExpandedestPlugin.Combos
                 if (level >= SAM.Levels.TsubameGaeshi && gauge.Sen == Sen.NONE)
                     return OriginalHook(SAM.TsubameGaeshi);
                 return OriginalHook(SAM.Iaijutsu);
+            }
+
+            return actionID;
+        }
+    }
+
+    internal class SamuraiShohaFeature : CustomCombo
+    {
+        protected override CustomComboPreset Preset => CustomComboPreset.SamuraiShohaFeature;
+
+        protected override uint Invoke(uint actionID, uint lastComboMove, float comboTime, byte level)
+        {
+            if (actionID == SAM.Shinten)
+            {
+                var gauge = GetJobGauge<SAMGauge>();
+                if (gauge.MeditationStacks >= 3)
+                    return SAM.Shoha;
             }
 
             return actionID;
