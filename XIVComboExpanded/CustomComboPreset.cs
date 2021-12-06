@@ -335,36 +335,36 @@ namespace XIVComboExpandedestPlugin
 
         [OrderedEnum]
         [CustomComboInfo("Slice Combo", "Replace Slice with its combo chain.", RPR.JobID, RPR.Slice)]
-        ReaperSliceCombo = 113,
+        ReaperSliceCombo = 3901,
 
         [OrderedEnum]
         [CustomComboInfo("Scythe Combo", "Replace Spinning Scythe with its combo chain.", RPR.JobID, RPR.SpinningScythe)]
-        ReaperScytheCombo = 114,
+        ReaperScytheCombo = 3902,
 
         [OrderedEnum]
         [CustomComboInfo("Enshroud Communio Feature", "Replace Enshroud with Communio when Enshrouded.", RPR.JobID, RPR.Enshroud)]
-        ReaperEnshroudCommunioFeature = 115,
+        ReaperEnshroudCommunioFeature = 3903,
 
         [OrderedEnum]
         [CustomComboInfo("Gibbets, Gallows and Guillotines Feature", "Slice, Shadow of Death and Spinning Scythe are replaced with Gibbet, Gallows and Guillotine while Soul Reaver or Shroud is active.\nRequires Slice/Spinning Scythe's respective combos.", RPR.JobID, RPR.Slice, RPR.ShadowOfDeath, RPR.SpinningScythe)]
-        ReaperGibbetGallowsGuillotineFeature = 119,
+        ReaperGibbetGallowsGuillotineFeature = 3904,
 
         [OrderedEnum]
         [CustomComboInfo("GGG Gallows Option", "Slice now turns into Gallows when Gallows is Enhanced, and removes it from Shadow of Death.\nRequires Slice combo and, of course, the Gibbets, Gallows, and Guillotines Feature.", RPR.JobID, RPR.Slice)]
-        ReaperGibbetGallowsOption = 121,
+        ReaperGibbetGallowsOption = 3905,
 
         /*[OrderedEnum]
         [SecretCustomCombo]
         [CustomComboInfo("GGG Communio Feature", "When one stack is left of Shroud, Communio replaces the Slice combo.\nRequires Slice combo and the Gibbets, Gallows, and Guillotines Feature.", RPR.JobID, RPR.Slice)]
-        ReaperGibbetGallowsCommunioFeature = 124,*/
+        ReaperGibbetGallowsCommunioFeature = 3906,*/
 
         [OrderedEnum]
         [CustomComboInfo("Arcane Circle Harvest Feature", "Replace Arcane Circle with Plentiful Harvest when you have stacks of Immortal Sacrifice.", RPR.JobID, RPR.ArcaneCircle)]
-        ReaperHarvestFeature = 120,
+        ReaperHarvestFeature = 3907,
 
         [OrderedEnum]
         [CustomComboInfo("Regress Feature", "Both Hell's Ingress and Hell's Egress turn into Regress when Threshold is active, instead of just the opposite of the one you used.", RPR.JobID, RPR.HellsIngress, RPR.HellsEgress)]
-        ReaperRegressFeature = 122,
+        ReaperRegressFeature = 3908,
 
         #endregion
         // ====================================================================================
