@@ -142,7 +142,7 @@ namespace XIVComboExpandedestPlugin.Combos
 
                 if (requiescat != null)
                 {
-                    if (requiescat.StackCount <= 1)
+                    if (requiescat.StackCount <= 1 && level >= PLD.Levels.Confiteor)
                     {
                         return OriginalHook(PLD.Confiteor);
                     }
