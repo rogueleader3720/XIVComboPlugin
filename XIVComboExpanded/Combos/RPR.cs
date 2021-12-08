@@ -135,7 +135,7 @@ namespace XIVComboExpandedestPlugin.Combos
         }
     }
 
-    internal class GibbetGallowsGuillotineFeature : CustomCombo
+    internal class GibbetGallowsFeature : CustomCombo
     {
         protected override CustomComboPreset Preset => CustomComboPreset.ReaperGibbetGallowsFeature;
 

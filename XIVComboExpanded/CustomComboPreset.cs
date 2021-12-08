@@ -346,11 +346,11 @@ namespace XIVComboExpandedestPlugin
         ReaperEnshroudCommunioFeature = 3903,
 
         [OrderedEnum]
-        [CustomComboInfo("Gibbets and Gallows Feature", "Slice and Shadow of Death are replaced with Gibbet and Gallows while Soul Reaver or Shroud is active.\nRequires Slice's respective combos.", RPR.JobID, RPR.Slice, RPR.ShadowOfDeath)]
+        [CustomComboInfo("Gibbets and Gallows Feature", "Slice and Shadow of Death are replaced with Gibbet and Gallows while Soul Reaver or Shroud is active.\nRequires Slice's respective combo.", RPR.JobID, RPR.Slice, RPR.ShadowOfDeath)]
         ReaperGibbetGallowsFeature = 3904,
 
         [OrderedEnum]
-        [CustomComboInfo("Guillotine Feature", "Spinning Scythe's combo gets replaced with Guillotine while Soul Reaver or Shroud is active..\nRequires Spinning Scythe's respective combos.", RPR.JobID, RPR.SpinningScythe)]
+        [CustomComboInfo("Guillotine Feature", "Spinning Scythe's combo gets replaced with Guillotine while Soul Reaver or Shroud is active..\nRequires Spinning Scythe's respective combo.", RPR.JobID, RPR.SpinningScythe)]
         ReaperGuillotineFeature = 3909,
 
         [OrderedEnum]
