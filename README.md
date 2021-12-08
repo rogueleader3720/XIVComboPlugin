@@ -3,7 +3,7 @@
 # XIVComboPlugin Expandedest
 This is an expanded version of Daemitus's XIVCombo Expanded for personal use, that I am modifying for personal use by adding features that me and friends would like to use. These can be used in any fork you like, no credit needed. None of these features will be added to the original XIVCombo, so please do not bug the creator of that about it. Thank you Daemitus, attickdoor, goaaats, and everyone else who contributed to making this plugin possible. Additional thanks to ALymphocyte for coding help!
 
-Also, this plugin is explicitly made for more advanced users; if you want something more curated, check out the original, at https://github.com/attickdoor/XIVComboPlugin. If you want something in the middle between that plugin and this fork, check out https://github.com/daemitus/XIVComboPlugin.
+Also, this plugin is explicitly made for more advanced users; if you want something more curated, check out the original, at https://github.com/attickdoor/XIVComboPlugin, which you can easily install in-game from the official plugin list. If you want something in the middle between that plugin and this fork, check out https://github.com/daemitus/XIVComboPlugin.
 
 ## Additions added (all optional!)
 
