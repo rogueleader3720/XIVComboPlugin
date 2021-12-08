@@ -1,4 +1,7 @@
-﻿namespace XIVComboExpandedestPlugin.Combos
+﻿using Dalamud.Game.ClientState.JobGauge.Enums;
+using Dalamud.Game.ClientState.JobGauge.Types;
+
+namespace XIVComboExpandedestPlugin.Combos
 {
     internal static class RPR
     {
@@ -66,7 +69,7 @@
         {
             if (actionID == RPR.Slice)
             {
-                if (IsEnabled(CustomComboPreset.ReaperGibbetGallowsGuillotineFeature) && (HasEffect(RPR.Buffs.SoulReaver) || HasEffect(RPR.Buffs.Enshrouded)))
+                if (IsEnabled(CustomComboPreset.ReaperGibbetGallowsFeature) && (HasEffect(RPR.Buffs.SoulReaver) || HasEffect(RPR.Buffs.Enshrouded)))
                 {
                     if ((HasEffect(RPR.Buffs.EnhancedGallows) && !HasEffect(RPR.Buffs.Enshrouded) && IsEnabled(CustomComboPreset.ReaperGibbetGallowsOption)) || (HasEffect(RPR.Buffs.EnhancedCrossReaping) && HasEffect(RPR.Buffs.Enshrouded)))
                         return OriginalHook(RPR.Gallows);
@@ -98,7 +101,7 @@
         {
             if (actionID == RPR.SpinningScythe)
             {
-                if (IsEnabled(CustomComboPreset.ReaperGibbetGallowsGuillotineFeature) && (HasEffect(RPR.Buffs.SoulReaver) || HasEffect(RPR.Buffs.Enshrouded)))
+                if (IsEnabled(CustomComboPreset.ReaperGuillotineFeature) && (HasEffect(RPR.Buffs.SoulReaver) || HasEffect(RPR.Buffs.Enshrouded)))
                     return OriginalHook(RPR.Guillotine);
 
                 if (comboTime > 0)
@@ -134,7 +137,7 @@
 
     internal class GibbetGallowsGuillotineFeature : CustomCombo
     {
-        protected override CustomComboPreset Preset => CustomComboPreset.ReaperGibbetGallowsGuillotineFeature;
+        protected override CustomComboPreset Preset => CustomComboPreset.ReaperGibbetGallowsFeature;
 
         protected override uint Invoke(uint actionID, uint lastComboMove, float comboTime, byte level)
         {

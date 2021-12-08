@@ -346,16 +346,20 @@ namespace XIVComboExpandedestPlugin
         ReaperEnshroudCommunioFeature = 3903,
 
         [OrderedEnum]
-        [CustomComboInfo("Gibbets, Gallows and Guillotines Feature", "Slice, Shadow of Death and Spinning Scythe are replaced with Gibbet, Gallows and Guillotine while Soul Reaver or Shroud is active.\nRequires Slice/Spinning Scythe's respective combos.", RPR.JobID, RPR.Slice, RPR.ShadowOfDeath, RPR.SpinningScythe)]
-        ReaperGibbetGallowsGuillotineFeature = 3904,
+        [CustomComboInfo("Gibbets and Gallows Feature", "Slice and Shadow of Death are replaced with Gibbet and Gallows while Soul Reaver or Shroud is active.\nRequires Slice's respective combos.", RPR.JobID, RPR.Slice, RPR.ShadowOfDeath)]
+        ReaperGibbetGallowsFeature = 3904,
 
         [OrderedEnum]
-        [CustomComboInfo("GGG Gallows Option", "Slice now turns into Gallows when Gallows is Enhanced, and removes it from Shadow of Death.\nRequires Slice combo and, of course, the Gibbets, Gallows, and Guillotines Feature.", RPR.JobID, RPR.Slice)]
+        [CustomComboInfo("Guillotine Feature", "Spinning Scythe's combo gets replaced with Guillotine while Soul Reaver or Shroud is active..\nRequires Spinning Scythe's respective combos.", RPR.JobID, RPR.SpinningScythe)]
+        ReaperGuillotineFeature = 3909,
+
+        [OrderedEnum]
+        [CustomComboInfo("GG Gallows Option", "Slice now turns into Gallows when Gallows is Enhanced, and removes it from Shadow of Death.\nRequires Slice combo and, of course, the Gibbets and Gallows Feature.", RPR.JobID, RPR.Slice)]
         ReaperGibbetGallowsOption = 3905,
 
         /*[OrderedEnum]
         [SecretCustomCombo]
-        [CustomComboInfo("GGG Communio Feature", "When one stack is left of Shroud, Communio replaces the Slice combo.\nRequires Slice combo and the Gibbets, Gallows, and Guillotines Feature.", RPR.JobID, RPR.Slice)]
+        [CustomComboInfo("Communio Feature", "When one stack is left of Shroud, Communio replaces the Slice and Spinning Scythe combo.\nRequires their respective combos and features.", RPR.JobID, RPR.Slice)]
         ReaperGibbetGallowsCommunioFeature = 3906,*/
 
         [OrderedEnum]
