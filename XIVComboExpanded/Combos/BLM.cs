@@ -81,7 +81,7 @@ namespace XIVComboExpandedestPlugin.Combos
 
     internal class BlackFreezeFlareFeature : CustomCombo
     {
-        protected override CustomComboPreset Preset => CustomComboPreset.BlackEnochianFeature;
+        protected override CustomComboPreset Preset => CustomComboPreset.BlackFreezeFlareFeature;
 
         protected override uint Invoke(uint actionID, uint lastComboMove, float comboTime, byte level)
         {

@@ -17,6 +17,7 @@ namespace XIVComboExpandedestPlugin.Combos
             EnchantedRedoublement = 7529,
             Zwerchhau = 7512,
             EnchantedZwerchhau = 7528,
+            Moulinet = 7513,
             Riposte = 7504,
             EnchantedRiposte = 7527,
             Scatter = 7509,
@@ -72,7 +73,7 @@ namespace XIVComboExpandedestPlugin.Combos
         {
             if (actionID == RDM.Veraero2 || actionID == RDM.Verthunder2)
             {
-                if (HasEffect(RDM.Buffs.Swiftcast) || HasEffect(RDM.Buffs.Dualcast) || HasEffect(RDM.Buffs.LostChainspell) || HasEffect(RDM.Buffs.Acceleration) || lastComboMove == RDM.Verflare || lastComboMove == RDM.Verholy || lastComboMove == RDM.Scorch)
+                if (HasEffect(RDM.Buffs.Swiftcast) || HasEffect(RDM.Buffs.Dualcast) || HasEffect(RDM.Buffs.LostChainspell) || HasEffect(RDM.Buffs.Acceleration) || (OriginalHook(RDM.Impact) != RDM.Impact && OriginalHook(RDM.Impact) != RDM.Scatter))
                     return OriginalHook(RDM.Impact);
 
                 return actionID;
@@ -88,7 +89,7 @@ namespace XIVComboExpandedestPlugin.Combos
 
         protected override uint Invoke(uint actionID, uint lastComboMove, float comboTime, byte level)
         {
-            if (actionID == RDM.Redoublement)
+            if (actionID == RDM.Redoublement || actionID == RDM.Moulinet)
             {
                 var gauge = GetJobGauge<RDMGauge>();
 
@@ -113,11 +114,14 @@ namespace XIVComboExpandedestPlugin.Combos
                     }
                 }
 
-                if ((lastComboMove == RDM.Riposte || lastComboMove == RDM.EnchantedRiposte) && level >= RDM.Levels.Zwerchhau)
-                    return OriginalHook(RDM.Zwerchhau);
+                if (actionID == RDM.Redoublement)
+                {
+                    if ((lastComboMove == RDM.Riposte || lastComboMove == RDM.EnchantedRiposte) && level >= RDM.Levels.Zwerchhau)
+                        return OriginalHook(RDM.Zwerchhau);
 
-                if (lastComboMove == RDM.Zwerchhau && level >= RDM.Levels.Redoublement)
-                    return OriginalHook(RDM.Redoublement);
+                    if (lastComboMove == RDM.Zwerchhau && level >= RDM.Levels.Redoublement)
+                        return OriginalHook(RDM.Redoublement);
+                }
 
                 if (IsEnabled(CustomComboPreset.RedMageMeleeComboPlus))
                 {
@@ -127,6 +131,8 @@ namespace XIVComboExpandedestPlugin.Combos
                         return RDM.Resolution;
                 }
 
+                if (actionID == RDM.Moulinet)
+                    return OriginalHook(RDM.Moulinet);
                 return OriginalHook(RDM.Riposte);
             }
 

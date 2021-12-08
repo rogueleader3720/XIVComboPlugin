@@ -26,7 +26,13 @@ namespace XIVComboExpandedestPlugin.Combos
         {
             public const ushort
                 LordOfCrownsDrawn = 2054,
-                LadyOfCrownsDrawn = 2055;
+                LadyOfCrownsDrawn = 2055,
+                Balance = 913,
+                Bole = 914,
+                Arrow = 915,
+                Spear = 916,
+                Ewer = 917,
+                Spire = 918;
         }
 
         public static class Debuffs
@@ -50,9 +56,10 @@ namespace XIVComboExpandedestPlugin.Combos
         {
             if (actionID == AST.Play)
             {
-                var gauge = GetJobGauge<ASTGauge>();
-                if (gauge.DrawnCard == CardType.NONE)
-                    return AST.Draw;
+                if (HasEffect(AST.Buffs.Balance) || HasEffect(AST.Buffs.Bole) || HasEffect(AST.Buffs.Arrow) || HasEffect(AST.Buffs.Spear) || HasEffect(AST.Buffs.Ewer) || HasEffect(AST.Buffs.Spire))
+                    return OriginalHook(AST.Play);
+
+                return AST.Draw;
             }
 
             return actionID;
@@ -67,8 +74,8 @@ namespace XIVComboExpandedestPlugin.Combos
         {
             if (actionID == AST.MinorArcana)
             {
-                if (level >= AST.Levels.MinorArcana && (HasEffect(AST.Buffs.LordOfCrownsDrawn) || HasEffect(AST.Buffs.LadyOfCrownsDrawn)))
-                    return AST.CrownPlay;
+                if (HasEffect(AST.Buffs.LordOfCrownsDrawn) || HasEffect(AST.Buffs.LadyOfCrownsDrawn))
+                    return OriginalHook(AST.CrownPlay);
             }
 
             return actionID;

@@ -15,6 +15,7 @@ namespace XIVComboExpandedestPlugin.Combos
             DreadwyrmTrance = 3581,
             SummonBahamut = 7427,
             SummonPhoenix = 25831,
+            Aethercharge = 25800,
             Ruin1 = 163,
             Ruin3 = 3579,
             BrandOfPurgatory = 16515,
@@ -23,12 +24,15 @@ namespace XIVComboExpandedestPlugin.Combos
             Fester = 181,
             EnergyDrain = 16508,
             Painflare = 3578,
-            EnergySyphon = 16510;
+            EnergySyphon = 16510,
+            SummonCarbuncle = 25798,
+            RadiantAegis = 25799;
 
         public static class Buffs
         {
             public const ushort
-                HellishConduit = 1867;
+                HellishConduit = 1867,
+                Aetherflow = 304;
         }
 
         public static class Debuffs
@@ -53,7 +57,7 @@ namespace XIVComboExpandedestPlugin.Combos
         protected override uint Invoke(uint actionID, uint lastComboMove, float comboTime, byte level)
         {
             // Replace demi summons with enkindle
-            if (actionID == SMN.SummonBahamut || actionID == SMN.SummonPhoenix)
+            if (actionID == SMN.SummonBahamut || actionID == SMN.SummonPhoenix || actionID == SMN.DreadwyrmTrance || actionID == SMN.Aethercharge)
             {
                 if (OriginalHook(SMN.Ruin1) == SMN.AstralImpulse && level >= SMN.Levels.SummonBahamut)
                     return SMN.EnkindleBahamut;
@@ -104,4 +108,21 @@ namespace XIVComboExpandedestPlugin.Combos
             return actionID;
         }
     }
+
+    /*internal class SummonerCarbyFeature : CustomCombo
+    {
+        protected override CustomComboPreset Preset => CustomComboPreset.SummonerCarbyFeature;
+
+        protected override uint Invoke(uint actionID, uint lastComboMove, float comboTime, byte level)
+        {
+            if (actionID == SMN.SummonCarbuncle)
+            {
+                var gauge = GetJobGauge<SMNGauge>();
+                if (gauge.ReturnSummon != SummonPet.NONE)
+                    return SMN.RadiantAegis;
+            }
+
+            return actionID;
+        }
+    }*/
 }

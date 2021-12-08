@@ -29,7 +29,8 @@ namespace XIVComboExpandedestPlugin.Combos
         {
             public const ushort
                 StraightShotReady = 122,
-                ShadowbiteReady = 3002;
+                ShadowbiteReady = 3002,
+                WanderersMinuet = 2216;
         }
 
         public static class Debuffs
@@ -60,7 +61,7 @@ namespace XIVComboExpandedestPlugin.Combos
         {
             if (actionID == BRD.WanderersMinuet)
             {
-                if (GetJobGauge<BRDGauge>().Song == Song.WANDERER)
+                if (HasEffect(BRD.Buffs.WanderersMinuet))
                     return BRD.PitchPerfect;
             }
 

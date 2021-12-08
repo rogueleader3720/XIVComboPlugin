@@ -1,6 +1,4 @@
-# CURRENTLY OUTDATED
-
-This currently does not work with the latest version of Dalamud. Please check https://github.com/attickdoor/XIVComboPlugin and https://github.com/daemitus/XIVComboPlugin for versions that will work sooner.
+# Endwalker Is Here
 
 # XIVComboPlugin Expandedest
 This is an expanded version of Daemitus's XIVCombo Expanded for personal use, that I am modifying for personal use by adding features that me and friends would like to use. These can be used in any fork you like, no credit needed. None of these features will be added to the original XIVCombo, so please do not bug the creator of that about it. Thank you Daemitus, attickdoor, goaaats, and everyone else who contributed to making this plugin possible. Additional thanks to ALymphocyte for coding help!
@@ -16,6 +14,7 @@ This is an expanded version of Daemitus's XIVCombo Expanded for personal use, th
 * Cure 2 and Medica become Afflatus Solace and Rapture respectively when lilies are available
 * Benefic 2 becomes Benefic when synced below level 26
 * ~~Minor Arcana becomes Sleeve Draw when a card is not drawn.~~
+* ***Kardia becomes Soteria (Kardia buff) when Kardia is up and Soteria is off-cooldown.***
 * ~~Single-target and AoE combos become Holy Spirit/Circle when Requiescat is up~~
 * Dragon Kick becomes Bootshine while a form is up and Leaden Fist is up.
 * AoE Overcap prevention on GNB has also been added to WAR/DRK.
@@ -27,6 +26,9 @@ This is an expanded version of Daemitus's XIVCombo Expanded for personal use, th
 * Shoha will replace Iaijutsu/Tsubame when Meditation gauge is full.
 * ***Shoha II will replace Hissatsu: Kyuten when Meditation gauge is full.***
 * Tsubame becomes Iaijutsu when Sen gauge isn't empty.
+* ***Gibbet, Gallows and Guillotine now replace Slice, Shadow of Death and Spinning Scythe while either Soul Reaver is available or you are in Shroud mode.***
+* ***Additional optional feature to make Slice turn into Gallows when it is enhanced.***
+* ***Hell's Egress/Ingress both turn into Regress instead of just the opposite of the one you pushed.***
 * Fire 1 becomes Fire 3 outside of Astral Fire and when Firestarter proc is up. ~~Also replaces Enochian with Fire 1/3 before you get Fire 4 when in AF (if Enochian is up or you don't have it yet).~~
 * Blizzard 1 becomes Blizzard 3 when outside of Umbral Ice. ~~Freeze now becomes Blizzard 2 when level-synced, as well.~~
 * ***Flare and Freeze will switch depending on if you are in Astral Fire/Umbral Ice.***
@@ -39,7 +41,7 @@ This is an expanded version of Daemitus's XIVCombo Expanded for personal use, th
 * Hide becomes Mug while in combat.
 * Your combos can become Ninjutsu while you are using Mudra (so you don't have to bind Ninjutsu separately, it doesn't actually do the Mudras for you).
 * Bard DoTs alternate between each other and also turn into Iron Jaws when both are up.
-* Burst Shot/Quick Nock***/Ladonsbite*** will turn into Apex Arrow when gauge is full.
+* Burst Shot/Quick Nock/***Ladonsbite*** will turn into Apex Arrow when gauge is full.
 * ***Quick Nock/Ladonsbite will turn into Shadowbite when Shadowbite is ready.***
 * Cascade, Flourish, and both Fan Dances change into dance steps while dancing. This helps ensure you can still dance with combos on, without using auto dance. You can additionally configure which actions you want to be replaced by dance steps, if you so desire.
 

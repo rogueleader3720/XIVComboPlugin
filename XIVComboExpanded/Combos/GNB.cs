@@ -128,16 +128,8 @@ namespace XIVComboExpandedestPlugin.Combos
         {
             if (actionID == GNB.BowShock || actionID == GNB.SonicBreak)
             {
-                var bowCd = GetCooldown(GNB.BowShock);
-                var sonicCd = GetCooldown(GNB.SonicBreak);
-
-                // Prioritize the original if both are off cooldown
-                if (!bowCd.IsCooldown && !sonicCd.IsCooldown)
-                    return actionID;
-
-                return bowCd.CooldownRemaining < sonicCd.CooldownRemaining
-                    ? GNB.BowShock
-                    : GNB.SonicBreak;
+                if (level >= GNB.Levels.BowShock && level >= GNB.Levels.SonicBreak)
+                    return CalcBestAction(actionID, GNB.BowShock, GNB.SonicBreak);
             }
 
             return actionID;
