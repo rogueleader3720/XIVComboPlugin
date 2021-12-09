@@ -105,7 +105,7 @@ namespace XIVComboExpandedestPlugin.Combos
 
         protected override uint Invoke(uint actionID, uint lastComboMove, float comboTime, byte level)
         {
-            if (actionID == MNK.HowlingFist)
+            if (actionID == MNK.HowlingFist || actionID == MNK.Enlightenment)
             {
                 var gauge = GetJobGauge<MNKGauge>();
                 if (gauge.Chakra < 5)

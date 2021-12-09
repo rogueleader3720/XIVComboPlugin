@@ -249,7 +249,7 @@ namespace XIVComboExpandedestPlugin
         MnkBootshineFeature = 2002,
 
         [OrderedEnum]
-        [CustomComboInfo("Howling Fist / Meditation Feature", "Howling Fist with Meditation when the Fifth Chakra is not open.", MNK.JobID, MNK.HowlingFist)]
+        [CustomComboInfo("Howling Fist / Meditation Feature", "Replaces Howling Fist/Enlightenment with Meditation when the Fifth Chakra is not open.", MNK.JobID, MNK.HowlingFist, MNK.Enlightenment)]
         MonkHowlingFistMeditationFeature = 2003,
 
         #endregion
