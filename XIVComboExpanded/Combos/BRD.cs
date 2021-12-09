@@ -78,7 +78,7 @@ namespace XIVComboExpandedestPlugin.Combos
             if (actionID == BRD.HeavyShot || actionID == BRD.BurstShot)
             {
                 var gauge = GetJobGauge<BRDGauge>();
-                if ((gauge.SoulVoice == 100 && IsEnabled(CustomComboPreset.BardApexFeature)) || OriginalHook(BRD.ApexArrow) != BRD.ApexArrow)
+                if (IsEnabled(CustomComboPreset.BardApexFeature) && (gauge.SoulVoice == 100 || OriginalHook(BRD.ApexArrow) != BRD.ApexArrow))
                     return OriginalHook(BRD.ApexArrow);
 
                 if (HasEffect(BRD.Buffs.StraightShotReady))

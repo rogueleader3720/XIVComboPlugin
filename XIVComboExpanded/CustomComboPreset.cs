@@ -166,6 +166,10 @@ namespace XIVComboExpandedestPlugin
         [CustomComboInfo("Dark Knight Gauge Overcap Feature", "Replace AoE combo with gauge spender if you are about to overcap.", DRK.JobID, DRK.StalwartSoul)]
         DRKOvercapFeature = 3203,
 
+        [OrderedEnum]
+        [CustomComboInfo("Delirium Feature", "Replace Souleater and Stalwart Soul with Bloodspiller and Quietus when Delirium is active.", DRK.JobID, DRK.Souleater, DRK.StalwartSoul)]
+        DarkDeliriumFeature = 3204,
+
         #endregion
         // ====================================================================================
         #region GUNBREAKER
@@ -350,7 +354,7 @@ namespace XIVComboExpandedestPlugin
         ReaperGibbetGallowsFeature = 3904,
 
         [OrderedEnum]
-        [CustomComboInfo("Guillotine Feature", "Spinning Scythe's combo gets replaced with Guillotine while Soul Reaver or Shroud is active..\nRequires Spinning Scythe's respective combo.", RPR.JobID, RPR.SpinningScythe)]
+        [CustomComboInfo("Guillotine Feature", "Spinning Scythe's combo gets replaced with Guillotine while Soul Reaver or Shroud is active.\nRequires Spinning Scythe's respective combo.", RPR.JobID, RPR.SpinningScythe)]
         ReaperGuillotineFeature = 3909,
 
         [OrderedEnum]
