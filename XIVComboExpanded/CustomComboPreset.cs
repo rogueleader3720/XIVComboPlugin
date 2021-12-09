@@ -427,7 +427,7 @@ namespace XIVComboExpandedestPlugin
         #region SAGE
 
         [OrderedEnum]
-        [CustomComboInfo("Kardia Into Soteria", "Kardia turns Soteria when active and Soteria is off-cooldown.", SGE.JobID, SGE.Kardia)]
+        [CustomComboInfo("Soteria into Kardia", "Soteria turns into Kardia when not active or Soteria is on-cooldown.", SGE.JobID, SGE.Soteria)]
         SageKardiaFeature = 4001,
 
         #endregion

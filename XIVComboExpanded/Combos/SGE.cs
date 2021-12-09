@@ -47,10 +47,11 @@
 
         protected override uint Invoke(uint actionID, uint lastComboMove, float comboTime, byte level)
         {
-            if (actionID == SGE.Kardia)
+            if (actionID == SGE.Soteria)
             {
                 if (HasEffect(SGE.Buffs.Kardia) && GetCooldown(SGE.Soteria).CooldownRemaining == 0)
                     return SGE.Soteria;
+                return SGE.Kardia;
             }
 
             return actionID;
