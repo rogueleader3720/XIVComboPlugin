@@ -136,6 +136,25 @@ namespace XIVComboExpandedestPlugin.Combos
         }
     }
 
+    internal class GunbreakerBloodfestOvercapFeature : CustomCombo
+    {
+        protected override CustomComboPreset Preset => CustomComboPreset.GunbreakerBloodfestOvercapFeature;
+
+        protected override uint Invoke(uint actionID, uint lastComboMove, float comboTime, byte level)
+        {
+            if (actionID == GNB.BurstStrike || actionID == GNB.FatedCircle)
+            {
+                if (actionID == GNB.BurstStrike && IsEnabled(CustomComboPreset.GunbreakerBurstStrikeCont) && level >= GNB.Levels.EnhancedContinuation && HasEffect(GNB.Buffs.ReadyToBlast))
+                    return GNB.Hypervelocity;
+                var gauge = GetJobGauge<GNBGauge>();
+                if (gauge.Ammo == 0 && level >= GNB.Levels.Bloodfest)
+                    return GNB.Bloodfest;
+            }
+
+            return actionID;
+        }
+    }
+
     internal class GunbreakerDemonSlaughterCombo : CustomCombo
     {
         protected override CustomComboPreset Preset => CustomComboPreset.GunbreakerDemonSlaughterCombo;
@@ -161,25 +180,6 @@ namespace XIVComboExpandedestPlugin.Combos
                 }
 
                 return GNB.DemonSlice;
-            }
-
-            return actionID;
-        }
-    }
-
-    internal class GunbreakerBloodfestOvercapFeature : CustomCombo
-    {
-        protected override CustomComboPreset Preset => CustomComboPreset.GunbreakerBloodfestOvercapFeature;
-
-        protected override uint Invoke(uint actionID, uint lastComboMove, float comboTime, byte level)
-        {
-            if (actionID == GNB.BurstStrike)
-            {
-                if (IsEnabled(CustomComboPreset.GunbreakerBurstStrikeCont) && level >= GNB.Levels.EnhancedContinuation && HasEffect(GNB.Buffs.ReadyToBlast))
-                    return GNB.Hypervelocity;
-                var gauge = GetJobGauge<GNBGauge>();
-                if (gauge.Ammo == 0 && level >= GNB.Levels.Bloodfest)
-                    return GNB.Bloodfest;
             }
 
             return actionID;

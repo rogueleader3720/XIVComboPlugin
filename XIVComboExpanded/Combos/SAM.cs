@@ -269,7 +269,7 @@ namespace XIVComboExpandedestPlugin.Combos
         }
     }
 
-    internal class SamuraiShoha2Feature: CustomCombo
+    internal class SamuraiShoha2Feature : CustomCombo
     {
         protected override CustomComboPreset Preset => CustomComboPreset.SamuraiShoha2Feature;
 

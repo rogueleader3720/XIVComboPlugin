@@ -17,7 +17,9 @@ namespace XIVComboExpandedestPlugin.Combos
             SummonPhoenix = 25831,
             Aethercharge = 25800,
             Ruin1 = 163,
+            Ruin2 = 172,
             Ruin3 = 3579,
+            Ruin4 = 7426,
             BrandOfPurgatory = 16515,
             FountainOfFire = 16514,
             AstralImpulse = 25820,
@@ -26,13 +28,17 @@ namespace XIVComboExpandedestPlugin.Combos
             Painflare = 3578,
             EnergySyphon = 16510,
             SummonCarbuncle = 25798,
-            RadiantAegis = 25799;
+            RadiantAegis = 25799,
+            Outburst = 16511,
+            TriDisaster = 25826,
+            Gemshine = 25883,
+            PreciousBrilliance = 25884;
 
         public static class Buffs
         {
             public const ushort
-                HellishConduit = 1867,
-                Aetherflow = 304;
+                Aetherflow = 304,
+                FurtherRuin = 2701;
         }
 
         public static class Debuffs
@@ -43,10 +49,19 @@ namespace XIVComboExpandedestPlugin.Combos
         public static class Levels
         {
             public const byte
-                Painflare = 52,
+                RadiantAegis = 2,
+                Gemshine = 6,
+                EnergyDrain = 10,
+                PreciousBrilliance = 26,
+                Painflare = 40,
+                EnergySyphon = 52,
                 Ruin3 = 54,
+                Ruin4 = 62,
+                SearingLight = 66,
+                EnkindleBahamut = 70,
                 SummonBahamut = 70,
-                EnhancedFirebirdTrance = 80;
+                Rekindle = 80,
+                SummonPhoenix = 80;
         }
     }
 
@@ -69,6 +84,24 @@ namespace XIVComboExpandedestPlugin.Combos
         }
     }
 
+    internal class SummonerShinyDemiCombo : CustomCombo
+    {
+        protected override CustomComboPreset Preset => CustomComboPreset.SummonerShinyDemiCombo;
+
+        protected override uint Invoke(uint actionID, uint lastComboMove, float comboTime, byte level)
+        {
+            // Replace demi summons with enkindle
+            if (actionID == SMN.Gemshine || actionID == SMN.PreciousBrilliance)
+            {
+                if (OriginalHook(SMN.Ruin1) == SMN.AstralImpulse && level >= SMN.Levels.SummonBahamut)
+                    return SMN.EnkindleBahamut;
+                if (OriginalHook(SMN.Ruin1) == SMN.FountainOfFire)
+                    return SMN.EnkindlePhoenix;
+            }
+
+            return actionID;
+        }
+    }
 
     internal class SummonerEDFesterCombo : CustomCombo
     {
@@ -103,6 +136,70 @@ namespace XIVComboExpandedestPlugin.Combos
                     return SMN.Painflare;
 
                 return SMN.EnergySyphon;
+            }
+
+            return actionID;
+        }
+    }
+
+    internal class SummonerFurtherRuinFeature : CustomCombo
+    {
+        protected override CustomComboPreset Preset => CustomComboPreset.SummonerFurtherRuinFeature;
+
+        protected override uint Invoke(uint actionID, uint lastComboMove, float comboTime, byte level)
+        {
+            if (actionID == SMN.Ruin1 || actionID == SMN.Ruin2 || actionID == SMN.Ruin3)
+            {
+                if (HasEffect(SMN.Buffs.FurtherRuin) && (OriginalHook(SMN.Ruin1) != SMN.AstralImpulse && OriginalHook(SMN.Ruin1) != SMN.FountainOfFire))
+                    return SMN.Ruin4;
+            }
+
+            return actionID;
+        }
+    }
+
+    internal class SummonerShinyRuinFeature : CustomCombo
+    {
+        protected override CustomComboPreset Preset => CustomComboPreset.SummonerShinyRuinFeature;
+
+        protected override uint Invoke(uint actionID, uint lastComboMove, float comboTime, byte level)
+        {
+            if (actionID == SMN.Ruin1 || actionID == SMN.Ruin2 || actionID == SMN.Ruin3)
+            {
+                if (OriginalHook(SMN.Gemshine) != SMN.Gemshine)
+                    return OriginalHook(SMN.Gemshine);
+            }
+
+            return actionID;
+        }
+    }
+
+    internal class SummonerFurtherOutburstFeature : CustomCombo
+    {
+        protected override CustomComboPreset Preset => CustomComboPreset.SummonerFurtherOutburstFeature;
+
+        protected override uint Invoke(uint actionID, uint lastComboMove, float comboTime, byte level)
+        {
+            if (actionID == SMN.Outburst || actionID == SMN.TriDisaster)
+            {
+                if (HasEffect(SMN.Buffs.FurtherRuin) && (OriginalHook(SMN.Ruin1) != SMN.AstralImpulse && OriginalHook(SMN.Ruin1) != SMN.FountainOfFire))
+                    return SMN.Ruin4;
+            }
+
+            return actionID;
+        }
+    }
+
+    internal class SummonerShinyOutburstFeature : CustomCombo
+    {
+        protected override CustomComboPreset Preset => CustomComboPreset.SummonerShinyOutburstFeature;
+
+        protected override uint Invoke(uint actionID, uint lastComboMove, float comboTime, byte level)
+        {
+            if (actionID == SMN.Outburst || actionID == SMN.TriDisaster)
+            {
+                if (OriginalHook(SMN.PreciousBrilliance) != SMN.PreciousBrilliance)
+                    return OriginalHook(SMN.PreciousBrilliance);
             }
 
             return actionID;

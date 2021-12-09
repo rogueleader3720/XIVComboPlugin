@@ -143,7 +143,7 @@ namespace XIVComboExpandedestPlugin.Combos
         {
             if (actionID == RPR.ShadowOfDeath)
             {
-                if ((HasEffect(RPR.Buffs.SoulReaver) && !HasEffect (RPR.Buffs.Enshrouded)) && (!IsEnabled(CustomComboPreset.ReaperGibbetGallowsOption) || (!HasEffect(RPR.Buffs.EnhancedGallows) && !HasEffect(RPR.Buffs.EnhancedGibbet))))
+                if ((HasEffect(RPR.Buffs.SoulReaver) && !HasEffect(RPR.Buffs.Enshrouded)) && (!IsEnabled(CustomComboPreset.ReaperGibbetGallowsOption) || (!HasEffect(RPR.Buffs.EnhancedGallows) && !HasEffect(RPR.Buffs.EnhancedGibbet))))
                 {
                     return OriginalHook(RPR.Gallows);
                 }

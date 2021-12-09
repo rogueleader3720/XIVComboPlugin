@@ -17,9 +17,9 @@ namespace XIVComboExpandedestPlugin.Combos
     /// </summary>
     internal abstract partial class CustomCombo
     {
-        private static readonly Dictionary<Type, JobGaugeBase> JobGaugeCache = new();
-
         private const uint InvalidObjectID = 0xE000_0000;
+
+        private static readonly Dictionary<Type, JobGaugeBase> JobGaugeCache = new();
 
         /// <summary>
         /// Initializes a new instance of the <see cref="CustomCombo"/> class.

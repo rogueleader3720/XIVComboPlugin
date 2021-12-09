@@ -47,4 +47,3 @@ namespace XIVComboExpandedestPlugin.Combos
         }
     }
 }
-

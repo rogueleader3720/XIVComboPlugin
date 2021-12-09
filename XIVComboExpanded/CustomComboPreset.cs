@@ -1,7 +1,6 @@
 using XIVComboExpandedestPlugin.Attributes;
 using XIVComboExpandedestPlugin.Combos;
 
-
 namespace XIVComboExpandedestPlugin
 {
     /// <summary>
@@ -200,7 +199,7 @@ namespace XIVComboExpandedestPlugin
         GunbreakerFatedCircleFeature = 3706,
 
         [OrderedEnum]
-        [CustomComboInfo("Burst Strike to Bloodfest Feature", "Replace Burst Strike with Bloodfest if you have no powder gauge.", GNB.JobID, GNB.BurstStrike)]
+        [CustomComboInfo("Burst Strike/Fated Circle to Bloodfest Feature", "Replace Burst Strike and Fated Circle with Bloodfest if you have no powder gauge.", GNB.JobID, GNB.BurstStrike, GNB.FatedCircle)]
         GunbreakerBloodfestOvercapFeature = 3707,
 
         [OrderedEnum]
@@ -300,9 +299,18 @@ namespace XIVComboExpandedestPlugin
         NinjaBunshinKamaitachiFeature = 3010,
 
         [OrderedEnum]
+        [ParentCombo(NinjaArmorCrushCombo)]
+        [CustomComboInfo("Armor Crush / Raiju Feature", "Replaces the Armor Crush combo with Forked and Fleeting Raiju when available.", NIN.JobID, NIN.ArmorCrush)]
+        NinjaArmorCrushRaijuFeature = 3012,
+
+        [OrderedEnum]
+        [ParentCombo(NinjaAeolianEdgeCombo)]
+        [CustomComboInfo("Aeolian Edge / Raiju Feature", "Replaces the Aeolian Edge combo with Forked and Fleeting Raiju when available.", NIN.JobID, NIN.AeolianEdge)]
+        NinjaAeolianEdgeRaijuFeature = 3013,
+
+        [OrderedEnum]
         [CustomComboInfo("Huraijin / Raiju Feature", "Replaces Huraijin with Forked and Fleeting Raiju when available.", NIN.JobID, NIN.Huraijin)]
         NinjaHuraijinRaijuFeature = 3011,
-
 
         #endregion
         // ====================================================================================
@@ -350,15 +358,18 @@ namespace XIVComboExpandedestPlugin
         ReaperEnshroudCommunioFeature = 3903,
 
         [OrderedEnum]
-        [CustomComboInfo("Gibbets and Gallows Feature", "Slice and Shadow of Death are replaced with Gibbet and Gallows while Soul Reaver or Shroud is active.\nRequires Slice's respective combo.", RPR.JobID, RPR.Slice, RPR.ShadowOfDeath)]
+        [ParentCombo(ReaperSliceCombo)]
+        [CustomComboInfo("Gibbets and Gallows Feature", "Slice and Shadow of Death are replaced with Gibbet and Gallows while Soul Reaver or Shroud is active.", RPR.JobID, RPR.Slice, RPR.ShadowOfDeath)]
         ReaperGibbetGallowsFeature = 3904,
 
         [OrderedEnum]
-        [CustomComboInfo("Guillotine Feature", "Spinning Scythe's combo gets replaced with Guillotine while Soul Reaver or Shroud is active.\nRequires Spinning Scythe's respective combo.", RPR.JobID, RPR.SpinningScythe)]
+        [ParentCombo(ReaperScytheCombo)]
+        [CustomComboInfo("Guillotine Feature", "Spinning Scythe's combo gets replaced with Guillotine while Soul Reaver or Shroud is active.", RPR.JobID, RPR.SpinningScythe)]
         ReaperGuillotineFeature = 3909,
 
         [OrderedEnum]
-        [CustomComboInfo("GG Gallows Option", "Slice now turns into Gallows when Gallows is Enhanced, and removes it from Shadow of Death.\nRequires Slice combo and, of course, the Gibbets and Gallows Feature.", RPR.JobID, RPR.Slice)]
+        [ParentCombo(ReaperGibbetGallowsFeature)]
+        [CustomComboInfo("GG Gallows Option", "Slice now turns into Gallows when Gallows is Enhanced, and removes it from Shadow of Death.", RPR.JobID, RPR.Slice)]
         ReaperGibbetGallowsOption = 3905,
 
         /*[OrderedEnum]
@@ -383,12 +394,13 @@ namespace XIVComboExpandedestPlugin
         RedMageAoECombo = 3501,
 
         [OrderedEnum]
-        [CustomComboInfo("Redoublement combo", "Replaces Redoublement with its combo chain, following enchantment rules.", RDM.JobID, RDM.Redoublement, RDM.Moulinet)]
+        [CustomComboInfo("Redoublement Combo", "Replaces Redoublement with its combo chain, following enchantment rules.", RDM.JobID, RDM.Redoublement, RDM.Moulinet)]
         RedMageMeleeCombo = 3502,
 
         [OrderedEnum]
         [SecretCustomCombo]
-        [CustomComboInfo("Redoublement Combo Plus", "Replaces Redoublement/Moulinet with Verflare/Verholy after 3 stacks, whichever is more appropriate.\nRequires Redoublement Combo.", RDM.JobID, RDM.Redoublement, RDM.Moulinet)]
+        [ParentCombo(RedMageMeleeCombo)]
+        [CustomComboInfo("Redoublement Combo Plus", "Replaces Redoublement/Moulinet with Verflare/Verholy after 3 stacks, whichever is more appropriate.", RDM.JobID, RDM.Redoublement, RDM.Moulinet)]
         RedMageMeleeComboPlus = 3503,
 
         [OrderedEnum]
@@ -396,15 +408,18 @@ namespace XIVComboExpandedestPlugin
         RedMageVerprocCombo = 3504,
 
         [OrderedEnum]
-        [CustomComboInfo("Verproc into Jolt Plus", "Additionally replaces Verstone/Verfire with Veraero/Verthunder if Dualcast, Swiftcast, or Lost Chainspell are up.\nRequires Verproc into Jolt.", RDM.JobID, RDM.Verstone, RDM.Verfire)]
+        [ParentCombo(RedMageVerprocCombo)]
+        [CustomComboInfo("Verproc into Jolt Plus", "Additionally replaces Verstone/Verfire with Veraero/Verthunder if Dualcast, Swiftcast, or Lost Chainspell are up.", RDM.JobID, RDM.Verstone, RDM.Verfire)]
         RedMageVerprocComboPlus = 3505,
 
         [OrderedEnum]
-        [CustomComboInfo("Verproc into Jolt Plus Opener Feature (Stone)", "Turns Verstone into Veraero when out of combat.\nRequires Verproc into Jolt Plus.", RDM.JobID, RDM.Verstone)]
+        [ParentCombo(RedMageVerprocComboPlus)]
+        [CustomComboInfo("Verproc into Jolt Plus Opener Feature (Stone)", "Turns Verstone into Veraero when out of combat.", RDM.JobID, RDM.Verstone)]
         RedMageVerprocOpenerFeatureStone = 3506,
 
         [OrderedEnum]
-        [CustomComboInfo("Verproc into Jolt Plus Opener Feature (Fire)", "Turns Verfire into Verthunder when out of combat.\nRequires Verproc into Jolt Plus.", RDM.JobID, RDM.Verfire)]
+        [ParentCombo(RedMageVerprocComboPlus)]
+        [CustomComboInfo("Verproc into Jolt Plus Opener Feature (Fire)", "Turns Verfire into Verthunder when out of combat.", RDM.JobID, RDM.Verfire)]
         RedMageVerprocOpenerFeatureFire = 3507,
 
         #endregion
@@ -492,12 +507,32 @@ namespace XIVComboExpandedestPlugin
         SummonerDemiCombo = 2701,
 
         [OrderedEnum]
+        [CustomComboInfo("Shiny Enkindle Feature", "When Bahamut/Phoenix are summoned, changes Gemshine and Precious Brilliance with Enkindle.", SMN.JobID, SMN.Gemshine, SMN.PreciousBrilliance)]
+        SummonerShinyDemiCombo = 2708,
+
+        [OrderedEnum]
         [CustomComboInfo("ED Fester", "Change Fester into Energy Drain when out of Aetherflow stacks", SMN.JobID, SMN.Fester)]
         SummonerEDFesterCombo = 2702,
 
         [OrderedEnum]
         [CustomComboInfo("ES Painflare", "Change Painflare into Energy Syphon when out of Aetherflow stacks", SMN.JobID, SMN.Painflare)]
         SummonerESPainflareCombo = 2703,
+
+        [OrderedEnum]
+        [CustomComboInfo("Shiny Ruin Feature", "Change Ruin into Gemburst when attuned.\nThis can and WILL mess up your movement options, you have been warned.", SMN.JobID, SMN.Ruin1, SMN.Ruin2, SMN.Ruin3)]
+        SummonerShinyRuinFeature = 2709,
+
+        [OrderedEnum]
+        [CustomComboInfo("Further Ruin Feature", "Change Ruin into Ruin4 when available and appropriate.\nThis can and WILL mess up your movement options, you have been warned.", SMN.JobID, SMN.Ruin1, SMN.Ruin2, SMN.Ruin3)]
+        SummonerFurtherRuinFeature = 2705,
+
+        [OrderedEnum]
+        [CustomComboInfo("Shiny Outburst Feature", "Change Outburst/Tri-disaster into Precious Brilliance when attuned.", SMN.JobID, SMN.Outburst, SMN.TriDisaster)]
+        SummonerShinyOutburstFeature = 2706,
+
+        [OrderedEnum]
+        [CustomComboInfo("Further Outburst Feature", "Change Outburst/Tri-disaster into Ruin4 when available and appropriate.", SMN.JobID, SMN.Outburst, SMN.TriDisaster)]
+        SummonerFurtherOutburstFeature = 2707,
 
         /*[OrderedEnum]
         [CustomComboInfo("Carby Feature", "Summon Carbuncle becomes Radiant Aegis while Carbuncle is summoned.", SMN.JobID, SMN.SummonCarbuncle)]

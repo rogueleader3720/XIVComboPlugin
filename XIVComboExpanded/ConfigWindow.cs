@@ -79,6 +79,7 @@ namespace XIVComboExpandedestPlugin
                         var enabled = Service.Configuration.IsEnabled(preset);
                         var secret = Service.Configuration.IsSecret(preset);
                         var conflicts = Service.Configuration.GetConflicts(preset);
+                        var parent = Service.Configuration.GetParent(preset);
 
                         if (secret && !showSecrets)
                             continue;
@@ -125,7 +126,14 @@ namespace XIVComboExpandedestPlugin
 
                         ImGui.PopItemWidth();
 
-                        ImGui.TextColored(this.shadedColor, $"#{i}: {info.Description}");
+                        var description = $"#{i}: {info.Description}";
+                        if (parent != null)
+                        {
+                            var parentInfo = parent.GetAttribute<CustomComboInfoAttribute>();
+                            description += $"\nRequires {parentInfo.FancyName}.";
+                        }
+
+                        ImGui.TextColored(this.shadedColor, description);
                         ImGui.Spacing();
 
                         if (conflicts.Length > 0)

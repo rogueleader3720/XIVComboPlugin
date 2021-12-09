@@ -167,6 +167,7 @@ namespace XIVComboExpandedestPlugin.Combos
                         {
                             return OriginalHook(WAR.Decimate);
                         }
+
                         return WAR.MythrilTempest;
                     }
                 }
