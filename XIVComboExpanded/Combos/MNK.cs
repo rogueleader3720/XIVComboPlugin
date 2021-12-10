@@ -107,8 +107,7 @@ namespace XIVComboExpandedestPlugin.Combos
         {
             if (actionID == MNK.HowlingFist || actionID == MNK.Enlightenment)
             {
-                var gauge = GetJobGauge<MNKGauge>();
-                if (gauge.Chakra < 5)
+                if (OriginalHook(MNK.Meditation) == MNK.Meditation)
                     return MNK.Meditation;
 
                 // Enlightenment
