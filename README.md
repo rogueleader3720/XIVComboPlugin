@@ -31,3 +31,6 @@ For some jobs, this frees a massive amount of hotbar space (looking at you, DRG)
 ![](https://github.com/attickdoor/xivcomboplugin/raw/master/res/hypercharge_heat_blast.gif)
 ![](https://github.com/attickdoor/xivcomboplugin/raw/master/res/eno_swap.gif)
 
+---
+
+Place `https://github.com/grammernatzi/MyDalamudPlugins/raw/master/pluginmaster.json` in your /xlsettings 3rd party repo list to access this plugin.
