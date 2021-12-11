@@ -34,7 +34,13 @@ namespace XIVComboExpandedestPlugin.Combos
             Gemshine = 25883,
             PreciousBrilliance = 25884,
             AstralFlow = 25822,
-            MountainBuster = 25836;
+            MountainBuster = 25836,
+            SummonIfrit = 25805,
+            SummonIfrit2 = 25838,
+            SummonTitan = 25806,
+            SummonTitan2 = 25839,
+            SummonGaruda = 25807,
+            SummonGaruda2 = 25840;
 
         public static class Buffs
         {
@@ -96,9 +102,37 @@ namespace XIVComboExpandedestPlugin.Combos
             if (actionID == SMN.Gemshine || actionID == SMN.PreciousBrilliance)
             {
                 if (OriginalHook(SMN.Ruin1) == SMN.AstralImpulse && level >= SMN.Levels.SummonBahamut)
+                {
+                    if (IsEnabled(CustomComboPreset.SummonerShinyFlowCombo) && GetCooldown(SMN.EnkindleBahamut).CooldownRemaining != 0)
+                        return OriginalHook(SMN.AstralFlow);
                     return SMN.EnkindleBahamut;
+                }
+
                 if (OriginalHook(SMN.Ruin1) == SMN.FountainOfFire)
+                {
+                    if (IsEnabled(CustomComboPreset.SummonerShinyFlowCombo) && GetCooldown(SMN.EnkindlePhoenix).CooldownRemaining != 0)
+                        return OriginalHook(SMN.AstralFlow);
                     return SMN.EnkindlePhoenix;
+                }
+            }
+
+            return actionID;
+        }
+    }
+
+    internal class SummonerShinyFlowCombo : CustomCombo
+    {
+        protected override CustomComboPreset Preset => CustomComboPreset.SummonerShinyFlowCombo;
+
+        protected override uint Invoke(uint actionID, uint lastComboMove, float comboTime, byte level)
+        {
+            // Replace demi summons with enkindle
+            if ((actionID == SMN.Gemshine || actionID == SMN.PreciousBrilliance) && !IsEnabled(CustomComboPreset.SummonerShinyDemiCombo))
+            {
+                if (OriginalHook(SMN.Ruin1) == SMN.AstralImpulse && level >= SMN.Levels.SummonBahamut)
+                    return OriginalHook(SMN.AstralFlow);
+                if (OriginalHook(SMN.Ruin1) == SMN.FountainOfFire)
+                    return OriginalHook(SMN.AstralFlow);
             }
 
             return actionID;
@@ -153,6 +187,22 @@ namespace XIVComboExpandedestPlugin.Combos
             if (actionID == SMN.Gemshine || actionID == SMN.PreciousBrilliance)
             {
                 if (OriginalHook(SMN.AstralFlow) == SMN.MountainBuster)
+                    return OriginalHook(SMN.AstralFlow);
+            }
+
+            return actionID;
+        }
+    }
+
+    internal class SummonerSummoningFlowFeature : CustomCombo
+    {
+        protected override CustomComboPreset Preset => CustomComboPreset.SummonerSummoningFlowFeature;
+
+        protected override uint Invoke(uint actionID, uint lastComboMove, float comboTime, byte level)
+        {
+            if (actionID == SMN.SummonIfrit || actionID == SMN.SummonIfrit2 || actionID == SMN.SummonTitan || actionID == SMN.SummonTitan2 || actionID == SMN.SummonGaruda || actionID == SMN.SummonGaruda2)
+            {
+                if (OriginalHook(SMN.AstralFlow) != SMN.AstralFlow)
                     return OriginalHook(SMN.AstralFlow);
             }
 

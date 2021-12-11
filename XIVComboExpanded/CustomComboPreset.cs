@@ -523,6 +523,10 @@ namespace XIVComboExpandedestPlugin
         SummonerShinyDemiCombo = 2708,
 
         [OrderedEnum]
+        [CustomComboInfo("Shiny Flow Feature", "When Bahamut/Phoenix are summoned, changes Gemshine and Precious Brilliance with Astral Flow.", SMN.JobID, SMN.Gemshine, SMN.PreciousBrilliance)]
+        SummonerShinyFlowCombo = 2711,
+
+        [OrderedEnum]
         [CustomComboInfo("ED Fester", "Change Fester into Energy Drain when out of Aetherflow stacks", SMN.JobID, SMN.Fester)]
         SummonerEDFesterCombo = 2702,
 
@@ -533,6 +537,10 @@ namespace XIVComboExpandedestPlugin
         [OrderedEnum]
         [CustomComboInfo("Mountain Buster Feature", "Gemshine and Precious Brilliance become Mountain Buster while you have Titan's Favor.", SMN.JobID, SMN.Ruin1, SMN.Ruin2, SMN.Ruin3, SMN.Gemshine, SMN.Outburst, SMN.TriDisaster, SMN.PreciousBrilliance)]
         SummonerMountainBusterFeature = 2710,
+
+        [OrderedEnum]
+        [CustomComboInfo("Summoning Flow Feature", "When you have Favor, or Bahamut/Phoenix are summoned, your summoning actions become Astral Flow.", SMN.JobID, SMN.SummonIfrit, SMN.SummonIfrit2, SMN.SummonTitan, SMN.SummonTitan2, SMN.SummonGaruda, SMN.SummonGaruda2)]
+        SummonerSummoningFlowFeature = 2712,
 
         [OrderedEnum]
         [CustomComboInfo("Shiny Ruin Feature", "Change Ruin into Gemburst when attuned.\nThis can and WILL mess up your movement options, you have been warned.", SMN.JobID, SMN.Ruin1, SMN.Ruin2, SMN.Ruin3)]
