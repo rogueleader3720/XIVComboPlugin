@@ -539,7 +539,7 @@ namespace XIVComboExpandedestPlugin
         SummonerMountainBusterFeature = 2710,
 
         [OrderedEnum]
-        [CustomComboInfo("Summoning Flow Feature", "When you have Favor, or Bahamut/Phoenix are summoned, your summoning actions become Astral Flow.", SMN.JobID, SMN.SummonIfrit, SMN.SummonIfrit2, SMN.SummonTitan, SMN.SummonTitan2, SMN.SummonGaruda, SMN.SummonGaruda2)]
+        [CustomComboInfo("Summoning Flow Feature", "When you have Favor, or Bahamut/Phoenix are summoned, your summoning actions become Astral Flow.", SMN.JobID, SMN.SummonRuby, SMN.SummonIfrit, SMN.SummonIfrit2, SMN.SummonTopaz, SMN.SummonTitan, SMN.SummonTitan2, SMN.SummonEmerald, SMN.SummonGaruda, SMN.SummonGaruda2)]
         SummonerSummoningFlowFeature = 2712,
 
         [OrderedEnum]

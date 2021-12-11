@@ -35,10 +35,13 @@ namespace XIVComboExpandedestPlugin.Combos
             PreciousBrilliance = 25884,
             AstralFlow = 25822,
             MountainBuster = 25836,
+            SummonRuby = 25802,
             SummonIfrit = 25805,
             SummonIfrit2 = 25838,
+            SummonTopaz = 25803,
             SummonTitan = 25806,
             SummonTitan2 = 25839,
+            SummonEmerald = 25804,
             SummonGaruda = 25807,
             SummonGaruda2 = 25840;
 
@@ -200,7 +203,7 @@ namespace XIVComboExpandedestPlugin.Combos
 
         protected override uint Invoke(uint actionID, uint lastComboMove, float comboTime, byte level)
         {
-            if (actionID == SMN.SummonIfrit || actionID == SMN.SummonIfrit2 || actionID == SMN.SummonTitan || actionID == SMN.SummonTitan2 || actionID == SMN.SummonGaruda || actionID == SMN.SummonGaruda2)
+            if (actionID == SMN.SummonRuby || actionID == SMN.SummonIfrit || actionID == SMN.SummonIfrit2 || actionID == SMN.SummonTopaz || actionID == SMN.SummonTitan || actionID == SMN.SummonTitan2 || actionID == SMN.SummonEmerald || actionID == SMN.SummonGaruda || actionID == SMN.SummonGaruda2)
             {
                 if (OriginalHook(SMN.AstralFlow) != SMN.AstralFlow)
                     return OriginalHook(SMN.AstralFlow);
