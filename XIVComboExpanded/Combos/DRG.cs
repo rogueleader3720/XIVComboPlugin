@@ -115,7 +115,7 @@ namespace XIVComboExpandedestPlugin.Combos
 
         protected override uint Invoke(uint actionID, uint lastComboMove, float comboTime, byte level)
         {
-            if (actionID == DRG.ChaosThrust)
+            if (actionID == DRG.ChaosThrust || actionID == DRG.ChaoticSpring)
             {
                 if (comboTime > 0)
                 {
@@ -148,7 +148,7 @@ namespace XIVComboExpandedestPlugin.Combos
 
         protected override uint Invoke(uint actionID, uint lastComboMove, float comboTime, byte level)
         {
-            if (actionID == DRG.FullThrust)
+            if (actionID == DRG.FullThrust || actionID == DRG.HeavensThrust)
             {
                 if (comboTime > 0)
                 {

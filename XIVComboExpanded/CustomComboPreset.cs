@@ -142,11 +142,11 @@ namespace XIVComboExpandedestPlugin
         DragoonCoerthanTormentCombo = 2202,
 
         [OrderedEnum]
-        [CustomComboInfo("Chaos Thrust Combo", "Replace Chaos Thrust with its combo chain.", DRG.JobID, DRG.ChaosThrust)]
+        [CustomComboInfo("Chaos Thrust Combo", "Replace Chaos Thrust with its combo chain.", DRG.JobID, DRG.ChaosThrust, DRG.ChaoticSpring)]
         DragoonChaosThrustCombo = 2203,
 
         [OrderedEnum]
-        [CustomComboInfo("Full Thrust Combo", "Replace Full Thrust with its combo chain.", DRG.JobID, DRG.FullThrust)]
+        [CustomComboInfo("Full Thrust Combo", "Replace Full Thrust with its combo chain.", DRG.JobID, DRG.FullThrust, DRG.HeavensThrust)]
         DragoonFullThrustCombo = 2204,
 
         [OrderedEnum]
