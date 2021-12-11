@@ -479,8 +479,16 @@ namespace XIVComboExpandedestPlugin
         SamuraiIaijutsuShohaFeature = 3409,
 
         [OrderedEnum]
+        [CustomComboInfo("Shinten to Senei", "Replace Hissatsu: Shinten with Senei when its cooldown is up.", SAM.JobID, SAM.Shinten)]
+        SamuraiSeneiFeature = 3413,
+
+        [OrderedEnum]
         [CustomComboInfo("Shinten to Shoha", "Replace Hissatsu: Shinten with Shoha when Meditation is full.", SAM.JobID, SAM.Shinten)]
         SamuraiShohaFeature = 3412,
+
+        [OrderedEnum]
+        [CustomComboInfo("Kyuten to Guren", "Replace Hissatsu: Kyuten with Guren when its cooldown is up.", SAM.JobID, SAM.Kyuten)]
+        SamuraiGurenFeature = 3414,
 
         [OrderedEnum]
         [CustomComboInfo("Kyuten to Shoha II", "Replace Hissatsu: Kyuten with Shoha II when Meditation is full.", SAM.JobID, SAM.Kyuten)]

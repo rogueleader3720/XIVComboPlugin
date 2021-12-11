@@ -19,6 +19,8 @@ namespace XIVComboExpandedestPlugin.Combos
             Oka = 7485,
             Shinten = 7490,
             Kyuten = 7491,
+            Guren = 7496,
+            Senei = 16481,
             MeikyoShisui = 7499,
             Seigan = 7501,
             ThirdEye = 7498,
@@ -57,6 +59,8 @@ namespace XIVComboExpandedestPlugin.Combos
                 Kasha = 40,
                 Oka = 45,
                 Yukikaze = 50,
+                Guren = 70,
+                Senei = 72,
                 TsubameGaeshi = 76,
                 Shoha = 80,
                 Shoha2 = 82,
@@ -252,6 +256,22 @@ namespace XIVComboExpandedestPlugin.Combos
         }
     }
 
+    internal class SamuraiSeneiFeature : CustomCombo
+    {
+        protected override CustomComboPreset Preset => CustomComboPreset.SamuraiSeneiFeature;
+
+        protected override uint Invoke(uint actionID, uint lastComboMove, float comboTime, byte level)
+        {
+            if (actionID == SAM.Shinten)
+            {
+                if (GetCooldown(SAM.Senei).CooldownRemaining == 0 && level >= SAM.Levels.Senei)
+                    return SAM.Senei;
+            }
+
+            return actionID;
+        }
+    }
+
     internal class SamuraiShohaFeature : CustomCombo
     {
         protected override CustomComboPreset Preset => CustomComboPreset.SamuraiShohaFeature;
@@ -263,6 +283,22 @@ namespace XIVComboExpandedestPlugin.Combos
                 var gauge = GetJobGauge<SAMGauge>();
                 if (gauge.MeditationStacks >= 3)
                     return SAM.Shoha;
+            }
+
+            return actionID;
+        }
+    }
+
+    internal class SamuraiGurenFeature : CustomCombo
+    {
+        protected override CustomComboPreset Preset => CustomComboPreset.SamuraiGurenFeature;
+
+        protected override uint Invoke(uint actionID, uint lastComboMove, float comboTime, byte level)
+        {
+            if (actionID == SAM.Kyuten)
+            {
+                if (GetCooldown(SAM.Guren).CooldownRemaining == 0 && level >= SAM.Levels.Guren)
+                    return SAM.Guren;
             }
 
             return actionID;
