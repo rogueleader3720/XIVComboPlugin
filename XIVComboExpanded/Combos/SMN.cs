@@ -32,7 +32,9 @@ namespace XIVComboExpandedestPlugin.Combos
             Outburst = 16511,
             TriDisaster = 25826,
             Gemshine = 25883,
-            PreciousBrilliance = 25884;
+            PreciousBrilliance = 25884,
+            AstralFlow = 25822,
+            MountainBuster = 25836;
 
         public static class Buffs
         {
@@ -142,6 +144,22 @@ namespace XIVComboExpandedestPlugin.Combos
         }
     }
 
+    internal class SummonerMountainBusterFeature : CustomCombo
+    {
+        protected override CustomComboPreset Preset => CustomComboPreset.SummonerMountainBusterFeature;
+
+        protected override uint Invoke(uint actionID, uint lastComboMove, float comboTime, byte level)
+        {
+            if (actionID == SMN.Gemshine || actionID == SMN.PreciousBrilliance)
+            {
+                if (OriginalHook(SMN.AstralFlow) == SMN.MountainBuster)
+                    return OriginalHook(SMN.AstralFlow);
+            }
+
+            return actionID;
+        }
+    }
+
     internal class SummonerFurtherRuinFeature : CustomCombo
     {
         protected override CustomComboPreset Preset => CustomComboPreset.SummonerFurtherRuinFeature;
@@ -166,6 +184,8 @@ namespace XIVComboExpandedestPlugin.Combos
         {
             if (actionID == SMN.Ruin1 || actionID == SMN.Ruin2 || actionID == SMN.Ruin3)
             {
+                if (IsEnabled(CustomComboPreset.SummonerMountainBusterFeature) && OriginalHook(SMN.AstralFlow) == SMN.MountainBuster)
+                    return OriginalHook(SMN.AstralFlow);
                 if (OriginalHook(SMN.Gemshine) != SMN.Gemshine)
                     return OriginalHook(SMN.Gemshine);
             }
@@ -198,6 +218,8 @@ namespace XIVComboExpandedestPlugin.Combos
         {
             if (actionID == SMN.Outburst || actionID == SMN.TriDisaster)
             {
+                if (IsEnabled(CustomComboPreset.SummonerMountainBusterFeature) && OriginalHook(SMN.AstralFlow) == SMN.MountainBuster)
+                    return OriginalHook(SMN.AstralFlow);
                 if (OriginalHook(SMN.PreciousBrilliance) != SMN.PreciousBrilliance)
                     return OriginalHook(SMN.PreciousBrilliance);
             }

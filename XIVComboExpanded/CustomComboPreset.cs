@@ -149,6 +149,10 @@ namespace XIVComboExpandedestPlugin
         [CustomComboInfo("Full Thrust Combo", "Replace Full Thrust with its combo chain.", DRG.JobID, DRG.FullThrust)]
         DragoonFullThrustCombo = 2204,
 
+        [OrderedEnum]
+        [CustomComboInfo("Wheeling Thrust/Fang and Claw Option", "When you have either Enhanced Fang and Claw or Wheeling Thrust,\nChaos Thrust Combo becomes Fang and Claw and Full Thrust Combo becomes Wheeling Thrust.\nRequires Chaos Thrust Combo and Full Thrust Combo.", DRG.JobID, DRG.FullThrust, DRG.ChaosThrust)]
+        DragoonFangThrustFeature = 2205,
+
         #endregion
         // ====================================================================================
         #region DARK KNIGHT
@@ -517,6 +521,10 @@ namespace XIVComboExpandedestPlugin
         [OrderedEnum]
         [CustomComboInfo("ES Painflare", "Change Painflare into Energy Syphon when out of Aetherflow stacks", SMN.JobID, SMN.Painflare)]
         SummonerESPainflareCombo = 2703,
+
+        [OrderedEnum]
+        [CustomComboInfo("Mountain Buster Feature", "Gemshine and Precious Brilliance become Mountain Buster while you have Titan's Favor.", SMN.JobID, SMN.Ruin1, SMN.Ruin2, SMN.Ruin3, SMN.Gemshine, SMN.Outburst, SMN.TriDisaster, SMN.PreciousBrilliance)]
+        SummonerMountainBusterFeature = 2710,
 
         [OrderedEnum]
         [CustomComboInfo("Shiny Ruin Feature", "Change Ruin into Gemburst when attuned.\nThis can and WILL mess up your movement options, you have been warned.", SMN.JobID, SMN.Ruin1, SMN.Ruin2, SMN.Ruin3)]

@@ -126,6 +126,9 @@ namespace XIVComboExpandedestPlugin.Combos
                         return OriginalHook(DRG.ChaosThrust);
                 }
 
+                if (IsEnabled(CustomComboPreset.DragoonFangThrustFeature) && (HasEffect(DRG.Buffs.SharperFangAndClaw) || HasEffect(DRG.Buffs.EnhancedWheelingThrust)))
+                    return DRG.FangAndClaw;
+
                 if (HasEffect(DRG.Buffs.SharperFangAndClaw) && level >= DRG.Levels.FangAndClaw)
                     return DRG.FangAndClaw;
 
@@ -155,6 +158,9 @@ namespace XIVComboExpandedestPlugin.Combos
                     if (lastComboMove == DRG.VorpalThrust && level >= DRG.Levels.FullThrust)
                         return OriginalHook(DRG.FullThrust);
                 }
+
+                if (IsEnabled(CustomComboPreset.DragoonFangThrustFeature) && (HasEffect(DRG.Buffs.SharperFangAndClaw) || HasEffect(DRG.Buffs.EnhancedWheelingThrust)))
+                    return DRG.WheelingThrust;
 
                 if (HasEffect(DRG.Buffs.SharperFangAndClaw) && level >= DRG.Levels.FangAndClaw)
                     return DRG.FangAndClaw;
