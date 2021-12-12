@@ -253,6 +253,11 @@ namespace XIVComboExpandedestPlugin
         MonkAoECombo = 2001,
 
         [OrderedEnum]
+        [ParentCombo(MonkAoECombo)]
+        [CustomComboInfo("Monk AoE Balance Feature", "Replaces Monk's AoE Combo with Masterful Blitz if you have 3 Beast Chakra.", MNK.JobID, MNK.Rockbreaker)]
+        MonkAoEBalanceFeature = 2006,
+
+        [OrderedEnum]
         [CustomComboInfo("Monk Bootshine Feature", "Replaces Dragon Kick with Bootshine if both a form and Leaden Fist are up.", MNK.JobID, MNK.DragonKick)]
         MnkBootshineFeature = 2002,
 
@@ -363,7 +368,7 @@ namespace XIVComboExpandedestPlugin
         #region REAPER
 
         [OrderedEnum]
-        [CustomComboInfo("Slice Combo", "Replace Slice with its combo chain.", RPR.JobID, RPR.Slice)]
+        [CustomComboInfo("Slice Combo", "Replace Slice with its combo chain.", RPR.JobID, RPR.Slice, RPR.InfernalSlice)]
         ReaperSliceCombo = 3901,
 
         [OrderedEnum]
@@ -372,7 +377,7 @@ namespace XIVComboExpandedestPlugin
         ReaperInfernalSliceCombo = 3910,
 
         [OrderedEnum]
-        [CustomComboInfo("Scythe Combo", "Replace Spinning Scythe with its combo chain.", RPR.JobID, RPR.SpinningScythe)]
+        [CustomComboInfo("Scythe Combo", "Replace Spinning Scythe with its combo chain.", RPR.JobID, RPR.SpinningScythe, RPR.NightmareScythe)]
         ReaperScytheCombo = 3902,
 
         [OrderedEnum]

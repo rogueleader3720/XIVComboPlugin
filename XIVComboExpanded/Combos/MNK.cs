@@ -50,7 +50,8 @@ namespace XIVComboExpandedestPlugin.Combos
                 FourPointFury = 45,
                 HowlingFist = 40,
                 DragonKick = 50,
-                Enlightenment = 70;
+                Enlightenment = 70,
+                ShadowOfTheDestroyer = 82;
         }
     }
 
@@ -62,8 +63,15 @@ namespace XIVComboExpandedestPlugin.Combos
         {
             if (actionID == MNK.Rockbreaker)
             {
+                if (IsEnabled(CustomComboPreset.MonkAoEBalanceFeature) && OriginalHook(MNK.MasterfulBlitz) != MNK.MasterfulBlitz)
+                    return OriginalHook(MNK.MasterfulBlitz);
+
                 if (HasEffect(MNK.Buffs.PerfectBalance) || HasEffect(MNK.Buffs.FormlessFist))
+                {
+                    if (level >= MNK.Levels.ShadowOfTheDestroyer)
+                        return OriginalHook(MNK.ArmOfTheDestroyer);
                     return MNK.Rockbreaker;
+                }
 
                 if (HasEffect(MNK.Buffs.OpoOpoForm))
                     return OriginalHook(MNK.ArmOfTheDestroyer);
