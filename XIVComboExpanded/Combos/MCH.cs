@@ -21,6 +21,7 @@ namespace XIVComboExpandedestPlugin.Combos
             Ricochet = 2890,
             // AoE
             SpreadShot = 2870,
+            Scattergun = 25786,
             AutoCrossbow = 16497,
             // Rook
             RookAutoturret = 2864,
@@ -135,7 +136,7 @@ namespace XIVComboExpandedestPlugin.Combos
 
         protected override uint Invoke(uint actionID, uint lastComboMove, float comboTime, byte level)
         {
-            if (actionID == MCH.SpreadShot)
+            if (actionID == MCH.SpreadShot || actionID == MCH.Scattergun)
             {
                 var gauge = GetJobGauge<MCHGauge>();
                 if (gauge.IsOverheated && level >= MCH.Levels.AutoCrossbow)
