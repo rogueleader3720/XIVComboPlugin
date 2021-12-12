@@ -1,4 +1,5 @@
 using Dalamud.Game.ClientState.JobGauge.Types;
+using Dalamud.Game.ClientState.Statuses;
 
 namespace XIVComboExpandedestPlugin.Combos
 {
@@ -14,11 +15,13 @@ namespace XIVComboExpandedestPlugin.Combos
             TwinSnakes = 61,
             Demolish = 66,
             ArmOfTheDestroyer = 62,
+            PerfectBalance = 69,
             Rockbreaker = 70,
             Meditation = 3546,
             FourPointFury = 16473,
             HowlingFist = 25763,
-            Enlightenment = 16474;
+            Enlightenment = 16474,
+            MasterfulBlitz = 25764;
 
         public static class Buffs
         {
@@ -74,6 +77,21 @@ namespace XIVComboExpandedestPlugin.Combos
                 return OriginalHook(MNK.ArmOfTheDestroyer);
             }
 
+            if (actionID == MNK.FourPointFury && HasEffect(MNK.Buffs.PerfectBalance))
+            {
+                Status? pb = FindEffect(MNK.Buffs.PerfectBalance);
+
+                if (pb != null)
+                {
+                    if (pb.StackCount == 3)
+                        return OriginalHook(MNK.ArmOfTheDestroyer);
+                    if (pb.StackCount == 2)
+                        return MNK.FourPointFury;
+                    if (pb.StackCount == 1)
+                        return MNK.Rockbreaker;
+                }
+            }
+
             return actionID;
         }
     }
@@ -86,6 +104,9 @@ namespace XIVComboExpandedestPlugin.Combos
         {
             if (actionID == MNK.DragonKick)
             {
+                if (IsEnabled(CustomComboPreset.MnkBootshineBalanceFeature) && OriginalHook(MNK.MasterfulBlitz) != MNK.MasterfulBlitz)
+                    return OriginalHook(MNK.MasterfulBlitz);
+
                 if (HasEffect(MNK.Buffs.LeadenFist) && (
                     HasEffect(MNK.Buffs.FormlessFist) || HasEffect(MNK.Buffs.PerfectBalance) ||
                     HasEffect(MNK.Buffs.OpoOpoForm) || HasEffect(MNK.Buffs.RaptorForm) || HasEffect(MNK.Buffs.CoerlForm)))
@@ -112,6 +133,22 @@ namespace XIVComboExpandedestPlugin.Combos
 
                 // Enlightenment
                 return OriginalHook(MNK.HowlingFist);
+            }
+
+            return actionID;
+        }
+    }
+
+    internal class MonkPerfectBalanceFeature : CustomCombo
+    {
+        protected override CustomComboPreset Preset => CustomComboPreset.MonkPerfectBalanceFeature;
+
+        protected override uint Invoke(uint actionID, uint lastComboMove, float comboTime, byte level)
+        {
+            if (actionID == MNK.PerfectBalance)
+            {
+                if (OriginalHook(MNK.MasterfulBlitz) != MNK.MasterfulBlitz)
+                    return OriginalHook(MNK.MasterfulBlitz);
             }
 
             return actionID;

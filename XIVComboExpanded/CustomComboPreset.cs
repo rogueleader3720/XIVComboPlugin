@@ -245,7 +245,7 @@ namespace XIVComboExpandedestPlugin
         #region MONK
 
         [OrderedEnum]
-        [CustomComboInfo("Monk AoE Combo", "Replaces Rockbreaker with the AoE combo chain, or Rockbreaker when Perfect Balance is active.", MNK.JobID, MNK.Rockbreaker)]
+        [CustomComboInfo("Monk AoE Combo", "Replaces Rockbreaker with the AoE combo chain, or Rockbreaker when Perfect Balance is active.\nFour-Point Fury becomes AoE combo chain in order of forms during Perfect Balance.", MNK.JobID, MNK.Rockbreaker, MNK.FourPointFury)]
         MonkAoECombo = 2001,
 
         [OrderedEnum]
@@ -253,8 +253,17 @@ namespace XIVComboExpandedestPlugin
         MnkBootshineFeature = 2002,
 
         [OrderedEnum]
+        [ParentCombo(MnkBootshineFeature)]
+        [CustomComboInfo("Monk Bootshine Balance Feature", "Replaces Dragon Kick with Masterful Blitz if you have 3 Beast Chakra.", MNK.JobID, MNK.DragonKick)]
+        MnkBootshineBalanceFeature = 2005,
+
+        [OrderedEnum]
         [CustomComboInfo("Howling Fist / Meditation Feature", "Replaces Howling Fist/Enlightenment with Meditation when the Fifth Chakra is not open.", MNK.JobID, MNK.HowlingFist, MNK.Enlightenment)]
         MonkHowlingFistMeditationFeature = 2003,
+
+        [OrderedEnum]
+        [CustomComboInfo("Perfect Balance Feature", "Perfect Balance becomes Masterful Blitz while you have 3 Beast Chakra.", MNK.JobID, MNK.PerfectBalance)]
+        MonkPerfectBalanceFeature = 2004,
 
         #endregion
         // ====================================================================================
