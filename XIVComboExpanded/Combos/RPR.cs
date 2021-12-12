@@ -67,7 +67,7 @@ namespace XIVComboExpandedestPlugin.Combos
 
         protected override uint Invoke(uint actionID, uint lastComboMove, float comboTime, byte level)
         {
-            if (actionID == RPR.Slice)
+            if ((actionID == RPR.Slice && !IsEnabled(CustomComboPreset.ReaperInfernalSliceCombo)) || (actionID == RPR.InfernalSlice && IsEnabled(CustomComboPreset.ReaperInfernalSliceCombo)))
             {
                 if (IsEnabled(CustomComboPreset.ReaperGibbetGallowsFeature) && (HasEffect(RPR.Buffs.SoulReaver) || HasEffect(RPR.Buffs.Enshrouded)))
                 {
@@ -99,7 +99,7 @@ namespace XIVComboExpandedestPlugin.Combos
 
         protected override uint Invoke(uint actionID, uint lastComboMove, float comboTime, byte level)
         {
-            if (actionID == RPR.SpinningScythe)
+            if ((actionID == RPR.SpinningScythe && !IsEnabled(CustomComboPreset.ReaperNightmareScytheCombo)) || (actionID == RPR.NightmareScythe && IsEnabled(CustomComboPreset.ReaperNightmareScytheCombo)))
             {
                 if (IsEnabled(CustomComboPreset.ReaperGuillotineFeature) && (HasEffect(RPR.Buffs.SoulReaver) || HasEffect(RPR.Buffs.Enshrouded)))
                     return OriginalHook(RPR.Guillotine);

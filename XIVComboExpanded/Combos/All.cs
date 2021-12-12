@@ -13,12 +13,17 @@ namespace XIVComboExpandedestPlugin.Combos
             Verraise = 7523,
             Raise = 125,
             Ascend = 3603,
-            Egeiro = 24287;
+            Egeiro = 24287,
+            SolidReason = 232,
+            AgelessWords = 215,
+            WiseToTheWorldMIN = 26521,
+            WiseToTheWorldBTN = 26522;
 
         public static class Buffs
         {
             public const ushort
-                Swiftcast = 167;
+                Swiftcast = 167,
+                EurekaMoment = 2765;
         }
 
         public static class Levels
@@ -41,6 +46,26 @@ namespace XIVComboExpandedestPlugin.Combos
                     || level <= All.Levels.Raise
                     || (level <= RDM.Levels.Verraise && actionID == All.Verraise))
                     return All.Swiftcast;
+            }
+
+            return actionID;
+        }
+    }
+
+    internal class AllEurekaFeature : CustomCombo
+    {
+        protected override CustomComboPreset Preset => CustomComboPreset.AllEurekaFeature;
+
+        protected override uint Invoke(uint actionID, uint lastComboMove, float comboTime, byte level)
+        {
+            if (actionID == All.SolidReason || actionID == All.AgelessWords)
+            {
+                if (HasEffect(All.Buffs.EurekaMoment))
+                {
+                    if (actionID == All.SolidReason)
+                        return All.WiseToTheWorldMIN;
+                    return All.WiseToTheWorldBTN;
+                }
             }
 
             return actionID;

@@ -15,6 +15,10 @@ namespace XIVComboExpandedestPlugin
         [CustomComboInfo("Raise to Swiftcast Feature", "Replaces the respective raise on RDM/SMN/SCH/WHM/AST/SGE with Swiftcast when it is off cooldown (and Dualcast isn't up).", All.JobID, All.Raise, All.Resurrection, All.Ascend, All.Verraise, All.Egeiro)]
         AllSwiftcastFeature = 9001,
 
+        [OrderedEnum]
+        [CustomComboInfo("Eureka Feature", "Replaces Solid Reason/Ageless Words with Wise to the World when you have Eureka Moment up.", All.JobID, All.SolidReason, All.AgelessWords)]
+        AllEurekaFeature = 9002,
+
         #endregion
 
         #region ASTROLOGIAN
@@ -363,8 +367,18 @@ namespace XIVComboExpandedestPlugin
         ReaperSliceCombo = 3901,
 
         [OrderedEnum]
+        [ParentCombo(ReaperSliceCombo)]
+        [CustomComboInfo("Infernal Slice Combo", "Replace Infernal Slice with its combo chain and removes Slice's combo.", RPR.JobID, RPR.InfernalSlice)]
+        ReaperInfernalSliceCombo = 3910,
+
+        [OrderedEnum]
         [CustomComboInfo("Scythe Combo", "Replace Spinning Scythe with its combo chain.", RPR.JobID, RPR.SpinningScythe)]
         ReaperScytheCombo = 3902,
+
+        [OrderedEnum]
+        [ParentCombo(ReaperScytheCombo)]
+        [CustomComboInfo("Nightmare Scythe Combo", "Replace Nightmare Scythe with its combo chain and removes Spinning Scythe's combo.", RPR.JobID, RPR.NightmareScythe)]
+        ReaperNightmareScytheCombo = 3911,
 
         [OrderedEnum]
         [CustomComboInfo("Enshroud Communio Feature", "Replace Enshroud with Communio when Enshrouded.", RPR.JobID, RPR.Enshroud)]
