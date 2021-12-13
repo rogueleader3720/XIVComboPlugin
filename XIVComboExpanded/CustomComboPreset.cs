@@ -28,6 +28,10 @@ namespace XIVComboExpandedestPlugin
         AstrologianCardsOnDrawFeature = 3301,
 
         [OrderedEnum]
+        [CustomComboInfo("Play to Astrodyne", "Play becomes Astrodyne when you have 3 seals.", AST.JobID, AST.Play)]
+        AstrologianAstrodynePlayFeature = 3304,
+
+        [OrderedEnum]
         [CustomComboInfo("Minor Arcana to Crown Play", "Changes Minor Arcana to Crown Play when a card is not drawn.", AST.JobID, AST.MinorArcana)]
         AstrologianMinorArcanaPlayFeature = 3302,
 
