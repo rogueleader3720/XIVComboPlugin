@@ -412,10 +412,14 @@ namespace XIVComboExpandedestPlugin
         [CustomComboInfo("GG Gallows Option", "Slice now turns into Gallows when Gallows is Enhanced, and removes it from Shadow of Death.", RPR.JobID, RPR.Slice)]
         ReaperGibbetGallowsOption = 3905,
 
-        /*[OrderedEnum]
+        [OrderedEnum]
         [SecretCustomCombo]
-        [CustomComboInfo("Communio Feature", "When one stack is left of Shroud, Communio replaces the Slice and Spinning Scythe combo.\nRequires their respective combos and features.", RPR.JobID, RPR.Slice)]
-        ReaperGibbetGallowsCommunioFeature = 3906,*/
+        [CustomComboInfo("Combo Communio Feature", "When one stack is left of Shroud, Communio replaces Gibbet/Gallows/Guillotine.", RPR.JobID, RPR.Slice, RPR.InfernalSlice, RPR.Gibbet, RPR.Gallows, RPR.Guillotine, RPR.SpinningScythe, RPR.NightmareScythe)]
+        ReaperComboCommunioFeature = 3906,
+
+        [OrderedEnum]
+        [CustomComboInfo("Lemure Feature", "When you have two or more stacks of Void Shroud, Lemure Slice/Scythe replaces Gibbet/Gallows and Guillotine respectively.", RPR.JobID, RPR.Slice, RPR.InfernalSlice, RPR.Gibbet, RPR.Gallows, RPR.Guillotine, RPR.SpinningScythe, RPR.NightmareScythe)]
+        ReaperLemureFeature = 3912,
 
         [OrderedEnum]
         [CustomComboInfo("Arcane Circle Harvest Feature", "Replace Arcane Circle with Plentiful Harvest when you have stacks of Immortal Sacrifice.", RPR.JobID, RPR.ArcaneCircle)]

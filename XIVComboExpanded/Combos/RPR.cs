@@ -15,10 +15,12 @@ namespace XIVComboExpandedestPlugin.Combos
             Gibbet = 24382,
             Gallows = 24383,
             ShadowOfDeath = 24378,
+            BloodStalk = 24389,
             // AoE
             SpinningScythe = 24376,
             NightmareScythe = 24377,
             Guillotine = 24384,
+            GrimSwathe = 24392,
             // Shroud
             Enshroud = 24394,
             Communio = 24398,
@@ -61,6 +63,46 @@ namespace XIVComboExpandedestPlugin.Combos
         }
     }
 
+    internal class ReaperComboCommunioFeature : CustomCombo
+    {
+        protected override CustomComboPreset Preset => CustomComboPreset.ReaperComboCommunioFeature;
+
+        protected override uint Invoke(uint actionID, uint lastComboMove, float comboTime, byte level)
+        {
+            if (actionID == RPR.Gibbet || actionID == RPR.Gallows || actionID == RPR.Guillotine)
+            {
+                var gauge = GetJobGauge<RPRGauge>();
+
+                if (HasEffect(RPR.Buffs.Enshrouded) && gauge.LemureShroud == 1 && (gauge.VoidShroud == 0 || !IsEnabled(CustomComboPreset.ReaperLemureFeature)))
+                    return RPR.Communio;
+            }
+
+            return actionID;
+        }
+    }
+
+    internal class ReaperLemureFeature : CustomCombo
+    {
+        protected override CustomComboPreset Preset => CustomComboPreset.ReaperLemureFeature;
+
+        protected override uint Invoke(uint actionID, uint lastComboMove, float comboTime, byte level)
+        {
+            if (actionID == RPR.Gibbet || actionID == RPR.Gallows || actionID == RPR.Guillotine)
+            {
+                var gauge = GetJobGauge<RPRGauge>();
+
+                if (HasEffect(RPR.Buffs.Enshrouded) && gauge.VoidShroud >= 2)
+                {
+                    if (actionID == RPR.Guillotine)
+                        return OriginalHook(RPR.GrimSwathe);
+                    return OriginalHook(RPR.BloodStalk);
+                }
+            }
+
+            return actionID;
+        }
+    }
+
     internal class ReaperSliceCombo : CustomCombo
     {
         protected override CustomComboPreset Preset => CustomComboPreset.ReaperSliceCombo;
@@ -69,6 +111,22 @@ namespace XIVComboExpandedestPlugin.Combos
         {
             if ((actionID == RPR.Slice && !IsEnabled(CustomComboPreset.ReaperInfernalSliceCombo)) || (actionID == RPR.InfernalSlice && IsEnabled(CustomComboPreset.ReaperInfernalSliceCombo)))
             {
+                var gauge = GetJobGauge<RPRGauge>();
+
+                if (IsEnabled(CustomComboPreset.ReaperLemureFeature))
+                {
+                    if (HasEffect(RPR.Buffs.Enshrouded) && gauge.VoidShroud >= 2)
+                    {
+                        return OriginalHook(RPR.BloodStalk);
+                    }
+                }
+
+                if (IsEnabled(CustomComboPreset.ReaperComboCommunioFeature))
+                {
+                    if (HasEffect(RPR.Buffs.Enshrouded) && gauge.LemureShroud == 1 && gauge.VoidShroud == 0)
+                        return RPR.Communio;
+                }
+
                 if (IsEnabled(CustomComboPreset.ReaperGibbetGallowsFeature) && (HasEffect(RPR.Buffs.SoulReaver) || HasEffect(RPR.Buffs.Enshrouded)))
                 {
                     if ((HasEffect(RPR.Buffs.EnhancedGallows) && !HasEffect(RPR.Buffs.Enshrouded) && IsEnabled(CustomComboPreset.ReaperGibbetGallowsOption)) || (HasEffect(RPR.Buffs.EnhancedCrossReaping) && HasEffect(RPR.Buffs.Enshrouded)))
@@ -101,6 +159,22 @@ namespace XIVComboExpandedestPlugin.Combos
         {
             if ((actionID == RPR.SpinningScythe && !IsEnabled(CustomComboPreset.ReaperNightmareScytheCombo)) || (actionID == RPR.NightmareScythe && IsEnabled(CustomComboPreset.ReaperNightmareScytheCombo)))
             {
+                var gauge = GetJobGauge<RPRGauge>();
+
+                if (IsEnabled(CustomComboPreset.ReaperLemureFeature))
+                {
+                    if (HasEffect(RPR.Buffs.Enshrouded) && gauge.VoidShroud >= 2)
+                    {
+                        return OriginalHook(RPR.GrimSwathe);
+                    }
+                }
+
+                if (IsEnabled(CustomComboPreset.ReaperComboCommunioFeature))
+                {
+                    if (HasEffect(RPR.Buffs.Enshrouded) && gauge.LemureShroud == 1 && gauge.VoidShroud == 0)
+                        return RPR.Communio;
+                }
+
                 if (IsEnabled(CustomComboPreset.ReaperGuillotineFeature) && (HasEffect(RPR.Buffs.SoulReaver) || HasEffect(RPR.Buffs.Enshrouded)))
                     return OriginalHook(RPR.Guillotine);
 
