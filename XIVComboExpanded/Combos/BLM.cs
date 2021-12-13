@@ -11,7 +11,8 @@ namespace XIVComboExpandedestPlugin.Combos
             Fire = 141,
             Blizzard = 142,
             Thunder = 144,
-            Blizzard2 = 146,
+            Blizzard2 = 25793,
+            Fire2 = 147,
             Transpose = 149,
             Fire3 = 152,
             Thunder3 = 153,
@@ -26,7 +27,9 @@ namespace XIVComboExpandedestPlugin.Combos
             BetweenTheLines = 7419,
             Despair = 16505,
             UmbralSoul = 16506,
-            Xenoglossy = 16507;
+            Xenoglossy = 16507,
+            HighFire2 = 25794,
+            HighBlizzard2 = 25795;
 
         public static class Buffs
         {
@@ -91,6 +94,42 @@ namespace XIVComboExpandedestPlugin.Combos
                 if (gauge.InUmbralIce)
                     return BLM.Freeze;
                 return BLM.Flare;
+            }
+
+            return actionID;
+        }
+    }
+
+    internal class BlackFire2Feature : CustomCombo
+    {
+        protected override CustomComboPreset Preset => CustomComboPreset.BlackFire2Feature;
+
+        protected override uint Invoke(uint actionID, uint lastComboMove, float comboTime, byte level)
+        {
+            if (actionID == BLM.Fire2 || actionID == BLM.HighFire2)
+            {
+                var gauge = GetJobGauge<BLMGauge>();
+
+                if (level >= BLM.Levels.Flare && gauge.UmbralHearts <= 1 && gauge.InAstralFire)
+                    return BLM.Flare;
+            }
+
+            return actionID;
+        }
+    }
+
+    internal class BlackBlizzard2Feature : CustomCombo
+    {
+        protected override CustomComboPreset Preset => CustomComboPreset.BlackBlizzard2Feature;
+
+        protected override uint Invoke(uint actionID, uint lastComboMove, float comboTime, byte level)
+        {
+            if (actionID == BLM.Blizzard2 || actionID == BLM.HighBlizzard2)
+            {
+                var gauge = GetJobGauge<BLMGauge>();
+
+                if (level >= BLM.Levels.Freeze && gauge.InUmbralIce)
+                    return BLM.Freeze;
             }
 
             return actionID;
