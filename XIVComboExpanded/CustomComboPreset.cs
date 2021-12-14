@@ -591,11 +591,11 @@ namespace XIVComboExpandedestPlugin
         SummonerSummoningFlowFeature = 2712,
 
         [OrderedEnum]
-        [CustomComboInfo("Shiny Ruin Feature", "Change Ruin into Gemburst when attuned.\nThis can and WILL mess up your movement options, you have been warned.", SMN.JobID, SMN.Ruin1, SMN.Ruin2, SMN.Ruin3)]
+        [CustomComboInfo("Shiny Ruin Feature", "Change Ruin into Gemburst when attuned.", SMN.JobID, SMN.Ruin1, SMN.Ruin2, SMN.Ruin3)]
         SummonerShinyRuinFeature = 2709,
 
         [OrderedEnum]
-        [CustomComboInfo("Further Ruin Feature", "Change Ruin into Ruin4 when available and appropriate.\nThis can and WILL mess up your movement options, you have been warned.", SMN.JobID, SMN.Ruin1, SMN.Ruin2, SMN.Ruin3)]
+        [CustomComboInfo("Further Ruin Feature", "Change Ruin into Ruin4 when available and appropriate.", SMN.JobID, SMN.Ruin1, SMN.Ruin2, SMN.Ruin3)]
         SummonerFurtherRuinFeature = 2705,
 
         [OrderedEnum]
