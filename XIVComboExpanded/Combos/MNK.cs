@@ -80,9 +80,9 @@ namespace XIVComboExpandedestPlugin.Combos
                 }
             }
 
-            if (actionID == MNK.ArmOfTheDestroyer || actionID == MNK.ShadowOfTheDestroyer)
+            if (actionID == MNK.MasterfulBlitz)
             {
-                if (IsEnabled(CustomComboPreset.MonkAoEBalanceFeature) && OriginalHook(MNK.MasterfulBlitz) != MNK.MasterfulBlitz)
+                if (OriginalHook(MNK.MasterfulBlitz) != MNK.MasterfulBlitz)
                     return OriginalHook(MNK.MasterfulBlitz);
 
                 if (HasEffect(MNK.Buffs.PerfectBalance) || HasEffect(MNK.Buffs.FormlessFist))

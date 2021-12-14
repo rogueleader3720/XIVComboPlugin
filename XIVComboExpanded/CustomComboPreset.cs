@@ -265,13 +265,13 @@ namespace XIVComboExpandedestPlugin
         #region MONK
 
         [OrderedEnum]
-        [CustomComboInfo("Monk AoE Combo", "Replaces Arm/Shadow of the Destroyer with the AoE combo chain, or whatever your most damaging move is when Perfect Balance is active.\nFour-Point Fury becomes AoE combo chain in order of forms during Perfect Balance.", MNK.JobID, MNK.ArmOfTheDestroyer, MNK.ShadowOfTheDestroyer, MNK.FourPointFury)]
+        [CustomComboInfo("Monk AoE Combo", "Replaces Masterful Blitz (for bug reasons) with the AoE combo chain, or whatever your most damaging move is when Perfect Balance is active.\nFour-Point Fury becomes AoE combo chain in order of forms during Perfect Balance.\nMasterful Blitz replaces the AoE combo when you have 3 Beast Chakra.", MNK.JobID, MNK.MasterfulBlitz, MNK.FourPointFury)]
         MonkAoECombo = 2001,
 
-        [OrderedEnum]
-        [ParentCombo(MonkAoECombo)]
-        [CustomComboInfo("Monk AoE Balance Feature", "Replaces Monk's AoE Combo with Masterful Blitz if you have 3 Beast Chakra.", MNK.JobID, MNK.Rockbreaker)]
-        MonkAoEBalanceFeature = 2006,
+        // [OrderedEnum]
+        // [ParentCombo(MonkAoECombo)]
+        // [CustomComboInfo("Monk AoE Balance Feature", "Replaces Monk's AoE Combo with Masterful Blitz if you have 3 Beast Chakra.", MNK.JobID, MNK.Rockbreaker)]
+        // MonkAoEBalanceFeature = 2006,
 
         [OrderedEnum]
         [CustomComboInfo("Monk Bootshine Feature", "Replaces Dragon Kick with Bootshine if both a form and Leaden Fist are up.", MNK.JobID, MNK.DragonKick)]
