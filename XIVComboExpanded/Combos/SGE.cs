@@ -49,7 +49,7 @@
         {
             if (actionID == SGE.Soteria)
             {
-                if (HasEffect(SGE.Buffs.Kardia) && GetCooldown(SGE.Soteria).CooldownRemaining == 0)
+                if (HasEffect(SGE.Buffs.Kardia) && IsActionOffCooldown(SGE.Soteria))
                     return SGE.Soteria;
                 return SGE.Kardia;
             }

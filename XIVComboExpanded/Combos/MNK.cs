@@ -1,3 +1,6 @@
+using System.Linq;
+
+using Dalamud.Game.ClientState.JobGauge.Enums;
 using Dalamud.Game.ClientState.JobGauge.Types;
 using Dalamud.Game.ClientState.Statuses;
 
@@ -87,17 +90,13 @@ namespace XIVComboExpandedestPlugin.Combos
 
             if (actionID == MNK.FourPointFury && HasEffect(MNK.Buffs.PerfectBalance))
             {
-                Status? pb = FindEffect(MNK.Buffs.PerfectBalance);
-
-                if (pb != null)
-                {
-                    if (pb.StackCount == 3)
-                        return OriginalHook(MNK.ArmOfTheDestroyer);
-                    if (pb.StackCount == 2)
-                        return MNK.FourPointFury;
-                    if (pb.StackCount == 1)
-                        return MNK.Rockbreaker;
-                }
+                var gauge = GetJobGauge<MNKGauge>();
+                if (!gauge.BeastChakra.Contains(BeastChakra.OPOOPO))
+                    return OriginalHook(MNK.ArmOfTheDestroyer);
+                if (!gauge.BeastChakra.Contains(BeastChakra.RAPTOR))
+                    return MNK.FourPointFury;
+                if (!gauge.BeastChakra.Contains(BeastChakra.COEURL))
+                    return MNK.Rockbreaker;
             }
 
             return actionID;

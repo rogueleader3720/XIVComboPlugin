@@ -264,7 +264,7 @@ namespace XIVComboExpandedestPlugin.Combos
         {
             if (actionID == SAM.Shinten)
             {
-                if (GetCooldown(SAM.Senei).CooldownRemaining == 0 && level >= SAM.Levels.Senei)
+                if (IsActionOffCooldown(SAM.Senei) && level >= SAM.Levels.Senei)
                     return SAM.Senei;
             }
 
@@ -297,7 +297,7 @@ namespace XIVComboExpandedestPlugin.Combos
         {
             if (actionID == SAM.Kyuten)
             {
-                if (GetCooldown(SAM.Guren).CooldownRemaining == 0 && level >= SAM.Levels.Guren)
+                if (IsActionOffCooldown(SAM.Guren) && level >= SAM.Levels.Guren)
                     return SAM.Guren;
             }
 

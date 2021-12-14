@@ -1,6 +1,7 @@
 using Dalamud.Data;
 using Dalamud.Game;
 using Dalamud.Game.ClientState;
+using Dalamud.Game.ClientState.Buddy;
 using Dalamud.Game.ClientState.Conditions;
 using Dalamud.Game.ClientState.JobGauge;
 using Dalamud.Game.ClientState.Objects;
@@ -72,6 +73,12 @@ namespace XIVComboExpandedestPlugin
         /// </summary>
         [PluginService]
         internal static JobGauges JobGauges { get; private set; } = null!;
+
+        /// <summary>
+        /// Gets the Dalamud Buddy List.
+        /// </summary>
+        [PluginService]
+        internal static BuddyList BuddyList { get; private set; } = null!;
 
         /// <summary>
         /// Gets the Dalamud target manager.

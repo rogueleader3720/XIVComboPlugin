@@ -73,12 +73,12 @@ namespace XIVComboExpandedestPlugin.Combos
 
         protected override uint Invoke(uint actionID, uint lastComboMove, float comboTime, byte level)
         {
-            if (actionID == DRG.Jump)
+            if (actionID == DRG.Jump || actionID == DRG.HighJump)
             {
                 if (HasEffect(DRG.Buffs.DiveReady))
                     return DRG.MirageDive;
 
-                return OriginalHook(DRG.HighJump);
+                return OriginalHook(DRG.Jump);
             }
 
             return actionID;

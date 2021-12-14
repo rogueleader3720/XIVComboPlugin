@@ -19,6 +19,10 @@ namespace XIVComboExpandedestPlugin
         [CustomComboInfo("Eureka Feature", "Replaces Solid Reason/Ageless Words with Wise to the World when you have Eureka Moment up.", All.JobID, All.SolidReason, All.AgelessWords)]
         AllEurekaFeature = 9002,
 
+        [OrderedEnum]
+        [CustomComboInfo("Tank Interrupt Feature", "Low Blow becomes Interject if the opponent can be interrupted and Interject is off-cooldown.", All.JobID, All.LowBlow)]
+        AllTankInterruptFeature = 9003,
+
         #endregion
 
         #region ASTROLOGIAN
@@ -602,9 +606,10 @@ namespace XIVComboExpandedestPlugin
         [CustomComboInfo("Further Outburst Feature", "Change Outburst/Tri-disaster into Ruin4 when available and appropriate.", SMN.JobID, SMN.Outburst, SMN.TriDisaster)]
         SummonerFurtherOutburstFeature = 2707,
 
-        /*[OrderedEnum]
-        [CustomComboInfo("Carby Feature", "Summon Carbuncle becomes Radiant Aegis while Carbuncle is summoned.", SMN.JobID, SMN.SummonCarbuncle)]
-        SummonerCarbyFeature = 2704,*/
+        [OrderedEnum]
+        [CustomComboInfo("Carby Feature", "Every action that cannot be used without summoning carbuncle becomes Summon Carbuncle while a pet is not summoned.", SMN.JobID, SMN.RadiantAegis, SMN.SearingLight, SMN.SummonBahamut, SMN.Aethercharge, SMN.DreadwyrmTrance, SMN.SummonBahamut, SMN.SummonEmerald,
+            SMN.SummonGaruda, SMN.SummonGaruda2, SMN.SummonRuby, SMN.SummonIfrit, SMN.SummonIfrit2, SMN.SummonTopaz, SMN.SummonTitan, SMN.SummonTitan2, SMN.Gemshine, SMN.PreciousBrilliance, SMN.AstralFlow)]
+        SummonerCarbyFeature = 2704,
 
         #endregion
         // ====================================================================================

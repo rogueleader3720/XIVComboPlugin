@@ -29,6 +29,7 @@ namespace XIVComboExpandedestPlugin.Combos
             EnergySyphon = 16510,
             SummonCarbuncle = 25798,
             RadiantAegis = 25799,
+            SearingLight = 25801,
             Outburst = 16511,
             TriDisaster = 25826,
             Gemshine = 25883,
@@ -76,6 +77,20 @@ namespace XIVComboExpandedestPlugin.Combos
         }
     }
 
+    internal class SummonerCarbyFeature : CustomCombo
+    {
+        protected override CustomComboPreset Preset => CustomComboPreset.SummonerCarbyFeature;
+
+        protected override uint Invoke(uint actionID, uint lastComboMove, float comboTime, byte level)
+        {
+            var gauge = GetJobGauge<SMNGauge>();
+            if (!Service.BuddyList.PetBuddyPresent && gauge.SummonTimerRemaining == 0 && gauge.Attunement == 0)
+                return SMN.SummonCarbuncle;
+
+            return actionID;
+        }
+    }
+
     internal class SummonerDemiCombo : CustomCombo
     {
         protected override CustomComboPreset Preset => CustomComboPreset.SummonerDemiCombo;
@@ -106,14 +121,14 @@ namespace XIVComboExpandedestPlugin.Combos
             {
                 if (OriginalHook(SMN.Ruin1) == SMN.AstralImpulse && level >= SMN.Levels.SummonBahamut)
                 {
-                    if (IsEnabled(CustomComboPreset.SummonerShinyFlowCombo) && GetCooldown(SMN.EnkindleBahamut).CooldownRemaining != 0)
+                    if (IsEnabled(CustomComboPreset.SummonerShinyFlowCombo) && !IsActionOffCooldown(SMN.EnkindleBahamut))
                         return OriginalHook(SMN.AstralFlow);
                     return SMN.EnkindleBahamut;
                 }
 
                 if (OriginalHook(SMN.Ruin1) == SMN.FountainOfFire)
                 {
-                    if (IsEnabled(CustomComboPreset.SummonerShinyFlowCombo) && GetCooldown(SMN.EnkindlePhoenix).CooldownRemaining != 0)
+                    if (IsEnabled(CustomComboPreset.SummonerShinyFlowCombo) && !IsActionOffCooldown(SMN.EnkindlePhoenix))
                         return OriginalHook(SMN.AstralFlow);
                     return SMN.EnkindlePhoenix;
                 }
@@ -280,21 +295,4 @@ namespace XIVComboExpandedestPlugin.Combos
             return actionID;
         }
     }
-
-    /*internal class SummonerCarbyFeature : CustomCombo
-    {
-        protected override CustomComboPreset Preset => CustomComboPreset.SummonerCarbyFeature;
-
-        protected override uint Invoke(uint actionID, uint lastComboMove, float comboTime, byte level)
-        {
-            if (actionID == SMN.SummonCarbuncle)
-            {
-                var gauge = GetJobGauge<SMNGauge>();
-                if (gauge.ReturnSummon != SummonPet.NONE)
-                    return SMN.RadiantAegis;
-            }
-
-            return actionID;
-        }
-    }*/
 }

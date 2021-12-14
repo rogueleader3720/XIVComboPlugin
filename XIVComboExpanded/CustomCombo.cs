@@ -269,11 +269,36 @@ namespace XIVComboExpandedestPlugin.Combos
         }
 
         /// <summary>
+        /// Determines if the enemy can be interrupted if they are currently casting.
+        /// </summary>
+        /// <returns>Bool indicating whether they can be interrupted or not.</returns>
+        protected static bool CanInterruptEnemy()
+        {
+            if (CurrentTarget is null)
+                return false;
+
+            if (CurrentTarget is not BattleChara chara)
+                return false;
+
+            if (chara.IsCasting)
+                return chara.IsCastInterruptible;
+
+            return false;
+        }
+
+        /// <summary>
         /// Gets the cooldown data for an action.
         /// </summary>
         /// <param name="actionID">Action ID to check.</param>
         /// <returns>Cooldown data.</returns>
         protected static IconReplacer.CooldownData GetCooldown(uint actionID) => Service.IconReplacer.GetCooldown(actionID);
+
+        /// <summary>
+        /// Checks to see if an action is off-cooldown.
+        /// </summary>
+        /// <param name="actionID">Action ID to check.</param>
+        /// <returns>A bool indicating if the action is off-cooldown or not.</returns>
+        protected static bool IsActionOffCooldown(uint actionID) => GetCooldown(actionID).CooldownRemaining == 0;
 
         /// <summary>
         /// Gets the job gauge.

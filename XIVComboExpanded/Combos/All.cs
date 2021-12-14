@@ -17,7 +17,9 @@ namespace XIVComboExpandedestPlugin.Combos
             SolidReason = 232,
             AgelessWords = 215,
             WiseToTheWorldMIN = 26521,
-            WiseToTheWorldBTN = 26522;
+            WiseToTheWorldBTN = 26522,
+            LowBlow = 7540,
+            Interject = 7538;
 
         public static class Buffs
         {
@@ -41,8 +43,7 @@ namespace XIVComboExpandedestPlugin.Combos
         {
             if (actionID == All.Raise || actionID == All.Resurrection || actionID == All.Ascend || actionID == All.Verraise || actionID == All.Egeiro)
             {
-                var swiftCD = GetCooldown(All.Swiftcast);
-                if ((swiftCD.CooldownRemaining == 0 && !HasEffect(RDM.Buffs.Dualcast))
+                if ((IsActionOffCooldown(All.Swiftcast) && !HasEffect(RDM.Buffs.Dualcast))
                     || level <= All.Levels.Raise
                     || (level <= RDM.Levels.Verraise && actionID == All.Verraise))
                     return All.Swiftcast;
@@ -66,6 +67,22 @@ namespace XIVComboExpandedestPlugin.Combos
                         return All.WiseToTheWorldMIN;
                     return All.WiseToTheWorldBTN;
                 }
+            }
+
+            return actionID;
+        }
+    }
+
+    internal class AllTankInterruptFeature : CustomCombo
+    {
+        protected override CustomComboPreset Preset => CustomComboPreset.AllTankInterruptFeature;
+
+        protected override uint Invoke(uint actionID, uint lastComboMove, float comboTime, byte level)
+        {
+            if (actionID == All.LowBlow)
+            {
+                if (CanInterruptEnemy() && IsActionOffCooldown(All.Interject))
+                    return All.Interject;
             }
 
             return actionID;
