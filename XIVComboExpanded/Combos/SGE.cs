@@ -10,7 +10,11 @@
             Ixochole = 24299,
             Egeiro = 24287,
             Kardia = 24285,
-            Soteria = 24294;
+            Soteria = 24294,
+            Phlegma = 24289,
+            Phlegmara = 24307,
+            Phlegmaga = 24313,
+            Dyskrasia = 24297;
 
         public static class Buffs
         {
@@ -53,6 +57,27 @@
                     return SGE.Soteria;
                 return SGE.Kardia;
             }
+
+            return actionID;
+        }
+    }
+
+    internal class SagePhlegmaBalls : CustomCombo
+    {
+        protected override CustomComboPreset Preset => CustomComboPreset.SagePhlegmaBalls;
+
+        protected override uint Invoke(uint actionID, uint lastComboMove, float comboTime, byte level)
+        {
+            if (level >= SGE.Levels.Dosis3)
+                if (GetCooldown(SGE.Phlegmaga).CooldownRemaining > 45)
+                    return OriginalHook(SGE.Dyskrasia);
+
+            if (level >= SGE.Levels.Dosis2)
+                if (GetCooldown(SGE.Phlegmara).CooldownRemaining > 45)
+                    return OriginalHook(SGE.Dyskrasia);
+
+            if (GetCooldown(SGE.Phlegma).CooldownRemaining > 45)
+                return OriginalHook(SGE.Dyskrasia);
 
             return actionID;
         }

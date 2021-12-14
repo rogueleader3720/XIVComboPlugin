@@ -20,3 +20,4 @@ using System.Diagnostics.CodeAnalysis;
 [assembly: SuppressMessage("StyleCop.CSharp.MaintainabilityRules", "SA1402:File may only contain a single type", Justification = "Group jobs together.", Scope = "namespaceanddescendants", Target = "~N:XIVComboExpandedestPlugin.Combos")]
 [assembly: SuppressMessage("StyleCop.CSharp.ReadabilityRules", "SA1132:Do not combine fields", Justification = "Not necessary.", Scope = "namespaceanddescendants", Target = "~N:XIVComboExpandedestPlugin.Combos")]
 [assembly: SuppressMessage("StyleCop.CSharp.ReadabilityRules", "SA1117:Parameters should be on same line or separate lines", Justification = "Fuck", Scope = "member", Target = "~F:XIVComboExpandedestPlugin.CustomComboPreset.SummonerCarbyFeature")]
+[assembly: SuppressMessage("StyleCop.CSharp.LayoutRules", "SA1519:Braces should not be omitted from multi-line child statement", Justification = "No", Scope = "namespaceanddescendants", Target = "~N:XIVComboExpandedestPlugin")]

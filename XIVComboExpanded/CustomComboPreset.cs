@@ -482,6 +482,10 @@ namespace XIVComboExpandedestPlugin
         [CustomComboInfo("Soteria into Kardia", "Soteria turns into Kardia when not active or Soteria is on-cooldown.", SGE.JobID, SGE.Soteria)]
         SageKardiaFeature = 4001,
 
+        [OrderedEnum]
+        [CustomComboInfo("Phlegma into Dyskrasia", "Phlegma turns into Dyskrasia when you are out of charges.", SGE.JobID, SGE.Phlegma, SGE.Phlegmara, SGE.Phlegmaga)]
+        SagePhlegmaBalls = 4002,
+
         #endregion
         // ====================================================================================
         #region SAMURAI
