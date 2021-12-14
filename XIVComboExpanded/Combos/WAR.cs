@@ -11,6 +11,8 @@ namespace XIVComboExpandedestPlugin.Combos
         public const uint
             HeavySwing = 31,
             Maim = 37,
+            Berserk = 38,
+            InnerRelease = 7389,
             Overpower = 41,
             StormsPath = 42,
             StormsEye = 45,
@@ -200,14 +202,8 @@ namespace XIVComboExpandedestPlugin.Combos
 
         protected override uint Invoke(uint actionID, uint lastComboMove, float comboTime, byte level)
         {
-            if (actionID == WAR.InnerBeast || actionID == WAR.SteelCyclone)
-            {
-                if (level >= WAR.Levels.PrimalRend && HasEffect(WAR.Buffs.PrimalRendReady))
-                    return WAR.PrimalRend;
-
-                // Fell Cleave or Decimate
-                return OriginalHook(actionID);
-            }
+            if (HasEffect(WAR.Buffs.PrimalRendReady))
+                return WAR.PrimalRend;
 
             return actionID;
         }

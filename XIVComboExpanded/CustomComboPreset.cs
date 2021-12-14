@@ -648,7 +648,7 @@ namespace XIVComboExpandedestPlugin
         WarriorNascentFlashFeature = 2107,
 
         [OrderedEnum]
-        [CustomComboInfo("Primal Rend Feature", "Replace Inner Beast and Steel Cyclone with Primal Rend when available", WAR.JobID, WAR.InnerBeast, WAR.SteelCyclone)]
+        [CustomComboInfo("Primal Rend Feature", "Replace Inner Release with Primal Rend when available.", WAR.JobID, WAR.Berserk, WAR.InnerRelease)]
         WarriorPrimalRendFeature = 2108,
 
         #endregion
