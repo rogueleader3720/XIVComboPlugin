@@ -265,7 +265,7 @@ namespace XIVComboExpandedestPlugin
         #region MONK
 
         [OrderedEnum]
-        [CustomComboInfo("Monk AoE Combo", "Replaces Rockbreaker with the AoE combo chain, or Rockbreaker when Perfect Balance is active.\nFour-Point Fury becomes AoE combo chain in order of forms during Perfect Balance.", MNK.JobID, MNK.Rockbreaker, MNK.FourPointFury)]
+        [CustomComboInfo("Monk AoE Combo", "Replaces Arm/Shadow of the Destroyer with the AoE combo chain, or whatever your most damaging move is when Perfect Balance is active.\nFour-Point Fury becomes AoE combo chain in order of forms during Perfect Balance.", MNK.JobID, MNK.ArmOfTheDestroyer, MNK.ShadowOfTheDestroyer, MNK.FourPointFury)]
         MonkAoECombo = 2001,
 
         [OrderedEnum]

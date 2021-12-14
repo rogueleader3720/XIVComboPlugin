@@ -24,7 +24,8 @@ namespace XIVComboExpandedestPlugin.Combos
             FourPointFury = 16473,
             HowlingFist = 25763,
             Enlightenment = 16474,
-            MasterfulBlitz = 25764;
+            MasterfulBlitz = 25764,
+            ShadowOfTheDestroyer = 25767;
 
         public static class Buffs
         {
@@ -64,30 +65,6 @@ namespace XIVComboExpandedestPlugin.Combos
 
         protected override uint Invoke(uint actionID, uint lastComboMove, float comboTime, byte level)
         {
-            if (actionID == MNK.Rockbreaker)
-            {
-                if (IsEnabled(CustomComboPreset.MonkAoEBalanceFeature) && OriginalHook(MNK.MasterfulBlitz) != MNK.MasterfulBlitz)
-                    return OriginalHook(MNK.MasterfulBlitz);
-
-                if (HasEffect(MNK.Buffs.PerfectBalance) || HasEffect(MNK.Buffs.FormlessFist))
-                {
-                    if (level >= MNK.Levels.ShadowOfTheDestroyer)
-                        return OriginalHook(MNK.ArmOfTheDestroyer);
-                    return MNK.Rockbreaker;
-                }
-
-                if (HasEffect(MNK.Buffs.OpoOpoForm))
-                    return OriginalHook(MNK.ArmOfTheDestroyer);
-
-                if (HasEffect(MNK.Buffs.RaptorForm) && level >= MNK.Levels.FourPointFury)
-                    return MNK.FourPointFury;
-
-                if (HasEffect(MNK.Buffs.CoerlForm) && level >= MNK.Levels.Rockbreaker)
-                    return MNK.Rockbreaker;
-
-                return OriginalHook(MNK.ArmOfTheDestroyer);
-            }
-
             if (actionID == MNK.FourPointFury && HasEffect(MNK.Buffs.PerfectBalance))
             {
                 Status? pb = FindEffect(MNK.Buffs.PerfectBalance);
@@ -101,6 +78,33 @@ namespace XIVComboExpandedestPlugin.Combos
                     if (pb.StackCount == 1)
                         return MNK.Rockbreaker;
                 }
+            }
+
+            if (actionID == MNK.ArmOfTheDestroyer || actionID == MNK.ShadowOfTheDestroyer)
+            {
+                if (IsEnabled(CustomComboPreset.MonkAoEBalanceFeature) && OriginalHook(MNK.MasterfulBlitz) != MNK.MasterfulBlitz)
+                    return OriginalHook(MNK.MasterfulBlitz);
+
+                if (HasEffect(MNK.Buffs.PerfectBalance) || HasEffect(MNK.Buffs.FormlessFist))
+                {
+                    if (level >= MNK.Levels.ShadowOfTheDestroyer)
+                    {
+                        return OriginalHook(MNK.ArmOfTheDestroyer);
+                    }
+
+                    return MNK.Rockbreaker;
+                }
+
+                if (HasEffect(MNK.Buffs.OpoOpoForm))
+                    return OriginalHook(MNK.ArmOfTheDestroyer);
+
+                if (HasEffect(MNK.Buffs.RaptorForm) && level >= MNK.Levels.FourPointFury)
+                    return MNK.FourPointFury;
+
+                if (HasEffect(MNK.Buffs.CoerlForm) && level >= MNK.Levels.Rockbreaker)
+                    return MNK.Rockbreaker;
+
+                return OriginalHook(MNK.ArmOfTheDestroyer);
             }
 
             return actionID;
