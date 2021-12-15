@@ -109,7 +109,7 @@ namespace XIVComboExpandedestPlugin.Combos
 
         protected override uint Invoke(uint actionID, uint lastComboMove, float comboTime, byte level)
         {
-            if ((actionID == RPR.Slice && !IsEnabled(CustomComboPreset.ReaperInfernalSliceCombo)) || (actionID == RPR.InfernalSlice && IsEnabled(CustomComboPreset.ReaperInfernalSliceCombo)))
+            if (actionID == (IsEnabled(CustomComboPreset.ReaperInfernalSliceCombo) ? RPR.InfernalSlice : RPR.Slice))
             {
                 var gauge = GetJobGauge<RPRGauge>();
 
