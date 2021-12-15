@@ -455,6 +455,11 @@ namespace XIVComboExpandedestPlugin
         RedMageMeleeComboPlus = 3508,
 
         [OrderedEnum]
+        [ParentCombo(RedMageMeleeComboPlus)]
+        [CustomComboInfo("Redoublement Combo Plus Verholy Swap", "Swaps Verflare with Verholy in your melee combo (unless you aren't at a level you can use it).", RDM.JobID, RDM.Redoublement, RDM.Moulinet)]
+        RedMageMeleeComboPlusVerholy = 3509,
+
+        [OrderedEnum]
         [SecretCustomCombo]
         [ParentCombo(RedMageMeleeCombo)]
         [CustomComboInfo("Redoublement Combo Plus Plus", "Replaces Redoublement/Moulinet with the combo spells after you have gained 3 mana stacks.\nVerflare or Verholy will be picked, whichever is more appropriate.", RDM.JobID, RDM.Redoublement, RDM.Moulinet)]

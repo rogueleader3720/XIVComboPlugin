@@ -97,6 +97,8 @@ namespace XIVComboExpandedestPlugin.Combos
                 {
                     if (OriginalHook(RDM.Verthunder2) == RDM.Verflare)
                     {
+                        if (IsEnabled(CustomComboPreset.RedMageMeleeComboPlusVerholy) && OriginalHook(RDM.Veraero2) == RDM.Verholy)
+                            return RDM.Verholy;
                         return RDM.Verflare;
                     }
                 }
