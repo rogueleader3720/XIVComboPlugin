@@ -59,6 +59,7 @@ namespace XIVComboExpandedestPlugin.Combos
                 HowlingFist = 40,
                 DragonKick = 50,
                 FormShift = 52,
+                MasterfulBlitz = 60,
                 Enlightenment = 70,
                 ShadowOfTheDestroyer = 82;
         }
@@ -70,7 +71,7 @@ namespace XIVComboExpandedestPlugin.Combos
 
         protected override uint Invoke(uint actionID, uint lastComboMove, float comboTime, byte level)
         {
-            if (OriginalHook(MNK.MasterfulBlitz) != MNK.MasterfulBlitz)
+            if (OriginalHook(MNK.MasterfulBlitz) != MNK.MasterfulBlitz && level >= MNK.Levels.MasterfulBlitz)
                 return OriginalHook(MNK.MasterfulBlitz);
 
             if (!HasEffect(MNK.Buffs.PerfectBalance) && !HasEffect(MNK.Buffs.FormlessFist) && (actionID == MNK.TrueStrike || actionID == MNK.TwinSnakes))
@@ -134,6 +135,7 @@ namespace XIVComboExpandedestPlugin.Combos
                                 return MNK.Bootshine;
                             return MNK.DragonKick;
                         }
+
                         return actionID == MNK.TrueStrike ? MNK.Bootshine : MNK.DragonKick;
                     case 2:
                         return actionID == MNK.TrueStrike ? MNK.TrueStrike : MNK.TwinSnakes;
@@ -186,7 +188,7 @@ namespace XIVComboExpandedestPlugin.Combos
 
             if (actionID == MNK.MasterfulBlitz)
             {
-                if (OriginalHook(MNK.MasterfulBlitz) != MNK.MasterfulBlitz)
+                if (OriginalHook(MNK.MasterfulBlitz) != MNK.MasterfulBlitz && level >= MNK.Levels.MasterfulBlitz)
                     return OriginalHook(MNK.MasterfulBlitz);
 
                 if (HasEffect(MNK.Buffs.PerfectBalance) || HasEffect(MNK.Buffs.FormlessFist))
@@ -223,7 +225,7 @@ namespace XIVComboExpandedestPlugin.Combos
         {
             if (actionID == MNK.DragonKick && !IsEnabled(CustomComboPreset.MonkSTCombo))
             {
-                if (OriginalHook(MNK.MasterfulBlitz) != MNK.MasterfulBlitz)
+                if (OriginalHook(MNK.MasterfulBlitz) != MNK.MasterfulBlitz && level >= MNK.Levels.MasterfulBlitz)
                     return OriginalHook(MNK.MasterfulBlitz);
             }
 
@@ -279,7 +281,7 @@ namespace XIVComboExpandedestPlugin.Combos
         {
             if (actionID == MNK.PerfectBalance)
             {
-                if (OriginalHook(MNK.MasterfulBlitz) != MNK.MasterfulBlitz)
+                if (OriginalHook(MNK.MasterfulBlitz) != MNK.MasterfulBlitz && level >= MNK.Levels.MasterfulBlitz)
                     return OriginalHook(MNK.MasterfulBlitz);
             }
 
