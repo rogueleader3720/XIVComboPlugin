@@ -265,6 +265,14 @@ namespace XIVComboExpandedestPlugin
         #region MONK
 
         [OrderedEnum]
+        [ConflictingCombos(MonkPerfectBalanceFeature)]
+        [CustomComboInfo("Monk Combos (Experimental)", "This is a very complex, experimental combo that intends to allow Monk single-target combos with minimal 'thinking' for you, keeping it as legit as possible.\n" +
+            "Normal Behavior: True Strike and Twin Snakes become Dragon Kick (to Bootshine with Leaden Fist and a form) in Opo-Opo/no form, True Strike and Twin Snakes in Raptor, and Snap Punch and Demolish in Coeurl.\n" +
+            "Perfect Balance Behavior: Perfect Balance alternates between Dragon Kick and Bootshine. The Monk combos otherwise proceed as normal based on stacks.\n" +
+            "Formless Fist Behavior: True Strike alternates between Dragon Kick and Bootshine. Twin Snakes stays normal. Perfect Balance becomes Demolish. Form Shift becomes Snap Punch.", MNK.JobID, MNK.TwinSnakes, MNK.TrueStrike, MNK.PerfectBalance, MNK.FormShift)]
+        MonkSTCombo = 2007,
+
+        [OrderedEnum]
         [CustomComboInfo("Monk AoE Combo", "Replaces Masterful Blitz (for bug reasons) with the AoE combo chain, or whatever your most damaging move is when Perfect Balance is active.\nFour-Point Fury becomes AoE combo chain in order of forms during Perfect Balance.\nMasterful Blitz replaces the AoE combo when you have 3 Beast Chakra.", MNK.JobID, MNK.MasterfulBlitz, MNK.FourPointFury)]
         MonkAoECombo = 2001,
 
@@ -278,9 +286,8 @@ namespace XIVComboExpandedestPlugin
         MnkBootshineFeature = 2002,
 
         [OrderedEnum]
-        [ParentCombo(MnkBootshineFeature)]
-        [CustomComboInfo("Monk Bootshine Balance Feature", "Replaces Dragon Kick with Masterful Blitz if you have 3 Beast Chakra.", MNK.JobID, MNK.DragonKick)]
-        MnkBootshineBalanceFeature = 2005,
+        [CustomComboInfo("Monk Dragon Kick Balance Feature", "Replaces Dragon Kick with Masterful Blitz if you have 3 Beast Chakra.", MNK.JobID, MNK.DragonKick)]
+        MnkDragonKickBalanceFeature = 2005,
 
         [OrderedEnum]
         [CustomComboInfo("Howling Fist / Meditation Feature", "Replaces Howling Fist/Enlightenment with Meditation when the Fifth Chakra is not open.", MNK.JobID, MNK.HowlingFist, MNK.Enlightenment)]
@@ -437,6 +444,14 @@ namespace XIVComboExpandedestPlugin
         [CustomComboInfo("Regress Feature", "Both Hell's Ingress and Hell's Egress turn into Regress when Threshold is active, instead of just the opposite of the one you used.", RPR.JobID, RPR.HellsIngress, RPR.HellsEgress)]
         ReaperRegressFeature = 3908,
 
+        [OrderedEnum]
+        [CustomComboInfo("Blood Stalk Feature", "When Gluttony is off-cooldown, Blood Stalk will turn into Gluttony.", RPR.JobID, RPR.BloodStalk)]
+        ReaperBloodStalkFeature = 3913,
+
+        [OrderedEnum]
+        [CustomComboInfo("Grim Swathe Feature", "When Gluttony is off-cooldown, Grim Swathe will turn into Gluttony.", RPR.JobID, RPR.GrimSwathe)]
+        ReaperGrimSwatheFeature = 3914,
+
         #endregion
         // ====================================================================================
         #region RED MAGE
@@ -495,6 +510,10 @@ namespace XIVComboExpandedestPlugin
         [OrderedEnum]
         [CustomComboInfo("Phlegma into Dyskrasia", "Phlegma turns into Dyskrasia when you are out of charges.", SGE.JobID, SGE.Phlegma, SGE.Phlegmara, SGE.Phlegmaga)]
         SagePhlegmaBalls = 4002,
+
+        [OrderedEnum]
+        [CustomComboInfo("Phlegma into Toxikon", "Phlegma turns into Toxikon if you are out of charges and have Addersting.\nThis is prioritized over Dyskrasia if the 'Phlegma into Dyskrasia' feature is enabled.", SGE.JobID, SGE.Phlegma, SGE.Phlegmara, SGE.Phlegmaga)]
+        SagePhlegmaToxicBalls = 4003,
 
         #endregion
         // ====================================================================================
