@@ -77,9 +77,14 @@ namespace XIVComboExpandedestPlugin.Combos
             {
                 if (HasEffect(MNK.Buffs.OpoOpoForm))
                 {
-                    if (HasEffect(MNK.Buffs.LeadenFist) || level < MNK.Levels.DragonKick)
-                        return MNK.Bootshine;
-                    return MNK.DragonKick;
+                    if (IsEnabled(CustomComboPreset.MnkBootshineFeature))
+                    {
+                        if (HasEffect(MNK.Buffs.LeadenFist) || level < MNK.Levels.DragonKick)
+                            return MNK.Bootshine;
+                        return MNK.DragonKick;
+                    }
+
+                    return actionID == MNK.TrueStrike ? MNK.Bootshine : MNK.DragonKick;
                 }
 
                 if (HasEffect(MNK.Buffs.RaptorForm))
@@ -96,10 +101,15 @@ namespace XIVComboExpandedestPlugin.Combos
                     return actionID == MNK.TrueStrike ? MNK.SnapPunch : MNK.Demolish;
                 }
 
-                if (level >= MNK.DragonKick)
-                    return MNK.DragonKick;
+                if (IsEnabled(CustomComboPreset.MnkBootshineFeature))
+                {
+                    if (level >= MNK.DragonKick)
+                        return MNK.DragonKick;
 
-                return MNK.Bootshine;
+                    return MNK.Bootshine;
+                }
+
+                return actionID == MNK.TrueStrike ? MNK.Bootshine : MNK.DragonKick;
             }
 
             if (HasEffect(MNK.Buffs.PerfectBalance) && actionID != MNK.FormShift)
@@ -118,17 +128,17 @@ namespace XIVComboExpandedestPlugin.Combos
                 switch (pb.StackCount)
                 {
                     case 3:
-                        if (HasEffect(MNK.Buffs.LeadenFist))
-                            return MNK.Bootshine;
-                        return MNK.DragonKick;
+                        if (IsEnabled(CustomComboPreset.MnkBootshineFeature))
+                        {
+                            if (HasEffect(MNK.Buffs.LeadenFist))
+                                return MNK.Bootshine;
+                            return MNK.DragonKick;
+                        }
+                        return actionID == MNK.TrueStrike ? MNK.Bootshine : MNK.DragonKick;
                     case 2:
-                        if (actionID == MNK.TrueStrike)
-                            return MNK.TrueStrike;
-                        return MNK.TwinSnakes;
+                        return actionID == MNK.TrueStrike ? MNK.TrueStrike : MNK.TwinSnakes;
                     case 1:
-                        if (actionID == MNK.TrueStrike)
-                            return MNK.SnapPunch;
-                        return MNK.Demolish;
+                        return actionID == MNK.TrueStrike ? MNK.SnapPunch : MNK.Demolish;
                 }
             }
 
@@ -137,7 +147,7 @@ namespace XIVComboExpandedestPlugin.Combos
                 switch (actionID)
                 {
                     case MNK.TrueStrike:
-                        if (HasEffect(MNK.Buffs.LeadenFist))
+                        if (HasEffect(MNK.Buffs.LeadenFist) && IsEnabled(CustomComboPreset.MnkBootshineFeature))
                             return MNK.Bootshine;
                         return MNK.DragonKick;
                     case MNK.TwinSnakes:

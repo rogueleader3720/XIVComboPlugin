@@ -267,9 +267,9 @@ namespace XIVComboExpandedestPlugin
         [OrderedEnum]
         [ConflictingCombos(MonkPerfectBalanceFeature)]
         [CustomComboInfo("Monk Combos (Experimental)", "This is a very complex, experimental combo that intends to allow Monk single-target combos with minimal 'thinking' for you, keeping it as legit as possible.\n" +
-            "Normal Behavior: True Strike and Twin Snakes become Dragon Kick (to Bootshine with Leaden Fist and a form) in Opo-Opo/no form, True Strike and Twin Snakes in Raptor, and Snap Punch and Demolish in Coeurl.\n" +
+            "Normal Behavior: True Strike and Twin Snakes become Bootshine and Dragon Kick in Opo-Opo/no form, True Strike and Twin Snakes in Raptor, and Snap Punch and Demolish in Coeurl.\n" +
             "Perfect Balance Behavior: Perfect Balance alternates between Dragon Kick and Bootshine. The Monk combos otherwise proceed as normal based on stacks.\n" +
-            "Formless Fist Behavior: True Strike alternates between Dragon Kick and Bootshine. Twin Snakes stays normal. Perfect Balance becomes Demolish. Form Shift becomes Snap Punch.", MNK.JobID, MNK.TwinSnakes, MNK.TrueStrike, MNK.PerfectBalance, MNK.FormShift)]
+            "Formless Fist Behavior: True Strike becomes Dragon Kick. Twin Snakes stays normal. Perfect Balance becomes Demolish. Form Shift becomes Snap Punch.", MNK.JobID, MNK.TwinSnakes, MNK.TrueStrike, MNK.PerfectBalance, MNK.FormShift)]
         MonkSTCombo = 2007,
 
         [OrderedEnum]
