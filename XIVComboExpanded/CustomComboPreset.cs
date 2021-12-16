@@ -536,6 +536,7 @@ namespace XIVComboExpandedestPlugin
         [CustomComboInfo("Kasha Combo", "Replace Kasha with its combo chain.", SAM.JobID, SAM.Kasha)]
         SamuraiKashaCombo = 3403,
 
+        [OrderedEnum]
         [ParentCombo(SamuraiKashaCombo)]
         [CustomComboInfo("Kasha Combo Option", "Start the Kasha combo chain with Shifu instead of Hakaze.", SAM.JobID, SAM.Kasha)]
         SamuraiKashaOption = 3416,
