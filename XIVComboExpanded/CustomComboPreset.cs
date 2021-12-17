@@ -32,7 +32,7 @@ namespace XIVComboExpandedestPlugin
         AstrologianCardsOnDrawFeature = 3301,
 
         [OrderedEnum]
-        [CustomComboInfo("Play to Astrodyne", "Play becomes Astrodyne when you have 3 seals.\nThis is not meant to replace your Astrodyne button, it's more to prevent overcapping on seals.", AST.JobID, AST.Play)]
+        [CustomComboInfo("Play to Astrodyne", "Play becomes Astrodyne when you have 3 seals.\nIf Draw to Play is enabled, Astrodyne replaces Draw on Play while Draw is on Cooldown.", AST.JobID, AST.Play)]
         AstrologianAstrodynePlayFeature = 3304,
 
         [OrderedEnum]
