@@ -146,10 +146,14 @@ namespace XIVComboExpandedestPlugin.Combos
                     case MNK.PerfectBalance:
                         return MNK.Demolish;
                     case MNK.FormShift:
-                        if (!IsEnabled(CustomComboPreset.MnkBootshineFeature))
-                            return MNK.Bootshine;
-                        if (!IsEnabled(CustomComboPreset.MonkSTComboFormOption))
-                            return MNK.SnapPunch;
+                        if (!IsEnabled(CustomComboPreset.MonkAoEComboFormOption))
+                        {
+                            if (!IsEnabled(CustomComboPreset.MnkBootshineFeature))
+                                return MNK.Bootshine;
+                            if (!IsEnabled(CustomComboPreset.MonkSTComboFormOption))
+                                return MNK.SnapPunch;
+                        }
+
                         break;
                 }
             }
@@ -164,11 +168,11 @@ namespace XIVComboExpandedestPlugin.Combos
 
         protected override uint Invoke(uint actionID, uint lastComboMove, float comboTime, byte level)
         {
-            if (actionID == MNK.FourPointFury && HasEffect(MNK.Buffs.PerfectBalance))
+            if (actionID == (IsEnabled(CustomComboPreset.MonkAoEComboFormOption) ? MNK.FormShift : MNK.FourPointFury))
             {
                 Status? pb = FindEffect(MNK.Buffs.PerfectBalance);
 
-                if (pb != null)
+                if (pb != null && HasEffect(MNK.Buffs.PerfectBalance))
                 {
                     if (pb.StackCount == 3)
                         return OriginalHook(MNK.ArmOfTheDestroyer);
@@ -177,6 +181,9 @@ namespace XIVComboExpandedestPlugin.Combos
                     if (pb.StackCount == 1)
                         return MNK.Rockbreaker;
                 }
+
+                if (HasEffect(MNK.Buffs.FormlessFist))
+                    return MNK.FourPointFury;
             }
 
             if (actionID == MNK.MasterfulBlitz)
