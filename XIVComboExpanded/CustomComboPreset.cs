@@ -32,7 +32,7 @@ namespace XIVComboExpandedestPlugin
         AstrologianCardsOnDrawFeature = 3301,
 
         [OrderedEnum]
-        [CustomComboInfo("Play to Astrodyne", "Play becomes Astrodyne when you have 3 seals.", AST.JobID, AST.Play)]
+        [CustomComboInfo("Play to Astrodyne", "Play becomes Astrodyne when you have 3 seals.\nThis is not meant to replace your Astrodyne button, more to prevent overcapping on seals.", AST.JobID, AST.Play)]
         AstrologianAstrodynePlayFeature = 3304,
 
         [OrderedEnum]
@@ -519,6 +519,10 @@ namespace XIVComboExpandedestPlugin
         [OrderedEnum]
         [CustomComboInfo("Phlegma into Toxikon", "Phlegma turns into Toxikon if you are out of charges and have Addersting.\nThis is prioritized over Dyskrasia if the 'Phlegma into Dyskrasia' feature is enabled.", SGE.JobID, SGE.Phlegma, SGE.Phlegmara, SGE.Phlegmaga)]
         SagePhlegmaToxicBalls = 4003,
+
+        [OrderedEnum]
+        [CustomComboInfo("Taurochole into Druochole", "Replaces Taurochole with Druochole if the former is on cooldown.\nYou should probably still keep the latter on your bar for certain scenarios.", SGE.JobID, SGE.Taurochole)]
+        SageTauroDruoFeature = 4004,
 
         #endregion
         // ====================================================================================
