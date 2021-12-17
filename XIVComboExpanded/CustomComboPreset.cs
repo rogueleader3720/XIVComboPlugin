@@ -273,6 +273,7 @@ namespace XIVComboExpandedestPlugin
         MonkSTCombo = 2007,
 
         [OrderedEnum]
+        [ParentCombo(MonkSTCombo)]
         [CustomComboInfo("Monk Combos Form Shift Option", "Enabling this option makes it so that Form Shift does not turn into Snap Punch with the Monk Combos feature.", MNK.JobID, MNK.FormShift)]
         MonkSTComboFormOption = 2008,
 
