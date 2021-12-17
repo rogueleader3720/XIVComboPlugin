@@ -159,7 +159,9 @@ namespace XIVComboExpandedestPlugin.Combos
                     case MNK.FormShift:
                         if (!IsEnabled(CustomComboPreset.MnkBootshineFeature))
                             return MNK.Bootshine;
-                        return MNK.SnapPunch;
+                        if (!IsEnabled(CustomComboPreset.MonkSTComboFormOption))
+                            return MNK.SnapPunch;
+                        break;
                 }
             }
 

@@ -32,7 +32,7 @@ namespace XIVComboExpandedestPlugin
         AstrologianCardsOnDrawFeature = 3301,
 
         [OrderedEnum]
-        [CustomComboInfo("Play to Astrodyne", "Play becomes Astrodyne when you have 3 seals.\nThis is not meant to replace your Astrodyne button, more to prevent overcapping on seals.", AST.JobID, AST.Play)]
+        [CustomComboInfo("Play to Astrodyne", "Play becomes Astrodyne when you have 3 seals.\nThis is not meant to replace your Astrodyne button, it's more to prevent overcapping on seals.", AST.JobID, AST.Play)]
         AstrologianAstrodynePlayFeature = 3304,
 
         [OrderedEnum]
@@ -271,6 +271,10 @@ namespace XIVComboExpandedestPlugin
             "Perfect Balance Behavior: Perfect Balance alternates between Dragon Kick and Bootshine. The Monk combos otherwise proceed as normal based on stacks.\n" +
             "Formless Fist Behavior: True Strike becomes Dragon Kick. Twin Snakes stays normal. Perfect Balance becomes Demolish. Form Shift becomes Bootshine (Snap Punch with Bootshine feature).", MNK.JobID, MNK.TwinSnakes, MNK.TrueStrike, MNK.PerfectBalance, MNK.FormShift)]
         MonkSTCombo = 2007,
+
+        [OrderedEnum]
+        [CustomComboInfo("Monk Combos Form Shift Option", "Enabling this option makes it so that Form Shift does not turn into Snap Punch with the Monk Combos feature.", MNK.JobID, MNK.FormShift)]
+        MonkSTComboFormOption = 2008,
 
         [OrderedEnum]
         [CustomComboInfo("Monk AoE Combo", "Replaces Masterful Blitz (for bug reasons) with the AoE combo chain, or whatever your most damaging move is when Perfect Balance is active.\nFour-Point Fury becomes AoE combo chain in order of forms during Perfect Balance.\nMasterful Blitz replaces the AoE combo when you have 3 Beast Chakra.", MNK.JobID, MNK.MasterfulBlitz, MNK.FourPointFury)]
