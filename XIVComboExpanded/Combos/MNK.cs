@@ -137,6 +137,8 @@ namespace XIVComboExpandedestPlugin.Combos
                     case 1:
                         if (!gauge.BeastChakra.Contains(BeastChakra.RAPTOR))
                             return actionID == MNK.TrueStrike ? MNK.TrueStrike : MNK.TwinSnakes;
+                        if (gauge.BeastChakra.Contains(BeastChakra.RAPTOR) && gauge.BeastChakra.Contains(BeastChakra.COEURL) && IsEnabled(CustomComboPreset.MonkSTComboOpoOpoOption))
+                            return HasEffect(MNK.Buffs.LeadenFist) ? MNK.Bootshine : MNK.DragonKick;
                         return actionID == MNK.TrueStrike ? MNK.SnapPunch : MNK.Demolish;
                 }
             }
@@ -181,11 +183,11 @@ namespace XIVComboExpandedestPlugin.Combos
                 if (pb != null && HasEffect(MNK.Buffs.PerfectBalance))
                 {
                     if (pb.StackCount == 3)
-                        return OriginalHook(MNK.ArmOfTheDestroyer);
-                    if (pb.StackCount == 2)
                         return MNK.FourPointFury;
-                    if (pb.StackCount == 1)
+                    if (pb.StackCount == 2)
                         return MNK.Rockbreaker;
+                    if (pb.StackCount == 1)
+                        return OriginalHook(MNK.ArmOfTheDestroyer);
                 }
 
                 if (HasEffect(MNK.Buffs.FormlessFist))

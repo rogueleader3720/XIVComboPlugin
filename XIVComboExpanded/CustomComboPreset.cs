@@ -274,6 +274,11 @@ namespace XIVComboExpandedestPlugin
 
         [OrderedEnum]
         [ParentCombo(MonkSTCombo)]
+        [CustomComboInfo("Monk Combos Opo-Opo Option", "Enabling this option makes it so that Dragon Kick/Bootshine replaces your combos in Perfect Balance if you have Raptor/Coeurl.", MNK.JobID, MNK.TwinSnakes, MNK.TrueStrike)]
+        MonkSTComboOpoOpoOption = 2010,
+
+        [OrderedEnum]
+        [ParentCombo(MonkSTCombo)]
         [ConflictingCombos(MonkAoEComboFormOption)]
         [CustomComboInfo("Monk Combos Form Shift Option", "Enabling this option makes it so that Form Shift does not turn into Snap Punch with the Monk Combos feature.", MNK.JobID, MNK.FormShift)]
         MonkSTComboFormOption = 2008,
@@ -285,7 +290,7 @@ namespace XIVComboExpandedestPlugin
         [OrderedEnum]
         [ParentCombo(MonkAoECombo)]
         [ConflictingCombos(MonkSTComboFormOption)]
-        [CustomComboInfo("Monk AoE Combo Form Shift Option", "Enabling this option has Form Shift turn into Four-Point Fury in Formless Fist, and 1-2-3 AoE combo in Perfect Balance.", MNK.JobID, MNK.FormShift)]
+        [CustomComboInfo("Monk AoE Combo Form Shift Option", "Enabling this option has Form Shift turn into Four-Point Fury in Formless Fist, and 1-2-3 AoE combo in Perfect Balance.\nIf using Monk Combos, you ideally should have Bootshine Feature enabled.", MNK.JobID, MNK.FormShift)]
         MonkAoEComboFormOption = 2009,
 
         // [OrderedEnum]
