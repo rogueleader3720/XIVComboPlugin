@@ -15,11 +15,18 @@ namespace XIVComboExpandedestPlugin.Combos
             Indomitability = 3583,
             Lustrate = 189,
             Excogitation = 7434,
-            SacredSoil = 188;
+            SacredSoil = 188,
+            SummonEos = 17215,
+            SummonSelene = 17216,
+            WhisperingDawn = 16537,
+            FeyIllumination = 16538,
+            Dissipation = 3587,
+            Aetherpact = 7437,
+            SummonSeraph = 16545;
 
         public static class Buffs
         {
-            public const ushort 
+            public const ushort
                 Recitation = 1896;
         }
 
@@ -31,6 +38,20 @@ namespace XIVComboExpandedestPlugin.Combos
         public static class Levels
         {
             public const byte Placeholder = 0;
+        }
+    }
+
+    internal class ScholarFairyFeature : CustomCombo
+    {
+        protected override CustomComboPreset Preset => CustomComboPreset.ScholarFairyFeature;
+
+        protected override uint Invoke(uint actionID, uint lastComboMove, float comboTime, byte level)
+        {
+            var gauge = GetJobGauge<SCHGauge>();
+            if (!Service.BuddyList.PetBuddyPresent && gauge.SeraphTimer == 0)
+                return IsEnabled(CustomComboPreset.ScholarSeleneOption) ? SCH.SummonSelene : SCH.SummonEos;
+
+            return actionID;
         }
     }
 
