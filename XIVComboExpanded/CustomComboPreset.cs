@@ -612,7 +612,7 @@ namespace XIVComboExpandedestPlugin
         SamuraiShoha2Feature = 3410,
 
         [OrderedEnum]
-        [CustomComboInfo("Ikishoten Namikiri Feature", "Replace Ikishoten with Ogi Namikiri and then Kaeshi Namikiri when available.", SAM.JobID, SAM.Ikishoten)]
+        [CustomComboInfo("Ikishoten Namikiri Feature", "Replace Ikishoten with Ogi Namikiri and then Kaeshi Namikiri when available.\nIf you have full Meditation stacks, Ikishoten becomes Shoha while you have Ogi Namikiri ready.", SAM.JobID, SAM.Ikishoten)]
         SamuraiIkishotenNamikiriFeature = 3411,
 
         #endregion
@@ -624,8 +624,13 @@ namespace XIVComboExpandedestPlugin
         ScholarSeraphConsolationFeature = 2801,
 
         [OrderedEnum]
-        [CustomComboInfo("ED Aetherflow", "Change Energy Drain into Aetherflow when you have no more Aetherflow stacks.", SCH.JobID, SCH.EnergyDrain)]
+        [CustomComboInfo("ED Aetherflow", "Change Energy Drain into Aetherflow when you have no more Aetherflow stacks.", SCH.JobID, SCH.EnergyDrain, SCH.Excogitation, SCH.Lustrate, SCH.SacredSoil, SCH.Indomitability)]
         ScholarEnergyDrainFeature = 2802,
+
+        [OrderedEnum]
+        [ParentCombo(ScholarEnergyDrainFeature)]
+        [CustomComboInfo("Everything Aetherflow", "Change every Aetherflow action into Aetherflow when you have no more Aetherflow stacks.\nIndomitability and Excogitation also become available with Recitation.", SCH.JobID, SCH.EnergyDrain, SCH.Excogitation, SCH.Lustrate, SCH.SacredSoil, SCH.Indomitability)]
+        ScholarEverythingFeature = 2803,
 
         #endregion
         // ====================================================================================

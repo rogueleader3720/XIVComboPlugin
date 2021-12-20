@@ -11,11 +11,16 @@ namespace XIVComboExpandedestPlugin.Combos
             FeyBless = 16543,
             Consolation = 16546,
             EnergyDrain = 167,
-            Aetherflow = 166;
+            Aetherflow = 166,
+            Indomitability = 3583,
+            Lustrate = 189,
+            Excogitation = 7434,
+            SacredSoil = 188;
 
         public static class Buffs
         {
-            public const ushort Placeholder = 0;
+            public const ushort 
+                Recitation = 1896;
         }
 
         public static class Debuffs
@@ -54,6 +59,15 @@ namespace XIVComboExpandedestPlugin.Combos
         {
             if (actionID == SCH.EnergyDrain)
             {
+                var gauge = GetJobGauge<SCHGauge>();
+                if (gauge.Aetherflow == 0)
+                    return SCH.Aetherflow;
+            }
+
+            if (IsEnabled(CustomComboPreset.ScholarEverythingFeature))
+            {
+                if (HasEffect(SCH.Buffs.Recitation) && (actionID == SCH.Indomitability || actionID == SCH.Excogitation))
+                    return actionID;
                 var gauge = GetJobGauge<SCHGauge>();
                 if (gauge.Aetherflow == 0)
                     return SCH.Aetherflow;
