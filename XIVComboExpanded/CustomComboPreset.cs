@@ -227,7 +227,7 @@ namespace XIVComboExpandedestPlugin
         [OrderedEnum]
         [SecretCustomCombo]
         [ParentCombo(GunbreakerDemonSlaughterCombo)]
-        [CustomComboInfo("Demon Slaughter Combo", "Replace Demon Slice with its combo chain, instead.", GNB.JobID, GNB.DemonSlaughter, GNB.DemonSlice)]
+        [CustomComboInfo("Evil Demon Slaughter Combo", "Replace Demon Slice with its combo chain, instead.", GNB.JobID, GNB.DemonSlaughter, GNB.DemonSlice)]
         GunbreakerEvilDemonSlaughterCombo = 3709,
 
         [OrderedEnum]
