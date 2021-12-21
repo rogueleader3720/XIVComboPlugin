@@ -758,6 +758,10 @@ namespace XIVComboExpandedestPlugin
         [CustomComboInfo("Primal Rend Feature", "Replace Inner Release with Primal Rend when available.", WAR.JobID, WAR.Berserk, WAR.InnerRelease)]
         WarriorPrimalRendFeature = 2108,
 
+        [OrderedEnum]
+        [CustomComboInfo("Mythril Rend Feature", "Replace your AoE combos of choice with Primal Rend when available.", WAR.JobID, WAR.MythrilTempest)]
+        WarriorMythrilRendFeature = 2109,
+
         #endregion
         // ====================================================================================
         #region WHITE MAGE
