@@ -197,6 +197,14 @@ namespace XIVComboExpandedestPlugin
         [CustomComboInfo("Dark Knight Gauge Overcap Feature", "Replace AoE combo with gauge spender if you are about to overcap.", DRK.JobID, DRK.StalwartSoul)]
         DRKOvercapFeature = 3203,
 
+        [OrderedEnum]
+        [CustomComboInfo("Dark Knight Blood Weapon Feature", "Replaces Carve and Spit with Blood Weapon if its cooldown is up and you have 50 or more Blood Gauge.", DRK.JobID, DRK.CarveAndSpit)]
+        DarkBloodWeaponFeature = 3206,
+
+        [OrderedEnum]
+        [CustomComboInfo("Dark Knight Living Shadow Feature", "Replaces Bloodspiller and Quietus with Living Shadow if its cooldown is up.", DRK.JobID, DRK.Bloodspiller, DRK.Quietus)]
+        DarkLivingShadowFeature = 3207,
+
         #endregion
         // ====================================================================================
         #region GUNBREAKER
