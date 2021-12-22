@@ -775,6 +775,10 @@ namespace XIVComboExpandedestPlugin
         WhiteMageRaptureMiseryFeature = 2402,
 
         [OrderedEnum]
+        [CustomComboInfo("Holy into Misery", "Replaces Holy/Holy 3 with Afflatus Misery when Misery is ready to be used", WHM.JobID, WHM.Holy, WHM.Holyga)]
+        WhiteMageHolyMiseryFeature = 2405,
+
+        [OrderedEnum]
         [CustomComboInfo("Cure 2 to Cure Level Sync", "Changes Cure 2 to Cure when below level 30 in synced content.", WHM.JobID, WHM.Cure2)]
         WhiteMageCureFeature = 2403,
 
