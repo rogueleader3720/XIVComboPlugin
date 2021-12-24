@@ -194,7 +194,7 @@ namespace XIVComboExpandedestPlugin.Combos
         {
             if (actionID == NIN.Kassatsu)
             {
-                if (HasEffect(NIN.Buffs.Suiton) || HasEffect(NIN.Buffs.Hidden))
+                if ((HasEffect(NIN.Buffs.Suiton) && !IsActionOffCooldown(NIN.Kassatsu)) || HasEffect(NIN.Buffs.Hidden))
                     return NIN.TrickAttack;
 
                 return NIN.Kassatsu;
