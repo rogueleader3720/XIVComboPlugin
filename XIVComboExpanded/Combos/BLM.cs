@@ -73,9 +73,30 @@ namespace XIVComboExpandedestPlugin.Combos
             if (actionID == BLM.Fire4 || actionID == BLM.Blizzard4)
             {
                 var gauge = GetJobGauge<BLMGauge>();
-                if (gauge.InUmbralIce)
-                    return BLM.Blizzard4;
-                return BLM.Fire4;
+
+                if (IsEnabled(CustomComboPreset.BlackEnochianDespairFeature))
+                {
+                    if (level >= BLM.Levels.Despair && LocalPlayer?.CurrentMp < 2400)
+                        return BLM.Despair;
+                }
+
+                return gauge.InUmbralIce ? BLM.Blizzard4 : BLM.Fire4;
+            }
+
+            return actionID;
+        }
+    }
+
+    internal class BlackFlareDespairFeature : CustomCombo
+    {
+        protected override CustomComboPreset Preset => CustomComboPreset.BlackFlareDespairFeature;
+
+        protected override uint Invoke(uint actionID, uint lastComboMove, float comboTime, byte level)
+        {
+            if (actionID == BLM.Flare && !IsEnabled(CustomComboPreset.BlackFreezeFlareFeature))
+            {
+                if (TargetHasEffect(BLM.Debuffs.Thunder3) && IsEnabled(CustomComboPreset.BlackFlareDespairFeature) && level >= BLM.Levels.Despair)
+                    return BLM.Despair;
             }
 
             return actionID;
@@ -91,9 +112,11 @@ namespace XIVComboExpandedestPlugin.Combos
             if (actionID == BLM.Freeze || actionID == BLM.Flare)
             {
                 var gauge = GetJobGauge<BLMGauge>();
-                if (gauge.InUmbralIce)
-                    return BLM.Freeze;
-                return BLM.Flare;
+
+                if (TargetHasEffect(BLM.Debuffs.Thunder3) && IsEnabled(CustomComboPreset.BlackFlareDespairFeature) && level >= BLM.Levels.Despair)
+                    return BLM.Despair;
+
+                return gauge.InUmbralIce ? BLM.Freeze : BLM.Flare;
             }
 
             return actionID;
@@ -111,6 +134,9 @@ namespace XIVComboExpandedestPlugin.Combos
                 var gauge = GetJobGauge<BLMGauge>();
 
                 if (LocalPlayer is null) return actionID;
+
+                if (TargetHasEffect(BLM.Debuffs.Thunder3) && IsEnabled(CustomComboPreset.BlackFlareDespairFeature) && level >= BLM.Levels.Despair)
+                    return BLM.Despair;
 
                 if (level >= BLM.Levels.Flare && ((gauge.UmbralHearts <= 1 && level >= BLM.Levels.Blizzard4) || LocalPlayer.CurrentMp < 3800) && gauge.InAstralFire)
                     return BLM.Flare;
