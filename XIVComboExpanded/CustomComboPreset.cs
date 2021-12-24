@@ -509,6 +509,15 @@ namespace XIVComboExpandedestPlugin
         [CustomComboInfo("Grim Swathe Feature", "When Gluttony is off-cooldown, Grim Swathe will turn into Gluttony.", RPR.JobID, RPR.GrimSwathe)]
         ReaperGrimSwatheFeature = 3914,
 
+        [OrderedEnum]
+        [CustomComboInfo("Soulsow Reminder Feature", "Slice Combo and Shadow of Death become Soulsow out of combat if you don't have it active.", RPR.JobID, RPR.Slice, RPR.InfernalSlice, RPR.ShadowOfDeath)]
+        ReaperSoulsowReminderFeature = 3915,
+
+        [OrderedEnum]
+        [ParentCombo(ReaperScytheCombo)]
+        [CustomComboInfo("Soulsow Feature", "Your AoE combo becomes Harvest Moon when Soulsow is active. Shadow of Death becomes Soulsow if you have no target and Soulsow isn't active.", RPR.JobID, RPR.SpinningScythe, RPR.NightmareScythe, RPR.ShadowOfDeath)]
+        ReaperSoulsowFeature = 3916,
+
         #endregion
         // ====================================================================================
         #region RED MAGE
