@@ -51,11 +51,13 @@ namespace XIVComboExpandedestPlugin
         [CustomComboInfo("Blizzard 4/Fire 4 Switcher", "Change Fire 4 or Blizzard 4 to whichever action you can currently use.", BLM.JobID, BLM.Blizzard4, BLM.Fire4)]
         BlackEnochianFeature = 2501,
 
+        [OrderedEnum]
         [SecretCustomCombo]
         [ParentCombo(BlackEnochianFeature)]
         [CustomComboInfo("Enochian Despair Feature", "Change Fire 4 or Blizzard 4 to Despair when in Astral Fire with less than 2400 mana.", BLM.JobID, BLM.Blizzard4, BLM.Fire4)]
         BlackEnochianDespairFeature = 2510,
 
+        [OrderedEnum]
         [CustomComboInfo("Flare to Despair Feature", "Change Flare to Despair when Thunder III is applied to your target.", BLM.JobID, BLM.Flare, BLM.Freeze, BLM.Fire2, BLM.HighFire2)]
         BlackFlareDespairFeature = 2511,
 
