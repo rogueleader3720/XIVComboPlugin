@@ -74,7 +74,7 @@ namespace XIVComboExpandedestPlugin.Combos
             {
                 var gauge = GetJobGauge<BLMGauge>();
 
-                if (IsEnabled(CustomComboPreset.BlackEnochianDespairFeature))
+                if (IsEnabled(CustomComboPreset.BlackEnochianDespairFeature) && gauge.InAstralFire)
                 {
                     if (level >= BLM.Levels.Despair && LocalPlayer?.CurrentMp < 2400)
                         return BLM.Despair;
