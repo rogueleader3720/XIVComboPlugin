@@ -32,7 +32,8 @@ namespace XIVComboExpandedestPlugin.Combos
             Scorch = 16530,
             Resolution = 25858,
             Embolden = 7520,
-            Manafication = 7521;
+            Manafication = 7521,
+            Acceleration = 7518;
 
         public static class Buffs
         {
@@ -231,6 +232,16 @@ namespace XIVComboExpandedestPlugin.Combos
             protected override uint Invoke(uint actionID, uint lastComboMove, float comboTime, byte level)
             {
                 return (IsActionOffCooldown(RDM.Manafication) && !IsActionOffCooldown(RDM.Embolden) && level >= RDM.Levels.Manafication) ? RDM.Manafication : RDM.Embolden;
+            }
+        }
+
+        internal class RedMageAccelerationFeature : CustomCombo
+        {
+            protected override CustomComboPreset Preset => CustomComboPreset.RedMageAccelerationFeature;
+
+            protected override uint Invoke(uint actionID, uint lastComboMove, float comboTime, byte level)
+            {
+                return ((IsActionOffCooldown(All.Swiftcast) && !IsActionOffCooldown(RDM.Acceleration)) || level < RDM.Levels.Redoublement) ? All.Swiftcast : RDM.Acceleration;
             }
         }
     }

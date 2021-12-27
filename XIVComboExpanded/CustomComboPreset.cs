@@ -599,6 +599,10 @@ namespace XIVComboExpandedestPlugin
         [CustomComboInfo("Embolden to Manaification", "Replaces Embolden with Manafication if the former is on cooldown and the latter is not.", RDM.JobID, RDM.Embolden)]
         RedMageEmboldenFeature = 3511,
 
+        [OrderedEnum]
+        [CustomComboInfo("Acceleration to Swiftcast", "Replaces Acceleration with Swiftcast if the former is on cooldown and the latter is not.", RDM.JobID, RDM.Acceleration)]
+        RedMageAccelerationFeature = 3512,
+
         #endregion
         // ====================================================================================
         #region SAGE
