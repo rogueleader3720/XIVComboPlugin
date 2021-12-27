@@ -58,6 +58,7 @@ namespace XIVComboExpandedestPlugin.Combos
                 GustSlash = 4,
                 AeolianEdge = 26,
                 Assassinate = 40,
+                Kassatsu = 50,
                 HakkeMujinsatsu = 52,
                 ArmorCrush = 54,
                 DreamWithinADream = 56,
@@ -208,7 +209,7 @@ namespace XIVComboExpandedestPlugin.Combos
 
         protected override uint Invoke(uint actionID, uint lastComboMove, float comboTime, byte level)
         {
-            return !IsActionOffCooldown(NIN.Kassatsu) && IsActionOffCooldown(NIN.DreamWithinADream) && level >= NIN.Levels.DreamWithinADream ? NIN.DreamWithinADream : actionID;
+            return (!IsActionOffCooldown(NIN.Kassatsu) && IsActionOffCooldown(NIN.DreamWithinADream)) || level < NIN.Levels.Kassatsu ? OriginalHook(NIN.DreamWithinADream) : actionID;
         }
     }
 
