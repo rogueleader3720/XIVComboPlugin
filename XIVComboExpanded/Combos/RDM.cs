@@ -33,7 +33,9 @@ namespace XIVComboExpandedestPlugin.Combos
             Resolution = 25858,
             Embolden = 7520,
             Manafication = 7521,
-            Acceleration = 7518;
+            Acceleration = 7518,
+            ContreSixte = 7519,
+            Fleche = 7517;
 
         public static class Buffs
         {
@@ -61,6 +63,7 @@ namespace XIVComboExpandedestPlugin.Combos
                 Zwerchhau = 35,
                 Redoublement = 50,
                 Vercure = 54,
+                ContreSixte = 56,
                 Manafication = 60,
                 Jolt2 = 62,
                 Impact = 66,
@@ -242,6 +245,16 @@ namespace XIVComboExpandedestPlugin.Combos
             protected override uint Invoke(uint actionID, uint lastComboMove, float comboTime, byte level)
             {
                 return ((IsActionOffCooldown(All.Swiftcast) && !IsActionOffCooldown(RDM.Acceleration)) || level < RDM.Levels.Redoublement) ? All.Swiftcast : RDM.Acceleration;
+            }
+        }
+
+        internal class RedMageContreSixteFeature : CustomCombo
+        {
+            protected override CustomComboPreset Preset => CustomComboPreset.RedMageContreSixteFeature;
+
+            protected override uint Invoke(uint actionID, uint lastComboMove, float comboTime, byte level)
+            {
+                return ((IsActionOffCooldown(RDM.Fleche) && !IsActionOffCooldown(RDM.ContreSixte)) || level < RDM.Levels.ContreSixte) ? RDM.Fleche : RDM.ContreSixte;
             }
         }
     }

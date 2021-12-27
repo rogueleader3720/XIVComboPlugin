@@ -607,6 +607,10 @@ namespace XIVComboExpandedestPlugin
         [CustomComboInfo("Acceleration to Swiftcast", "Replaces Acceleration with Swiftcast if the former is on cooldown and the latter is not.", RDM.JobID, RDM.Acceleration)]
         RedMageAccelerationFeature = 3512,
 
+        [OrderedEnum]
+        [CustomComboInfo("Contre Sixte to Fleche", "Replaces Contre Sixte with Fleche if the former is on cooldown and the latter is not.", RDM.JobID, RDM.ContreSixte)]
+        RedMageContreSixteFeature = 3513,
+
         #endregion
         // ====================================================================================
         #region SAGE
