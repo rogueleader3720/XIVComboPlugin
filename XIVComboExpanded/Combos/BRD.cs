@@ -89,7 +89,7 @@ namespace XIVComboExpandedestPlugin.Combos
             if (actionID == BRD.HeavyShot || actionID == BRD.BurstShot)
             {
                 var gauge = GetJobGauge<BRDGauge>();
-                //if (IsEnabled(CustomComboPreset.BardApexFeature) && (gauge.SoulVoice == 100 || OriginalHook(BRD.ApexArrow) != BRD.ApexArrow))
+                // if (IsEnabled(CustomComboPreset.BardApexFeature) && (gauge.SoulVoice == 100 || OriginalHook(BRD.ApexArrow) != BRD.ApexArrow))
                 //    return OriginalHook(BRD.ApexArrow);
 
                 if (HasEffect(BRD.Buffs.StraightShotReady))
@@ -206,7 +206,7 @@ namespace XIVComboExpandedestPlugin.Combos
         protected override uint Invoke(uint actionID, uint lastComboMove, float comboTime, byte level)
         {
             var gauge = GetJobGauge<BRDGauge>();
-            return (((IsActionOffCooldown(BRD.RadiantFinale) && !gauge.Coda.Contains(Song.NONE)) || !IsActionOffCooldown(BRD.BattleVoice)) && level >= BRD.Levels.RadiantFinale) ? BRD.RadiantFinale : BRD.BattleVoice;
+            return (!IsActionOffCooldown(BRD.BattleVoice) && level >= BRD.Levels.RadiantFinale) ? BRD.RadiantFinale : BRD.BattleVoice;
         }
     }
 

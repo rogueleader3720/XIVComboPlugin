@@ -122,7 +122,7 @@ namespace XIVComboExpandedestPlugin
         BardSidewinderFeature = 2306,
 
         [OrderedEnum]
-        [CustomComboInfo("Radiant Feature", "Replaces Radiant Finale with Battle Voice if either you lack all Coda or it is on cooldown (and Battle Voice is not).", BRD.JobID, BRD.RadiantFinale)]
+        [CustomComboInfo("Radiant Feature", "Replaces Radiant Finale with Battle Voice if Battle Voice is off-cooldown.", BRD.JobID, BRD.RadiantFinale)]
         BardRadiantFeature = 2307,
 
         [OrderedEnum]
