@@ -196,11 +196,19 @@ namespace XIVComboExpandedestPlugin.Combos
             {
                 if ((HasEffect(NIN.Buffs.Suiton) && !IsActionOffCooldown(NIN.Kassatsu)) || HasEffect(NIN.Buffs.Hidden))
                     return NIN.TrickAttack;
-
-                return NIN.Kassatsu;
             }
 
             return actionID;
+        }
+    }
+
+    internal class NinjaKassatsuDWaDFeature : CustomCombo
+    {
+        protected override CustomComboPreset Preset => CustomComboPreset.NinjaKassatsuDWaDFeature;
+
+        protected override uint Invoke(uint actionID, uint lastComboMove, float comboTime, byte level)
+        {
+            return !IsActionOffCooldown(NIN.Kassatsu) && IsActionOffCooldown(NIN.DreamWithinADream) && level >= NIN.Levels.DreamWithinADream ? NIN.DreamWithinADream : actionID;
         }
     }
 

@@ -390,6 +390,10 @@ namespace XIVComboExpandedestPlugin
         NinjaKassatsuTrickFeature = 3004,
 
         [OrderedEnum]
+        [CustomComboInfo("Kassatsu to Dream Within a Dream", "Replaces Kassatsu with Dream Within a Dream if the former is on cooldown and the latter is not.\nIf you have Kassatsu to Trick on, Trick Attack takes priority over DwaD.", NIN.JobID, NIN.Kassatsu)]
+        NinjaKassatsuDWaDFeature = 3015,
+
+        [OrderedEnum]
         [CustomComboInfo("Ten Chi Jin to Meisui", "Replaces Ten Chi Jin (the move) with Meisui while Suiton is up.", NIN.JobID, NIN.TenChiJin)]
         NinjaTCJMeisuiFeature = 3005,
 
