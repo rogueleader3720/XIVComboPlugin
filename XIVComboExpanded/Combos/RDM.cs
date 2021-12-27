@@ -254,7 +254,7 @@ namespace XIVComboExpandedestPlugin.Combos
 
             protected override uint Invoke(uint actionID, uint lastComboMove, float comboTime, byte level)
             {
-                return ((IsActionOffCooldown(RDM.Fleche) && !IsActionOffCooldown(RDM.ContreSixte)) || level < RDM.Levels.ContreSixte) ? RDM.Fleche : RDM.ContreSixte;
+                return (IsActionOffCooldown(RDM.ContreSixte) && !IsActionOffCooldown(RDM.Fleche) && level >= RDM.Levels.ContreSixte) ? RDM.ContreSixte : RDM.Fleche;
             }
         }
     }

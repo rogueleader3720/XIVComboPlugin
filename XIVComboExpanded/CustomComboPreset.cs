@@ -608,7 +608,7 @@ namespace XIVComboExpandedestPlugin
         RedMageAccelerationFeature = 3512,
 
         [OrderedEnum]
-        [CustomComboInfo("Contre Sixte to Fleche", "Replaces Contre Sixte with Fleche if the former is on cooldown and the latter is not.", RDM.JobID, RDM.ContreSixte)]
+        [CustomComboInfo("Fleche to Contre-Sixte", "Replaces Fleche with Contre-Sixte if the former is on cooldown and the latter is not.", RDM.JobID, RDM.Fleche)]
         RedMageContreSixteFeature = 3513,
 
         #endregion
