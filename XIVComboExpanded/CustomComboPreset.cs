@@ -117,6 +117,18 @@ namespace XIVComboExpandedestPlugin
         [CustomComboInfo("Quick Nock/Ladonsbite into Shadowbite", "Replaces Quick Nock/Ladonsbite with Shadowbite when it is ready.", BRD.JobID, BRD.QuickNock, BRD.Ladonsbite)]
         BardShadowbiteFeature = 2305,
 
+        [OrderedEnum]
+        [CustomComboInfo("Empyreal Arrow to Sidewinder", "Replaces Empyreal Arrow to Sidewinder if the latter is off-cooldown and the former is on-cooldown.", BRD.JobID, BRD.EmpyrealArrow)]
+        BardSidewinderFeature = 2306,
+
+        [OrderedEnum]
+        [CustomComboInfo("Radiant Feature", "Replaces Radiant Finale with Battle Voice if either you lack all Coda or it is on cooldown (and Battle Voice is not).", BRD.JobID, BRD.RadiantFinale)]
+        BardRadiantFeature = 2307,
+
+        [OrderedEnum]
+        [CustomComboInfo("Barrage Feature", "Replaces Barrage with Straight Shot (and its upgrades) if you have Straight Shot Ready.", BRD.JobID, BRD.Barrage)]
+        BardBarrageFeature = 2308,
+
         #endregion
         // ====================================================================================
         #region DANCER
