@@ -89,8 +89,8 @@ namespace XIVComboExpandedestPlugin.Combos
             if (actionID == BRD.HeavyShot || actionID == BRD.BurstShot)
             {
                 var gauge = GetJobGauge<BRDGauge>();
-                if (IsEnabled(CustomComboPreset.BardApexFeature) && (gauge.SoulVoice == 100 || OriginalHook(BRD.ApexArrow) != BRD.ApexArrow))
-                    return OriginalHook(BRD.ApexArrow);
+                //if (IsEnabled(CustomComboPreset.BardApexFeature) && (gauge.SoulVoice == 100 || OriginalHook(BRD.ApexArrow) != BRD.ApexArrow))
+                //    return OriginalHook(BRD.ApexArrow);
 
                 if (HasEffect(BRD.Buffs.StraightShotReady))
                     return OriginalHook(BRD.StraightShot);
@@ -165,7 +165,7 @@ namespace XIVComboExpandedestPlugin.Combos
             if (actionID == BRD.QuickNock || actionID == BRD.Ladonsbite)
             {
                 var gauge = GetJobGauge<BRDGauge>();
-                if (gauge.SoulVoice == 100 || OriginalHook(BRD.ApexArrow) != BRD.ApexArrow)
+                if (gauge.SoulVoice >= 80 || OriginalHook(BRD.ApexArrow) != BRD.ApexArrow)
                     return OriginalHook(BRD.ApexArrow);
             }
 
