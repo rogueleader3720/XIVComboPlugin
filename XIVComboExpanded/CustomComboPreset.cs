@@ -595,6 +595,10 @@ namespace XIVComboExpandedestPlugin
         [CustomComboInfo("Veraero/Verthunder into Scorch", "Replaces Veraero/Verthunder 1/3 with Scorch when it's available.\nThis feature is already in Verproc into Jolt Plus, this is for people who don't want to use that.", RDM.JobID, RDM.Veraero, RDM.Verthunder, RDM.Veraero3, RDM.Verthunder3)]
         RedMageVeraeroVerThunderScorchFeature = 3510,
 
+        [OrderedEnum]
+        [CustomComboInfo("Embolden to Manaification", "Replaces Embolden with Manafication if the former is on cooldown and the latter is not.", RDM.JobID, RDM.Embolden)]
+        RedMageEmboldenFeature = 3511,
+
         #endregion
         // ====================================================================================
         #region SAGE
