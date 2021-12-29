@@ -93,6 +93,10 @@ namespace XIVComboExpandedestPlugin
         [CustomComboInfo("Scathe/Xenoglossy Feature", "Scathe becomes Xenoglossy when available.", BLM.JobID, BLM.Scathe)]
         BlackScatheFeature = 2507,
 
+        [OrderedEnum]
+        [CustomComboInfo("Xenoglossy/Foul to Amplifier", "Xenoglossy/Foul become Amplifier when it's available and the GCD has more than 0.5s remaining, or you have no target.", BLM.JobID, BLM.Xenoglossy, BLM.Foul)]
+        BlackXenoAmpFeature = 2512,
+
         #endregion
         // ====================================================================================
         #region BARD
