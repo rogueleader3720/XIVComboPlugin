@@ -248,7 +248,8 @@ namespace XIVComboExpandedestPlugin.Combos
 
         protected override uint Invoke(uint actionID, uint lastComboMove, float comboTime, byte level)
         {
-            return ((IsActionOffCooldown(BLM.Amplifier) && GetCooldown(BLM.Fire).CooldownRemaining > 0.5) || LocalPlayer?.TargetObject is null) && level >= BLM.Levels.Amplifier ? BLM.Amplifier : actionID;
+            var gauge = GetJobGauge<BLMGauge>();
+            return ((IsActionOffCooldown(BLM.Amplifier) && GetCooldown(BLM.Fire).CooldownRemaining > 0.5 && gauge.PolyglotStacks < 2) || LocalPlayer?.TargetObject is null) && level >= BLM.Levels.Amplifier ? BLM.Amplifier : actionID;
         }
     }
 
@@ -268,11 +269,12 @@ namespace XIVComboExpandedestPlugin.Combos
 
         protected override uint Invoke(uint actionID, uint lastComboMove, float comboTime, byte level)
         {
-            if (actionID == BLM.Scathe)
+            if (actionID == BLM.Scathe && level >= BLM.Levels.Xenoglossy)
             {
                 var gauge = GetJobGauge<BLMGauge>();
-                if (level >= BLM.Levels.Xenoglossy && gauge.PolyglotStacks > 0)
-                    return ((IsActionOffCooldown(BLM.Amplifier) && GetCooldown(BLM.Fire).CooldownRemaining > 0.5) || LocalPlayer?.TargetObject is null) && level >= BLM.Levels.Amplifier && IsEnabled(CustomComboPreset.BlackXenoAmpFeature) ? BLM.Amplifier : BLM.Xenoglossy;
+                if (((IsActionOffCooldown(BLM.Amplifier) && GetCooldown(BLM.Fire).CooldownRemaining > 0.5 && gauge.PolyglotStacks < 2) || LocalPlayer?.TargetObject is null) && level >= BLM.Levels.Amplifier && IsEnabled(CustomComboPreset.BlackXenoAmpFeature))
+                    return BLM.Amplifier;
+                return gauge.PolyglotStacks > 0 ? BLM.Xenoglossy : BLM.Scathe;
             }
 
             return actionID;
