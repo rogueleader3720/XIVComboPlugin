@@ -15,7 +15,9 @@ namespace XIVComboExpandedestPlugin.Combos
             Fire2 = 147,
             Transpose = 149,
             Fire3 = 152,
+            Thunder2 = 7447,
             Thunder3 = 153,
+            Thunder4 = 7420,
             Blizzard3 = 154,
             Scathe = 156,
             Freeze = 159,
@@ -24,6 +26,7 @@ namespace XIVComboExpandedestPlugin.Combos
             Enochian = 3575,
             Blizzard4 = 3576,
             Fire4 = 3577,
+            Sharpcast = 3574,
             BetweenTheLines = 7419,
             Despair = 16505,
             UmbralSoul = 16506,
@@ -56,6 +59,7 @@ namespace XIVComboExpandedestPlugin.Combos
                 Blizzard3 = 35,
                 Thunder3 = 45,
                 Flare = 50,
+                Sharpcast = 54,
                 Enochian = 60,
                 Blizzard4 = 58,
                 Fire4 = 60,
@@ -63,7 +67,8 @@ namespace XIVComboExpandedestPlugin.Combos
                 Despair = 72,
                 UmbralSoul = 76,
                 Xenoglossy = 80,
-                Amplifier = 86;
+                Amplifier = 86,
+                EnhancedSharpcast = 88;
         }
     }
 
@@ -243,6 +248,16 @@ namespace XIVComboExpandedestPlugin.Combos
         protected override uint Invoke(uint actionID, uint lastComboMove, float comboTime, byte level)
         {
             return ((IsActionOffCooldown(BLM.Amplifier) && GetCooldown(BLM.Fire).CooldownRemaining > 0.5) || LocalPlayer?.TargetObject is null) && level >= BLM.Levels.Amplifier ? BLM.Amplifier : actionID;
+        }
+    }
+
+    internal class BlackSharpThunderFeature : CustomCombo
+    {
+        protected override CustomComboPreset Preset => CustomComboPreset.BlackSharpThunderFeature;
+
+        protected override uint Invoke(uint actionID, uint lastComboMove, float comboTime, byte level)
+        {
+            return ((GetCooldown(BLM.Sharpcast).CooldownRemaining <= 30 && GetCooldown(BLM.Fire).CooldownRemaining > 0.5) || LocalPlayer?.TargetObject is null) && level >= BLM.Levels.Sharpcast ? BLM.Sharpcast : actionID;
         }
     }
 

@@ -97,6 +97,10 @@ namespace XIVComboExpandedestPlugin
         [CustomComboInfo("Xenoglossy/Foul to Amplifier", "Xenoglossy/Foul become Amplifier when it's available and the GCD has more than 0.5s remaining, or you have no target.", BLM.JobID, BLM.Xenoglossy, BLM.Foul)]
         BlackXenoAmpFeature = 2512,
 
+        [OrderedEnum]
+        [CustomComboInfo("Thunder 3/4 to Sharpcast", "Thunder 3/4 become Sharpcast when it is available and the GCD has more than 0.5s remaining, or you have no target.", BLM.JobID, BLM.Thunder, BLM.Thunder2, BLM.Thunder3, BLM.Thunder4)]
+        BlackSharpThunderFeature = 2513,
+
         #endregion
         // ====================================================================================
         #region BARD
