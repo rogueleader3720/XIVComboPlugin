@@ -208,7 +208,7 @@ namespace XIVComboExpandedestPlugin
         DragoonFangThrustFeature = 2205,
 
         [OrderedEnum]
-        [CustomComboInfo("Stardiver to Nastrond", "Stardiver becomes Nastrond when Nastrond is off-cooldown and the GCD has more than 0.5s left, and becomes Geirskogul outside of Life of the Dragon.", DRG.JobID, DRG.Stardiver)]
+        [CustomComboInfo("Stardiver to Nastrond", "Stardiver becomes Nastrond when Nastrond is off-cooldown, and becomes Geirskogul outside of Life of the Dragon.", DRG.JobID, DRG.Stardiver)]
         DragoonNastrondFeature = 2206,
 
         [OrderedEnum]
