@@ -133,6 +133,10 @@ namespace XIVComboExpandedestPlugin
         [CustomComboInfo("Barrage Feature", "Replaces Barrage with Straight Shot (and its upgrades) if you have Straight Shot Ready (unless Shadowbite is ready).", BRD.JobID, BRD.Barrage)]
         BardBarrageFeature = 2308,
 
+        [OrderedEnum]
+        [CustomComboInfo("Bloodletter to Rain of Death", "Replaces Bloodletter with Rain of Death if there are no self-applied DoTs on your target.", BRD.JobID, BRD.Bloodletter)]
+        BardRainFeature = 2310,
+
         #endregion
         // ====================================================================================
         #region DANCER
