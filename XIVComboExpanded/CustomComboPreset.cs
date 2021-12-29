@@ -98,7 +98,7 @@ namespace XIVComboExpandedestPlugin
         BlackXenoAmpFeature = 2512,
 
         [OrderedEnum]
-        [CustomComboInfo("Thunder 3/4 to Sharpcast", "Thunder 3/4 become Sharpcast when it is available and the GCD has more than 0.5s remaining, or you have no target.", BLM.JobID, BLM.Thunder, BLM.Thunder2, BLM.Thunder3, BLM.Thunder4)]
+        [CustomComboInfo("Thunder 3/4 to Sharpcast", "Thunder 3/4 become Sharpcast when it is available, the GCD has more than 0.5s remaining, and the effect is not currently up, or if you have no target.", BLM.JobID, BLM.Thunder, BLM.Thunder2, BLM.Thunder3, BLM.Thunder4)]
         BlackSharpThunderFeature = 2513,
 
         #endregion
