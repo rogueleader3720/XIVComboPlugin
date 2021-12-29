@@ -130,7 +130,7 @@ namespace XIVComboExpandedestPlugin
         BardRadiantStrikesFeature = 2309,
 
         [OrderedEnum]
-        [CustomComboInfo("Barrage Feature", "Replaces Barrage with Straight Shot (and its upgrades) if you have Straight Shot Ready.", BRD.JobID, BRD.Barrage)]
+        [CustomComboInfo("Barrage Feature", "Replaces Barrage with Straight Shot (and its upgrades) if you have Straight Shot Ready (unless Shadowbite is ready).", BRD.JobID, BRD.Barrage)]
         BardBarrageFeature = 2308,
 
         #endregion

@@ -227,7 +227,7 @@ namespace XIVComboExpandedestPlugin.Combos
 
         protected override uint Invoke(uint actionID, uint lastComboMove, float comboTime, byte level)
         {
-            return HasEffect(BRD.Buffs.StraightShotReady) ? OriginalHook(BRD.StraightShot) : BRD.Barrage;
+            return HasEffect(BRD.Buffs.StraightShotReady) && !HasEffect(BRD.Buffs.ShadowbiteReady) ? OriginalHook(BRD.StraightShot) : BRD.Barrage;
         }
     }
 }
