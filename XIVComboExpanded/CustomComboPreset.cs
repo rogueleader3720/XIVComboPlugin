@@ -577,6 +577,11 @@ namespace XIVComboExpandedestPlugin
 
         [OrderedEnum]
         [ParentCombo(RedMageMeleeCombo)]
+        [CustomComboInfo("Redoublement Combo Lockout Feature", "Prevents you from using Redoublement combo if you have less than 50/50 gauge and have Verflare unlocked by replacing it with Verflare (which is unusable).", RDM.JobID, RDM.Redoublement)]
+        RedMageComboReminderFeature = 3515,
+
+        [OrderedEnum]
+        [ParentCombo(RedMageMeleeCombo)]
         [CustomComboInfo("Redoublement Combo Plus", "Replaces Redoublement/Moulinet with the combo spells after you have gained 3 mana stacks.\nVerflare will always be picked, meaning you must still manually press Verholy if appropriate.", RDM.JobID, RDM.Redoublement, RDM.Moulinet)]
         RedMageMeleeComboPlus = 3508,
 
@@ -628,7 +633,7 @@ namespace XIVComboExpandedestPlugin
         RedMageContreSixteFeature = 3513,
 
         [OrderedEnum]
-        [CustomComboInfo("Moulinet Reminder Feature", "Replaces Moulinet with Physick while you don't have 60/60 gauge.\nThis serves no combo or button-replacing purpose, it just helps remind you that you can't use it even if the gauge is lit up.", RDM.JobID, RDM.Moulinet)]
+        [CustomComboInfo("Moulinet Lockout Feature", "Prevents you from using Moulinet below 60/60 gauge by replacing it with Physick if you have Verflare unlocked.", RDM.JobID, RDM.Moulinet)]
         RedMageMoulinetReminderFeature = 3514,
 
         #endregion
