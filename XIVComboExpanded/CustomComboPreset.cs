@@ -86,7 +86,7 @@ namespace XIVComboExpandedestPlugin
         BlackFireFeature = 2505,
 
         [OrderedEnum]
-        [CustomComboInfo("Blizzard 3 to 1 Level Sync", "Blizzard 3 level syncs to Blizzard 1. It also becomes Paradox if available.", BLM.JobID, BLM.Blizzard3)]
+        [CustomComboInfo("Blizzard 1/3 Feature", "Blizzard 1 becomes Blizzard 3 when out of Umbral Ice.", BLM.JobID, BLM.Blizzard)]
         BlackBlizzardFeature = 2506,
 
         [OrderedEnum]

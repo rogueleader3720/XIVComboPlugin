@@ -212,11 +212,12 @@ namespace XIVComboExpandedestPlugin.Combos
 
         protected override uint Invoke(uint actionID, uint lastComboMove, float comboTime, byte level)
         {
-            if (actionID == BLM.Blizzard3)
+            if (actionID == BLM.Blizzard)
             {
                 var gauge = GetJobGauge<BLMGauge>();
-                if (level < BLM.Levels.Blizzard3 || OriginalHook(BLM.Blizzard) != BLM.Blizzard)
-                    return OriginalHook(BLM.Blizzard);
+                if (level >= BLM.Levels.Blizzard3 && !gauge.InUmbralIce)
+                    return BLM.Blizzard3;
+                return OriginalHook(BLM.Blizzard);
             }
 
             return actionID;
