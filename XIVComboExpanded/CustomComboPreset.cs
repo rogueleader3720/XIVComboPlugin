@@ -94,7 +94,7 @@ namespace XIVComboExpandedestPlugin
         BlackScatheFeature = 2507,
 
         [OrderedEnum]
-        [CustomComboInfo("Xenoglossy/Foul to Amplifier", "Xenoglossy/Foul become Amplifier when it's available, the GCD has more than 0.5s remaining, and you have less than two Polyglot stacks, or if you have no target.", BLM.JobID, BLM.Xenoglossy, BLM.Foul)]
+        [CustomComboInfo("Xenoglossy/Foul to Amplifier", "Xenoglossy/Foul become Amplifier when it's available, the GCD has more than 0.5s remaining, and you have less than two Polyglot stacks, or if you have no target or have no Polyglot.", BLM.JobID, BLM.Xenoglossy, BLM.Foul)]
         BlackXenoAmpFeature = 2512,
 
         [OrderedEnum]
