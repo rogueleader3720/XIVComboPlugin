@@ -627,6 +627,10 @@ namespace XIVComboExpandedestPlugin
         [CustomComboInfo("Fleche to Contre-Sixte", "Replaces Fleche with Contre-Sixte if the former is on cooldown and the latter is not.", RDM.JobID, RDM.Fleche)]
         RedMageContreSixteFeature = 3513,
 
+        [OrderedEnum]
+        [CustomComboInfo("Moulinet Reminder Feature", "Replaces Moulinet with Physick while you don't have 60/60 gauge.\nThis serves no combo or button-replacing purpose, it just helps remind you that you can't use it even if the gauge is lit up.", RDM.JobID, RDM.Moulinet)]
+        RedMageMoulinetReminderFeature = 3514,
+
         #endregion
         // ====================================================================================
         #region SAGE
