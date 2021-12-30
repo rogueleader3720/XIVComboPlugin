@@ -100,7 +100,7 @@ namespace XIVComboExpandedestPlugin.Combos
         {
             var gauge = GetJobGauge<RDMGauge>();
 
-            return gauge.BlackMana < 60 && gauge.WhiteMana < 60 && gauge.ManaStacks == 0 && level > RDM.Levels.Verflare && OriginalHook(RDM.Verthunder2) != RDM.Verflare && OriginalHook(RDM.Jolt2) == RDM.Jolt2 ? SMN.Physick : actionID;
+            return (gauge.BlackMana < 60 || gauge.WhiteMana < 60) && gauge.ManaStacks == 0 && level > RDM.Levels.Verflare && OriginalHook(RDM.Verthunder2) != RDM.Verflare && OriginalHook(RDM.Jolt2) == RDM.Jolt2 ? SMN.Physick : actionID;
         }
     }
 
