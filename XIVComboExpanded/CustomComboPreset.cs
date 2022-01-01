@@ -261,6 +261,11 @@ namespace XIVComboExpandedestPlugin
         GunbreakerSolidBarrelCombo = 3701,
 
         [OrderedEnum]
+        [ParentCombo(GunbreakerSolidBarrelCombo)]
+        [CustomComboInfo("Burst Strike Feature", "In addition to the Solid Barrel Combo, add Burst Strike when charges are full.", GNB.JobID, GNB.SolidBarrel)]
+        GunbreakerBurstStrikeFeature = 3710,
+
+        [OrderedEnum]
         [CustomComboInfo("Gnashing Fang Continuation", "Replace Gnashing Fang with Continuation when appropriate.", GNB.JobID, GNB.GnashingFang)]
         GunbreakerGnashingFangContinuation = 3702,
 
@@ -294,6 +299,11 @@ namespace XIVComboExpandedestPlugin
         [OrderedEnum]
         [CustomComboInfo("No Mercy Feature", "Replace No Mercy with Bow Shock, and then Sonic Break, while No Mercy is active.", GNB.JobID, GNB.NoMercy)]
         GunbreakerNoMercyFeature = 3708,
+
+        [OrderedEnum]
+        [SecretCustomCombo]
+        [CustomComboInfo("Double Down Feature", "Replace Burst Strike and Fated Circle with Double Down when available.", GNB.JobID, GNB.BurstStrike, GNB.FatedCircle)]
+        GunbreakerDoubleDownFeature = 3711,
 
         #endregion
         // ====================================================================================
