@@ -36,6 +36,10 @@ namespace XIVComboExpandedestPlugin
         AstrologianAstrodynePlayFeature = 3304,
 
         [OrderedEnum]
+        [CustomComboInfo("Draw Lockout", "Prevents you from using Draw (not Draw on Play) while a card is drawn by replacing it with Malefic.", AST.JobID, AST.Draw)]
+        AstrologianDrawLockoutFeature = 3306,
+
+        [OrderedEnum]
         [CustomComboInfo("Minor Arcana to Crown Play", "Changes Minor Arcana to Crown Play when a card is not drawn.", AST.JobID, AST.MinorArcana)]
         AstrologianMinorArcanaPlayFeature = 3302,
 

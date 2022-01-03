@@ -10,6 +10,7 @@ namespace XIVComboExpandedestPlugin.Combos
 
         public const uint
             Benefic = 3594,
+            Malefic = 3596,
             Benefic2 = 3610,
             Draw = 3590,
             Balance = 4401,
@@ -96,6 +97,18 @@ namespace XIVComboExpandedestPlugin.Combos
             }
 
             return actionID;
+        }
+    }
+
+    internal class AstrologianDrawLockoutFeature : CustomCombo
+    {
+        protected override CustomComboPreset Preset => CustomComboPreset.AstrologianDrawLockoutFeature;
+
+        protected override uint Invoke(uint actionID, uint lastComboMove, float comboTime, byte level)
+        {
+            var gauge = GetJobGauge<ASTGauge>();
+
+            return gauge.DrawnCard != CardType.NONE ? OriginalHook(AST.Malefic) : actionID;
         }
     }
 
