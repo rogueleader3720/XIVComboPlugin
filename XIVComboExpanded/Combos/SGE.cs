@@ -1,4 +1,5 @@
-﻿using Dalamud.Game.ClientState.JobGauge.Types;
+﻿using Dalamud.Game.ClientState.Conditions;
+using Dalamud.Game.ClientState.JobGauge.Types;
 
 namespace XIVComboExpandedestPlugin.Combos
 {
@@ -148,10 +149,10 @@ namespace XIVComboExpandedestPlugin.Combos
         protected override uint Invoke(uint actionID, uint lastComboMove, float comboTime, byte level)
         {
             if ((actionID == SGE.Physis || actionID == SGE.Physis2) &&
-                IsActionOffCooldown(All.LucidDreaming) && !IsActionOffCooldown(level >= SGE.Levels.Physis2 ? SGE.Physis2 : SGE.Physis) && LocalPlayer?.CurrentMp <= 9000)
+                IsActionOffCooldown(All.LucidDreaming) && HasCondition(ConditionFlag.InCombat) && !IsActionOffCooldown(level >= SGE.Levels.Physis2 ? SGE.Physis2 : SGE.Physis) && LocalPlayer?.CurrentMp <= 9000)
                 return All.LucidDreaming;
 
-            return IsActionOffCooldown(All.LucidDreaming) && !IsActionOffCooldown(actionID) && LocalPlayer?.CurrentMp <= 9000 ? All.LucidDreaming : actionID;
+            return IsActionOffCooldown(All.LucidDreaming) && HasCondition(ConditionFlag.InCombat) && !IsActionOffCooldown(actionID) && LocalPlayer?.CurrentMp <= 9000 ? All.LucidDreaming : actionID;
         }
     }
 }
