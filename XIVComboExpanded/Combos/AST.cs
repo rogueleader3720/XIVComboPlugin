@@ -21,7 +21,17 @@ namespace XIVComboExpandedestPlugin.Combos
             SleeveDraw = 7448,
             Play = 17055,
             CrownPlay = 25869,
-            Astrodyne = 25870;
+            Astrodyne = 25870,
+            Lightspeed = 3606,
+            CelestialOpposition = 16553,
+            CollectiveUnconscious = 3613,
+            Divination = 16552,
+            EarthlyStar = 7439,
+            Exaltation = 25873,
+            Macrocosmos = 25874,
+            NeutralSect = 16559,
+            Synastry = 3612,
+            Horoscope = 16557;
 
         public static class Buffs
         {
@@ -117,6 +127,16 @@ namespace XIVComboExpandedestPlugin.Combos
             }
 
             return actionID;
+        }
+    }
+
+    internal class AstrologianLucidReminderFeature : CustomCombo
+    {
+        protected override CustomComboPreset Preset => CustomComboPreset.AstrologianLucidReminderFeature;
+
+        protected override uint Invoke(uint actionID, uint lastComboMove, float comboTime, byte level)
+        {
+            return OriginalHook(actionID) == actionID && IsActionOffCooldown(All.LucidDreaming) && !IsActionOffCooldown(actionID) && LocalPlayer?.CurrentMp <= 9000 ? All.LucidDreaming : actionID;
         }
     }
 }

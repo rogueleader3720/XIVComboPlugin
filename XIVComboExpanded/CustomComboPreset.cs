@@ -43,6 +43,10 @@ namespace XIVComboExpandedestPlugin
         [CustomComboInfo("Benefic 2 to Benefic Level Sync", "Changes Benefic 2 to Benefic when below level 26 in synced content.", AST.JobID, AST.Benefic2)]
         AstrologianBeneficFeature = 3303,
 
+        [OrderedEnum]
+        [CustomComboInfo("Astrologian Lucid Dreaming Reminder", "All your non-role action cooldowns (that don't have charges) become Lucid Dreaming if they aren't up and Lucid Dreaming is, and you have less-than-or-equal-to 9000 MP.", AST.JobID, AST.Lightspeed, AST.MinorArcana, AST.CelestialOpposition, AST.CollectiveUnconscious, AST.Divination, AST.EarthlyStar, AST.Exaltation, AST.Macrocosmos, AST.NeutralSect, AST.Synastry, AST.Horoscope)]
+        AstrologianLucidReminderFeature = 3305,
+
         #endregion
         // ====================================================================================
         #region BLACK MAGE
@@ -701,6 +705,10 @@ namespace XIVComboExpandedestPlugin
         [CustomComboInfo("Taurochole into Druochole", "Replaces Taurochole with Druochole if the former is on cooldown.\nYou should probably still keep the latter on your bar for certain scenarios.", SGE.JobID, SGE.Taurochole)]
         SageTauroDruoFeature = 4004,
 
+        [OrderedEnum]
+        [CustomComboInfo("Sage Lucid Dreaming Reminder", "All your non-role action cooldowns (that don't have charges) become Lucid Dreaming if they aren't up and Lucid Dreaming is, and you have less-than-or-equal-to 9000 MP.", SGE.JobID, SGE.Kardia, SGE.Soteria, SGE.Zoe, SGE.Pepsis, SGE.Physis, SGE.Physis2, SGE.Ixochole, SGE.Holos, SGE.Rhizomata, SGE.Krasis, SGE.Kerachole, SGE.Taurochole, SGE.Haima, SGE.Panhaima, SGE.Pneuma)]
+        SageLucidReminderFeature = 4005,
+
         #endregion
         // ====================================================================================
         #region SAMURAI
@@ -815,6 +823,14 @@ namespace XIVComboExpandedestPlugin
         [CustomComboInfo("Fairy Feature Selene Option", "Replaces Summon Eos replacing actions with Summon Selene, for if you think Eos is a skank.", SCH.JobID, SCH.WhisperingDawn, SCH.FeyIllumination, SCH.FeyBless, SCH.Aetherpact, SCH.Dissipation, SCH.SummonSeraph, SCH.Consolation)]
         ScholarSeleneOption = 2805,
 
+        [OrderedEnum]
+        [CustomComboInfo("Ruin 2 to Chain Stratagem", "Ruin 2 becomes Chain Stratagem while there are more than 0.5s on the GCD (and if it's off cooldown).", SCH.JobID, SCH.Ruin2)]
+        ScholarRuinChainFeature = 2807,
+
+        [OrderedEnum]
+        [CustomComboInfo("Scholar Lucid Dreaming Reminder", "All your non-role action cooldowns (that don't have charges) become Lucid Dreaming if they aren't up and Lucid Dreaming is, and you have less-than-or-equal-to 9000 MP.", SCH.JobID, SCH.Aetherflow, SCH.EmergencyTactics, SCH.WhisperingDawn, SCH.FeyIllumination, SCH.FeyBless, SCH.Dissipation, SCH.ChainStratagem, SCH.Indomitability, SCH.Excogitation, SCH.SacredSoil, SCH.Recitation, SCH.DeploymentTactics, SCH.SummonSeraph)]
+        ScholarLucidReminderFeature = 2806,
+
         #endregion
         // ====================================================================================
         #region SUMMONER
@@ -864,9 +880,13 @@ namespace XIVComboExpandedestPlugin
         SummonerFurtherOutburstFeature = 2707,
 
         [OrderedEnum]
-        [CustomComboInfo("Carby Feature", "Every action that cannot be used without summoning carbuncle becomes Summon Carbuncle while a pet is not summoned.", SMN.JobID, SMN.RadiantAegis, SMN.SearingLight, SMN.SummonBahamut, SMN.Aethercharge, SMN.DreadwyrmTrance, SMN.SummonBahamut, SMN.SummonEmerald,
+        [CustomComboInfo("Carby Feature", "Every action that cannot be used without summoning carbuncle becomes Summon Carbuncle while a pet is not summoned.", SMN.JobID, SMN.RadiantAegis, SMN.SearingLight, SMN.Aethercharge, SMN.DreadwyrmTrance, SMN.SummonBahamut, SMN.SummonEmerald,
             SMN.SummonGaruda, SMN.SummonGaruda2, SMN.SummonRuby, SMN.SummonIfrit, SMN.SummonIfrit2, SMN.SummonTopaz, SMN.SummonTitan, SMN.SummonTitan2, SMN.Gemshine, SMN.PreciousBrilliance, SMN.AstralFlow)]
         SummonerCarbyFeature = 2704,
+
+        [OrderedEnum]
+        [CustomComboInfo("Summoner Lucid Dreaming Reminder", "All your non-role action cooldowns (that don't have charges) become Lucid Dreaming if they aren't up and Lucid Dreaming is, and you have less-than-or-equal-to 9000 MP.", SMN.JobID, SMN.EnergyDrain, SMN.EnergySyphon, SMN.RadiantAegis, SMN.SearingLight, SMN.SummonBahamut, SMN.DreadwyrmTrance, SMN.EnkindleBahamut, SMN.Aethercharge)]
+        SummonerLucidReminderFeature = 2713,
 
         #endregion
         // ====================================================================================

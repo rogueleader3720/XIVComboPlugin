@@ -167,6 +167,9 @@ namespace XIVComboExpandedestPlugin.Combos
             if (actionID == SMN.Fester)
             {
                 var gauge = GetJobGauge<SMNGauge>();
+
+                if (!gauge.HasAetherflowStacks && IsEnabled(CustomComboPreset.SummonerLucidReminderFeature) && IsActionOffCooldown(All.LucidDreaming) && !IsActionOffCooldown(SMN.EnergyDrain) && LocalPlayer?.CurrentMp <= 9000) return All.LucidDreaming;
+
                 if (!gauge.HasAetherflowStacks)
                     return SMN.EnergyDrain;
             }
@@ -184,6 +187,9 @@ namespace XIVComboExpandedestPlugin.Combos
             if (actionID == SMN.Painflare)
             {
                 var gauge = GetJobGauge<SMNGauge>();
+
+                if (!gauge.HasAetherflowStacks && IsEnabled(CustomComboPreset.SummonerLucidReminderFeature) && IsActionOffCooldown(All.LucidDreaming) && !IsActionOffCooldown(SMN.EnergySyphon) && LocalPlayer?.CurrentMp <= 9000) return All.LucidDreaming;
+
                 if (!gauge.HasAetherflowStacks)
                     return SMN.EnergySyphon;
 
@@ -294,6 +300,16 @@ namespace XIVComboExpandedestPlugin.Combos
             }
 
             return actionID;
+        }
+    }
+
+    internal class SummonerLucidReminderFeature : CustomCombo
+    {
+        protected override CustomComboPreset Preset => CustomComboPreset.SummonerLucidReminderFeature;
+
+        protected override uint Invoke(uint actionID, uint lastComboMove, float comboTime, byte level)
+        {
+            return IsActionOffCooldown(All.LucidDreaming) && !IsActionOffCooldown(actionID) && LocalPlayer?.CurrentMp <= 9000 ? All.LucidDreaming : actionID;
         }
     }
 }
