@@ -762,6 +762,10 @@ namespace XIVComboExpandedestPlugin
         SamuraiSeneiFeature = 3413,
 
         [OrderedEnum]
+        [CustomComboInfo("Senei to Guren Level Sync", "Replace Hissatsu: Senei with Guren if you are at a level where you can't use Senei.", SAM.JobID, SAM.Shinten, SAM.Senei)]
+        SamuraiSeneiGurenFeature = 3419,
+
+        [OrderedEnum]
         [CustomComboInfo("Shinten to Shoha", "Replace Hissatsu: Shinten with Shoha when Meditation is full.", SAM.JobID, SAM.Shinten)]
         SamuraiShohaFeature = 3412,
 
