@@ -275,7 +275,7 @@ namespace XIVComboExpandedestPlugin
 
         [OrderedEnum]
         [SecretCustomCombo]
-        [CustomComboInfo("Bow Shock / Sonic Break Feature", "Replace Bow Shock and Sonic Break with one or the other depending on which is on cooldown.", GNB.JobID, GNB.BowShock, GNB.SonicBreak)]
+        [CustomComboInfo("Bow Shock / Sonic Break Feature", "Replace Bow Shock and Sonic Break with one or the other depending on which is on cooldown.\nBow Shock can only be used if the GCD has more than 0.5s left.", GNB.JobID, GNB.BowShock, GNB.SonicBreak)]
         GunbreakerBowShockSonicBreakFeature = 3704,
 
         [OrderedEnum]
@@ -297,8 +297,12 @@ namespace XIVComboExpandedestPlugin
         GunbreakerBloodfestOvercapFeature = 3707,
 
         [OrderedEnum]
-        [CustomComboInfo("No Mercy Feature", "Replace No Mercy with Bow Shock, and then Sonic Break, while No Mercy is active.", GNB.JobID, GNB.NoMercy)]
+        [CustomComboInfo("No Mercy Feature", "Replace No Mercy with Bow Shock, and then Sonic Break, while No Mercy is active.\nBow Shock can only be used if the GCD has more than 0.5s left.", GNB.JobID, GNB.NoMercy)]
         GunbreakerNoMercyFeature = 3708,
+
+        [OrderedEnum]
+        [CustomComboInfo("No Mercy to Double Down Feature", "Replace No Mercy with Double Down while No Mercy is active and it is off-cooldown.\nThis takes priority over Bow Shock/Sonic Break if the No Mercy feature is enabled.", GNB.JobID, GNB.NoMercy)]
+        GunbreakerNoMercyDoubleDownFeature = 3712,
 
         [OrderedEnum]
         [SecretCustomCombo]
@@ -923,6 +927,10 @@ namespace XIVComboExpandedestPlugin
         [OrderedEnum]
         [CustomComboInfo("Afflatus Feature", "Changes Cure 2 into Afflatus Solace, and Medica into Afflatus Rapture, when lilies are up.", WHM.JobID, WHM.Cure2, WHM.Medica)]
         WhiteMageAfflatusFeature = 2404,
+
+        [OrderedEnum]
+        [CustomComboInfo("Lucid Dreaming Reminder", "All your non-role action cooldowns (that don't have charges) become Lucid Dreaming if they aren't up and Lucid Dreaming is, and you have less-than-or-equal-to 9000 MP.", WHM.JobID, WHM.PresenceOfMind, WHM.Assize, WHM.Temperance, WHM.PlenaryIndulgence, WHM.Tetragrammaton, WHM.Asylum, WHM.Aquaveil, WHM.LiturgyOfTheBell, WHM.Benediction)]
+        WhiteMageLucidReminderFeature = 2406,
 
         #endregion
         // ====================================================================================
