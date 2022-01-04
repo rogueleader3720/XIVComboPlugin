@@ -481,21 +481,17 @@ namespace XIVComboExpandedestPlugin
         NinjaGCDNinjutsuFeature = 3009,
 
         [OrderedEnum]
-        [CustomComboInfo("Bunshin / Kamaitachi Feature", "Replaces Bunshin with Phantom Kamaitachi after usage.", NIN.JobID, NIN.Bunshin)]
-        NinjaBunshinKamaitachiFeature = 3010,
-
-        [OrderedEnum]
         [ParentCombo(NinjaArmorCrushCombo)]
-        [CustomComboInfo("Armor Crush / Raiju Feature", "Replaces the Armor Crush combo with Forked and Fleeting Raiju when available.", NIN.JobID, NIN.ArmorCrush)]
+        [CustomComboInfo("Armor Crush / Raiju Feature", "Replaces the Armor Crush combo with Fleeting Raiju when available.", NIN.JobID, NIN.ArmorCrush)]
         NinjaArmorCrushRaijuFeature = 3012,
 
         [OrderedEnum]
         [ParentCombo(NinjaAeolianEdgeCombo)]
-        [CustomComboInfo("Aeolian Edge / Raiju Feature", "Replaces the Aeolian Edge combo with Forked and Fleeting Raiju when available.", NIN.JobID, NIN.AeolianEdge)]
+        [CustomComboInfo("Aeolian Edge / Raiju Feature", "Replaces the Aeolian Edge combo with Fleeting Raiju when available.", NIN.JobID, NIN.AeolianEdge)]
         NinjaAeolianEdgeRaijuFeature = 3013,
 
         [OrderedEnum]
-        [CustomComboInfo("Huraijin / Raiju Feature", "Replaces Huraijin with Forked and Fleeting Raiju when available.", NIN.JobID, NIN.Huraijin)]
+        [CustomComboInfo("Huraijin / Raiju Feature", "Replaces Huraijin with Fleeting Raiju when available.", NIN.JobID, NIN.Huraijin)]
         NinjaHuraijinRaijuFeature = 3011,
 
         #endregion
