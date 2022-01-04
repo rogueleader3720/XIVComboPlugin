@@ -266,7 +266,7 @@ namespace XIVComboExpandedestPlugin.Combos
             if (actionID == NIN.Huraijin)
             {
                 if (level >= NIN.Levels.ForkedRaiju && HasEffect(NIN.Buffs.RaijuReady))
-                    return NIN.FleetingRaiju;
+                    return NIN.ForkedRaiju;
             }
 
             return actionID;
