@@ -67,7 +67,7 @@ namespace XIVComboExpandedestPlugin.Combos
                 EnhancedKassatsu = 76,
                 Bunshin = 80,
                 PhantomKamaitachi = 82,
-                ForkedRaiju = 90;
+                Raiju = 90;
         }
     }
 
@@ -97,8 +97,8 @@ namespace XIVComboExpandedestPlugin.Combos
             {
                 if (IsEnabled(CustomComboPreset.NinjaArmorCrushRaijuFeature))
                 {
-                    if (level >= NIN.Levels.ForkedRaiju && HasEffect(NIN.Buffs.RaijuReady))
-                        return NIN.FleetingRaiju;
+                    if (level >= NIN.Levels.Raiju && HasEffect(NIN.Buffs.RaijuReady))
+                        return NIN.ForkedRaiju;
                 }
 
                 if (comboTime > 0)
@@ -127,7 +127,7 @@ namespace XIVComboExpandedestPlugin.Combos
             {
                 if (IsEnabled(CustomComboPreset.NinjaAeolianEdgeRaijuFeature))
                 {
-                    if (level >= NIN.Levels.ForkedRaiju && HasEffect(NIN.Buffs.RaijuReady))
+                    if (level >= NIN.Levels.Raiju && HasEffect(NIN.Buffs.RaijuReady))
                         return NIN.FleetingRaiju;
                 }
 
@@ -265,7 +265,7 @@ namespace XIVComboExpandedestPlugin.Combos
         {
             if (actionID == NIN.Huraijin)
             {
-                if (level >= NIN.Levels.ForkedRaiju && HasEffect(NIN.Buffs.RaijuReady))
+                if (level >= NIN.Levels.Raiju && HasEffect(NIN.Buffs.RaijuReady))
                     return NIN.ForkedRaiju;
             }
 

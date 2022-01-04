@@ -488,12 +488,12 @@ namespace XIVComboExpandedestPlugin
 
         [OrderedEnum]
         [ParentCombo(NinjaArmorCrushCombo)]
-        [CustomComboInfo("Armor Crush / Raiju Feature", "Replaces the Armor Crush combo with Fleeting Raiju when available.", NIN.JobID, NIN.ArmorCrush)]
+        [CustomComboInfo("Armor Crush / Forked Raiju Feature", "Replaces the Armor Crush combo with Forked Raiju when available.", NIN.JobID, NIN.ArmorCrush)]
         NinjaArmorCrushRaijuFeature = 3012,
 
         [OrderedEnum]
         [ParentCombo(NinjaAeolianEdgeCombo)]
-        [CustomComboInfo("Aeolian Edge / Raiju Feature", "Replaces the Aeolian Edge combo with Fleeting Raiju when available.", NIN.JobID, NIN.AeolianEdge)]
+        [CustomComboInfo("Aeolian Edge / Fleeting Raiju Feature", "Replaces the Aeolian Edge combo with Fleeting Raiju when available.", NIN.JobID, NIN.AeolianEdge)]
         NinjaAeolianEdgeRaijuFeature = 3013,
 
         [OrderedEnum]
