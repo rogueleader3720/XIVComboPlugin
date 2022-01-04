@@ -419,7 +419,7 @@ namespace XIVComboExpandedestPlugin
 
         [OrderedEnum]
         [ParentCombo(MonkAoECombo)]
-        [CustomComboInfo("AoE Meditation Feature", "Replaces AoE combo with Howling Fist/Enlightment if you have the Fifth Chakra open and have a target.", MNK.JobID, MNK.MasterfulBlitz)]
+        [CustomComboInfo("AoE Meditation Feature", "Replaces AoE combo with Howling Fist/Enlightment if you have the Fifth Chakra open, have a target, and the GCD is greater than 0.5s.", MNK.JobID, MNK.MasterfulBlitz)]
         MonkAoEMeditationFeature = 2014,
 
         [OrderedEnum]
