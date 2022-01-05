@@ -797,8 +797,17 @@ namespace XIVComboExpandedestPlugin
         SamuraiIaijutsuShohaFeature = 3409,
 
         [OrderedEnum]
-        [CustomComboInfo("Iaijutsu to Kaiten", "Replace Iaijutsu with Kaiten if Kaiten is not active, you have the gauge to use it, an Iaijutsu is ready, and you wouldn't clip GCD.", SAM.JobID, SAM.Iaijutsu)]
+        [CustomComboInfo("Iaijutsu/Tsubame to Shoha No Clip Check Option", "Removes clipping check from the above Shoha features.", SAM.JobID, SAM.Iaijutsu, SAM.TsubameGaeshi)]
+        SamuraiShohaGCDOption = 3421,
+
+        [OrderedEnum]
+        [CustomComboInfo("Iaijutsu to Kaiten", "Replace Iaijutsu/Ogi-Namikiri with Kaiten if Kaiten is not active, you have the gauge to use it, an Iaijutsu is ready, and you wouldn't clip GCD.", SAM.JobID, SAM.Iaijutsu, SAM.OgiNamikiri)]
         SamuraiKaitenFeature = 3418,
+
+        [OrderedEnum]
+        [ParentCombo(SamuraiKaitenFeature)]
+        [CustomComboInfo("Iaijutsu to Kaiten No Clip Check Option", "Removes clipping check from Iaijutsu to Kaiten.", SAM.JobID, SAM.Iaijutsu)]
+        SamuraiKaitenFeatureGCDOption = 3420,
 
         [OrderedEnum]
         [CustomComboInfo("Shinten to Senei", "Replace Hissatsu: Shinten with Senei when its cooldown is up.", SAM.JobID, SAM.Shinten)]
