@@ -121,7 +121,7 @@ namespace XIVComboExpandedestPlugin.Combos
 
         protected override uint Invoke(uint actionID, uint lastComboMove, float comboTime, byte level)
         {
-            return IsActionOffCooldown(MCH.Wildfire) && LocalPlayer?.TargetObject is not null && level >= MCH.Levels.Wildfire ? MCH.Wildfire : actionID;
+            return ((IsActionOffCooldown(MCH.Wildfire) && LocalPlayer?.TargetObject is not null) || (OriginalHook(MCH.Wildfire) != MCH.Wildfire && !IsActionOffCooldown(MCH.Hypercharge))) && level >= MCH.Levels.Wildfire ? OriginalHook(MCH.Wildfire) : actionID;
         }
     }
 
