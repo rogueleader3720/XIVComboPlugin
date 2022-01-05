@@ -349,13 +349,19 @@ namespace XIVComboExpandedestPlugin
         MachinistOverdriveFeature = 3104,
 
         [OrderedEnum]
-        [CustomComboInfo("Hypercharge to Wildfire", "Hypercharge becomes Wildfire if Wildfire is off-cooldown.", MCH.JobID, MCH.Hypercharge)]
+        [CustomComboInfo("Hypercharge to Wildfire", "Hypercharge becomes Wildfire if Wildfire is off-cooldown and you have a target.", MCH.JobID, MCH.Hypercharge)]
         MachinistHyperfireFeature = 3107,
 
         [OrderedEnum]
         [SecretCustomCombo]
         [CustomComboInfo("Gauss Round / Ricochet Feature", "Replace Gauss Round and Ricochet with one or the other depending on which has more charges.", MCH.JobID, MCH.GaussRound, MCH.Ricochet)]
         MachinistGaussRoundRicochetFeature = 3105,
+
+        [OrderedEnum]
+        [SecretCustomCombo]
+        [ParentCombo(MachinistGaussRoundRicochetFeature)]
+        [CustomComboInfo("Gauss Round / Ricochet Overheat Option", "Gauss Round/Ricochet will only replace each other while Overheated.", MCH.JobID, MCH.GaussRound, MCH.Ricochet)]
+        MachinistGaussRoundRicochetFeatureOption = 3109,
 
         [OrderedEnum]
         [SecretCustomCombo]
