@@ -161,7 +161,7 @@ namespace XIVComboExpandedestPlugin.Combos
                     case MNK.TwinSnakes:
                         return MNK.TwinSnakes;
                     case MNK.PerfectBalance:
-                        return LocalPlayer?.TargetObject is not null ? MNK.Demolish : actionID;
+                        return LocalPlayer?.TargetObject is not null && GetCooldown(MNK.Demolish).CooldownRemaining < 0.5 ? MNK.Demolish : actionID;
                     case MNK.FormShift:
                         if (!IsEnabled(CustomComboPreset.MonkAoEComboFormOption))
                         {
