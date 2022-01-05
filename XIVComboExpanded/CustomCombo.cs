@@ -301,6 +301,12 @@ namespace XIVComboExpandedestPlugin.Combos
         protected static bool IsActionOffCooldown(uint actionID) => GetCooldown(actionID).CooldownRemaining == 0;
 
         /// <summary>
+        /// Checks to see if the GCD would not currently clip if you used a cooldown.
+        /// </summary>
+        /// <returns>A bool indicating if the GCD is greater-than-or-equal-to 0.5s or not.</returns>
+        protected static bool GCDClipCheck() => GetCooldown(PLD.RageOfHalone).CooldownRemaining >= 0.5;
+
+        /// <summary>
         /// Gets the job gauge.
         /// </summary>
         /// <typeparam name="T">Type of job gauge.</typeparam>

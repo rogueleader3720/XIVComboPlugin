@@ -204,7 +204,7 @@ namespace XIVComboExpandedestPlugin.Combos
             if (actionID == SAM.TsubameGaeshi)
             {
                 var gauge = GetJobGauge<SAMGauge>();
-                if (level >= SAM.Levels.Shoha && gauge.MeditationStacks >= 3 && OriginalHook(SAM.TsubameGaeshi) == SAM.TsubameGaeshi)
+                if (level >= SAM.Levels.Shoha && gauge.MeditationStacks >= 3 && (GCDClipCheck() || OriginalHook(SAM.TsubameGaeshi) == SAM.TsubameGaeshi))
                     return SAM.Shoha;
             }
 
@@ -221,7 +221,7 @@ namespace XIVComboExpandedestPlugin.Combos
             if (actionID == SAM.Iaijutsu)
             {
                 var gauge = GetJobGauge<SAMGauge>();
-                if (level >= SAM.Levels.Shoha && gauge.MeditationStacks >= 3 && OriginalHook(SAM.TsubameGaeshi) == SAM.TsubameGaeshi)
+                if (level >= SAM.Levels.Shoha && gauge.MeditationStacks >= 3 && (GCDClipCheck() || OriginalHook(SAM.TsubameGaeshi) == SAM.TsubameGaeshi))
                     return SAM.Shoha;
             }
 
@@ -238,7 +238,7 @@ namespace XIVComboExpandedestPlugin.Combos
             if (!IsEnabled(CustomComboPreset.SamuraiIaijutsuTsubameGaeshiFeature) && !IsEnabled(CustomComboPreset.SamuraiTsubameGaeshiIaijutsuFeature))
             {
                 var gauge = GetJobGauge<SAMGauge>();
-                if (!HasEffect(SAM.Buffs.Kaiten) && gauge.Kenki >= 20 && level >= SAM.Levels.Kaiten && OriginalHook(SAM.Iaijutsu) != SAM.Iaijutsu)
+                if (!HasEffect(SAM.Buffs.Kaiten) && gauge.Kenki >= 20 && level >= SAM.Levels.Kaiten && OriginalHook(SAM.Iaijutsu) != SAM.Iaijutsu && GCDClipCheck())
                     return SAM.Kaiten;
             }
 
@@ -257,7 +257,7 @@ namespace XIVComboExpandedestPlugin.Combos
                 var gauge = GetJobGauge<SAMGauge>();
                 if (IsEnabled(CustomComboPreset.SamuraiKaitenFeature))
                 {
-                    if (!HasEffect(SAM.Buffs.Kaiten) && gauge.Kenki >= 20 && level >= SAM.Levels.Kaiten && OriginalHook(SAM.TsubameGaeshi) == SAM.TsubameGaeshi && OriginalHook(SAM.Iaijutsu) != SAM.Iaijutsu)
+                    if (!HasEffect(SAM.Buffs.Kaiten) && gauge.Kenki >= 20 && level >= SAM.Levels.Kaiten && OriginalHook(SAM.TsubameGaeshi) == SAM.TsubameGaeshi && OriginalHook(SAM.Iaijutsu) != SAM.Iaijutsu && GCDClipCheck())
                         return SAM.Kaiten;
                 }
 
@@ -279,7 +279,7 @@ namespace XIVComboExpandedestPlugin.Combos
                 var gauge = GetJobGauge<SAMGauge>();
                 if (IsEnabled(CustomComboPreset.SamuraiKaitenFeature))
                 {
-                    if (!HasEffect(SAM.Buffs.Kaiten) && gauge.Kenki >= 20 && level >= SAM.Levels.Kaiten && OriginalHook(SAM.TsubameGaeshi) == SAM.TsubameGaeshi && OriginalHook(SAM.Iaijutsu) != SAM.Iaijutsu)
+                    if (!HasEffect(SAM.Buffs.Kaiten) && gauge.Kenki >= 20 && level >= SAM.Levels.Kaiten && OriginalHook(SAM.TsubameGaeshi) == SAM.TsubameGaeshi && OriginalHook(SAM.Iaijutsu) != SAM.Iaijutsu && GCDClipCheck())
                         return SAM.Kaiten;
                 }
 
@@ -378,16 +378,20 @@ namespace XIVComboExpandedestPlugin.Combos
             {
                 if (level >= SAM.Levels.OgiNamikiri)
                 {
+                    var gauge = GetJobGauge<SAMGauge>();
                     if (HasEffect(SAM.Buffs.OgiNamikiriReady))
                     {
-                        var gauge = GetJobGauge<SAMGauge>();
                         if (gauge.MeditationStacks >= 3)
                             return SAM.Shoha;
                         return SAM.OgiNamikiri;
                     }
 
                     if (OriginalHook(SAM.OgiNamikiri) == SAM.KaeshiNamikiri)
+                    {
+                        if (gauge.MeditationStacks >= 3 && GCDClipCheck())
+                            return SAM.Shoha;
                         return SAM.KaeshiNamikiri;
+                    }
                 }
 
                 return SAM.Ikishoten;
