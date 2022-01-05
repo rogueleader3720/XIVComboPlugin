@@ -98,7 +98,11 @@ namespace XIVComboExpandedestPlugin.Combos
                 if (IsEnabled(CustomComboPreset.NinjaArmorCrushRaijuFeature))
                 {
                     if (level >= NIN.Levels.Raiju && HasEffect(NIN.Buffs.RaijuReady))
+                    {
+                        if (IsEnabled(CustomComboPreset.NinjaSmartRaijuFeature))
+                            return InMeleeRange() ? NIN.FleetingRaiju : NIN.ForkedRaiju;
                         return NIN.ForkedRaiju;
+                    }
                 }
 
                 if (comboTime > 0)
@@ -128,7 +132,11 @@ namespace XIVComboExpandedestPlugin.Combos
                 if (IsEnabled(CustomComboPreset.NinjaAeolianEdgeRaijuFeature))
                 {
                     if (level >= NIN.Levels.Raiju && HasEffect(NIN.Buffs.RaijuReady))
+                    {
+                        if (IsEnabled(CustomComboPreset.NinjaSmartRaijuFeature))
+                            return InMeleeRange() ? NIN.FleetingRaiju : NIN.ForkedRaiju;
                         return NIN.FleetingRaiju;
+                    }
                 }
 
                 if (comboTime > 0)
@@ -266,10 +274,24 @@ namespace XIVComboExpandedestPlugin.Combos
             if (actionID == NIN.Huraijin)
             {
                 if (level >= NIN.Levels.Raiju && HasEffect(NIN.Buffs.RaijuReady))
-                    return NIN.ForkedRaiju;
+                {
+                    if (IsEnabled(CustomComboPreset.NinjaSmartRaijuFeature))
+                        return InMeleeRange() ? NIN.FleetingRaiju : NIN.ForkedRaiju;
+                    return IsEnabled(CustomComboPreset.NinjaHuraijinFleetingRaijuFeature) ? NIN.FleetingRaiju : NIN.ForkedRaiju;
+                }
             }
 
             return actionID;
+        }
+    }
+
+    internal class NinjaSmartRaijuFeature : CustomCombo
+    {
+        protected override CustomComboPreset Preset => CustomComboPreset.NinjaSmartRaijuFeature;
+
+        protected override uint Invoke(uint actionID, uint lastComboMove, float comboTime, byte level)
+        {
+            return InMeleeRange() ? NIN.FleetingRaiju : NIN.ForkedRaiju;
         }
     }
 }

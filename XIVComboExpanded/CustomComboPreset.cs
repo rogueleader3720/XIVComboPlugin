@@ -511,6 +511,15 @@ namespace XIVComboExpandedestPlugin
         [CustomComboInfo("Huraijin / Forked Raiju Feature", "Replaces Huraijin with Forked Raiju when available.", NIN.JobID, NIN.Huraijin)]
         NinjaHuraijinRaijuFeature = 3011,
 
+        [OrderedEnum]
+        [ParentCombo(NinjaHuraijinRaijuFeature)]
+        [CustomComboInfo("Huraijin / Fleeting Raiju Option", "Replaces Huraijin with Fleeting Raiju instead.", NIN.JobID, NIN.Huraijin)]
+        NinjaHuraijinFleetingRaijuFeature = 3017,
+
+        [OrderedEnum]
+        [CustomComboInfo("Smart Raiju Feature", "Forked/Fleeting Raiju change depending on distance from target (works with the Raiju features).\nThere is a small delay on distance calculation, so if you've just moved out of or in range, it might not immediately work.", NIN.JobID, NIN.ForkedRaiju, NIN.FleetingRaiju)]
+        NinjaSmartRaijuFeature = 3016,
+
         #endregion
         // ====================================================================================
         #region PALADIN
