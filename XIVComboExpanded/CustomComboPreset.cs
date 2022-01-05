@@ -381,6 +381,11 @@ namespace XIVComboExpandedestPlugin
 
         [OrderedEnum]
         [ParentCombo(MonkSTCombo)]
+        [CustomComboInfo("Monk Combos Demolish Option", "Enabling this option makes it so that Demolish under Formless Fist becomes Perfect Balance while the GCD is >= 0.5s or you have no target.", MNK.JobID, MNK.PerfectBalance)]
+        MonkSTComboDemolishOption = 2015,
+
+        [OrderedEnum]
+        [ParentCombo(MonkSTCombo)]
         [ConflictingCombos(MonkAoEComboFormOption)]
         [CustomComboInfo("Monk Combos Form Shift Option", "Enabling this option makes it so that Form Shift does not turn into Snap Punch with the Monk Combos feature.", MNK.JobID, MNK.FormShift)]
         MonkSTComboFormOption = 2008,
