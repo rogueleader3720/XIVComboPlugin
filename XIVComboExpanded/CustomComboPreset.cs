@@ -449,6 +449,8 @@ namespace XIVComboExpandedestPlugin
         // ====================================================================================
         #region NINJA
 
+        // last used: 3018
+
         [OrderedEnum]
         [CustomComboInfo("Armor Crush Combo", "Replace Armor Crush with its combo chain.", NIN.JobID, NIN.ArmorCrush)]
         NinjaArmorCrushCombo = 3001,
@@ -460,6 +462,10 @@ namespace XIVComboExpandedestPlugin
         [OrderedEnum]
         [CustomComboInfo("Hakke Mujinsatsu Combo", "Replace Hakke Mujinsatsu with its combo chain.", NIN.JobID, NIN.HakkeMujinsatsu, NIN.DeathBlossom)]
         NinjaHakkeMujinsatsuCombo = 3003,
+
+        [OrderedEnum]
+        [CustomComboInfo("Huraijin Armor Crush Feature", "Replaces Huraijin with Armor Crush after using Gust Slash.", NIN.JobID, NIN.Huraijin)]
+        NinjaHuraijinCrushFeature = 3018,
 
         [OrderedEnum]
         [SecretCustomCombo]

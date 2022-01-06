@@ -294,4 +294,14 @@ namespace XIVComboExpandedestPlugin.Combos
             return InMeleeRange() ? NIN.FleetingRaiju : NIN.ForkedRaiju;
         }
     }
+
+    internal class NinjaHuraijinCrushFeature : CustomCombo
+    {
+        protected override CustomComboPreset Preset => CustomComboPreset.NinjaHuraijinCrushFeature;
+
+        protected override uint Invoke(uint actionID, uint lastComboMove, float comboTime, byte level)
+        {
+            return lastComboMove == NIN.GustSlash && comboTime > 0 ? NIN.ArmorCrush : actionID;
+        }
+    }
 }
