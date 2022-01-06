@@ -300,7 +300,7 @@ namespace XIVComboExpandedestPlugin.Combos
             {
                 if (IsActionOffCooldown(SAM.Senei) && level >= SAM.Levels.Senei)
                     return SAM.Senei;
-                if (level < SAM.Levels.Senei && IsActionOffCooldown(SAM.Guren))
+                if (level < SAM.Levels.Senei && IsActionOffCooldown(SAM.Guren) && level >= SAM.Levels.Guren && IsEnabled(CustomComboPreset.SamuraiSeneiGurenFeature))
                     return SAM.Guren;
             }
 
