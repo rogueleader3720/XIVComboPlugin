@@ -71,17 +71,30 @@ namespace XIVComboExpandedestPlugin.Combos
         }
     }
 
+    internal class NinjaNinjutsuFeature : CustomCombo
+    {
+        protected override CustomComboPreset Preset => CustomComboPreset.NinjaNinjutsuFeature;
+
+        protected override uint Invoke(uint actionID, uint lastComboMove, float comboTime, byte level)
+        {
+            if (actionID == NIN.AeolianEdge)
+            {
+                if (HasEffect(NIN.Buffs.Mudra))
+                    return OriginalHook(NIN.Ninjutsu);
+            }
+
+            return actionID;
+        }
+    }
+
     internal class NinjaGCDNinjutsuFeature : CustomCombo
     {
         protected override CustomComboPreset Preset => CustomComboPreset.NinjaGCDNinjutsuFeature;
 
         protected override uint Invoke(uint actionID, uint lastComboMove, float comboTime, byte level)
         {
-            if (actionID == NIN.AeolianEdge || actionID == NIN.ArmorCrush || actionID == NIN.HakkeMujinsatsu)
-            {
-                if (HasEffect(NIN.Buffs.Mudra))
-                    return OriginalHook(NIN.Ninjutsu);
-            }
+            if (HasEffect(NIN.Buffs.Mudra))
+                return OriginalHook(NIN.Ninjutsu);
 
             return actionID;
         }
@@ -167,22 +180,6 @@ namespace XIVComboExpandedestPlugin.Combos
                     return NIN.HakkeMujinsatsu;
 
                 return NIN.DeathBlossom;
-            }
-
-            return actionID;
-        }
-    }
-
-    internal class NinjaNinjutsuFeature : CustomCombo
-    {
-        protected override CustomComboPreset Preset => CustomComboPreset.NinjaNinjutsuFeature;
-
-        protected override uint Invoke(uint actionID, uint lastComboMove, float comboTime, byte level)
-        {
-            if (actionID == NIN.AeolianEdge)
-            {
-                if (HasEffect(NIN.Buffs.Mudra))
-                    return OriginalHook(NIN.Ninjutsu);
             }
 
             return actionID;
