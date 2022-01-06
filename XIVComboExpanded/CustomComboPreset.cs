@@ -102,11 +102,11 @@ namespace XIVComboExpandedestPlugin
         BlackScatheFeature = 2507,
 
         [OrderedEnum]
-        [CustomComboInfo("Xenoglossy/Foul to Amplifier", "Xenoglossy/Foul become Amplifier when it's available, the GCD has more than 0.5s remaining, and you have less than two Polyglot stacks, or if you have no target or have no Polyglot.", BLM.JobID, BLM.Xenoglossy, BLM.Foul)]
+        [CustomComboInfo("Xenoglossy/Foul to Amplifier", "Xenoglossy/Foul become Amplifier when it's available, you have just used an action, and you have less than two Polyglot stacks, or if you have no target or have no Polyglot.", BLM.JobID, BLM.Xenoglossy, BLM.Foul)]
         BlackXenoAmpFeature = 2512,
 
         [OrderedEnum]
-        [CustomComboInfo("Thunder 3/4 to Sharpcast", "Thunder 3/4 become Sharpcast when it is available, the GCD has more than 0.5s remaining, and the effect is not currently up, or if you have no target.", BLM.JobID, BLM.Thunder, BLM.Thunder2, BLM.Thunder3, BLM.Thunder4)]
+        [CustomComboInfo("Thunder 3/4 to Sharpcast", "Thunder 3/4 become Sharpcast when it is available, you have just used an action, and the effect is not currently up, or if you have no target.", BLM.JobID, BLM.Thunder, BLM.Thunder2, BLM.Thunder3, BLM.Thunder4)]
         BlackSharpThunderFeature = 2513,
 
         #endregion
@@ -134,6 +134,7 @@ namespace XIVComboExpandedestPlugin
         BardShadowbiteFeature = 2305,
 
         [OrderedEnum]
+        [SecretCustomCombo]
         [CustomComboInfo("Empyreal Arrow to Sidewinder", "Replaces Empyreal Arrow to Sidewinder if the latter is off-cooldown and the former is on-cooldown.", BRD.JobID, BRD.EmpyrealArrow)]
         BardSidewinderFeature = 2306,
 
@@ -377,7 +378,7 @@ namespace XIVComboExpandedestPlugin
         [CustomComboInfo("Monk Combos (Experimental)", "This is a very complex, experimental combo that intends to allow Monk single-target combos with minimal 'thinking' for you, keeping it as legit as possible.\n" +
             "Normal Behavior: True Strike and Twin Snakes become Bootshine and Dragon Kick in Opo-Opo/no form, True Strike and Twin Snakes in Raptor, and Snap Punch and Demolish in Coeurl.\n" +
             "Perfect Balance Behavior: Perfect Balance alternates between Dragon Kick and Bootshine. The other combos become Demolish and Twin Snakes, and change between Raptor/Coeurl moves based on which you pick.\n" +
-            "Formless Fist Behavior: True Strike becomes Dragon Kick. Twin Snakes stays normal. Perfect Balance becomes Demolish (if you have a target and GCD is < 0.5s). Form Shift becomes Bootshine (Snap Punch with Bootshine feature).", MNK.JobID, MNK.TwinSnakes, MNK.TrueStrike, MNK.PerfectBalance, MNK.FormShift)]
+            "Formless Fist Behavior: True Strike becomes Dragon Kick. Twin Snakes stays normal. Perfect Balance becomes Demolish (if you have a target). Form Shift becomes Bootshine (Snap Punch with Bootshine feature).", MNK.JobID, MNK.TwinSnakes, MNK.TrueStrike, MNK.PerfectBalance, MNK.FormShift)]
         MonkSTCombo = 2007,
 
         [OrderedEnum]
@@ -387,7 +388,7 @@ namespace XIVComboExpandedestPlugin
 
         [OrderedEnum]
         [ParentCombo(MonkSTCombo)]
-        [CustomComboInfo("Monk Combos Demolish Option", "Enabling this option makes it so that Perfect Balance under Formless Fist stays Perfect Balance while the GCD is >= 0.5s or you have no target.", MNK.JobID, MNK.PerfectBalance)]
+        [CustomComboInfo("Monk Combos Demolish Option", "Enabling this option makes it so that Perfect Balance under Formless Fist stays Perfect Balance for a short while after you use an action or you have no target.", MNK.JobID, MNK.PerfectBalance)]
         MonkSTComboDemolishOption = 2015,
 
         [OrderedEnum]
@@ -430,7 +431,7 @@ namespace XIVComboExpandedestPlugin
 
         [OrderedEnum]
         [ParentCombo(MonkAoECombo)]
-        [CustomComboInfo("AoE Meditation Feature", "Replaces AoE combo with Howling Fist/Enlightment if you have the Fifth Chakra open, have a target, and the GCD is greater than 0.5s.", MNK.JobID, MNK.MasterfulBlitz)]
+        [CustomComboInfo("AoE Meditation Feature", "Replaces AoE combo with Howling Fist/Enlightment if you have the Fifth Chakra open, have a target, and you have just used an action.", MNK.JobID, MNK.MasterfulBlitz)]
         MonkAoEMeditationFeature = 2014,
 
         [OrderedEnum]
@@ -523,7 +524,7 @@ namespace XIVComboExpandedestPlugin
         NinjaHuraijinFleetingRaijuFeature = 3017,
 
         [OrderedEnum]
-        [CustomComboInfo("Smart Raiju Feature", "Forked/Fleeting Raiju change depending on distance from target (works with the Raiju features).\nThere is a small delay on distance calculation, so if you've just moved out of or in range, it might not immediately work.", NIN.JobID, NIN.ForkedRaiju, NIN.FleetingRaiju)]
+        [CustomComboInfo("Forked/Fleeting Raiju Switch Feature", "Forked/Fleeting Raiju change depending on distance from target (works with the Raiju features).\nThere is a small delay on distance calculation, so if you've just moved out of or in range, it might not immediately work.", NIN.JobID, NIN.ForkedRaiju, NIN.FleetingRaiju)]
         NinjaSmartRaijuFeature = 3016,
 
         #endregion
@@ -716,6 +717,7 @@ namespace XIVComboExpandedestPlugin
         RedMageAccelerationFeature = 3512,
 
         [OrderedEnum]
+        [SecretCustomCombo]
         [CustomComboInfo("Fleche to Contre-Sixte", "Replaces Fleche with Contre-Sixte if the former is on cooldown and the latter is not.", RDM.JobID, RDM.Fleche)]
         RedMageContreSixteFeature = 3513,
 
@@ -808,20 +810,20 @@ namespace XIVComboExpandedestPlugin
 
         [OrderedEnum]
         [ConflictingCombos(SamuraiTsubameGaeshiShohaFeature)]
-        [CustomComboInfo("Iaijutsu to Shoha", "Replace Iaijutsu with Shoha when meditation is 3 and either you have used Tsubame or it wouldn't clip the GCD.", SAM.JobID, SAM.Iaijutsu)]
+        [CustomComboInfo("Iaijutsu to Shoha", "Replace Iaijutsu with Shoha when meditation is 3 and either you have used Tsubame or for a short period of time after Iaijutsu.", SAM.JobID, SAM.Iaijutsu)]
         SamuraiIaijutsuShohaFeature = 3409,
 
         [OrderedEnum]
-        [CustomComboInfo("Iaijutsu/Tsubame to Shoha No Clip Check Option", "Removes clipping check from the above Shoha features.", SAM.JobID, SAM.Iaijutsu, SAM.TsubameGaeshi)]
+        [CustomComboInfo("Iaijutsu/Tsubame to Shoha Persistence Option", "Makes it so Shoha doesn't disappear after a short amount of time after Iaijutsu.", SAM.JobID, SAM.Iaijutsu, SAM.TsubameGaeshi)]
         SamuraiShohaGCDOption = 3421,
 
         [OrderedEnum]
-        [CustomComboInfo("Iaijutsu to Kaiten", "Replace Iaijutsu/Ogi-Namikiri with Kaiten if Kaiten is not active, you have the gauge to use it, an Iaijutsu is ready, and you wouldn't clip GCD.", SAM.JobID, SAM.Iaijutsu, SAM.OgiNamikiri)]
+        [CustomComboInfo("Iaijutsu to Kaiten", "Replace Iaijutsu/Ogi-Namikiri with Kaiten if Kaiten is not active, you have the gauge to use it, an Iaijutsu is ready, and you have just used an action.", SAM.JobID, SAM.Iaijutsu, SAM.OgiNamikiri)]
         SamuraiKaitenFeature = 3418,
 
         [OrderedEnum]
         [ParentCombo(SamuraiKaitenFeature)]
-        [CustomComboInfo("Iaijutsu to Kaiten No Clip Check Option", "Removes clipping check from Iaijutsu to Kaiten.", SAM.JobID, SAM.Iaijutsu)]
+        [CustomComboInfo("Iaijutsu to Kaiten Persistence Option", "Makes it so Kaiten doesn't require you to have just used an action.", SAM.JobID, SAM.Iaijutsu)]
         SamuraiKaitenFeatureGCDOption = 3420,
 
         [OrderedEnum]
@@ -875,7 +877,7 @@ namespace XIVComboExpandedestPlugin
         ScholarSeleneOption = 2805,
 
         [OrderedEnum]
-        [CustomComboInfo("Ruin 2 to Chain Stratagem", "Ruin 2 becomes Chain Stratagem while there are more than 0.5s on the GCD (and if it's off cooldown).", SCH.JobID, SCH.Ruin2)]
+        [CustomComboInfo("Ruin 2 to Chain Stratagem", "Ruin 2 becomes Chain Stratagem for a short while after you have used any action (and if it's off cooldown).", SCH.JobID, SCH.Ruin2)]
         ScholarRuinChainFeature = 2807,
 
         [OrderedEnum]
