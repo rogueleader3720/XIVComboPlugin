@@ -33,7 +33,8 @@ namespace XIVComboExpandedestPlugin.Combos
             Huraijin = 25876,
             PhantomKamaitachi = 25774,
             ForkedRaiju = 25777,
-            FleetingRaiju = 25778;
+            FleetingRaiju = 25778,
+            ThrowingDagger = 2247;
 
         public static class Buffs
         {
