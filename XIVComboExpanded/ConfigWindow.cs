@@ -60,7 +60,7 @@ namespace XIVComboExpandedestPlugin
             if (ImGui.IsItemHovered())
             {
                 ImGui.BeginTooltip();
-                ImGui.TextUnformatted("The secrets of the creator");
+                ImGui.TextUnformatted("The secrets of the creator (as well as some silly stuff I don't want to clog the list).");
                 ImGui.EndTooltip();
             }
 

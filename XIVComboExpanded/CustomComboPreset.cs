@@ -312,6 +312,7 @@ namespace XIVComboExpandedestPlugin
         GunbreakerBloodfestOvercapFeature = 3707,
 
         [OrderedEnum]
+        [SecretCustomCombo]
         [CustomComboInfo("No Mercy Feature", "Replace No Mercy with Bow Shock, and then Sonic Break, while No Mercy is active.\nBow Shock can only be used if the GCD has more than 0.5s left.", GNB.JobID, GNB.NoMercy)]
         GunbreakerNoMercyFeature = 3708,
 
@@ -609,7 +610,7 @@ namespace XIVComboExpandedestPlugin
 
         [OrderedEnum]
         [ParentCombo(ReaperGibbetGallowsFeature)]
-        [CustomComboInfo("Gibbet and Gallows One-Button Option", "Slice now turns into Gallows when Gallows is Enhanced, and removes it from Shadow of Death/Soul Slice while you have Enhanced Gibbet/Gallows.", RPR.JobID, RPR.Slice)]
+        [CustomComboInfo("Gibbet and Gallows Enhanced Option", "Slice now turns into Gallows when Gallows is Enhanced, and removes it from Shadow of Death/Soul Slice while you have Enhanced Gibbet/Gallows.", RPR.JobID, RPR.Slice)]
         ReaperGibbetGallowsOption = 3905,
 
         [OrderedEnum]
