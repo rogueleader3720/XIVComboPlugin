@@ -848,7 +848,7 @@ namespace XIVComboExpandedestPlugin
         SamuraiShoha2Feature = 3410,
 
         [OrderedEnum]
-        [CustomComboInfo("Ikishoten Namikiri Feature", "Replace Ikishoten with Ogi Namikiri and then Kaeshi Namikiri when available.\nIf you have full Meditation stacks, Ikishoten becomes Shoha while you have Ogi Namikiri ready, as well as when you have Kaeshi Namikiri and you wouldn't clip the GCD.", SAM.JobID, SAM.Ikishoten)]
+        [CustomComboInfo("Ikishoten Namikiri Feature", "Replace Ikishoten with Ogi Namikiri and then Kaeshi Namikiri when available.\nIf you have full Meditation stacks, Ikishoten becomes Shoha while you have Ogi Namikiri ready, as well as when you have Kaeshi Namikiri and just used an action.", SAM.JobID, SAM.Ikishoten)]
         SamuraiIkishotenNamikiriFeature = 3411,
 
         #endregion
@@ -867,6 +867,10 @@ namespace XIVComboExpandedestPlugin
         [ParentCombo(ScholarEnergyDrainFeature)]
         [CustomComboInfo("Everything Aetherflow", "Change every Aetherflow action into Aetherflow when you have no more Aetherflow stacks.\nIndomitability and Excogitation also become available with Recitation.", SCH.JobID, SCH.EnergyDrain, SCH.Excogitation, SCH.Lustrate, SCH.SacredSoil, SCH.Indomitability)]
         ScholarEverythingFeature = 2803,
+
+        [OrderedEnum]
+        [CustomComboInfo("Excogitation to Recitation", "Change Excogitation into Recitation when the latter is off-cooldown.", SCH.JobID, SCH.Excogitation)]
+        ScholarExcogRecitationFeature = 2808,
 
         [OrderedEnum]
         [CustomComboInfo("Fairy Feature", "Change every action that requires a fairy into Summon Eos if you do not have a fairy summoned.", SCH.JobID, SCH.WhisperingDawn, SCH.FeyIllumination, SCH.FeyBless, SCH.Aetherpact, SCH.Dissipation, SCH.SummonSeraph, SCH.Consolation)]
