@@ -51,7 +51,7 @@ namespace XIVComboExpandedestPlugin
             ImGui.Text("This window allows you to enable and disable custom combos to your liking.");
 
             var showSecrets = Service.Configuration.EnableSecretCombos;
-            if (ImGui.Checkbox("Daemitus's Secrets (Bugged, must be enabled to prevent framerate slowdown)", ref showSecrets))
+            if (ImGui.Checkbox("Daemitus's Secrets", ref showSecrets))
             {
                 Service.Configuration.EnableSecretCombos = showSecrets;
                 Service.Configuration.Save();
