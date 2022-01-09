@@ -751,7 +751,7 @@ namespace XIVComboExpandedestPlugin
         SageTauroDruoFeature = 4004,
 
         [OrderedEnum]
-        [CustomComboInfo("Eukrasia into Eukrasian Dosis", "Eukresia turns into Eukresian Dosis while you have it active.\nThis doesn't save a button or really much else, I just like how it feels.", SGE.JobID, SGE.Eukrasia)]
+        [CustomComboInfo("Eukrasia into Eukrasian Dosis", "Eukrasia turns into Eukrasian Dosis while you have it active.\nThis doesn't save a button or really much else, I just like how it feels.", SGE.JobID, SGE.Eukrasia)]
         SageEukrasiaDosisFeature = 4006,
 
         [OrderedEnum]
