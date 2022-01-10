@@ -98,15 +98,19 @@ namespace XIVComboExpandedestPlugin.Combos
                     return SGE.Panhaima;
                 if (actionID == SGE.Taurochole && level >= SGE.Levels.Kerachole)
                     return SGE.Kerachole;
-                if (actionID == SGE.Krasis || level < SGE.Levels.Krasis)
+                if (actionID == SGE.Krasis)
                     return OriginalHook(SGE.Physis);
                 if (actionID == SGE.Druochole && level >= SGE.Levels.Ixochole)
                     return SGE.Ixochole;
-                if (actionID == SGE.Pneuma || level < SGE.Levels.Pneuma)
-                    return SGE.Holos;
                 if (actionID == SGE.Diagnosis && level >= SGE.Levels.Prognosis)
                     return OriginalHook(SGE.Prognosis);
             }
+
+            if (actionID == SGE.Krasis && level < SGE.Levels.Krasis)
+                return OriginalHook(SGE.Physis);
+
+            if (actionID == SGE.Pneuma && level < SGE.Levels.Pneuma)
+                return SGE.Holos;
 
             return actionID;
         }
