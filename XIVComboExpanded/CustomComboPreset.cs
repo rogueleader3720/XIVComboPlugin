@@ -90,11 +90,11 @@ namespace XIVComboExpandedestPlugin
         BlackLeyLinesFeature = 2504,
 
         [OrderedEnum]
-        [CustomComboInfo("Fire 1/3 Feature", "Fire 1 becomes Fire 3 outside of Astral Fire, and when Firestarter proc is up.", BLM.JobID, BLM.Fire)]
+        [CustomComboInfo("Fire 1/3 Feature", "Fire 1 becomes Fire 3 outside of Astral Fire, and when Firestarter proc is up, and also becomes Paradox when available.", BLM.JobID, BLM.Fire)]
         BlackFireFeature = 2505,
 
         [OrderedEnum]
-        [CustomComboInfo("Blizzard 1/3 Feature", "Blizzard 1 becomes Blizzard 3 when out of Umbral Ice.", BLM.JobID, BLM.Blizzard)]
+        [CustomComboInfo("Blizzard 1/3 Feature", "Blizzard 1 becomes Blizzard 3 after you have unlocked it, and also becomes Paradox when available.", BLM.JobID, BLM.Blizzard)]
         BlackBlizzardFeature = 2506,
 
         [OrderedEnum]

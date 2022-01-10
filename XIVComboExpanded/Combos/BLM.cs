@@ -215,8 +215,7 @@ namespace XIVComboExpandedestPlugin.Combos
         {
             if (actionID == BLM.Blizzard)
             {
-                var gauge = GetJobGauge<BLMGauge>();
-                if (level >= BLM.Levels.Blizzard3 && !gauge.InUmbralIce)
+                if (level >= BLM.Levels.Blizzard3 && OriginalHook(BLM.Blizzard) == BLM.Blizzard)
                     return BLM.Blizzard3;
                 return OriginalHook(BLM.Blizzard);
             }
@@ -234,7 +233,7 @@ namespace XIVComboExpandedestPlugin.Combos
             if (actionID == BLM.Fire)
             {
                 var gauge = GetJobGauge<BLMGauge>();
-                if (level >= BLM.Levels.Fire3 && (!gauge.InAstralFire || HasEffect(BLM.Buffs.Firestarter)))
+                if (level >= BLM.Levels.Fire3 && (!gauge.InAstralFire || HasEffect(BLM.Buffs.Firestarter)) && OriginalHook(BLM.Fire) == BLM.Fire)
                     return BLM.Fire3;
                 return OriginalHook(BLM.Fire);
             }
