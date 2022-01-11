@@ -90,7 +90,7 @@ namespace XIVComboExpandedestPlugin.Combos
                         return BLM.Despair;
                 }
 
-                return gauge.InUmbralIce ? BLM.Blizzard4 : BLM.Fire4;
+                return gauge.InUmbralIce ? (level < BLM.Levels.Blizzard4 ? BLM.Blizzard : BLM.Blizzard4) : (level < BLM.Levels.Fire4 ? BLM.Fire : BLM.Fire4);
             }
 
             return actionID;
@@ -215,7 +215,9 @@ namespace XIVComboExpandedestPlugin.Combos
         {
             if (actionID == BLM.Blizzard)
             {
-                if (level >= BLM.Levels.Blizzard3 && OriginalHook(BLM.Blizzard) == BLM.Blizzard)
+                if (OriginalHook(BLM.Blizzard) != BLM.Blizzard && (GetJobGauge<BLMGauge>().InUmbralIce || LocalPlayer?.CurrentMp >= 1600))
+                    return OriginalHook(BLM.Blizzard);
+                if (level >= BLM.Levels.Blizzard3)
                     return BLM.Blizzard3;
                 return OriginalHook(BLM.Blizzard);
             }
