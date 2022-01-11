@@ -537,10 +537,16 @@ namespace XIVComboExpandedestPlugin
         PaladinGoringBladeCombo = 1901,
 
         [OrderedEnum]
+        [ConflictingCombos(PaladinAtonementFeature)]
+        [CustomComboInfo("Goring Blade Atonement Feature", "Replace Goring Blade with Atonement when under the effect of Sword Oath.\nThis conflicts with Atonement Feature because you always want to start a way to start your combo (dropping Sword Oath is very commonly necessary).", PLD.JobID, PLD.GoringBlade)]
+        PaladinGoringBladeAtonementFeature = 1909,
+
+        [OrderedEnum]
         [CustomComboInfo("Royal Authority Combo", "Replace Royal Authority/Rage of Halone with its combo chain.", PLD.JobID, PLD.RoyalAuthority, PLD.RageOfHalone)]
         PaladinRoyalAuthorityCombo = 1902,
 
         [OrderedEnum]
+        [ConflictingCombos(PaladinGoringBladeAtonementFeature)]
         [CustomComboInfo("Atonement Feature", "Replace Royal Authority with Atonement when under the effect of Sword Oath.", PLD.JobID, PLD.RoyalAuthority)]
         PaladinAtonementFeature = 1903,
 
@@ -562,6 +568,11 @@ namespace XIVComboExpandedestPlugin
         [SecretCustomCombo]
         [CustomComboInfo("Confiteor Feature", "Replace Holy Spirit/Circle with Confiteor when Requiescat has one stack left. Includes Confiteor combo.", PLD.JobID, PLD.HolySpirit, PLD.HolyCircle)]
         PaladinConfiteorFeature = 1906,
+
+        [OrderedEnum]
+        [SecretCustomCombo]
+        [CustomComboInfo("Scornful Spirits Feature", "Replace Spirits Within and Circle of Scorn with whichever is available soonest.", PLD.JobID, PLD.SpiritsWithin, PLD.Expiacion, PLD.CircleOfScorn)]
+        PaladinScornfulSpiritsFeature = 1908,
 
         #endregion
         // ====================================================================================
