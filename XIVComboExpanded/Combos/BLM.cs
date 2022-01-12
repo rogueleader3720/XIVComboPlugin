@@ -148,7 +148,7 @@ namespace XIVComboExpandedestPlugin.Combos
                 if (TargetHasEffect(BLM.Debuffs.Thunder3) && IsEnabled(CustomComboPreset.BlackFlareDespairFeature) && level >= BLM.Levels.Despair)
                     return BLM.Despair;
 
-                if (level >= BLM.Levels.Flare && ((gauge.UmbralHearts <= 1 && level >= BLM.Levels.Blizzard4) || LocalPlayer.CurrentMp < 3800 || HasEffect(BLM.Buffs.EnhancedFlare)) && gauge.InAstralFire)
+                if (level >= BLM.Levels.Flare && (gauge.UmbralHearts == 1 || LocalPlayer.CurrentMp < 3800 || HasEffect(BLM.Buffs.EnhancedFlare)) && gauge.InAstralFire)
                     return BLM.Flare;
             }
 
@@ -251,7 +251,7 @@ namespace XIVComboExpandedestPlugin.Combos
         protected override uint Invoke(uint actionID, uint lastComboMove, float comboTime, byte level)
         {
             var gauge = GetJobGauge<BLMGauge>();
-            return ((IsActionOffCooldown(BLM.Amplifier) && GetCooldown(BLM.Fire).CooldownRemaining > 0.5 && gauge.PolyglotStacks == 1) || LocalPlayer?.TargetObject is null || gauge.PolyglotStacks == 0) && level >= BLM.Levels.Amplifier ? BLM.Amplifier : actionID;
+            return ((IsActionOffCooldown(BLM.Amplifier) && GetCooldown(BLM.Fire).CooldownRemaining > 0.5 && gauge.PolyglotStacks == 1) || CurrentTarget is null || gauge.PolyglotStacks == 0) && level >= BLM.Levels.Amplifier ? BLM.Amplifier : actionID;
         }
     }
 
@@ -261,7 +261,7 @@ namespace XIVComboExpandedestPlugin.Combos
 
         protected override uint Invoke(uint actionID, uint lastComboMove, float comboTime, byte level)
         {
-            return ((GetCooldown(BLM.Sharpcast).CooldownRemaining <= 30 && GetCooldown(BLM.Fire).CooldownRemaining > 0.5 && !HasEffect(BLM.Buffs.Sharpcast)) || LocalPlayer?.TargetObject is null) && level >= BLM.Levels.Sharpcast ? BLM.Sharpcast : actionID;
+            return ((GetCooldown(BLM.Sharpcast).CooldownRemaining <= 30 && GetCooldown(BLM.Fire).CooldownRemaining > 0.5 && !HasEffect(BLM.Buffs.Sharpcast)) || CurrentTarget is null) && level >= BLM.Levels.Sharpcast ? BLM.Sharpcast : actionID;
         }
     }
 
@@ -274,7 +274,7 @@ namespace XIVComboExpandedestPlugin.Combos
             if (actionID == BLM.Scathe && level >= BLM.Levels.Xenoglossy)
             {
                 var gauge = GetJobGauge<BLMGauge>();
-                if (((IsActionOffCooldown(BLM.Amplifier) && GetCooldown(BLM.Fire).CooldownRemaining > 0.5 && gauge.PolyglotStacks < 2) || LocalPlayer?.TargetObject is null) && level >= BLM.Levels.Amplifier && IsEnabled(CustomComboPreset.BlackXenoAmpFeature))
+                if (((IsActionOffCooldown(BLM.Amplifier) && GetCooldown(BLM.Fire).CooldownRemaining > 0.5 && gauge.PolyglotStacks < 2) || CurrentTarget is null) && level >= BLM.Levels.Amplifier && IsEnabled(CustomComboPreset.BlackXenoAmpFeature))
                     return BLM.Amplifier;
                 return gauge.PolyglotStacks > 0 ? BLM.Xenoglossy : BLM.Scathe;
             }
