@@ -143,12 +143,13 @@ namespace XIVComboExpandedestPlugin.Combos
             {
                 var gauge = GetJobGauge<BLMGauge>();
 
-                if (LocalPlayer is null) return actionID;
+                if (IsEnabled(CustomComboPreset.BlackFireBlizzard2Option) && gauge.AstralFireStacks < 3)
+                    return actionID;
 
                 if (TargetHasEffect(BLM.Debuffs.Thunder3) && IsEnabled(CustomComboPreset.BlackFlareDespairFeature) && level >= BLM.Levels.Despair)
                     return BLM.Despair;
 
-                if (level >= BLM.Levels.Flare && (gauge.UmbralHearts == 1 || LocalPlayer.CurrentMp < 3800 || HasEffect(BLM.Buffs.EnhancedFlare)) && gauge.InAstralFire)
+                if (level >= BLM.Levels.Flare && (gauge.UmbralHearts == 1 || LocalPlayer?.CurrentMp < 3800 || HasEffect(BLM.Buffs.EnhancedFlare)) && gauge.InAstralFire)
                     return BLM.Flare;
             }
 
@@ -165,6 +166,9 @@ namespace XIVComboExpandedestPlugin.Combos
             if (actionID == BLM.Blizzard2 || actionID == BLM.HighBlizzard2)
             {
                 var gauge = GetJobGauge<BLMGauge>();
+
+                if (IsEnabled(CustomComboPreset.BlackFireBlizzard2Option) && gauge.UmbralIceStacks < 3)
+                    return actionID;
 
                 if (level >= BLM.Levels.Freeze && gauge.InUmbralIce)
                     return BLM.Freeze;
@@ -235,6 +239,8 @@ namespace XIVComboExpandedestPlugin.Combos
             if (actionID == BLM.Fire)
             {
                 var gauge = GetJobGauge<BLMGauge>();
+                if (IsEnabled(CustomComboPreset.BlackFireOption) && gauge.AstralFireStacks < 3 && level >= BLM.Levels.Fire3)
+                    return BLM.Fire3;
                 if (level >= BLM.Levels.Fire3 && (!gauge.InAstralFire || HasEffect(BLM.Buffs.Firestarter)) && OriginalHook(BLM.Fire) == BLM.Fire)
                     return BLM.Fire3;
                 return OriginalHook(BLM.Fire);
