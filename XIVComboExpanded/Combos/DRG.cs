@@ -142,6 +142,9 @@ namespace XIVComboExpandedestPlugin.Combos
                 if (HasEffect(DRG.Buffs.EnhancedWheelingThrust) && level >= DRG.Levels.WheelingThrust)
                     return DRG.WheelingThrust;
 
+                if (IsEnabled(CustomComboPreset.DragoonChaosThrustComboOption))
+                    return DRG.Disembowel;
+
                 return OriginalHook(DRG.TrueThrust);
             }
 

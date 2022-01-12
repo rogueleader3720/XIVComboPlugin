@@ -227,6 +227,11 @@ namespace XIVComboExpandedestPlugin
         DragoonChaosThrustCombo = 2203,
 
         [OrderedEnum]
+        [ParentCombo(DragoonChaosThrustCombo)]
+        [CustomComboInfo("Chaos Thrust Combo Disembowel Option", "Chaos Thrust's combo chain is instead replaced by Disembowel, not Full Thrust, while you have no combo ongoing.", DRG.JobID, DRG.ChaosThrust, DRG.ChaoticSpring)]
+        DragoonChaosThrustComboOption = 2209,
+
+        [OrderedEnum]
         [CustomComboInfo("Full Thrust Combo", "Replace Full Thrust with its combo chain.", DRG.JobID, DRG.FullThrust, DRG.HeavensThrust)]
         DragoonFullThrustCombo = 2204,
 
