@@ -184,11 +184,12 @@ namespace XIVComboExpandedestPlugin.Combos
 
         protected override uint Invoke(uint actionID, uint lastComboMove, float comboTime, byte level)
         {
-            if (actionID == BLM.Transpose)
+            if (actionID == (IsEnabled(CustomComboPreset.BlackManaFeatureOption) ? BLM.UmbralSoul : BLM.Transpose))
             {
                 var gauge = GetJobGauge<BLMGauge>();
                 if (gauge.InUmbralIce && gauge.IsEnochianActive && level >= BLM.Levels.UmbralSoul)
                     return BLM.UmbralSoul;
+                return BLM.Transpose;
             }
 
             return actionID;

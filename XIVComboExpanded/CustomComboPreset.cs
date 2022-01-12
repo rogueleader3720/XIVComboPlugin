@@ -86,8 +86,13 @@ namespace XIVComboExpandedestPlugin
         BlackFireBlizzard2Option = 2514,
 
         [OrderedEnum]
-        [CustomComboInfo("Umbral Soul/Transpose Switcher", "Change Transpose into Umbral Soul when Umbral Soul is usable.", BLM.JobID, BLM.Transpose)]
+        [CustomComboInfo("Umbral Soul/Transpose Switcher", "Change Transpose into Umbral Soul when Umbral Soul is usable.", BLM.JobID, BLM.Transpose, BLM.UmbralSoul)]
         BlackManaFeature = 2503,
+
+        [OrderedEnum]
+        [ParentCombo(BlackManaFeature)]
+        [CustomComboInfo("Umbral Soul/Transpose Switcher Option", "Change Umbral Soul to Transpose instead of the other way around.", BLM.JobID, BLM.UmbralSoul)]
+        BlackManaFeatureOption = 2516,
 
         [OrderedEnum]
         [CustomComboInfo("(Between the) Ley Lines", "Change Ley Lines into BTL when Ley Lines is active.", BLM.JobID, BLM.LeyLines)]
@@ -102,6 +107,7 @@ namespace XIVComboExpandedestPlugin
         BlackBlizzardFeature = 2506,
 
         [OrderedEnum]
+        [ParentCombo(BlackFireFeature)]
         [CustomComboInfo("Fire 1/3 Option", "Fire will stay Fire 3 if you're not at max AF with this option.", BLM.JobID, BLM.Fire)]
         BlackFireOption = 2515,
 
