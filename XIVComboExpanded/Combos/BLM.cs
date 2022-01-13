@@ -178,24 +178,6 @@ namespace XIVComboExpandedestPlugin.Combos
         }
     }
 
-    internal class BlackManaFeature : CustomCombo
-    {
-        protected override CustomComboPreset Preset => CustomComboPreset.BlackManaFeature;
-
-        protected override uint Invoke(uint actionID, uint lastComboMove, float comboTime, byte level)
-        {
-            if (actionID == (IsEnabled(CustomComboPreset.BlackManaFeatureOption) ? BLM.UmbralSoul : BLM.Transpose))
-            {
-                var gauge = GetJobGauge<BLMGauge>();
-                if (gauge.InUmbralIce && gauge.IsEnochianActive && level >= BLM.Levels.UmbralSoul)
-                    return BLM.UmbralSoul;
-                return BLM.Transpose;
-            }
-
-            return actionID;
-        }
-    }
-
     internal class BlackLeyLinesFeature : CustomCombo
     {
         protected override CustomComboPreset Preset => CustomComboPreset.BlackLeyLinesFeature;

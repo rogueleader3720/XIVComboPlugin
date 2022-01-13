@@ -86,15 +86,6 @@ namespace XIVComboExpandedestPlugin
         BlackFireBlizzard2Option = 2514,
 
         [OrderedEnum]
-        [CustomComboInfo("Umbral Soul/Transpose Switcher", "Change Transpose into Umbral Soul when Umbral Soul is usable.", BLM.JobID, BLM.Transpose, BLM.UmbralSoul)]
-        BlackManaFeature = 2503,
-
-        [OrderedEnum]
-        [ParentCombo(BlackManaFeature)]
-        [CustomComboInfo("Umbral Soul/Transpose Switcher Option", "Change Umbral Soul to Transpose instead of the other way around.", BLM.JobID, BLM.UmbralSoul)]
-        BlackManaFeatureOption = 2516,
-
-        [OrderedEnum]
         [CustomComboInfo("(Between the) Ley Lines", "Change Ley Lines into BTL when Ley Lines is active.", BLM.JobID, BLM.LeyLines)]
         BlackLeyLinesFeature = 2504,
 
