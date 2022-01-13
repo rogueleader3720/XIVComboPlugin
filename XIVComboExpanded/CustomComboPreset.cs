@@ -867,6 +867,10 @@ namespace XIVComboExpandedestPlugin
         SamuraiShohaGCDOption = 3421,
 
         [OrderedEnum]
+        [CustomComboInfo("Iaijutsu/Tsubame to Shoha Inbetween Option", "Makes it so Shoha doesn't appear inbetween Iaijutsu and Tsubame.", SAM.JobID, SAM.Iaijutsu, SAM.TsubameGaeshi)]
+        SamuraiShohaBetweenOption = 3422,
+
+        [OrderedEnum]
         [CustomComboInfo("Iaijutsu to Kaiten", "Replace Iaijutsu/Ogi-Namikiri with Kaiten if Kaiten is not active, you have the gauge to use it, an Iaijutsu is ready, and you have just used an action.", SAM.JobID, SAM.Iaijutsu, SAM.OgiNamikiri)]
         SamuraiKaitenFeature = 3418,
 
