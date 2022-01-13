@@ -136,8 +136,13 @@ namespace XIVComboExpandedestPlugin
         BardStraightShotUpgradeFeature = 2302,
 
         [OrderedEnum]
-        [CustomComboInfo("Iron Jaws Feature", "Iron Jaws is replaced with Caustic Bite/Stormbite if one or both are not up.\nAlternates between the two if Iron Jaws isn't available.", BRD.JobID, BRD.IronJaws)]
-        BardIronJawsFeature = 2303,
+        [CustomComboInfo("Iron Jaws Feature", "Iron Jaws is replaced with Stormbite/Windbite if it is not up, or you do not have Iron Jaws yet.", BRD.JobID, BRD.IronJaws)]
+        BardIronJawsFeature = 2311,
+
+        [OrderedEnum]
+        [SecretCustomCombo]
+        [CustomComboInfo("Iron Jaws Feature Plus", "Iron Jaws is replaced with Caustic Bite/Stormbite if one or both are not up.\nAlternates between the two if Iron Jaws isn't available.\nThis is a separate feature from Iron Jaws Feature, and will overwrite it if both are enabled.", BRD.JobID, BRD.IronJaws)]
+        BardIronJawsFeaturePlus = 2303,
 
         [OrderedEnum]
         [CustomComboInfo("Quick Nock/Ladonsbite into Apex Arrow", "Replaces Quick Nock/Ladonsbite with Apex Arrow when gauge is 80 or above.", BRD.JobID, BRD.QuickNock, BRD.Ladonsbite)]
