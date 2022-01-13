@@ -645,6 +645,11 @@ namespace XIVComboExpandedestPlugin
         ReaperGibbetGallowsOption = 3905,
 
         [OrderedEnum]
+        [ParentCombo(ReaperGibbetGallowsSoulSliceOption)]
+        [CustomComboInfo("Gibbet and Gallows Shroud Decombo", "Uncombos Void/Cross Reaping and spreads them across Soul Slice/Slice Combo.", RPR.JobID, RPR.Slice)]
+        ReaperGibbetGallowsShroudOption = 3920,
+
+        [OrderedEnum]
         [ParentCombo(ReaperScytheCombo)]
         [CustomComboInfo("Guillotine Feature", "Spinning Scythe's combo gets replaced with Guillotine while Soul Reaver or Shroud is active.", RPR.JobID, RPR.SpinningScythe)]
         ReaperGuillotineFeature = 3909,
