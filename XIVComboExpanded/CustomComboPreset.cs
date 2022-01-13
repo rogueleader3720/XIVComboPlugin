@@ -1039,15 +1039,15 @@ namespace XIVComboExpandedestPlugin
         #region WHITE MAGE
 
         [OrderedEnum]
-        [CustomComboInfo("Solace into Misery", "Replaces Afflatus Solace with Afflatus Misery when Misery is ready to be used", WHM.JobID, WHM.AfflatusSolace)]
+        [CustomComboInfo("Solace into Misery", "Replaces Afflatus Solace with Afflatus Misery when Misery is ready to be used.", WHM.JobID, WHM.AfflatusSolace)]
         WhiteMageSolaceMiseryFeature = 2401,
 
         [OrderedEnum]
-        [CustomComboInfo("Rapture into Misery", "Replaces Afflatus Rapture with Afflatus Misery when Misery is ready to be used", WHM.JobID, WHM.AfflatusRapture)]
+        [CustomComboInfo("Rapture into Misery", "Replaces Afflatus Rapture with Afflatus Misery when Misery is ready to be used and you have a target.", WHM.JobID, WHM.AfflatusRapture)]
         WhiteMageRaptureMiseryFeature = 2402,
 
         [OrderedEnum]
-        [CustomComboInfo("Holy into Misery", "Replaces Holy/Holy 3 with Afflatus Misery when Misery is ready to be used", WHM.JobID, WHM.Holy, WHM.Holyga)]
+        [CustomComboInfo("Holy into Misery", "Replaces Holy/Holy 3 with Afflatus Misery when Misery is ready to be used and you have a target.", WHM.JobID, WHM.Holy, WHM.Holyga)]
         WhiteMageHolyMiseryFeature = 2405,
 
         [OrderedEnum]
