@@ -219,7 +219,7 @@ namespace XIVComboExpandedestPlugin.Combos
 
         protected override uint Invoke(uint actionID, uint lastComboMove, float comboTime, byte level)
         {
-            return HasEffect(NIN.Buffs.Suiton) || HasEffect(NIN.Buffs.Hidden) ? NIN.TrickAttack : actionID;
+            return HasEffect(NIN.Buffs.Suiton) || HasEffect(NIN.Buffs.Hidden) || level < NIN.Levels.DreamWithinADream ? NIN.TrickAttack : actionID;
         }
     }
 
