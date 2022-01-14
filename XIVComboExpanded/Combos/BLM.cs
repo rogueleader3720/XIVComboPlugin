@@ -74,6 +74,16 @@ namespace XIVComboExpandedestPlugin.Combos
         }
     }
 
+    internal class BlackUmbralSoulFeature : CustomCombo
+    {
+        protected override CustomComboPreset Preset => CustomComboPreset.BlackUmbralSoulFeature;
+
+        protected override uint Invoke(uint actionID, uint lastComboMove, float comboTime, byte level)
+        {
+            return GetJobGauge<BLMGauge>().InUmbralIce && CurrentTarget is null && level >= BLM.Levels.UmbralSoul ? BLM.UmbralSoul : actionID;
+        }
+    }
+
     internal class BlackEnochianFeature : CustomCombo
     {
         protected override CustomComboPreset Preset => CustomComboPreset.BlackEnochianFeature;
@@ -83,6 +93,9 @@ namespace XIVComboExpandedestPlugin.Combos
             if (actionID == BLM.Fire4 || actionID == BLM.Blizzard4)
             {
                 var gauge = GetJobGauge<BLMGauge>();
+
+                if (gauge.InUmbralIce && CurrentTarget is null && level >= BLM.Levels.UmbralSoul && IsEnabled(CustomComboPreset.BlackUmbralSoulFeature))
+                    return BLM.UmbralSoul;
 
                 if (IsEnabled(CustomComboPreset.BlackEnochianDespairFeature) && gauge.InAstralFire)
                 {
@@ -122,6 +135,9 @@ namespace XIVComboExpandedestPlugin.Combos
             if (actionID == BLM.Freeze || actionID == BLM.Flare)
             {
                 var gauge = GetJobGauge<BLMGauge>();
+
+                if (gauge.InUmbralIce && CurrentTarget is null && level >= BLM.Levels.UmbralSoul && IsEnabled(CustomComboPreset.BlackUmbralSoulFeature))
+                    return BLM.UmbralSoul;
 
                 if (TargetHasEffect(BLM.Debuffs.Thunder3) && IsEnabled(CustomComboPreset.BlackFlareDespairFeature) && level >= BLM.Levels.Despair && gauge.InAstralFire)
                     return BLM.Despair;
@@ -224,7 +240,9 @@ namespace XIVComboExpandedestPlugin.Combos
                 var gauge = GetJobGauge<BLMGauge>();
                 if (IsEnabled(CustomComboPreset.BlackFireOption) && gauge.AstralFireStacks < 3 && level >= BLM.Levels.Fire3)
                     return BLM.Fire3;
-                if (level >= BLM.Levels.Fire3 && (!gauge.InAstralFire || HasEffect(BLM.Buffs.Firestarter)) && OriginalHook(BLM.Fire) == BLM.Fire)
+                if (gauge.IsParadoxActive && gauge.InUmbralIce)
+                    return OriginalHook(BLM.Fire);
+                if (level >= BLM.Levels.Fire3 && (!gauge.InAstralFire || HasEffect(BLM.Buffs.Firestarter)))
                     return BLM.Fire3;
                 return OriginalHook(BLM.Fire);
             }

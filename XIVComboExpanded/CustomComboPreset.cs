@@ -74,6 +74,10 @@ namespace XIVComboExpandedestPlugin
         BlackFreezeFlareFeature = 2502,
 
         [OrderedEnum]
+        [CustomComboInfo("Umbral Soul Feature", "When you have no target, your ice spells become Umbral Soul while in Umbral Ice.", BLM.JobID, BLM.Freeze, BLM.Blizzard4, BLM.Blizzard, BLM.Blizzard2, BLM.Blizzard3, BLM.HighBlizzard2)]
+        BlackUmbralSoulFeature = 2503,
+
+        [OrderedEnum]
         [CustomComboInfo("Fire 2 Feature", "(High) Fire 2 becomes Flare in Astral Fire if you have one Umbral Heart, or low MP, or if you have Enhanced Flare.", BLM.JobID, BLM.Fire2, BLM.HighFire2)]
         BlackFire2Feature = 2508,
 
@@ -706,6 +710,15 @@ namespace XIVComboExpandedestPlugin
         RedMageComboReminderFeature = 3515,
 
         [OrderedEnum]
+        [ParentCombo(RedMageComboReminderFeature)]
+        [CustomComboInfo("Redoublement Combo Lockout Option", "Replaces Redoublement with Flare instead of Verflare, to prevent queueing issues.", RDM.JobID, RDM.Redoublement)]
+        RedMageComboReminderOption = 3517,
+
+        [OrderedEnum]
+        [CustomComboInfo("Moulinet Lockout Feature", "Prevents you from using Moulinet below 60/60 gauge by replacing it with Physick if you have Verflare unlocked.", RDM.JobID, RDM.Moulinet)]
+        RedMageMoulinetReminderFeature = 3514,
+
+        [OrderedEnum]
         [ParentCombo(RedMageMeleeCombo)]
         [CustomComboInfo("Redoublement Combo Plus", "Replaces Redoublement/Moulinet with the combo spells after you have gained 3 mana stacks.\nVerflare will always be picked, meaning you must still manually press Verholy if appropriate.", RDM.JobID, RDM.Redoublement, RDM.Moulinet)]
         RedMageMeleeComboPlus = 3508,
@@ -757,10 +770,6 @@ namespace XIVComboExpandedestPlugin
         [SecretCustomCombo]
         [CustomComboInfo("Fleche to Contre-Sixte", "Replaces Fleche with Contre-Sixte if the former is on cooldown and the latter is not.", RDM.JobID, RDM.Fleche)]
         RedMageContreSixteFeature = 3513,
-
-        [OrderedEnum]
-        [CustomComboInfo("Moulinet Lockout Feature", "Prevents you from using Moulinet below 60/60 gauge by replacing it with Physick if you have Verflare unlocked.", RDM.JobID, RDM.Moulinet)]
-        RedMageMoulinetReminderFeature = 3514,
 
         [OrderedEnum]
         [CustomComboInfo("Red Mage Lucid Dreaming Reminder", "All your non-role action cooldowns (that don't have charges) become Lucid Dreaming if they aren't up and Lucid Dreaming is, and you have less-than-or-equal-to 9000 MP.", RDM.JobID, RDM.Embolden, RDM.Manafication, RDM.Fleche, RDM.ContreSixte)]
