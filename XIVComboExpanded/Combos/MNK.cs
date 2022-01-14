@@ -262,9 +262,7 @@ namespace XIVComboExpandedestPlugin.Combos
         {
             if (actionID == MNK.DragonKick)
             {
-                if (HasEffect(MNK.Buffs.LeadenFist) && (
-                    HasEffect(MNK.Buffs.FormlessFist) || HasEffect(MNK.Buffs.PerfectBalance) ||
-                    HasEffect(MNK.Buffs.OpoOpoForm) || HasEffect(MNK.Buffs.RaptorForm) || HasEffect(MNK.Buffs.CoerlForm)))
+                if (HasEffect(MNK.Buffs.LeadenFist))
                     return MNK.Bootshine;
 
                 if (level < MNK.Levels.DragonKick)

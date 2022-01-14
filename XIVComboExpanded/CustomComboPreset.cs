@@ -443,7 +443,7 @@ namespace XIVComboExpandedestPlugin
         // MonkAoEBalanceFeature = 2006,
 
         [OrderedEnum]
-        [CustomComboInfo("Monk Bootshine Feature", "Replaces Dragon Kick with Bootshine if both a form and Leaden Fist are up.", MNK.JobID, MNK.DragonKick)]
+        [CustomComboInfo("Monk Bootshine Feature", "Replaces Dragon Kick with Bootshine if Leaden Fist is up.", MNK.JobID, MNK.DragonKick)]
         MnkBootshineFeature = 2002,
 
         [OrderedEnum]
