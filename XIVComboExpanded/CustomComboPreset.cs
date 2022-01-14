@@ -508,6 +508,10 @@ namespace XIVComboExpandedestPlugin
         NinjaKassatsuDWaDFeature = 3015,
 
         [OrderedEnum]
+        [CustomComboInfo("Dream Within a Dream to Trick", "Replaces Dream Within a Dream with Trick Attack while Suiton or Hidden is active.", NIN.JobID, NIN.DreamWithinADream)]
+        NinjaDWaDTrickFeature = 3019,
+
+        [OrderedEnum]
         [CustomComboInfo("Ten Chi Jin to Meisui", "Replaces Ten Chi Jin (the move) with Meisui while Suiton is up.", NIN.JobID, NIN.TenChiJin)]
         NinjaTCJMeisuiFeature = 3005,
 
