@@ -194,7 +194,7 @@ namespace XIVComboExpandedestPlugin.Combos
 
         protected override uint Invoke(uint actionID, uint lastComboMove, float comboTime, byte level)
         {
-            if (level <= PLD.Levels.CircleOfScorn)
+            if (level < PLD.Levels.CircleOfScorn)
                 return PLD.SpiritsWithin;
 
             var oppositeActionID = actionID == PLD.SpiritsWithin || actionID == PLD.Expiacion ? PLD.CircleOfScorn : PLD.SpiritsWithin;
