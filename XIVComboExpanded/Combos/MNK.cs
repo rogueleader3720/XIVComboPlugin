@@ -198,14 +198,25 @@ namespace XIVComboExpandedestPlugin.Combos
             {
                 Status? pb = FindEffect(MNK.Buffs.PerfectBalance);
 
-                if (pb != null && HasEffect(MNK.Buffs.PerfectBalance))
+                var gauge = new MyMNKGauge(GetJobGauge<MNKGauge>());
+
+                if (HasEffect(MNK.Buffs.PerfectBalance))
                 {
-                    if (pb.StackCount == 3)
-                        return MNK.FourPointFury;
-                    if (pb.StackCount == 2)
-                        return MNK.Rockbreaker;
-                    if (pb.StackCount == 1)
-                        return OriginalHook(MNK.ArmOfTheDestroyer);
+                    switch (pb?.StackCount)
+                    {
+                        case 3:
+                            return MNK.FourPointFury;
+                        case 2:
+                            if (!gauge.BeastChakra.Contains(BeastChakra.RAPTOR))
+                                return MNK.FourPointFury;
+                            return MNK.Rockbreaker;
+                        case 1:
+                            if (gauge.BeastChakra.Contains(BeastChakra.OPOOPO) && !gauge.BeastChakra.Contains(BeastChakra.RAPTOR))
+                                return MNK.FourPointFury;
+                            if (!gauge.BeastChakra.Contains(BeastChakra.COEURL))
+                                return MNK.Rockbreaker;
+                            return OriginalHook(MNK.ArmOfTheDestroyer);
+                    }
                 }
 
                 if (HasEffect(MNK.Buffs.FormlessFist))
