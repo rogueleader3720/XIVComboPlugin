@@ -402,7 +402,7 @@ namespace XIVComboExpandedestPlugin
         [CustomComboInfo("Monk Combos (Experimental)", "This is a very complex, experimental combo that intends to allow Monk single-target combos with minimal 'thinking' for you, keeping it as legit as possible.\n" +
             "Normal Behavior: True Strike and Twin Snakes become Bootshine and Dragon Kick in Opo-Opo/no form, True Strike and Twin Snakes in Raptor, and Snap Punch and Demolish in Coeurl.\n" +
             "Perfect Balance Behavior: Perfect Balance becomes Dragon Kick. Form Shift becomes Bootshine (if Bootshine Feature is not enabled). The other combos become Demolish and Twin Snakes, and change to Raptor/Coeurl moves based on which you pick.\n" +
-            "Formless Fist Behavior: True Strike becomes Dragon Kick. Twin Snakes stays normal. Perfect Balance becomes Demolish (if you have a target). Form Shift becomes Bootshine (Snap Punch with Bootshine feature).", MNK.JobID, MNK.TwinSnakes, MNK.TrueStrike, MNK.PerfectBalance, MNK.FormShift)]
+            "Formless Fist Behavior: True Strike becomes Dragon Kick. Twin Snakes stays normal. Perfect Balance becomes Demolish. Form Shift becomes Bootshine (Snap Punch with Bootshine feature).", MNK.JobID, MNK.TwinSnakes, MNK.TrueStrike, MNK.PerfectBalance, MNK.FormShift)]
         MonkSTCombo = 2007,
 
         [OrderedEnum]
@@ -412,7 +412,7 @@ namespace XIVComboExpandedestPlugin
 
         [OrderedEnum]
         [ParentCombo(MonkSTCombo)]
-        [CustomComboInfo("Monk Combos Demolish Option", "Enabling this option makes it so that Perfect Balance under Formless Fist stays Perfect Balance for a short while after you use an action or you have no target.", MNK.JobID, MNK.PerfectBalance)]
+        [CustomComboInfo("Monk Combos Perfect Balance Option", "Enabling this option makes it so that Perfect Balance under Formless Fist stays Perfect Balance for a short while after you use an action or if you have no target.", MNK.JobID, MNK.PerfectBalance)]
         MonkSTComboDemolishOption = 2015,
 
         [OrderedEnum]
@@ -422,8 +422,7 @@ namespace XIVComboExpandedestPlugin
         MonkSTComboFormOption = 2008,
 
         [OrderedEnum]
-        [ParentCombo(MonkSTCombo)]
-        [CustomComboInfo("Monk Meditation Reminder", "Your single-target combo buttons become Meditate out of combat if you don't have the Fifth Chakra open.", MNK.JobID, MNK.TwinSnakes, MNK.TrueStrike, MNK.FormShift)]
+        [CustomComboInfo("Monk Meditation Reminder", "Your GCDs become Meditate out of combat if you don't have the Fifth Chakra open.", MNK.JobID, MNK.TwinSnakes, MNK.TrueStrike, MNK.FormShift, MNK.SnapPunch, MNK.Demolish, MNK.Bootshine, MNK.DragonKick, MNK.MasterfulBlitz, MNK.Rockbreaker, MNK.ArmOfTheDestroyer, MNK.ShadowOfTheDestroyer, MNK.FourPointFury, MNK.SixSidedStar)]
         MonkMeditationReminder = 2013,
 
         [OrderedEnum]

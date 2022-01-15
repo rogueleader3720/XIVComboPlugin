@@ -27,6 +27,7 @@ namespace XIVComboExpandedestPlugin.Combos
             FourPointFury = 16473,
             HowlingFist = 25763,
             Enlightenment = 16474,
+            SixSidedStar = 16476,
             MasterfulBlitz = 25764,
             ShadowOfTheDestroyer = 25767,
             RiddleOfFire = 7395,
@@ -71,6 +72,16 @@ namespace XIVComboExpandedestPlugin.Combos
         }
     }
 
+    internal class MonkMeditationReminder : CustomCombo
+    {
+        protected override CustomComboPreset Preset => CustomComboPreset.MonkMeditationReminder;
+
+        protected override uint Invoke(uint actionID, uint lastComboMove, float comboTime, byte level)
+        {
+            return OriginalHook(MNK.Meditation) == MNK.Meditation && !HasCondition(ConditionFlag.InCombat) && level >= MNK.Levels.Meditation ? MNK.Meditation : actionID;
+        }
+    }
+
     internal class MonkSTCombo : CustomCombo
     {
         protected override CustomComboPreset Preset => CustomComboPreset.MonkSTCombo;
@@ -79,9 +90,6 @@ namespace XIVComboExpandedestPlugin.Combos
         {
             if (OriginalHook(MNK.MasterfulBlitz) != MNK.MasterfulBlitz && level >= MNK.Levels.MasterfulBlitz && actionID == MNK.PerfectBalance && IsEnabled(CustomComboPreset.MonkPerfectBalanceFeature) && !HasEffect(MNK.Buffs.FormlessFist))
                 return OriginalHook(MNK.MasterfulBlitz);
-
-            if (IsEnabled(CustomComboPreset.MonkMeditationReminder) && OriginalHook(MNK.Meditation) == MNK.Meditation && !HasCondition(ConditionFlag.InCombat) && level >= MNK.Levels.Meditation)
-                return MNK.Meditation;
 
             if (!HasEffect(MNK.Buffs.PerfectBalance) && !HasEffect(MNK.Buffs.FormlessFist) && (actionID == MNK.TrueStrike || actionID == MNK.TwinSnakes))
             {
