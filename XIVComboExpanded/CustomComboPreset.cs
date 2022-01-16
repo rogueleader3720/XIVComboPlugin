@@ -596,6 +596,10 @@ namespace XIVComboExpandedestPlugin
         PaladinRequiescatCombo = 1905,
 
         [OrderedEnum]
+        [CustomComboInfo("AoE to Holy Circle", "Replace your AoE combo with Holy Circle while you have Requiescat.", PLD.JobID, PLD.TotalEclipse, PLD.Prominence)]
+        PaladinHolyCircleFeature = 1910,
+
+        [OrderedEnum]
         [SecretCustomCombo]
         [CustomComboInfo("Confiteor Feature", "Replace Holy Spirit/Circle with Confiteor when Requiescat has one stack left. Includes Confiteor combo.", PLD.JobID, PLD.HolySpirit, PLD.HolyCircle)]
         PaladinConfiteorFeature = 1906,

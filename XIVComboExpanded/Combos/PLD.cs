@@ -67,6 +67,35 @@ namespace XIVComboExpandedestPlugin.Combos
         }
     }
 
+    internal class PaladinHolyCircleFeature : CustomCombo
+    {
+        protected override CustomComboPreset Preset => CustomComboPreset.PaladinHolyCircleFeature;
+
+        protected override uint Invoke(uint actionID, uint lastComboMove, float comboTime, byte level)
+        {
+            if (IsEnabled(CustomComboPreset.PaladinConfiteorFeature))
+            {
+                if (OriginalHook(PLD.Confiteor) != PLD.Confiteor)
+                    return OriginalHook(PLD.Confiteor);
+            }
+
+            if (HasEffect(PLD.Buffs.Requiescat))
+            {
+                if (IsEnabled(CustomComboPreset.PaladinConfiteorFeature))
+                {
+                    if (FindEffect(PLD.Buffs.Requiescat)?.StackCount <= 1 && level >= PLD.Levels.Confiteor)
+                    {
+                        return OriginalHook(PLD.Confiteor);
+                    }
+                }
+
+                return PLD.HolyCircle;
+            }
+
+            return actionID;
+        }
+    }
+
     internal class PaladinGoringBladeCombo : CustomCombo
     {
         protected override CustomComboPreset Preset => CustomComboPreset.PaladinGoringBladeCombo;
