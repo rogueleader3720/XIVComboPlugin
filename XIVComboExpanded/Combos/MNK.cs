@@ -170,7 +170,7 @@ namespace XIVComboExpandedestPlugin.Combos
                     case MNK.TwinSnakes:
                         return MNK.TwinSnakes;
                     case MNK.PerfectBalance:
-                        return (LocalPlayer?.TargetObject is not null && !GCDClipCheck()) || !IsEnabled(CustomComboPreset.MonkSTComboDemolishOption) ? MNK.Demolish : actionID;
+                        return (CurrentTarget is not null && !GCDClipCheck()) || !IsEnabled(CustomComboPreset.MonkSTComboDemolishOption) ? MNK.Demolish : actionID;
                     case MNK.FormShift:
                         if (!IsEnabled(CustomComboPreset.MonkAoEComboFormOption))
                         {

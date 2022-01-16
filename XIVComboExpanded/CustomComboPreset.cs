@@ -314,8 +314,18 @@ namespace XIVComboExpandedestPlugin
 
         [OrderedEnum]
         [SecretCustomCombo]
-        [CustomComboInfo("Bow Shock / Sonic Break Feature", "Replace Bow Shock and Sonic Break with one or the other depending on which is on cooldown.\nBow Shock can only be used if the GCD has more than 0.5s left.", GNB.JobID, GNB.BowShock, GNB.SonicBreak)]
+        [CustomComboInfo("Bow Shock / Sonic Break Feature", "Replace Bow Shock and Sonic Break with one or the other depending on which is on cooldown.", GNB.JobID, GNB.BowShock, GNB.SonicBreak)]
         GunbreakerBowShockSonicBreakFeature = 3704,
+
+        [OrderedEnum]
+        [SecretCustomCombo]
+        [CustomComboInfo("No Mercy Feature Bow Shock/Sonic Break Feature", "Replace No Mercy with Bow Shock, and then Sonic Break, while No Mercy is active.", GNB.JobID, GNB.NoMercy)]
+        GunbreakerNoMercyFeature = 3708,
+
+        [OrderedEnum]
+        [SecretCustomCombo]
+        [CustomComboInfo("Bow Shock / Sonic Break Option", "Makes it so Bow Shock only appears while the GCD is rolling. This is to prevent a rare clipping issue that naturally occurs in the current GNB rotation, but is a very minor DPS loss.", GNB.JobID, GNB.NoMercy)]
+        GunbreakerBowShockSonicBreakOption = 3713,
 
         [OrderedEnum]
         [CustomComboInfo("Demon Slaughter Combo", "Replace Demon Slaughter with its combo chain.", GNB.JobID, GNB.DemonSlaughter, GNB.DemonSlice)]
@@ -334,11 +344,6 @@ namespace XIVComboExpandedestPlugin
         [OrderedEnum]
         [CustomComboInfo("Burst Strike/Fated Circle to Bloodfest Feature", "Replace Burst Strike and Fated Circle with Bloodfest if you have no powder gauge.", GNB.JobID, GNB.BurstStrike, GNB.FatedCircle)]
         GunbreakerBloodfestOvercapFeature = 3707,
-
-        [OrderedEnum]
-        [SecretCustomCombo]
-        [CustomComboInfo("No Mercy Feature", "Replace No Mercy with Bow Shock, and then Sonic Break, while No Mercy is active.\nBow Shock can only be used if the GCD has more than 0.5s left.", GNB.JobID, GNB.NoMercy)]
-        GunbreakerNoMercyFeature = 3708,
 
         [OrderedEnum]
         [CustomComboInfo("No Mercy to Double Down Feature", "Replace No Mercy with Double Down while No Mercy is active and it is off-cooldown.\nThis takes priority over Bow Shock/Sonic Break if the No Mercy feature is enabled.", GNB.JobID, GNB.NoMercy)]
