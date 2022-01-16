@@ -319,12 +319,12 @@ namespace XIVComboExpandedestPlugin
 
         [OrderedEnum]
         [SecretCustomCombo]
-        [CustomComboInfo("No Mercy Feature Bow Shock/Sonic Break Feature", "Replace No Mercy with Bow Shock, and then Sonic Break, while No Mercy is active.", GNB.JobID, GNB.NoMercy)]
+        [CustomComboInfo("No Mercy Bow Shock / Sonic Break Feature", "Replace No Mercy with Bow Shock, and then Sonic Break, while No Mercy is active.", GNB.JobID, GNB.NoMercy)]
         GunbreakerNoMercyFeature = 3708,
 
         [OrderedEnum]
         [SecretCustomCombo]
-        [CustomComboInfo("Bow Shock / Sonic Break Option", "Makes it so Bow Shock only appears while the GCD is rolling. This is to prevent a rare clipping issue that naturally occurs in the current GNB rotation, but is a very minor DPS loss.", GNB.JobID, GNB.NoMercy)]
+        [CustomComboInfo("Bow Shock / Sonic Break Option", "Makes it so Bow Shock only appears while the GCD is rolling in the above features. This is to prevent a rare clipping issue that naturally occurs in the current GNB rotation, but is a very minor DPS loss.\nRequires either Bow Shock / Sonic Break Feature", GNB.JobID, GNB.NoMercy)]
         GunbreakerBowShockSonicBreakOption = 3713,
 
         [OrderedEnum]
