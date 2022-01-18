@@ -84,7 +84,15 @@ namespace XIVComboExpandedestPlugin.Combos
 
         protected override uint Invoke(uint actionID, uint lastComboMove, float comboTime, byte level)
         {
-            return GetJobGauge<BLMGauge>().InUmbralIce && CurrentTarget is null && level >= BLM.Levels.UmbralSoul ? BLM.UmbralSoul : actionID;
+            var iceSpells = new List<uint>() { BLM.Blizzard, BLM.Blizzard2, BLM.Blizzard3, BLM.Blizzard4, BLM.HighBlizzard2, BLM.Freeze };
+
+            if (IsEnabled(CustomComboPreset.BlackEnochianFeature))
+                iceSpells.Add(BLM.Fire4);
+
+            if (IsEnabled(CustomComboPreset.BlackFreezeFlareFeature))
+                iceSpells.Add(BLM.Flare);
+
+            return GetJobGauge<BLMGauge>().InUmbralIce && CurrentTarget is null && level >= BLM.Levels.UmbralSoul && iceSpells.Contains(actionID) ? BLM.UmbralSoul : actionID;
         }
     }
 
@@ -137,9 +145,6 @@ namespace XIVComboExpandedestPlugin.Combos
             {
                 var gauge = GetJobGauge<BLMGauge>();
 
-                if (gauge.InUmbralIce && CurrentTarget is null && level >= BLM.Levels.UmbralSoul && IsEnabled(CustomComboPreset.BlackUmbralSoulFeature))
-                    return BLM.UmbralSoul;
-
                 if (IsEnabled(CustomComboPreset.BlackEnochianDespairFeature) && gauge.InAstralFire)
                 {
                     if (level >= BLM.Levels.Despair && LocalPlayer?.CurrentMp < 2400)
@@ -178,9 +183,6 @@ namespace XIVComboExpandedestPlugin.Combos
             if (actionID == BLM.Freeze || actionID == BLM.Flare)
             {
                 var gauge = GetJobGauge<BLMGauge>();
-
-                if (gauge.InUmbralIce && CurrentTarget is null && level >= BLM.Levels.UmbralSoul && IsEnabled(CustomComboPreset.BlackUmbralSoulFeature))
-                    return BLM.UmbralSoul;
 
                 if (TargetHasEffect(BLM.Debuffs.Thunder3) && IsEnabled(CustomComboPreset.BlackFlareDespairFeature) && level >= BLM.Levels.Despair && gauge.InAstralFire)
                     return BLM.Despair;
