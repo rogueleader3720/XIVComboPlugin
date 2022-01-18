@@ -1002,19 +1002,27 @@ namespace XIVComboExpandedestPlugin
         SummonerSummoningFlowFeature = 2712,
 
         [OrderedEnum]
+        [CustomComboInfo("Flowing Ruin Feature", "Change Ruin into Astral Flow when you have Favor, or have Deathflare/Rekindle available and unused.", SMN.JobID, SMN.Ruin1, SMN.Ruin2, SMN.Ruin3)]
+        SummonerFlowingRuinFeature = 2715,
+
+        [OrderedEnum]
         [CustomComboInfo("Shiny Ruin Feature", "Change Ruin into Gemburst when attuned.", SMN.JobID, SMN.Ruin1, SMN.Ruin2, SMN.Ruin3)]
         SummonerShinyRuinFeature = 2709,
 
         [OrderedEnum]
-        [CustomComboInfo("Further Ruin Feature", "Change Ruin into Ruin4 when available and appropriate.", SMN.JobID, SMN.Ruin1, SMN.Ruin2, SMN.Ruin3)]
+        [CustomComboInfo("Further Ruin Feature", "Change Ruin into Ruin 4 when available and appropriate.", SMN.JobID, SMN.Ruin1, SMN.Ruin2, SMN.Ruin3)]
         SummonerFurtherRuinFeature = 2705,
+
+        [OrderedEnum]
+        [CustomComboInfo("Flowing Outburst Feature", "Change Outburst/Tri-disaster into Astral Flow when you have Favor, or have Deathflare/Rekindle available and unused.", SMN.JobID, SMN.Outburst, SMN.TriDisaster)]
+        SummonerFlowingOutburstFeature = 2714,
 
         [OrderedEnum]
         [CustomComboInfo("Shiny Outburst Feature", "Change Outburst/Tri-disaster into Precious Brilliance when attuned.", SMN.JobID, SMN.Outburst, SMN.TriDisaster)]
         SummonerShinyOutburstFeature = 2706,
 
         [OrderedEnum]
-        [CustomComboInfo("Further Outburst Feature", "Change Outburst/Tri-disaster into Ruin4 when available and appropriate.", SMN.JobID, SMN.Outburst, SMN.TriDisaster)]
+        [CustomComboInfo("Further Outburst Feature", "Change Outburst/Tri-disaster into Ruin 4 when available and appropriate.", SMN.JobID, SMN.Outburst, SMN.TriDisaster)]
         SummonerFurtherOutburstFeature = 2707,
 
         [OrderedEnum]

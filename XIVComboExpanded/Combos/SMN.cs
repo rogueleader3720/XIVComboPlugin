@@ -1,3 +1,5 @@
+using System.Linq;
+
 using Dalamud.Game.ClientState.Conditions;
 using Dalamud.Game.ClientState.JobGauge.Enums;
 using Dalamud.Game.ClientState.JobGauge.Types;
@@ -46,7 +48,8 @@ namespace XIVComboExpandedestPlugin.Combos
             SummonTitan2 = 25839,
             SummonEmerald = 25804,
             SummonGaruda = 25807,
-            SummonGaruda2 = 25840;
+            SummonGaruda2 = 25840,
+            Rekindle = 25830;
 
         public static class Buffs
         {
@@ -236,6 +239,28 @@ namespace XIVComboExpandedestPlugin.Combos
         }
     }
 
+    internal class SummonerFlowingRuinFeature : CustomCombo
+    {
+        private static readonly uint[] UsedIDs = { SMN.Ruin1, SMN.Ruin2, SMN.Ruin3 };
+
+        protected override CustomComboPreset Preset => CustomComboPreset.SummonerFlowingRuinFeature;
+
+        protected override uint Invoke(uint actionID, uint lastComboMove, float comboTime, byte level)
+        {
+            if (UsedIDs.Contains(actionID))
+            {
+                if (OriginalHook(SMN.AstralFlow) != SMN.AstralFlow)
+                {
+                    if (OriginalHook(SMN.AstralFlow) == SMN.Deathflare || OriginalHook(SMN.AstralFlow) == SMN.Rekindle)
+                        return IsActionOffCooldown(OriginalHook(SMN.AstralFlow)) ? OriginalHook(SMN.AstralFlow) : actionID;
+                    return OriginalHook(SMN.AstralFlow);
+                }
+            }
+
+            return actionID;
+        }
+    }
+
     internal class SummonerShinyRuinFeature : CustomCombo
     {
         protected override CustomComboPreset Preset => CustomComboPreset.SummonerShinyRuinFeature;
@@ -264,6 +289,28 @@ namespace XIVComboExpandedestPlugin.Combos
             {
                 if (HasEffect(SMN.Buffs.FurtherRuin) && (OriginalHook(SMN.Ruin1) != SMN.AstralImpulse && OriginalHook(SMN.Ruin1) != SMN.FountainOfFire))
                     return SMN.Ruin4;
+            }
+
+            return actionID;
+        }
+    }
+
+    internal class SummonerFlowingOutburstFeature : CustomCombo
+    {
+        private static readonly uint[] UsedIDs = { SMN.Outburst, SMN.TriDisaster };
+
+        protected override CustomComboPreset Preset => CustomComboPreset.SummonerFlowingOutburstFeature;
+
+        protected override uint Invoke(uint actionID, uint lastComboMove, float comboTime, byte level)
+        {
+            if (UsedIDs.Contains(actionID))
+            {
+                if (OriginalHook(SMN.AstralFlow) != SMN.AstralFlow)
+                {
+                    if (OriginalHook(SMN.AstralFlow) == SMN.Deathflare || OriginalHook(SMN.AstralFlow) == SMN.Rekindle)
+                        return IsActionOffCooldown(OriginalHook(SMN.AstralFlow)) ? OriginalHook(SMN.AstralFlow) : actionID;
+                    return OriginalHook(SMN.AstralFlow);
+                }
             }
 
             return actionID;
