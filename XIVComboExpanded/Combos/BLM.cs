@@ -1,3 +1,7 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+
 using Dalamud.Game.ClientState.JobGauge.Types;
 
 namespace XIVComboExpandedestPlugin.Combos
@@ -81,6 +85,45 @@ namespace XIVComboExpandedestPlugin.Combos
         protected override uint Invoke(uint actionID, uint lastComboMove, float comboTime, byte level)
         {
             return GetJobGauge<BLMGauge>().InUmbralIce && CurrentTarget is null && level >= BLM.Levels.UmbralSoul ? BLM.UmbralSoul : actionID;
+        }
+    }
+
+    internal class BlackTransposeFeature : CustomCombo
+    {
+        protected override CustomComboPreset Preset => CustomComboPreset.BlackTransposeFeature;
+
+        protected override uint Invoke(uint actionID, uint lastComboMove, float comboTime, byte level)
+        {
+            var iceSpells = new List<uint>() { BLM.Blizzard, BLM.Blizzard2, BLM.Blizzard3, BLM.Blizzard4, BLM.HighBlizzard2, BLM.Freeze };
+            var fireSpells = new List<uint>() { BLM.Fire, BLM.Fire2, BLM.Fire3, BLM.Fire4, BLM.HighFire2, BLM.Flare, BLM.Despair };
+
+            var gauge = GetJobGauge<BLMGauge>();
+
+            if (IsEnabled(CustomComboPreset.BlackEnochianFeature))
+            {
+                iceSpells.Remove(BLM.Blizzard4);
+                fireSpells.Remove(BLM.Fire4);
+            }
+
+            if (IsEnabled(CustomComboPreset.BlackFreezeFlareFeature))
+            {
+                iceSpells.Remove(BLM.Freeze);
+                fireSpells.Remove(BLM.Flare);
+            }
+
+            if (gauge.InAstralFire && CurrentTarget is null)
+            {
+                if (iceSpells.Contains(actionID))
+                    return BLM.Transpose;
+            }
+
+            if (gauge.InUmbralIce && CurrentTarget is null)
+            {
+                if (fireSpells.Contains(actionID))
+                    return BLM.Transpose;
+            }
+
+            return actionID;
         }
     }
 
