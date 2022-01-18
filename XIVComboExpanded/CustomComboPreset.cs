@@ -78,8 +78,16 @@ namespace XIVComboExpandedestPlugin
         BlackUmbralSoulFeature = 2503,
 
         [OrderedEnum]
-        [CustomComboInfo("Transpose Feature", "When you have no target, spells of the opposite element (if you are in UI/AF) become Transpose.", BLM.JobID, BLM.Freeze, BLM.Blizzard4, BLM.Blizzard, BLM.Blizzard2, BLM.Blizzard3, BLM.HighBlizzard2, BLM.Fire4, BLM.Flare, BLM.Despair, BLM.Fire, BLM.Fire2, BLM.Fire3, BLM.HighFire2, BLM.UmbralSoul)]
+        [CustomComboInfo("Transpose Feature", "When you have no target, spells of the opposite element (if you are in UI/AF) become Transpose.", BLM.JobID, BLM.Freeze, BLM.Blizzard4, BLM.Blizzard, BLM.Blizzard2, BLM.Blizzard3, BLM.HighBlizzard2, BLM.Fire4, BLM.Flare, BLM.Despair, BLM.Fire, BLM.Fire2, BLM.Fire3, BLM.HighFire2)]
         BlackTransposeFeature = 2516,
+
+        [OrderedEnum]
+        [CustomComboInfo("Despair to Transpose", "When you are in Umbral Ice or have zero MP, Despair becomes Transpose.\nThis is primarily for use in the Paradox rotation.", BLM.JobID, BLM.Despair)]
+        BlackDespairTransposeFeature = 2517,
+
+        [OrderedEnum]
+        [CustomComboInfo("Umbral Soul to Transpose", "When you are outside of Umbral Ice, Umbral Soul becomes Transpose.", BLM.JobID, BLM.UmbralSoul)]
+        BlackUmbralSoulTransposeFeature = 2518,
 
         [OrderedEnum]
         [CustomComboInfo("Fire 2 Feature", "(High) Fire 2 becomes Flare in Astral Fire if you have one Umbral Heart, or low MP, or if you have Enhanced Flare.", BLM.JobID, BLM.Fire2, BLM.HighFire2)]

@@ -78,6 +78,38 @@ namespace XIVComboExpandedestPlugin.Combos
         }
     }
 
+    internal class BlackUmbralSoulTransposeFeature : CustomCombo
+    {
+        protected override CustomComboPreset Preset => CustomComboPreset.BlackUmbralSoulTransposeFeature;
+
+        protected override uint Invoke(uint actionID, uint lastComboMove, float comboTime, byte level)
+        {
+            if (actionID == BLM.UmbralSoul)
+            {
+                if (!GetJobGauge<BLMGauge>().InUmbralIce || level < BLM.Levels.UmbralSoul)
+                    return BLM.Transpose;
+            }
+
+            return actionID;
+        }
+    }
+
+    internal class BlackDespairTransposeFeature : CustomCombo
+    {
+        protected override CustomComboPreset Preset => CustomComboPreset.BlackDespairTransposeFeature;
+
+        protected override uint Invoke(uint actionID, uint lastComboMove, float comboTime, byte level)
+        {
+            if (actionID == BLM.Despair)
+            {
+                if (GetJobGauge<BLMGauge>().InUmbralIce || LocalPlayer?.CurrentMp == 0 || level < BLM.Levels.Despair)
+                    return BLM.Transpose;
+            }
+
+            return actionID;
+        }
+    }
+
     internal class BlackUmbralSoulFeature : CustomCombo
     {
         protected override CustomComboPreset Preset => CustomComboPreset.BlackUmbralSoulFeature;
@@ -92,7 +124,7 @@ namespace XIVComboExpandedestPlugin.Combos
             if (IsEnabled(CustomComboPreset.BlackFreezeFlareFeature))
                 iceSpells.Add(BLM.Flare);
 
-            return GetJobGauge<BLMGauge>().InUmbralIce && CurrentTarget is null && level >= BLM.Levels.UmbralSoul && iceSpells.Contains(actionID) ? BLM.UmbralSoul : actionID;
+            return GetJobGauge<BLMGauge>().InUmbralIce && CurrentTarget is null && level >= BLM.Levels.UmbralSoul && iceSpells.Contains(actionID) ? (level < BLM.Levels.UmbralSoul ? BLM.Transpose : BLM.UmbralSoul) : actionID;
         }
     }
 
@@ -102,7 +134,7 @@ namespace XIVComboExpandedestPlugin.Combos
 
         protected override uint Invoke(uint actionID, uint lastComboMove, float comboTime, byte level)
         {
-            var iceSpells = new List<uint>() { BLM.Blizzard, BLM.Blizzard2, BLM.Blizzard3, BLM.Blizzard4, BLM.HighBlizzard2, BLM.Freeze, BLM.UmbralSoul };
+            var iceSpells = new List<uint>() { BLM.Blizzard, BLM.Blizzard2, BLM.Blizzard3, BLM.Blizzard4, BLM.HighBlizzard2, BLM.Freeze };
             var fireSpells = new List<uint>() { BLM.Fire, BLM.Fire2, BLM.Fire3, BLM.Fire4, BLM.HighFire2, BLM.Flare, BLM.Despair };
 
             var gauge = GetJobGauge<BLMGauge>();
