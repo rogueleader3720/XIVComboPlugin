@@ -94,7 +94,7 @@ namespace XIVComboExpandedestPlugin.Combos
 
         protected override uint Invoke(uint actionID, uint lastComboMove, float comboTime, byte level)
         {
-            var iceSpells = new List<uint>() { BLM.Blizzard, BLM.Blizzard2, BLM.Blizzard3, BLM.Blizzard4, BLM.HighBlizzard2, BLM.Freeze };
+            var iceSpells = new List<uint>() { BLM.Blizzard, BLM.Blizzard2, BLM.Blizzard3, BLM.Blizzard4, BLM.HighBlizzard2, BLM.Freeze, BLM.UmbralSoul };
             var fireSpells = new List<uint>() { BLM.Fire, BLM.Fire2, BLM.Fire3, BLM.Fire4, BLM.HighFire2, BLM.Flare, BLM.Despair };
 
             var gauge = GetJobGauge<BLMGauge>();
@@ -261,7 +261,8 @@ namespace XIVComboExpandedestPlugin.Combos
         {
             if (actionID == BLM.Blizzard)
             {
-                if (OriginalHook(BLM.Blizzard) != BLM.Blizzard && (GetJobGauge<BLMGauge>().InUmbralIce || LocalPlayer?.CurrentMp >= 1600))
+                var gauge = GetJobGauge<BLMGauge>();
+                if (gauge.IsParadoxActive && (gauge.InUmbralIce || (LocalPlayer?.CurrentMp >= 1600 && gauge.InAstralFire)))
                     return OriginalHook(BLM.Blizzard);
                 if (level >= BLM.Levels.Blizzard3)
                     return BLM.Blizzard3;
