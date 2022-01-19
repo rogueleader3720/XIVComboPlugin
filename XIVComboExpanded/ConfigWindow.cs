@@ -168,6 +168,22 @@ namespace XIVComboExpandedestPlugin
                             ImGui.Spacing();
                         }
 
+                        if (preset == CustomComboPreset.ReaperRegressFeature && enabled)
+                        {
+                            var delay = Service.Configuration.RegressDelay;
+
+                            var inputChanged = false;
+                            inputChanged |= ImGui.InputFloat("Regress Delay", ref delay);
+
+                            if (inputChanged)
+                            {
+                                Service.Configuration.RegressDelay = delay;
+                                Service.Configuration.Save();
+                            }
+
+                            ImGui.Spacing();
+                        }
+
                         i++;
                     }
                 }

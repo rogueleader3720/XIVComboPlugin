@@ -19,7 +19,7 @@ namespace XIVComboExpandedestPlugin
         /// <summary>
         /// Gets or sets the configuration version.
         /// </summary>
-        public int Version { get; set; } = 4;
+        public int Version { get; set; } = 5;
 
         /// <summary>
         /// Gets or sets the collection of enabled combos.
@@ -49,6 +49,11 @@ namespace XIVComboExpandedestPlugin
             DNC.FanDance1,
             DNC.FanDance2,
         };
+
+        /// <summary>
+        /// Gets or sets the delay for Regress feature to activate. Default is 0.
+        /// </summary>
+        public float RegressDelay { get; set; } = 0;
 
         /// <summary>
         /// Save the configuration to disk.

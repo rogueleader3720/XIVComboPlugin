@@ -429,7 +429,7 @@ namespace XIVComboExpandedestPlugin
 
         [OrderedEnum]
         [ParentCombo(MonkSTCombo)]
-        [CustomComboInfo("Monk Combos Dragon Kick Option", "Enabling this option makes it so that True Strike in Perfect Balance is replaced with Dragon Kick.", MNK.JobID, MNK.FormShift)]
+        [CustomComboInfo("Monk Combos Dragon Kick Option", "Enabling this option makes it so that the True Strike button in Perfect Balance is replaced with Dragon Kick.", MNK.JobID, MNK.FormShift)]
         MonkSTComboDragonKickOption = 2017,
 
         [OrderedEnum]
@@ -710,7 +710,7 @@ namespace XIVComboExpandedestPlugin
         ReaperHarvestFeature = 3907,
 
         [OrderedEnum]
-        [CustomComboInfo("Regress Feature", "Both Hell's Ingress and Hell's Egress turn into Regress when Threshold is active, instead of just the opposite of the one you used.", RPR.JobID, RPR.HellsIngress, RPR.HellsEgress)]
+        [CustomComboInfo("Regress Feature", "Both Hell's Ingress and Hell's Egress turn into Regress when Threshold is active, instead of just the opposite of the one you used.\nYou can set an optional delay for this below:", RPR.JobID, RPR.HellsIngress, RPR.HellsEgress)]
         ReaperRegressFeature = 3908,
 
         [OrderedEnum]

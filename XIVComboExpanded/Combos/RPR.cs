@@ -353,6 +353,10 @@ namespace XIVComboExpandedestPlugin.Combos
         {
             if ((actionID == RPR.HellsEgress || actionID == RPR.HellsIngress) && HasEffect(RPR.Buffs.Threshold))
             {
+                var delay = Service.Configuration.RegressDelay;
+                var bufftime = FindEffect(RPR.Buffs.Threshold)?.RemainingTime;
+                if (delay > 0)
+                    return bufftime < 10 - delay ? RPR.Regress : actionID;
                 return RPR.Regress;
             }
 
