@@ -722,7 +722,7 @@ namespace XIVComboExpandedestPlugin
         ReaperGrimSwatheFeature = 3914,
 
         [OrderedEnum]
-        [CustomComboInfo("Soulsow Reminder Feature", "Slice Combo and Shadow of Death become Soulsow out of combat if you don't have it active.", RPR.JobID, RPR.Slice, RPR.InfernalSlice, RPR.ShadowOfDeath)]
+        [CustomComboInfo("Soulsow Reminder Feature", "Slice Combo, Soul Slice and Shadow of Death become Soulsow out of combat if you don't have it active.", RPR.JobID, RPR.Slice, RPR.InfernalSlice, RPR.ShadowOfDeath, RPR.WaxingSlice, RPR.SoulSlice)]
         ReaperSoulsowReminderFeature = 3915,
 
         [OrderedEnum]

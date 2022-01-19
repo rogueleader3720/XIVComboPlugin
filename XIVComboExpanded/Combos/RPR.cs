@@ -1,4 +1,6 @@
-﻿using Dalamud.Game.ClientState.Conditions;
+﻿using System.Linq;
+
+using Dalamud.Game.ClientState.Conditions;
 using Dalamud.Game.ClientState.JobGauge.Enums;
 using Dalamud.Game.ClientState.JobGauge.Types;
 
@@ -94,7 +96,7 @@ namespace XIVComboExpandedestPlugin.Combos
 
         protected override uint Invoke(uint actionID, uint lastComboMove, float comboTime, byte level)
         {
-            if (actionID == RPR.ShadowOfDeath)
+            if (this.ActionIDs.Contains(actionID))
             {
                 if (OriginalHook(RPR.Soulsow) != RPR.HarvestMoon && !HasCondition(ConditionFlag.InCombat) && level >= RPR.Levels.Soulsow)
                     return RPR.Soulsow;
@@ -112,7 +114,7 @@ namespace XIVComboExpandedestPlugin.Combos
         {
             if (actionID == RPR.ShadowOfDeath)
             {
-                if (OriginalHook(RPR.Soulsow) != RPR.HarvestMoon && LocalPlayer?.TargetObject is null && level >= RPR.Levels.Soulsow)
+                if (OriginalHook(RPR.Soulsow) != RPR.HarvestMoon && CurrentTarget is null && level >= RPR.Levels.Soulsow)
                     return RPR.Soulsow;
             }
 
