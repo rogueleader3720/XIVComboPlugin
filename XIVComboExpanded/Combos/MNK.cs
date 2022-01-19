@@ -91,7 +91,7 @@ namespace XIVComboExpandedestPlugin.Combos
             if (OriginalHook(MNK.MasterfulBlitz) != MNK.MasterfulBlitz && level >= MNK.Levels.MasterfulBlitz && actionID == MNK.PerfectBalance && IsEnabled(CustomComboPreset.MonkPerfectBalanceFeature) && !HasEffect(MNK.Buffs.FormlessFist))
                 return OriginalHook(MNK.MasterfulBlitz);
 
-            if (!HasEffect(MNK.Buffs.PerfectBalance) && !HasEffect(MNK.Buffs.FormlessFist) && (actionID == MNK.TrueStrike || actionID == MNK.TwinSnakes))
+            if (!HasEffect(MNK.Buffs.PerfectBalance) && !HasEffect(MNK.Buffs.FormlessFist) && (actionID == MNK.TrueStrike || (actionID == MNK.TwinSnakes && !IsEnabled(CustomComboPreset.MonkSTComboOption))))
             {
                 if (HasEffect(MNK.Buffs.OpoOpoForm))
                 {
@@ -129,9 +129,12 @@ namespace XIVComboExpandedestPlugin.Combos
             {
                 Status? pb = FindEffect(MNK.Buffs.PerfectBalance);
 
+                if (actionID == MNK.TwinSnakes && IsEnabled(CustomComboPreset.MonkSTComboOption))
+                    return actionID;
+
                 var gauge = new MyMNKGauge(GetJobGauge<MNKGauge>());
 
-                if (actionID == MNK.PerfectBalance)
+                if (actionID == MNK.PerfectBalance || (actionID == MNK.TrueStrike && IsEnabled(CustomComboPreset.MonkSTComboDragonKickOption)))
                 {
                     return HasEffect(MNK.Buffs.LeadenFist) && IsEnabled(CustomComboPreset.MnkBootshineFeature) ? MNK.Bootshine : MNK.DragonKick;
                 }
@@ -147,6 +150,8 @@ namespace XIVComboExpandedestPlugin.Combos
                         return actionID == MNK.TrueStrike ? MNK.Demolish : MNK.TwinSnakes;
                     case 2:
                         if (gauge.BeastChakra.Contains(BeastChakra.RAPTOR))
+                            return actionID == MNK.TrueStrike ? MNK.SnapPunch : MNK.Demolish;
+                        if (IsEnabled(CustomComboPreset.MonkSTComboDoubleSolarOption) && gauge.BeastChakra.Contains(BeastChakra.OPOOPO))
                             return actionID == MNK.TrueStrike ? MNK.SnapPunch : MNK.Demolish;
                         return actionID == MNK.TrueStrike ? MNK.TrueStrike : MNK.TwinSnakes;
                     case 1:
@@ -167,8 +172,6 @@ namespace XIVComboExpandedestPlugin.Combos
                 {
                     case MNK.TrueStrike:
                         return HasEffect(MNK.Buffs.LeadenFist) && IsEnabled(CustomComboPreset.MnkBootshineFeature) ? MNK.Bootshine : MNK.DragonKick;
-                    case MNK.TwinSnakes:
-                        return MNK.TwinSnakes;
                     case MNK.PerfectBalance:
                         return (CurrentTarget is not null && !GCDClipCheck()) || !IsEnabled(CustomComboPreset.MonkSTComboDemolishOption) ? MNK.Demolish : actionID;
                     case MNK.FormShift:

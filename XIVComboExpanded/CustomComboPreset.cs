@@ -424,6 +424,21 @@ namespace XIVComboExpandedestPlugin
 
         [OrderedEnum]
         [ParentCombo(MonkSTCombo)]
+        [CustomComboInfo("Monk Combos Twin Snakes Option", "Enabling this option makes it so that the Twin Snakes button doesn't get used for combos. This means you need Demolish on your bar.", MNK.JobID, MNK.FormShift)]
+        MonkSTComboOption = 2016,
+
+        [OrderedEnum]
+        [ParentCombo(MonkSTCombo)]
+        [CustomComboInfo("Monk Combos Dragon Kick Option", "Enabling this option makes it so that True Strike in Perfect Balance is replaced with Dragon Kick.", MNK.JobID, MNK.FormShift)]
+        MonkSTComboDragonKickOption = 2017,
+
+        [OrderedEnum]
+        [ParentCombo(MonkSTCombo)]
+        [CustomComboInfo("Monk Combos Double Solar Option", "Enabling this option makes it so that, if you use Opo-Opo first in Perfect Balance, Coeurl Form is chosen instead of Raptor Form.\nThis allows you to perform the Double Solar opener.", MNK.JobID, MNK.FormShift)]
+        MonkSTComboDoubleSolarOption = 2018,
+
+        [OrderedEnum]
+        [ParentCombo(MonkSTCombo)]
         [CustomComboInfo("Monk Combos Opo-Opo Option", "Enabling this option makes it so that Dragon Kick/Bootshine replaces your combos in Perfect Balance if you have both Raptor and Coeurl Chakra.", MNK.JobID, MNK.TwinSnakes, MNK.TrueStrike)]
         MonkSTComboOpoOpoOption = 2010,
 
