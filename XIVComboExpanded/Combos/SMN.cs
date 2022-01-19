@@ -105,10 +105,32 @@ namespace XIVComboExpandedestPlugin.Combos
             // Replace demi summons with enkindle
             if (actionID == SMN.SummonBahamut || actionID == SMN.SummonPhoenix || actionID == SMN.DreadwyrmTrance || actionID == SMN.Aethercharge)
             {
-                if (OriginalHook(SMN.Ruin1) == SMN.AstralImpulse && level >= SMN.Levels.SummonBahamut)
+                if (OriginalHook(SMN.Ruin1) == SMN.AstralImpulse && level >= SMN.Levels.SummonBahamut && IsActionOffCooldown(SMN.EnkindleBahamut))
                     return SMN.EnkindleBahamut;
-                if (OriginalHook(SMN.Ruin1) == SMN.FountainOfFire)
+                if (OriginalHook(SMN.Ruin1) == SMN.FountainOfFire && IsActionOffCooldown(SMN.EnkindlePhoenix))
                     return SMN.EnkindlePhoenix;
+            }
+
+            return actionID;
+        }
+    }
+
+    internal class SummonerDemiFlowFeature : CustomCombo
+    {
+        private static readonly uint[] UsedIDs = { SMN.SummonBahamut, SMN.SummonPhoenix, SMN.DreadwyrmTrance, SMN.Aethercharge };
+
+        protected override CustomComboPreset Preset => CustomComboPreset.SummonerDemiFlowFeature;
+
+        protected override uint Invoke(uint actionID, uint lastComboMove, float comboTime, byte level)
+        {
+            if (UsedIDs.Contains(actionID))
+            {
+                if (OriginalHook(SMN.AstralFlow) != SMN.AstralFlow)
+                {
+                    if (OriginalHook(SMN.AstralFlow) == SMN.Deathflare || OriginalHook(SMN.AstralFlow) == SMN.Rekindle)
+                        return IsActionOffCooldown(OriginalHook(SMN.AstralFlow)) ? OriginalHook(SMN.AstralFlow) : actionID;
+                    return OriginalHook(SMN.AstralFlow);
+                }
             }
 
             return actionID;
