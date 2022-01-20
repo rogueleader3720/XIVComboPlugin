@@ -89,7 +89,7 @@ namespace XIVComboExpandedestPlugin.Combos
                     }
                 }
 
-                return PLD.HolyCircle;
+                return level >= PLD.Levels.HolyCircle ? PLD.HolyCircle : actionID;
             }
 
             return actionID;
