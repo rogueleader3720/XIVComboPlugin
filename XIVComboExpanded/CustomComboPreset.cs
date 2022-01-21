@@ -94,6 +94,11 @@ namespace XIVComboExpandedestPlugin
         BlackFire2Feature = 2508,
 
         [OrderedEnum]
+        [ParentCombo(BlackFire2Feature)]
+        [CustomComboInfo("Fire 2 Triple High Fire 2 Feature", "When you have High Fire 2 unlocked, allows for a third cast of High Fire 2, assuming you start with 3 Umbral Hearts and don't have Triplecast up.\nPlease note that you should put Flare on your bar if you are using this feature; you will need to manual flare at 2 hearts at certain points where mobs are about to die in order to not lose DPS.", BLM.JobID, BLM.Fire2, BLM.HighFire2)]
+        BlackTripleHF2Option = 2519,
+
+        [OrderedEnum]
         [CustomComboInfo("Ice 2 Feature", "(High) Blizzard 2 becomes Freeze in Umbral Ice.", BLM.JobID, BLM.Blizzard2, BLM.HighBlizzard2)]
         BlackBlizzard2Feature = 2509,
 

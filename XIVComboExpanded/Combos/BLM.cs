@@ -47,6 +47,7 @@ namespace XIVComboExpandedestPlugin.Combos
                 LeyLines = 737,
                 Firestarter = 165,
                 Sharpcast = 867,
+                Triplecast = 1211,
                 EnhancedFlare = 2960;
         }
 
@@ -73,6 +74,7 @@ namespace XIVComboExpandedestPlugin.Combos
                 Despair = 72,
                 UmbralSoul = 76,
                 Xenoglossy = 80,
+                HighFire2 = 82,
                 Amplifier = 86,
                 EnhancedSharpcast = 88;
         }
@@ -241,6 +243,12 @@ namespace XIVComboExpandedestPlugin.Combos
 
                 if (TargetHasEffect(BLM.Debuffs.Thunder3) && IsEnabled(CustomComboPreset.BlackFlareDespairFeature) && level >= BLM.Levels.Despair)
                     return BLM.Despair;
+
+                if (IsEnabled(CustomComboPreset.BlackTripleHF2Option) && level >= BLM.Levels.HighFire2)
+                {
+                    if (gauge.UmbralHearts == 2 && LocalPlayer?.CurrentMp >= 3800 && !HasEffect(BLM.Buffs.Triplecast))
+                        return actionID;
+                }
 
                 if (level >= BLM.Levels.Flare && (gauge.UmbralHearts == 1 || LocalPlayer?.CurrentMp < 3800 || HasEffect(BLM.Buffs.EnhancedFlare)) && gauge.InAstralFire)
                     return BLM.Flare;
