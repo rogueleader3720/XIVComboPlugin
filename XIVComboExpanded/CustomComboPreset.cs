@@ -1002,10 +1002,12 @@ namespace XIVComboExpandedestPlugin
         SummonerDemiFlowFeature = 2716,
 
         [OrderedEnum]
+        [ConflictingCombos(SummonerOutburstOfBrillianceFeature, SummonerRuiningShineFeature)]
         [CustomComboInfo("Shiny Enkindle Feature", "When Bahamut/Phoenix are summoned, changes Gemshine and Precious Brilliance with Enkindle.", SMN.JobID, SMN.Gemshine, SMN.PreciousBrilliance)]
         SummonerShinyDemiCombo = 2708,
 
         [OrderedEnum]
+        [ConflictingCombos(SummonerOutburstOfBrillianceFeature, SummonerRuiningShineFeature)]
         [CustomComboInfo("Shiny Flow Feature", "When Bahamut/Phoenix are summoned, changes Gemshine and Precious Brilliance with Astral Flow.", SMN.JobID, SMN.Gemshine, SMN.PreciousBrilliance)]
         SummonerShinyFlowCombo = 2711,
 
@@ -1026,7 +1028,7 @@ namespace XIVComboExpandedestPlugin
         SummonerSummoningFlowFeature = 2712,
 
         [OrderedEnum]
-        [CustomComboInfo("Flowing Ruin Feature", "Change Ruin into Astral Flow when you have Favor, or have Deathflare/Rekindle available and unused.", SMN.JobID, SMN.Ruin1, SMN.Ruin2, SMN.Ruin3)]
+        [CustomComboInfo("Flowing Ruin Feature", "Change Ruin into Astral Flow when you have Favor, or have Deathflare/Rekindle available and unused.", SMN.JobID, SMN.Ruin1, SMN.Ruin2, SMN.Ruin3, SMN.Gemshine)]
         SummonerFlowingRuinFeature = 2715,
 
         [OrderedEnum]
@@ -1034,11 +1036,16 @@ namespace XIVComboExpandedestPlugin
         SummonerShinyRuinFeature = 2709,
 
         [OrderedEnum]
-        [CustomComboInfo("Further Ruin Feature", "Change Ruin into Ruin 4 when available and appropriate.", SMN.JobID, SMN.Ruin1, SMN.Ruin2, SMN.Ruin3)]
+        [CustomComboInfo("Further Ruin Feature", "Change Ruin into Ruin 4 when available and appropriate.", SMN.JobID, SMN.Ruin1, SMN.Ruin2, SMN.Ruin3, SMN.Gemshine)]
         SummonerFurtherRuinFeature = 2705,
 
         [OrderedEnum]
-        [CustomComboInfo("Flowing Outburst Feature", "Change Outburst/Tri-disaster into Astral Flow when you have Favor, or have Deathflare/Rekindle available and unused.", SMN.JobID, SMN.Outburst, SMN.TriDisaster)]
+        [ConflictingCombos(SummonerShinyDemiCombo, SummonerShinyFlowCombo)]
+        [CustomComboInfo("Ruining Shine Feature", "Change Gemshine into Ruin while not attuned.\nThis lets you keep Ruin on your bar, so you can always use it for movement.\nAll the above Ruin features apply to Gemshine while this feature is enabled, and will be disabled on Ruin.", SMN.JobID, SMN.Gemshine)]
+        SummonerRuiningShineFeature = 2717,
+
+        [OrderedEnum]
+        [CustomComboInfo("Flowing Outburst Feature", "Change Outburst/Tri-disaster into Astral Flow when you have Favor, or have Deathflare/Rekindle available and unused.", SMN.JobID, SMN.Outburst, SMN.TriDisaster, SMN.PreciousBrilliance)]
         SummonerFlowingOutburstFeature = 2714,
 
         [OrderedEnum]
@@ -1046,8 +1053,13 @@ namespace XIVComboExpandedestPlugin
         SummonerShinyOutburstFeature = 2706,
 
         [OrderedEnum]
-        [CustomComboInfo("Further Outburst Feature", "Change Outburst/Tri-disaster into Ruin 4 when available and appropriate.", SMN.JobID, SMN.Outburst, SMN.TriDisaster)]
+        [CustomComboInfo("Further Outburst Feature", "Change Outburst/Tri-disaster into Ruin 4 when available and appropriate.", SMN.JobID, SMN.Outburst, SMN.TriDisaster, SMN.PreciousBrilliance)]
         SummonerFurtherOutburstFeature = 2707,
+
+        [OrderedEnum]
+        [ConflictingCombos(SummonerShinyDemiCombo, SummonerShinyFlowCombo)]
+        [CustomComboInfo("Outburst of Brilliance Feature", "Change Precious Brilliance into Outburst while not attuned.\nThis lets you keep Outburst on your bar, so you can always use it for movement.\nAll the above Outburst features apply to Gemshine while this feature is enabled, and will be disabled on Outburst.", SMN.JobID, SMN.PreciousBrilliance)]
+        SummonerOutburstOfBrillianceFeature = 2718,
 
         [OrderedEnum]
         [CustomComboInfo("Carby Feature", "Every action that cannot be used without summoning carbuncle becomes Summon Carbuncle while a pet is not summoned.", SMN.JobID, SMN.RadiantAegis, SMN.SearingLight, SMN.Aethercharge, SMN.DreadwyrmTrance, SMN.SummonBahamut, SMN.SummonEmerald,
