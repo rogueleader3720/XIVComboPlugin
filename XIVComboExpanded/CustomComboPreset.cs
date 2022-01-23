@@ -376,6 +376,7 @@ namespace XIVComboExpandedestPlugin
         #region MACHINIST
 
         [OrderedEnum]
+        [ConflictingCombos(MachinistHypercomboOption)]
         [CustomComboInfo("(Heated) Shot Combo", "Replace either form of Clean Shot with its combo chain.", MCH.JobID, MCH.CleanShot, MCH.HeatedCleanShot)]
         MachinistMainCombo = 3101,
 
@@ -388,9 +389,14 @@ namespace XIVComboExpandedestPlugin
         MachinistOverheatFeature = 3103,
 
         [OrderedEnum]
-        [ParentCombo(MachinistMainCombo)]
-        [CustomComboInfo("Hypercharge Combo Feature", "Replace Clean Shot combo with Heat Blast while overheated.", MCH.JobID, MCH.CleanShot, MCH.HeatedCleanShot)]
+        [CustomComboInfo("Hypercharge Combo Feature", "Replace your main combo actions with Heat Blast while overheated.", MCH.JobID, MCH.SplitShot, MCH.HeatedSplitShot, MCH.SlugShot, MCH.HeatedSlugShot, MCH.CleanShot, MCH.HeatedCleanShot)]
         MachinistHypercomboFeature = 3108,
+
+        [OrderedEnum]
+        [ParentCombo(MachinistHypercomboFeature)]
+        [ConflictingCombos(MachinistMainCombo)]
+        [CustomComboInfo("Hypercharge Combo Option", "Only replace your current combo action with Heat Blast.", MCH.JobID, MCH.SplitShot, MCH.HeatedSplitShot, MCH.SlugShot, MCH.HeatedSlugShot, MCH.CleanShot, MCH.HeatedCleanShot)]
+        MachinistHypercomboOption = 3110,
 
         [OrderedEnum]
         [CustomComboInfo("Overdrive Feature", "Replace Rook Autoturret and Automaton Queen with Overdrive while active.", MCH.JobID, MCH.RookAutoturret, MCH.AutomatonQueen)]

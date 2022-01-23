@@ -15,7 +15,7 @@ namespace XIVComboExpandedestPlugin.Combos
             SplitShot = 2866,
             HeatedSplitShot = 7411,
             SlugShot = 2868,
-            HeatedSlugshot = 7412,
+            HeatedSlugShot = 7412,
             // Charges
             GaussRound = 2874,
             Ricochet = 2890,
@@ -70,6 +70,26 @@ namespace XIVComboExpandedestPlugin.Combos
         }
     }
 
+    internal class MachinistHypercomboFeature : CustomCombo
+    {
+        protected override CustomComboPreset Preset => CustomComboPreset.MachinistHypercomboFeature;
+
+        protected override uint Invoke(uint actionID, uint lastComboMove, float comboTime, byte level)
+        {
+            var gauge = GetJobGauge<MCHGauge>();
+            if (IsEnabled(CustomComboPreset.MachinistHypercomboOption))
+            {
+                if (gauge.IsOverheated && ((lastComboMove == MCH.SplitShot && (actionID == MCH.SlugShot || actionID == MCH.HeatedSlugShot)) ||
+                    (lastComboMove == MCH.SlugShot && (actionID == MCH.CleanShot || actionID == MCH.HeatedCleanShot)) ||
+                    (lastComboMove != MCH.SlugShot && lastComboMove != MCH.SplitShot && (actionID == MCH.SplitShot || actionID == MCH.HeatedSplitShot))))
+                    return MCH.HeatBlast;
+                return actionID;
+            }
+
+            return gauge.IsOverheated && level >= MCH.Levels.HeatBlast ? MCH.HeatBlast : actionID;
+        }
+    }
+
     internal class MachinistMainCombo : CustomCombo
     {
         protected override CustomComboPreset Preset => CustomComboPreset.MachinistMainCombo;
@@ -78,9 +98,6 @@ namespace XIVComboExpandedestPlugin.Combos
         {
             if (actionID == MCH.CleanShot || actionID == MCH.HeatedCleanShot)
             {
-                var gauge = GetJobGauge<MCHGauge>();
-                if (IsEnabled(CustomComboPreset.MachinistHypercomboFeature) && gauge.IsOverheated && level >= MCH.Levels.HeatBlast)
-                    return MCH.HeatBlast;
                 if (comboTime > 0)
                 {
                     if (lastComboMove == MCH.SplitShot && level >= MCH.Levels.SlugShot)
