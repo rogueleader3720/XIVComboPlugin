@@ -638,6 +638,10 @@ namespace XIVComboExpandedestPlugin
         PaladinHolyCircleFeature = 1910,
 
         [OrderedEnum]
+        [CustomComboInfo("Shield Blash to Low Blow", "Replace Shield Bash to Low Blow when it is on cooldown.\nAlso works with Tank Interrupt feature.", PLD.JobID, PLD.ShieldBash)]
+        PaladinLowBashFeature = 1911,
+
+        [OrderedEnum]
         [SecretCustomCombo]
         [CustomComboInfo("Confiteor Feature", "Replace Holy Spirit/Circle with Confiteor when Requiescat has one stack left. Includes Confiteor combo.", PLD.JobID, PLD.HolySpirit, PLD.HolyCircle)]
         PaladinConfiteorFeature = 1906,

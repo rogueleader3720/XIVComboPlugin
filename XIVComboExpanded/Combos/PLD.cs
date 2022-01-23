@@ -57,6 +57,19 @@ namespace XIVComboExpandedestPlugin.Combos
         }
     }
 
+    internal class PaladinLowBashFeature : CustomCombo
+    {
+        protected override CustomComboPreset Preset => CustomComboPreset.PaladinLowBashFeature;
+
+        protected override uint Invoke(uint actionID, uint lastComboMove, float comboTime, byte level)
+        {
+            if (IsEnabled(CustomComboPreset.AllTankInterruptFeature) && CanInterruptEnemy() && IsActionOffCooldown(All.Interject))
+                return All.Interject;
+
+            return IsActionOffCooldown(All.LowBlow) ? All.LowBlow : actionID;
+        }
+    }
+
     internal class PaladinGoringBladeAtonementFeature : CustomCombo
     {
         protected override CustomComboPreset Preset => CustomComboPreset.PaladinGoringBladeAtonementFeature;
