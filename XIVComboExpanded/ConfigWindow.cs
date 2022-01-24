@@ -84,6 +84,9 @@ namespace XIVComboExpandedestPlugin
                         if (secret && !showSecrets)
                             continue;
 
+                        if (parent != null)
+                            ImGui.Indent();
+
                         ImGui.PushItemWidth(200);
 
                         if (ImGui.Checkbox(info.FancyName, ref enabled))
@@ -183,6 +186,9 @@ namespace XIVComboExpandedestPlugin
 
                             ImGui.Spacing();
                         }
+
+                        if (parent != null)
+                            ImGui.Unindent();
 
                         i++;
                     }
