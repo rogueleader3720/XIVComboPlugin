@@ -240,6 +240,11 @@ namespace XIVComboExpandedestPlugin
         DragoonCoerthanTormentCombo = 2202,
 
         [OrderedEnum]
+        [ParentCombo(DragoonCoerthanTormentCombo)]
+        [CustomComboInfo("Coerthan Torment Combo to Wyrmwind", "Coerthan Torment combo becomes Wyrmwind Thrust when you have two Firstminds' Focus.", DRG.JobID, DRG.CoerthanTorment)]
+        DragoonWyrmwindFeature = 2207,
+
+        [OrderedEnum]
         [CustomComboInfo("Chaos Thrust Combo", "Replace Chaos Thrust with its combo chain.", DRG.JobID, DRG.ChaosThrust, DRG.ChaoticSpring)]
         DragoonChaosThrustCombo = 2203,
 
@@ -270,11 +275,6 @@ namespace XIVComboExpandedestPlugin
         [ConflictingCombos(DragoonNastrondFeature)]
         [CustomComboInfo("Stardiver to Dragonfire Dive", "Stardiver becomes Dragonfire Dive when the latter is off-cooldown (and you have more than 7.5s of LotD left), or outside of Life of the Dragon.", DRG.JobID, DRG.Stardiver)]
         DragoonStarfireDiveFeature = 2208,
-
-        [OrderedEnum]
-        [ParentCombo(DragoonCoerthanTormentCombo)]
-        [CustomComboInfo("AoE to Wyrmwind", "Coerthan Torment combo becomes Wyrmwind Thrust when you have two Firstminds' Focus.", DRG.JobID, DRG.CoerthanTorment)]
-        DragoonWyrmwindFeature = 2207,
 
         #endregion
         // ====================================================================================
@@ -485,6 +485,11 @@ namespace XIVComboExpandedestPlugin
 
         [OrderedEnum]
         [ParentCombo(MonkAoECombo)]
+        [CustomComboInfo("AoE Meditation Feature", "Replaces AoE combo with Howling Fist/Enlightment if you have the Fifth Chakra open, have a target, and you have just used an action.", MNK.JobID, MNK.MasterfulBlitz)]
+        MonkAoEMeditationFeature = 2014,
+
+        [OrderedEnum]
+        [ParentCombo(MonkAoECombo)]
         [ConflictingCombos(MonkSTComboFormOption)]
         [CustomComboInfo("Monk AoE Combo Form Shift Option", "Enabling this option has Form Shift turn into Four-Point Fury in Formless Fist, and 1-2-3 AoE combo in Perfect Balance.\nIf using Monk Combos, you ideally should have Bootshine Feature enabled.", MNK.JobID, MNK.FormShift)]
         MonkAoEComboFormOption = 2009,
@@ -505,11 +510,6 @@ namespace XIVComboExpandedestPlugin
         [OrderedEnum]
         [CustomComboInfo("Howling Fist / Meditation Feature", "Replaces Howling Fist/Enlightenment with Meditation when the Fifth Chakra is not open.", MNK.JobID, MNK.HowlingFist, MNK.Enlightenment)]
         MonkHowlingFistMeditationFeature = 2003,
-
-        [OrderedEnum]
-        [ParentCombo(MonkAoECombo)]
-        [CustomComboInfo("AoE Meditation Feature", "Replaces AoE combo with Howling Fist/Enlightment if you have the Fifth Chakra open, have a target, and you have just used an action.", MNK.JobID, MNK.MasterfulBlitz)]
-        MonkAoEMeditationFeature = 2014,
 
         [OrderedEnum]
         [CustomComboInfo("Perfect Balance Feature", "Perfect Balance becomes Masterful Blitz while you have 3 Beast Chakra.", MNK.JobID, MNK.PerfectBalance)]
@@ -693,7 +693,6 @@ namespace XIVComboExpandedestPlugin
         ReaperStalkingSwathingFeature = 3917,
 
         [OrderedEnum]
-        [ParentCombo(ReaperSliceCombo)]
         [CustomComboInfo("Gibbets and Gallows Feature", "Slice and Shadow of Death are replaced with Gibbet and Gallows while Soul Reaver or Shroud is active.", RPR.JobID, RPR.Slice, RPR.ShadowOfDeath, RPR.SoulSlice)]
         ReaperGibbetGallowsFeature = 3904,
 
@@ -718,8 +717,7 @@ namespace XIVComboExpandedestPlugin
         ReaperGibbetGallowsShroudOption = 3920,
 
         [OrderedEnum]
-        [ParentCombo(ReaperScytheCombo)]
-        [CustomComboInfo("Guillotine Feature", "Spinning Scythe's combo gets replaced with Guillotine while Soul Reaver or Shroud is active.", RPR.JobID, RPR.SpinningScythe)]
+        [CustomComboInfo("Guillotine Feature", "Spinning Scythe gets replaced with Guillotine while Soul Reaver or Shroud is active.", RPR.JobID, RPR.SpinningScythe)]
         ReaperGuillotineFeature = 3909,
 
         [OrderedEnum]
@@ -752,8 +750,7 @@ namespace XIVComboExpandedestPlugin
         ReaperSoulsowReminderFeature = 3915,
 
         [OrderedEnum]
-        [ParentCombo(ReaperScytheCombo)]
-        [CustomComboInfo("Soulsow Feature", "Your AoE combo becomes Harvest Moon when Soulsow is active and you have a target. Shadow of Death becomes Soulsow if you have no target and Soulsow isn't active.", RPR.JobID, RPR.SpinningScythe, RPR.NightmareScythe, RPR.ShadowOfDeath)]
+        [CustomComboInfo("Soulsow Feature", "Spinning Scythe becomes Harvest Moon when Soulsow is active and you have a target. Shadow of Death becomes Soulsow if you have no target and Soulsow isn't active.", RPR.JobID, RPR.SpinningScythe, RPR.NightmareScythe, RPR.ShadowOfDeath)]
         ReaperSoulsowFeature = 3916,
 
         #endregion
@@ -763,6 +760,10 @@ namespace XIVComboExpandedestPlugin
         [OrderedEnum]
         [CustomComboInfo("Red Mage AoE Combo", "Replaces Veraero/Verthunder 2 with Impact when Dualcast or Swiftcast are active.", RDM.JobID, RDM.Veraero2, RDM.Verthunder2)]
         RedMageAoECombo = 3501,
+
+        [OrderedEnum]
+        [CustomComboInfo("Moulinet Lockout Feature", "Prevents you from using Moulinet below 60/60 gauge by replacing it with Physick if you have Verflare unlocked.", RDM.JobID, RDM.Moulinet)]
+        RedMageMoulinetReminderFeature = 3514,
 
         [OrderedEnum]
         [CustomComboInfo("Redoublement Combo", "Replaces Redoublement with its combo chain, following enchantment rules.", RDM.JobID, RDM.Redoublement, RDM.Moulinet)]
@@ -777,10 +778,6 @@ namespace XIVComboExpandedestPlugin
         [ParentCombo(RedMageComboReminderFeature)]
         [CustomComboInfo("Redoublement Combo Lockout Option", "Replaces Redoublement with Flare instead of Verflare, to prevent queueing issues.", RDM.JobID, RDM.Redoublement)]
         RedMageComboReminderOption = 3517,
-
-        [OrderedEnum]
-        [CustomComboInfo("Moulinet Lockout Feature", "Prevents you from using Moulinet below 60/60 gauge by replacing it with Physick if you have Verflare unlocked.", RDM.JobID, RDM.Moulinet)]
-        RedMageMoulinetReminderFeature = 3514,
 
         [OrderedEnum]
         [ParentCombo(RedMageMeleeCombo)]
