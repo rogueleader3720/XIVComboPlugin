@@ -427,6 +427,7 @@ namespace XIVComboExpandedestPlugin
         #region MONK
 
         [OrderedEnum]
+        [ConflictingCombos(MonkBootshineCombo, MonkDragonKickCombo)]
         [CustomComboInfo("Monk Combos (Experimental)", "This is a very complex, experimental combo that intends to allow Monk single-target combos with minimal 'thinking' for you, keeping it as legit as possible.\n" +
             "Normal Behavior: True Strike and Twin Snakes become Bootshine and Dragon Kick in Opo-Opo/no form, True Strike and Twin Snakes in Raptor, and Snap Punch and Demolish in Coeurl.\n" +
             "Perfect Balance Behavior: Perfect Balance becomes Dragon Kick. Form Shift becomes Bootshine (if Bootshine Feature is not enabled). The other combos become Demolish and Twin Snakes, and change to Raptor/Coeurl moves based on which you pick.\n" +
@@ -465,6 +466,16 @@ namespace XIVComboExpandedestPlugin
         MonkSTComboFormOption = 2008,
 
         [OrderedEnum]
+        [ConflictingCombos(MonkSTCombo)]
+        [CustomComboInfo("Monk Simple Bootshine Combo", "Replace Bootshine with Monk's Bootshine/True Strike/Snap Punch combo.", MNK.JobID, MNK.Bootshine)]
+        MonkBootshineCombo = 2019,
+
+        [OrderedEnum]
+        [ConflictingCombos(MonkSTCombo)]
+        [CustomComboInfo("Monk Simple Dragon Kick Combo", "Replace Dragon Kick with Monk's Dragon Kick/Twin Snakes/Demolish combo.\nYou will still need Twin Snakes and Demolish on your bar for Perfect Balance and Form Shift.", MNK.JobID, MNK.DragonKick)]
+        MonkDragonKickCombo = 2020,
+
+        [OrderedEnum]
         [CustomComboInfo("Monk Meditation Reminder", "Your GCDs become Meditate out of combat if you don't have the Fifth Chakra open.", MNK.JobID, MNK.TwinSnakes, MNK.TrueStrike, MNK.FormShift, MNK.SnapPunch, MNK.Demolish, MNK.Bootshine, MNK.DragonKick, MNK.MasterfulBlitz, MNK.Rockbreaker, MNK.ArmOfTheDestroyer, MNK.ShadowOfTheDestroyer, MNK.FourPointFury, MNK.SixSidedStar)]
         MonkMeditationReminder = 2013,
 
@@ -485,11 +496,11 @@ namespace XIVComboExpandedestPlugin
 
         [OrderedEnum]
         [CustomComboInfo("Monk Bootshine Feature", "Replaces Dragon Kick with Bootshine if Leaden Fist is up.", MNK.JobID, MNK.DragonKick)]
-        MnkBootshineFeature = 2002,
+        MonkBootshineFeature = 2002,
 
         [OrderedEnum]
         [CustomComboInfo("Monk Dragon Kick Balance Feature", "Replaces Dragon Kick with Masterful Blitz if you have 3 Beast Chakra.", MNK.JobID, MNK.DragonKick)]
-        MnkDragonKickBalanceFeature = 2005,
+        MonkDragonKickBalanceFeature = 2005,
 
         [OrderedEnum]
         [CustomComboInfo("Howling Fist / Meditation Feature", "Replaces Howling Fist/Enlightenment with Meditation when the Fifth Chakra is not open.", MNK.JobID, MNK.HowlingFist, MNK.Enlightenment)]
