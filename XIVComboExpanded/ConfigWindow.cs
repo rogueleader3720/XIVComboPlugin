@@ -148,11 +148,6 @@ namespace XIVComboExpandedestPlugin
                         ImGui.PopItemWidth();
 
                         var description = $"#{i}: {info.Description}";
-                        if (parent != null)
-                        {
-                            var parentInfo = parent.GetAttribute<CustomComboInfoAttribute>();
-                            description += $"\nRequires {parentInfo.FancyName}.";
-                        }
 
                         ImGui.TextColored(this.shadedColor, description);
                         ImGui.Spacing();
