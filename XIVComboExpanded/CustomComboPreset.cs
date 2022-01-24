@@ -485,14 +485,14 @@ namespace XIVComboExpandedestPlugin
 
         [OrderedEnum]
         [ParentCombo(MonkAoECombo)]
-        [CustomComboInfo("AoE Meditation Feature", "Replaces AoE combo with Howling Fist/Enlightment if you have the Fifth Chakra open, have a target, and you have just used an action.", MNK.JobID, MNK.MasterfulBlitz)]
-        MonkAoEMeditationFeature = 2014,
-
-        [OrderedEnum]
-        [ParentCombo(MonkAoECombo)]
         [ConflictingCombos(MonkSTComboFormOption)]
         [CustomComboInfo("Monk AoE Combo Form Shift Option", "Enabling this option has Form Shift turn into Four-Point Fury in Formless Fist, and 1-2-3 AoE combo in Perfect Balance.\nIf using Monk Combos, you ideally should have Bootshine Feature enabled.", MNK.JobID, MNK.FormShift)]
         MonkAoEComboFormOption = 2009,
+
+        [OrderedEnum]
+        [ParentCombo(MonkAoECombo)]
+        [CustomComboInfo("AoE Meditation Feature", "Replaces AoE combo with Howling Fist/Enlightment if you have the Fifth Chakra open, have a target, and you have just used an action.", MNK.JobID, MNK.MasterfulBlitz)]
+        MonkAoEMeditationFeature = 2014,
 
         // [OrderedEnum]
         // [ParentCombo(MonkAoECombo)]
