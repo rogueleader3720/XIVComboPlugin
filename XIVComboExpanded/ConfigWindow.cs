@@ -87,6 +87,9 @@ namespace XIVComboExpandedestPlugin
                         if (parent != null)
                             ImGui.Indent();
 
+                        if (parent?.GetAttribute<ParentComboAttribute>() != null)
+                            ImGui.Indent();
+
                         ImGui.PushItemWidth(200);
 
                         if (ImGui.Checkbox(info.FancyName, ref enabled))
@@ -188,6 +191,9 @@ namespace XIVComboExpandedestPlugin
                         }
 
                         if (parent != null)
+                            ImGui.Unindent();
+
+                        if (parent?.GetAttribute<ParentComboAttribute>() != null)
                             ImGui.Unindent();
 
                         i++;
