@@ -707,14 +707,14 @@ namespace XIVComboExpandedestPlugin
         ReaperGibbetGallowsSoulSliceOption = 3919,
 
         [OrderedEnum]
-        [ParentCombo(ReaperGibbetGallowsFeature)]
-        [CustomComboInfo("Gibbet and Gallows Enhanced Option", "Slice now turns into Gallows when Gallows is Enhanced, and removes it from Shadow of Death/Soul Slice while you have Enhanced Gibbet/Gallows.", RPR.JobID, RPR.Slice)]
-        ReaperGibbetGallowsOption = 3905,
-
-        [OrderedEnum]
         [ParentCombo(ReaperGibbetGallowsSoulSliceOption)]
         [CustomComboInfo("Gibbet and Gallows Shroud Decombo", "Uncombos Void/Cross Reaping and spreads them across Soul Slice/Slice Combo.", RPR.JobID, RPR.Slice)]
         ReaperGibbetGallowsShroudOption = 3920,
+
+        [OrderedEnum]
+        [ParentCombo(ReaperGibbetGallowsFeature)]
+        [CustomComboInfo("Gibbet and Gallows Enhanced Option", "Slice now turns into Gallows when Gallows is Enhanced, and removes it from Shadow of Death/Soul Slice while you have Enhanced Gibbet/Gallows.", RPR.JobID, RPR.Slice)]
+        ReaperGibbetGallowsOption = 3905,
 
         [OrderedEnum]
         [CustomComboInfo("Guillotine Feature", "Spinning Scythe gets replaced with Guillotine while Soul Reaver or Shroud is active.", RPR.JobID, RPR.SpinningScythe)]
