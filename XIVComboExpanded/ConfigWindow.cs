@@ -64,6 +64,13 @@ namespace XIVComboExpandedestPlugin
                 ImGui.EndTooltip();
             }
 
+            var hideChildren = Service.Configuration.HideChildren;
+            if (ImGui.Checkbox("Hide children of disabled combos and features", ref hideChildren))
+            {
+                Service.Configuration.HideChildren = hideChildren;
+                Service.Configuration.Save();
+            }
+
             ImGui.BeginChild("scrolling", new Vector2(0, -1), true);
 
             ImGui.PushStyleVar(ImGuiStyleVar.ItemSpacing, new Vector2(0, 5));
@@ -85,7 +92,15 @@ namespace XIVComboExpandedestPlugin
                             continue;
 
                         if (parent != null)
+                        {
+                            if (!Service.Configuration.EnabledActions.Contains(parent.Value))
+                            {
+                                if (Service.Configuration.EnabledActions.Contains(preset)) Service.Configuration.EnabledActions.Remove(preset);
+                                if (hideChildren) continue;
+                            }
+
                             ImGui.Indent();
+                        }
 
                         if (parent?.GetAttribute<ParentComboAttribute>() != null)
                             ImGui.Indent();
