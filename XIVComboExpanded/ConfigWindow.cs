@@ -168,11 +168,13 @@ namespace XIVComboExpandedestPlugin
                         {
                             var actions = Service.Configuration.DancerDanceCompatActionIDs.Cast<int>().ToArray();
 
+                            ImGui.Indent();
                             var inputChanged = false;
                             inputChanged |= ImGui.InputInt("Emboite (Red) ActionID", ref actions[0], 0);
                             inputChanged |= ImGui.InputInt("Entrechat (Blue) ActionID", ref actions[1], 0);
                             inputChanged |= ImGui.InputInt("Jete (Green) ActionID", ref actions[2], 0);
                             inputChanged |= ImGui.InputInt("Pirouette (Yellow) ActionID", ref actions[3], 0);
+                            ImGui.Unindent();
 
                             if (inputChanged)
                             {
@@ -188,8 +190,10 @@ namespace XIVComboExpandedestPlugin
                         {
                             var delay = Service.Configuration.RegressDelay;
 
+                            ImGui.Indent();
                             var inputChanged = false;
                             inputChanged |= ImGui.InputFloat("Regress Delay", ref delay);
+                            ImGui.Unindent();
 
                             if (inputChanged)
                             {

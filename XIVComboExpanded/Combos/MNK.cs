@@ -98,20 +98,17 @@ namespace XIVComboExpandedestPlugin.Combos
                         return OriginalHook(MNK.MasterfulBlitz);
                 }
 
-                if (HasEffect(MNK.Buffs.OpoOpoForm) || HasEffect(MNK.Buffs.FormlessFist) || HasEffect(MNK.Buffs.PerfectBalance))
-                {
-                    if (IsEnabled(CustomComboPreset.MonkBootshineFeature))
-                    {
-                        if (!HasEffect(MNK.Buffs.LeadenFist) && level >= MNK.Levels.DragonKick)
-                            return MNK.DragonKick;
-                    }
-
-                    return actionID;
-                }
-
                 if (HasEffect(MNK.Buffs.RaptorForm)) return level < MNK.Levels.TrueStrike ? MNK.Bootshine : MNK.TrueStrike;
 
                 if (HasEffect(MNK.Buffs.CoeurlForm)) return level < MNK.Levels.SnapPunch ? MNK.Bootshine : MNK.SnapPunch;
+
+                if (IsEnabled(CustomComboPreset.MonkBootshineFeature))
+                {
+                    if (!HasEffect(MNK.Buffs.LeadenFist) && level >= MNK.Levels.DragonKick)
+                        return MNK.DragonKick;
+                }
+
+                return actionID;
             }
 
             return actionID;
