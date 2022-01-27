@@ -40,8 +40,13 @@ namespace XIVComboExpandedestPlugin
         AstrologianDrawLockoutFeature = 3306,
 
         [OrderedEnum]
-        [CustomComboInfo("Minor Arcana to Crown Play", "Changes Minor Arcana to Crown Play when a card is not drawn.", AST.JobID, AST.MinorArcana)]
+        [CustomComboInfo("Minor Arcana to Crown Play", "Changes Minor Arcana to Crown Play when a card is not drawn.", AST.JobID, AST.MinorArcana, AST.CrownPlay)]
         AstrologianMinorArcanaPlayFeature = 3302,
+
+        [OrderedEnum]
+        [ParentCombo(AstrologianMinorArcanaPlayFeature)]
+        [CustomComboInfo("Crown Play to Minor Arcana", "Changes Crown Play to Minor Arcana instead of the other way around.", AST.JobID, AST.CrownPlay)]
+        AstrologianMinorArcanaPlayOption = 3307,
 
         [OrderedEnum]
         [CustomComboInfo("Benefic 2 to Benefic Level Sync", "Changes Benefic 2 to Benefic when below level 26 in synced content.", AST.JobID, AST.Benefic2)]
@@ -929,6 +934,10 @@ namespace XIVComboExpandedestPlugin
         SamuraiIaijutsuShohaFeature = 3409,
 
         [OrderedEnum]
+        [CustomComboInfo("Ogi-Namikiri to Shoha", "Replace Ogi-Namikiri with Shoha when meditation is 3 and either you have used Tsubame or it wouldn't clip the GCD..", SAM.JobID, SAM.Ikishoten, SAM.OgiNamikiri)]
+        SamuraiNamikiriShohaOption = 3423,
+
+        [OrderedEnum]
         [CustomComboInfo("Iaijutsu/Tsubame to Shoha Persistence Option", "Makes it so Shoha doesn't disappear after a short amount of time after Iaijutsu.", SAM.JobID, SAM.Iaijutsu, SAM.TsubameGaeshi)]
         SamuraiShohaGCDOption = 3421,
 
@@ -944,6 +953,10 @@ namespace XIVComboExpandedestPlugin
         [ParentCombo(SamuraiKaitenFeature)]
         [CustomComboInfo("Iaijutsu to Kaiten Persistence Option", "Makes it so Kaiten doesn't require you to have just used an action.", SAM.JobID, SAM.Iaijutsu)]
         SamuraiKaitenFeatureGCDOption = 3420,
+
+        [OrderedEnum]
+        [CustomComboInfo("Ikishoten Namikiri Feature", "Replace Ikishoten with Ogi Namikiri and then Kaeshi Namikiri when available.", SAM.JobID, SAM.Ikishoten)]
+        SamuraiIkishotenNamikiriFeature = 3411,
 
         [OrderedEnum]
         [CustomComboInfo("Shinten to Senei", "Replace Hissatsu: Shinten with Senei when its cooldown is up.", SAM.JobID, SAM.Shinten)]
@@ -964,10 +977,6 @@ namespace XIVComboExpandedestPlugin
         [OrderedEnum]
         [CustomComboInfo("Kyuten to Shoha II", "Replace Hissatsu: Kyuten with Shoha II when Meditation is full.", SAM.JobID, SAM.Kyuten)]
         SamuraiShoha2Feature = 3410,
-
-        [OrderedEnum]
-        [CustomComboInfo("Ikishoten Namikiri Feature", "Replace Ikishoten with Ogi Namikiri and then Kaeshi Namikiri when available.\nIf you have full Meditation stacks, Ikishoten becomes Shoha while you have Ogi Namikiri ready, as well as when you have Kaeshi Namikiri and just used an action.", SAM.JobID, SAM.Ikishoten)]
-        SamuraiIkishotenNamikiriFeature = 3411,
 
         #endregion
         // ====================================================================================
