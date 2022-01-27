@@ -934,8 +934,8 @@ namespace XIVComboExpandedestPlugin
         SamuraiIaijutsuShohaFeature = 3409,
 
         [OrderedEnum]
-        [CustomComboInfo("Ogi-Namikiri to Shoha", "Replace Ogi-Namikiri with Shoha when meditation is 3 and either you have used Tsubame or it wouldn't clip the GCD..", SAM.JobID, SAM.Ikishoten, SAM.OgiNamikiri)]
-        SamuraiNamikiriShohaOption = 3423,
+        [CustomComboInfo("Ogi-Namikiri to Shoha", "Replace Ogi-Namikiri with Shoha when meditation is 3 and either you have used Tsubame or it wouldn't clip the GCD.", SAM.JobID, SAM.Ikishoten, SAM.OgiNamikiri)]
+        SamuraiNamikiriShohaFeature = 3423,
 
         [OrderedEnum]
         [CustomComboInfo("Iaijutsu/Tsubame to Shoha Persistence Option", "Makes it so Shoha doesn't disappear after a short amount of time after Iaijutsu.", SAM.JobID, SAM.Iaijutsu, SAM.TsubameGaeshi)]
@@ -953,6 +953,10 @@ namespace XIVComboExpandedestPlugin
         [ParentCombo(SamuraiKaitenFeature)]
         [CustomComboInfo("Iaijutsu to Kaiten Persistence Option", "Makes it so Kaiten doesn't require you to have just used an action.", SAM.JobID, SAM.Iaijutsu)]
         SamuraiKaitenFeatureGCDOption = 3420,
+
+        [OrderedEnum]
+        [CustomComboInfo("Kaiten to Iaijutsu", "Replace Kaiten with Iaijutsu if you have less than 20 Kenki or have used Kaiten.", SAM.JobID, SAM.Kaiten)]
+        SamuraiKaitenIaijutsuFeature = 3424,
 
         [OrderedEnum]
         [CustomComboInfo("Ikishoten Namikiri Feature", "Replace Ikishoten with Ogi Namikiri and then Kaeshi Namikiri when available.", SAM.JobID, SAM.Ikishoten)]

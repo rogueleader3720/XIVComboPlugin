@@ -231,9 +231,9 @@ namespace XIVComboExpandedestPlugin.Combos
         }
     }
 
-    internal class SamuraiNamikiriShohaFeature: CustomCombo
+    internal class SamuraiNamikiriShohaFeature : CustomCombo
     {
-        protected override CustomComboPreset Preset => CustomComboPreset.SamuraiNamikiriShohaOption;
+        protected override CustomComboPreset Preset => CustomComboPreset.SamuraiNamikiriShohaFeature;
 
         protected override uint Invoke(uint actionID, uint lastComboMove, float comboTime, byte level)
         {
@@ -261,6 +261,28 @@ namespace XIVComboExpandedestPlugin.Combos
                 var gauge = GetJobGauge<SAMGauge>();
                 if (!HasEffect(SAM.Buffs.Kaiten) && gauge.Kenki >= 20 && level >= SAM.Levels.Kaiten && ((OriginalHook(SAM.Iaijutsu) != SAM.Iaijutsu && actionID == SAM.Iaijutsu) || (HasEffect(SAM.Buffs.OgiNamikiriReady) && actionID == SAM.OgiNamikiri)) && (GCDClipCheck() || LocalPlayer?.TargetObject is null || IsEnabled(CustomComboPreset.SamuraiKaitenFeatureGCDOption)))
                     return SAM.Kaiten;
+            }
+
+            return actionID;
+        }
+    }
+
+    internal class SamuraiKaitenIaijutsuFeature : CustomCombo
+    {
+        protected override CustomComboPreset Preset => CustomComboPreset.SamuraiKaitenIaijutsuFeature;
+
+        protected override uint Invoke(uint actionID, uint lastComboMove, float comboTime, byte level)
+        {
+            if (actionID == SAM.Kaiten)
+            {
+                var gauge = GetJobGauge<SAMGauge>();
+                if (OriginalHook(SAM.TsubameGaeshi) != SAM.TsubameGaeshi && IsEnabled(CustomComboPreset.SamuraiShohaBetweenOption))
+                    return IsEnabled(CustomComboPreset.SamuraiIaijutsuTsubameGaeshiFeature) ? OriginalHook(SAM.TsubameGaeshi) : actionID;
+                if (level >= SAM.Levels.Shoha && gauge.MeditationStacks >= 3 && (GCDClipCheck() || OriginalHook(SAM.TsubameGaeshi) == SAM.TsubameGaeshi || OriginalHook(SAM.TsubameGaeshi) == SAM.KaeshiHiganbana || IsEnabled(CustomComboPreset.SamuraiShohaGCDOption)))
+                    return SAM.Shoha;
+                if (!HasEffect(SAM.Buffs.Kaiten) && gauge.Kenki >= 20 && level >= SAM.Levels.Kaiten && OriginalHook(SAM.TsubameGaeshi) == SAM.TsubameGaeshi)
+                        return SAM.Kaiten;
+                return (level >= SAM.Levels.TsubameGaeshi && gauge.Sen == Sen.NONE) ? OriginalHook(SAM.TsubameGaeshi) : OriginalHook(SAM.Iaijutsu);
             }
 
             return actionID;
@@ -402,7 +424,7 @@ namespace XIVComboExpandedestPlugin.Combos
                     var gauge = GetJobGauge<SAMGauge>();
                     if (HasEffect(SAM.Buffs.OgiNamikiriReady))
                     {
-                        if (gauge.MeditationStacks >= 3 && IsEnabled(CustomComboPreset.SamuraiNamikiriShohaOption))
+                        if (gauge.MeditationStacks >= 3 && IsEnabled(CustomComboPreset.SamuraiNamikiriShohaFeature))
                             return SAM.Shoha;
                         if (!HasEffect(SAM.Buffs.Kaiten) && gauge.Kenki >= 20 && level >= SAM.Levels.Kaiten && IsEnabled(CustomComboPreset.SamuraiKaitenFeature) && (GCDClipCheck() || LocalPlayer?.TargetObject is null || IsEnabled(CustomComboPreset.SamuraiKaitenFeatureGCDOption)))
                             return SAM.Kaiten;
