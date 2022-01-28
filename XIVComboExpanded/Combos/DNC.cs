@@ -157,6 +157,22 @@ namespace XIVComboExpandedestPlugin.Combos
         }
     }
 
+    internal class DancerFlourishFanDanceFeature : CustomCombo
+    {
+        protected override CustomComboPreset Preset => CustomComboPreset.DancerFlourishFanDanceFeature;
+
+        protected override uint Invoke(uint actionID, uint lastComboMove, float comboTime, byte level)
+        {
+            if (actionID == DNC.Flourish)
+            {
+                if (level >= DNC.Levels.FanDance4 && HasEffect(DNC.Buffs.FourfoldFanDance))
+                    return DNC.FanDance4;
+            }
+
+            return actionID;
+        }
+    }
+
     internal class DancerFlourishFeature : CustomCombo
     {
         protected override CustomComboPreset Preset => CustomComboPreset.DancerFlourishFeature;

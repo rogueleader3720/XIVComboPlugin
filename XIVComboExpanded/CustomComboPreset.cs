@@ -209,6 +209,10 @@ namespace XIVComboExpandedestPlugin
         DancerFlourishFeature = 3803,
 
         [OrderedEnum]
+        [CustomComboInfo("Flourish to Fan Dance IV", "Change Flourish into Fan Dance IV when it is ready.", DNC.JobID, DNC.Flourish)]
+        DancerFlourishFanDanceFeature = 3808,
+
+        [OrderedEnum]
         [CustomComboInfo("Single Target Multibutton", "Change Cascade into procs and combos as available.", DNC.JobID, DNC.Cascade)]
         DancerSingleTargetMultibutton = 3804,
 
