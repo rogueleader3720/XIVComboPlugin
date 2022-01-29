@@ -277,12 +277,12 @@ namespace XIVComboExpandedestPlugin.Combos
             {
                 var gauge = GetJobGauge<SAMGauge>();
                 if (OriginalHook(SAM.TsubameGaeshi) != SAM.TsubameGaeshi && IsEnabled(CustomComboPreset.SamuraiShohaBetweenOption))
-                    return IsEnabled(CustomComboPreset.SamuraiIaijutsuTsubameGaeshiFeature) ? OriginalHook(SAM.TsubameGaeshi) : actionID;
+                    return IsEnabled(CustomComboPreset.SamuraiIaijutsuTsubameGaeshiFeature) && gauge.Kaeshi != Kaeshi.HIGANBANA ? OriginalHook(SAM.TsubameGaeshi) : actionID;
                 if (level >= SAM.Levels.Shoha && gauge.MeditationStacks >= 3 && (GCDClipCheck() || OriginalHook(SAM.TsubameGaeshi) == SAM.TsubameGaeshi || OriginalHook(SAM.TsubameGaeshi) == SAM.KaeshiHiganbana || IsEnabled(CustomComboPreset.SamuraiShohaGCDOption)))
                     return SAM.Shoha;
                 if (!HasEffect(SAM.Buffs.Kaiten) && gauge.Kenki >= 20 && level >= SAM.Levels.Kaiten && OriginalHook(SAM.TsubameGaeshi) == SAM.TsubameGaeshi)
                         return SAM.Kaiten;
-                return (level >= SAM.Levels.TsubameGaeshi && gauge.Sen == Sen.NONE) ? OriginalHook(SAM.TsubameGaeshi) : OriginalHook(SAM.Iaijutsu);
+                return (level >= SAM.Levels.TsubameGaeshi && gauge.Sen == Sen.NONE && gauge.Kaeshi != Kaeshi.HIGANBANA) ? OriginalHook(SAM.TsubameGaeshi) : OriginalHook(SAM.Iaijutsu);
             }
 
             return actionID;
