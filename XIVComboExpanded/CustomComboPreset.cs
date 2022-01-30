@@ -195,8 +195,13 @@ namespace XIVComboExpandedestPlugin
         #region DANCER
 
         [OrderedEnum]
-        [CustomComboInfo("Fan Dance Combos", "Change Fan Dance and Fan Dance 2 into Fan Dance 3 while flourishing.", DNC.JobID, DNC.FanDance1, DNC.FanDance2)]
+        [CustomComboInfo("Fan Dance Combos", "Change Fan Dance and Fan Dance 2 into Fan Dance 3 while under Threefold Fan Dance.", DNC.JobID, DNC.FanDance1, DNC.FanDance2)]
         DancerFanDanceCombo = 3801,
+
+        [OrderedEnum]
+        [ParentCombo(DancerFanDanceCombo)]
+        [CustomComboInfo("Fan Dance IV Combo", "Additionally change Fan Dance and Fan Dance 2 into Fan Dance 4 while under Fourfold Fan Dance.", DNC.JobID, DNC.FanDance1, DNC.FanDance2)]
+        DancerFanDance4Combo = 3809,
 
         [OrderedEnum]
         [SecretCustomCombo]

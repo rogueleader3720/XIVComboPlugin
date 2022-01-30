@@ -110,7 +110,7 @@ namespace XIVComboExpandedestPlugin.Combos
         {
             if (actionID == DNC.FanDance1 || actionID == DNC.FanDance2)
             {
-                if (level >= DNC.Levels.FanDance4 && HasEffect(DNC.Buffs.FourfoldFanDance))
+                if (level >= DNC.Levels.FanDance4 && HasEffect(DNC.Buffs.FourfoldFanDance) && IsEnabled(CustomComboPreset.DancerFanDance4Combo))
                     return DNC.FanDance4;
 
                 if (level >= DNC.Levels.FanDance3 && HasEffect(DNC.Buffs.ThreefoldFanDance))
