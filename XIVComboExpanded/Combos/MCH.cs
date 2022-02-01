@@ -68,6 +68,7 @@ namespace XIVComboExpandedestPlugin.Combos
                 ChargedActionMastery = 74,
                 AirAnchor = 76,
                 QueenOverdrive = 80,
+                EnhancedReassemble = 84,
                 Chainsaw = 90;
         }
     }
@@ -152,7 +153,8 @@ namespace XIVComboExpandedestPlugin.Combos
         {
             var currentAction = level < MCH.Levels.Chainsaw && IsEnabled(CustomComboPreset.MachinistReassembleOption) ? MCH.Drill : MCH.Chainsaw;
             var cooldownElapsed = GetCooldown(currentAction).CooldownElapsed;
-            bool delay = !IsActionOffCooldown(currentAction) && cooldownElapsed < 1;
+            // This delay makes sure you don't fatfinger Reassemble twice if you are using it after it gets charges and are smashing the button.
+            bool delay = !IsActionOffCooldown(currentAction) && cooldownElapsed < 1 && level >= MCH.Levels.EnhancedReassemble && GetCooldown(MCH.Reassemble).CooldownRemaining < 55 && !IsActionOffCooldown(MCH.Reassemble);
             return actionID == MCH.Reassemble && (HasEffect(MCH.Buffs.Reassemble) || delay) && level >= MCH.Levels.Drill ? currentAction : actionID;
         }
     }
