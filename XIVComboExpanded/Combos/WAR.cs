@@ -72,10 +72,10 @@ namespace XIVComboExpandedestPlugin.Combos
 
                 if (comboTime > 0)
                 {
-                    if (lastComboMove == WAR.HeavySwing && level >= WAR.Levels.Maim)
+                    if (lastComboMove == WAR.HeavySwing && CanUseAction(WAR.Maim))
                         return WAR.Maim;
 
-                    if (lastComboMove == WAR.Maim && level >= WAR.Levels.StormsPath)
+                    if (lastComboMove == WAR.Maim && CanUseAction(WAR.StormsPath))
                         return WAR.StormsPath;
                 }
 
@@ -208,7 +208,7 @@ namespace XIVComboExpandedestPlugin.Combos
 
         protected override uint Invoke(uint actionID, uint lastComboMove, float comboTime, byte level)
         {
-            if (HasEffect(WAR.Buffs.PrimalRendReady))
+            if (CanUseAction(WAR.PrimalRend))
                 return WAR.PrimalRend;
 
             return actionID;
