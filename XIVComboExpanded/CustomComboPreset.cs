@@ -222,12 +222,24 @@ namespace XIVComboExpandedestPlugin
         DancerFlourishFanDance3Feature = 3810,
 
         [OrderedEnum]
+        [ConflictingCombos(DancerSingleTargetProcs)]
         [CustomComboInfo("Single Target Multibutton", "Change Cascade into procs and combos as available.", DNC.JobID, DNC.Cascade)]
         DancerSingleTargetMultibutton = 3804,
 
         [OrderedEnum]
+        [ConflictingCombos(DancerSingleTargetMultibutton)]
+        [CustomComboInfo("Single Target to Procs", "Change Single-Target actions into Procs when available.", DNC.JobID, DNC.Cascade, DNC.Fountain)]
+        DancerSingleTargetProcs = 3811,
+
+        [OrderedEnum]
+        [ConflictingCombos(DancerAoeProcs)]
         [CustomComboInfo("AoE Multibutton", "Change Windmill into procs and combos as available.", DNC.JobID, DNC.Windmill)]
         DancerAoeMultibutton = 3805,
+
+        [OrderedEnum]
+        [ConflictingCombos(DancerAoeMultibutton)]
+        [CustomComboInfo("AoE to Procs", "Change AoE actions into procs when available.", DNC.JobID, DNC.Windmill, DNC.Bladeshower)]
+        DancerAoeProcs = 3812,
 
         [OrderedEnum]
         [CustomComboInfo("Devilment Feature", "Change Devilment into Starfall Dance after use.", DNC.JobID, DNC.Devilment)]
