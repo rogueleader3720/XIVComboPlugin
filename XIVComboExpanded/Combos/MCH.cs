@@ -30,6 +30,7 @@ namespace XIVComboExpandedestPlugin.Combos
             QueenOverdrive = 16502,
             // Other
             Hypercharge = 17209,
+            Reassemble = 2876,
             Wildfire = 2878,
             HeatBlast = 7410,
             HotShot = 2872,
@@ -39,7 +40,8 @@ namespace XIVComboExpandedestPlugin.Combos
 
         public static class Buffs
         {
-            public const ushort Placeholder = 0;
+            public const ushort
+                Reassemble = 851;
         }
 
         public static class Debuffs
@@ -138,7 +140,20 @@ namespace XIVComboExpandedestPlugin.Combos
 
         protected override uint Invoke(uint actionID, uint lastComboMove, float comboTime, byte level)
         {
-            return ((IsActionOffCooldown(MCH.Wildfire) && LocalPlayer?.TargetObject is not null) || (OriginalHook(MCH.Wildfire) != MCH.Wildfire && !IsActionOffCooldown(MCH.Hypercharge))) && level >= MCH.Levels.Wildfire ? OriginalHook(MCH.Wildfire) : actionID;
+            return ((IsActionOffCooldown(MCH.Wildfire) && LocalPlayer?.TargetObject is not null) || (OriginalHook(MCH.Wildfire) != MCH.Wildfire && !IsActionOffCooldown(MCH.Hypercharge))) && level >= MCH.Levels.Wildfire && actionID == MCH.Hypercharge ? OriginalHook(MCH.Wildfire) : actionID;
+        }
+    }
+
+    internal class MachinistReassembleFeature : CustomCombo
+    {
+        protected override CustomComboPreset Preset => CustomComboPreset.MachinistReassembleFeature;
+
+        protected override uint Invoke(uint actionID, uint lastComboMove, float comboTime, byte level)
+        {
+            var currentAction = level < MCH.Levels.Chainsaw && IsEnabled(CustomComboPreset.MachinistReassembleOption) ? MCH.Drill : MCH.Chainsaw;
+            var cooldownElapsed = GetCooldown(currentAction).CooldownElapsed;
+            bool delay = !IsActionOffCooldown(currentAction) && cooldownElapsed < 1;
+            return actionID == MCH.Reassemble && (HasEffect(MCH.Buffs.Reassemble) || delay) && level >= MCH.Levels.Drill ? currentAction : actionID;
         }
     }
 

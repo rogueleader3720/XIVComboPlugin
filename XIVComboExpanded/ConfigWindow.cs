@@ -49,6 +49,7 @@ namespace XIVComboExpandedestPlugin
         public override void Draw()
         {
             ImGui.Text("This window allows you to enable and disable custom combos to your liking.");
+            ImGui.Text("For features that replace buttons with cooldowns, it is recommended you either make use of a cooldown bar, or a cooldown tracking plugin like Job Bars or XIVAuras.");
 
             var showSecrets = Service.Configuration.EnableSecretCombos;
             if (ImGui.Checkbox("Daemitus's Secrets", ref showSecrets))

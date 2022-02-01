@@ -437,6 +437,15 @@ namespace XIVComboExpandedestPlugin
         MachinistHyperfireFeature = 3107,
 
         [OrderedEnum]
+        [CustomComboInfo("Reassemble to Chainsaw", "Reassemble becomes Chainsaw while Reassemble is active.", MCH.JobID, MCH.Reassemble)]
+        MachinistReassembleFeature = 3111,
+
+        [OrderedEnum]
+        [ParentCombo(MachinistReassembleFeature)]
+        [CustomComboInfo("Reassemble to Chainsaw: Drill Sync", "Chainsaw on Reassemble becomes Drill while synced, for muscle memory purposes.", MCH.JobID, MCH.Reassemble)]
+        MachinistReassembleOption = 3112,
+
+        [OrderedEnum]
         [SecretCustomCombo]
         [CustomComboInfo("Gauss Round / Ricochet Feature", "Replace Gauss Round and Ricochet with one or the other depending on which has more charges.", MCH.JobID, MCH.GaussRound, MCH.Ricochet)]
         MachinistGaussRoundRicochetFeature = 3105,
