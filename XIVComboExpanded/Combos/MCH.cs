@@ -89,7 +89,7 @@ namespace XIVComboExpandedestPlugin.Combos
                 return actionID;
             }
 
-            return gauge.IsOverheated && level >= MCH.Levels.HeatBlast ? MCH.HeatBlast : actionID;
+            return gauge.IsOverheated && CanUseAction(MCH.HeatBlast) ? MCH.HeatBlast : actionID;
         }
     }
 
@@ -103,10 +103,10 @@ namespace XIVComboExpandedestPlugin.Combos
             {
                 if (comboTime > 0)
                 {
-                    if (lastComboMove == MCH.SplitShot && level >= MCH.Levels.SlugShot)
+                    if (lastComboMove == MCH.SplitShot && CanUseAction(OriginalHook(MCH.SlugShot)))
                         return OriginalHook(MCH.SlugShot);
 
-                    if (lastComboMove == MCH.SlugShot && level >= MCH.Levels.CleanShot)
+                    if (lastComboMove == MCH.SlugShot && CanUseAction(OriginalHook(MCH.CleanShot)))
                         return OriginalHook(MCH.CleanShot);
                 }
 
@@ -125,7 +125,7 @@ namespace XIVComboExpandedestPlugin.Combos
         {
             if ((actionID == MCH.GaussRound || actionID == MCH.Ricochet) && (!IsEnabled(CustomComboPreset.MachinistGaussRoundRicochetFeatureOption) || GetJobGauge<MCHGauge>().IsOverheated))
             {
-                if (level >= MCH.Levels.Ricochet)
+                if (CanUseAction(MCH.Ricochet))
                     return CalcBestAction(actionID, MCH.GaussRound, MCH.Ricochet);
 
                 return MCH.GaussRound;
@@ -141,7 +141,7 @@ namespace XIVComboExpandedestPlugin.Combos
 
         protected override uint Invoke(uint actionID, uint lastComboMove, float comboTime, byte level)
         {
-            return ((IsActionOffCooldown(MCH.Wildfire) && LocalPlayer?.TargetObject is not null) || (OriginalHook(MCH.Wildfire) != MCH.Wildfire && !IsActionOffCooldown(MCH.Hypercharge))) && level >= MCH.Levels.Wildfire && actionID == MCH.Hypercharge ? OriginalHook(MCH.Wildfire) : actionID;
+            return ((IsActionOffCooldown(MCH.Wildfire) && LocalPlayer?.TargetObject is not null) || (OriginalHook(MCH.Wildfire) != MCH.Wildfire && !IsActionOffCooldown(MCH.Hypercharge))) && CanUseAction(MCH.Wildfire) && actionID == MCH.Hypercharge ? OriginalHook(MCH.Wildfire) : actionID;
         }
     }
 
@@ -151,11 +151,11 @@ namespace XIVComboExpandedestPlugin.Combos
 
         protected override uint Invoke(uint actionID, uint lastComboMove, float comboTime, byte level)
         {
-            var currentAction = level < MCH.Levels.Chainsaw && IsEnabled(CustomComboPreset.MachinistReassembleOption) ? MCH.Drill : MCH.Chainsaw;
+            var currentAction = !CanUseAction(MCH.Chainsaw) && IsEnabled(CustomComboPreset.MachinistReassembleOption) ? MCH.Drill : MCH.Chainsaw;
             var cooldownElapsed = GetCooldown(currentAction).CooldownElapsed;
             // This delay makes sure you don't fatfinger Reassemble twice if you are using it after it gets charges and are smashing the button.
             bool delay = !IsActionOffCooldown(currentAction) && cooldownElapsed < 1 && level >= MCH.Levels.EnhancedReassemble && GetCooldown(MCH.Reassemble).CooldownRemaining < 55 && !IsActionOffCooldown(MCH.Reassemble);
-            return actionID == MCH.Reassemble && (HasEffect(MCH.Buffs.Reassemble) || delay) && level >= MCH.Levels.Drill ? currentAction : actionID;
+            return actionID == MCH.Reassemble && (HasEffect(MCH.Buffs.Reassemble) || delay) && CanUseAction(currentAction) ? currentAction : actionID;
         }
     }
 
@@ -167,13 +167,13 @@ namespace XIVComboExpandedestPlugin.Combos
         {
             if (actionID == MCH.HeatBlast || actionID == MCH.AutoCrossbow)
             {
-                if (IsEnabled(CustomComboPreset.MachinistHyperfireFeature) && IsActionOffCooldown(MCH.Wildfire) && level >= MCH.Levels.Wildfire)
+                if (IsEnabled(CustomComboPreset.MachinistHyperfireFeature) && IsActionOffCooldown(MCH.Wildfire) && CanUseAction(MCH.Wildfire))
                     return MCH.Wildfire;
                 var gauge = GetJobGauge<MCHGauge>();
-                if (!gauge.IsOverheated && level >= MCH.Levels.Hypercharge)
+                if (!gauge.IsOverheated && CanUseAction(MCH.Hypercharge))
                     return MCH.Hypercharge;
 
-                if (level < MCH.Levels.AutoCrossbow)
+                if (!CanUseAction(MCH.AutoCrossbow))
                     return MCH.HeatBlast;
             }
 
@@ -190,7 +190,7 @@ namespace XIVComboExpandedestPlugin.Combos
             if (actionID == MCH.SpreadShot || actionID == MCH.Scattergun)
             {
                 var gauge = GetJobGauge<MCHGauge>();
-                if (gauge.IsOverheated && level >= MCH.Levels.AutoCrossbow)
+                if (gauge.IsOverheated && CanUseAction(MCH.AutoCrossbow))
                     return MCH.AutoCrossbow;
 
                 return OriginalHook(MCH.SpreadShot);
@@ -226,13 +226,13 @@ namespace XIVComboExpandedestPlugin.Combos
         {
             if (actionID == MCH.Drill || actionID == MCH.HotShot || actionID == MCH.AirAnchor)
             {
-                if (level >= MCH.Levels.Chainsaw)
+                if (CanUseAction(MCH.Chainsaw))
                     return CalcBestAction(actionID, MCH.Chainsaw, MCH.AirAnchor, MCH.Drill);
 
-                if (level >= MCH.Levels.AirAnchor)
+                if (CanUseAction(MCH.AirAnchor))
                     return CalcBestAction(actionID, MCH.AirAnchor, MCH.Drill);
 
-                if (level >= MCH.Levels.Drill)
+                if (CanUseAction(MCH.Drill))
                     return CalcBestAction(actionID, MCH.Drill, MCH.HotShot);
 
                 return MCH.HotShot;
