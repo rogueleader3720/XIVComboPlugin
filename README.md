@@ -3,6 +3,8 @@
 # XIVComboPlugin Expandedest
 This is a version of Daemitus's XIVComboExpanded with added features. The majority of these new additions are for button consolidation, and while they have logic behind them, they aren't really designed to play the game for you, and more replace options you have either already used, can't be used at that moment, have a lower priority, or would be completely detrimental to use at that moment, so that, while you still have to think about which buttons you are pressing and not just spamming a single one, you also get to have a much smaller hotbar. Quite a few of these features can be replicated by something like ReAction with ease (or even macros in some cases), but look prettier with actual icon replacement.
 
+Also, this is the first XIVCombo fork (at the time of writing) to be properly leveling compatible (IE it doesn't select actions you haven't unlocked via job quests). So, yay for that, I guess.
+
 Also, this plugin is explicitly made for more advanced users; if you want something more curated, check out the original, at https://github.com/attickdoor/XIVComboPlugin, which you can easily install in-game from the official plugin list. If you want something in the middle between that plugin and this fork, check out https://github.com/daemitus/XIVComboPlugin. The grand majority of technical work here comes from Daemitus himself, and he is the one that made most of the actual combos that aren't in the original XIVCombo fork, so please give him some love.
 
 ## Old Readme
