@@ -44,7 +44,7 @@ namespace XIVComboExpandedestPlugin.Combos
         {
             if (actionID == All.Raise || actionID == All.Resurrection || actionID == All.Ascend || actionID == All.Verraise || actionID == All.Egeiro)
             {
-                if ((IsActionOffCooldown(All.Swiftcast) && !HasEffect(RDM.Buffs.Dualcast))
+                if ((IsActionOffCooldown(All.Swiftcast) && !HasEffect(RDM.Buffs.Dualcast) && CanUseAction(All.Swiftcast))
                     || level <= All.Levels.Raise
                     || (level <= RDM.Levels.Verraise && actionID == All.Verraise))
                     return All.Swiftcast;
@@ -82,7 +82,7 @@ namespace XIVComboExpandedestPlugin.Combos
         {
             if (actionID == All.LowBlow)
             {
-                if (CanInterruptEnemy() && IsActionOffCooldown(All.Interject))
+                if (CanInterruptEnemy() && IsActionOffCooldown(All.Interject) && CanUseAction(All.Interject))
                     return All.Interject;
             }
 

@@ -105,7 +105,7 @@ namespace XIVComboExpandedestPlugin.Combos
         {
             if (actionID == WHM.Cure2)
             {
-                if (level < WHM.Levels.Cure2)
+                if (CanUseAction(WHM.Cure2))
                     return WHM.Cure;
             }
 
@@ -119,7 +119,7 @@ namespace XIVComboExpandedestPlugin.Combos
 
         protected override uint Invoke(uint actionID, uint lastComboMove, float comboTime, byte level)
         {
-            return IsActionOffCooldown(All.LucidDreaming) && HasCondition(ConditionFlag.InCombat) && !IsActionOffCooldown(actionID) && LocalPlayer?.CurrentMp <= 9000 ? All.LucidDreaming : actionID;
+            return IsActionOffCooldown(All.LucidDreaming) && HasCondition(ConditionFlag.InCombat) && !IsActionOffCooldown(actionID) && LocalPlayer?.CurrentMp <= 9000 && CanUseAction(All.LucidDreaming) ? All.LucidDreaming : actionID;
         }
     }
 

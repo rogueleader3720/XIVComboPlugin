@@ -113,7 +113,7 @@ namespace XIVComboExpandedestPlugin.Combos
         {
             if (actionID == BRD.IronJaws)
             {
-                if (level < BRD.Levels.IronJaws)
+                if (!CanUseAction(BRD.IronJaws))
                 {
                     var venomous = FindTargetEffect(BRD.Debuffs.VenomousBite);
                     var windbite = FindTargetEffect(BRD.Debuffs.Windbite);
@@ -123,7 +123,7 @@ namespace XIVComboExpandedestPlugin.Combos
                             return BRD.VenomousBite;
                         return BRD.Windbite;
                     }
-                    else if (windbite is not null || level < BRD.Levels.Windbite)
+                    else if (windbite is not null || !CanUseAction(BRD.Windbite))
                     {
                         return BRD.VenomousBite;
                     }
@@ -167,7 +167,7 @@ namespace XIVComboExpandedestPlugin.Combos
 
         protected override uint Invoke(uint actionID, uint lastComboMove, float comboTime, byte level)
         {
-            return level < BRD.Levels.IronJaws || (!TargetHasEffect(BRD.Debuffs.Stormbite) && !TargetHasEffect(BRD.Debuffs.Windbite)) ? (level < BRD.Levels.Windbite ? BRD.VenomousBite : OriginalHook(BRD.Stormbite)) : actionID;
+            return !CanUseAction(BRD.IronJaws) || (!TargetHasEffect(BRD.Debuffs.Stormbite) && !TargetHasEffect(BRD.Debuffs.Windbite)) ? (!CanUseAction(OriginalHook(BRD.Windbite)) ? BRD.VenomousBite : OriginalHook(BRD.Stormbite)) : actionID;
         }
     }
 
@@ -210,7 +210,7 @@ namespace XIVComboExpandedestPlugin.Combos
 
         protected override uint Invoke(uint actionID, uint lastComboMove, float comboTime, byte level)
         {
-            return (IsActionOffCooldown(BRD.Sidewinder) && !IsActionOffCooldown(BRD.EmpyrealArrow) && level >= BRD.Levels.Sidewinder) ? BRD.Sidewinder : BRD.EmpyrealArrow;
+            return (IsActionOffCooldown(BRD.Sidewinder) && !IsActionOffCooldown(BRD.EmpyrealArrow) && CanUseAction(BRD.Sidewinder)) ? BRD.Sidewinder : BRD.EmpyrealArrow;
         }
     }
 
@@ -220,7 +220,7 @@ namespace XIVComboExpandedestPlugin.Combos
 
         protected override uint Invoke(uint actionID, uint lastComboMove, float comboTime, byte level)
         {
-            return IsActionOffCooldown(BRD.RagingStrikes) || level < BRD.Levels.BattleVoice || (IsEnabled(CustomComboPreset.BardRadiantFeature) && !IsActionOffCooldown(BRD.BattleVoice) && level < BRD.Levels.RadiantFinale) ? BRD.RagingStrikes : actionID;
+            return IsActionOffCooldown(BRD.RagingStrikes) || !CanUseAction(BRD.BattleVoice) || (IsEnabled(CustomComboPreset.BardRadiantFeature) && !IsActionOffCooldown(BRD.BattleVoice) && level < BRD.Levels.RadiantFinale) ? BRD.RagingStrikes : actionID;
         }
     }
 
@@ -250,7 +250,7 @@ namespace XIVComboExpandedestPlugin.Combos
 
         protected override uint Invoke(uint actionID, uint lastComboMove, float comboTime, byte level)
         {
-            return !TargetHasEffect(BRD.Debuffs.CausticBite) && !TargetHasEffect(BRD.Debuffs.Stormbite) && !TargetHasEffect(BRD.Debuffs.Windbite) && !TargetHasEffect(BRD.Debuffs.VenomousBite) && level >= BRD.Levels.RainOfDeath ? BRD.RainOfDeath : BRD.Bloodletter;
+            return !TargetHasEffect(BRD.Debuffs.CausticBite) && !TargetHasEffect(BRD.Debuffs.Stormbite) && !TargetHasEffect(BRD.Debuffs.Windbite) && !TargetHasEffect(BRD.Debuffs.VenomousBite) && CanUseAction(BRD.RainOfDeath) ? BRD.RainOfDeath : BRD.Bloodletter;
         }
     }
 }

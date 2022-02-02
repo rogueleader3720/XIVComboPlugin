@@ -132,7 +132,7 @@ namespace XIVComboExpandedestPlugin.Combos
                     if (lastComboMove == PLD.FastBlade && level >= PLD.Levels.RiotBlade)
                         return PLD.RiotBlade;
 
-                    if (lastComboMove == PLD.RiotBlade && level >= PLD.Levels.GoringBlade)
+                    if (lastComboMove == PLD.RiotBlade && CanUseAction(PLD.GoringBlade))
                         return PLD.GoringBlade;
                 }
 
@@ -177,7 +177,7 @@ namespace XIVComboExpandedestPlugin.Combos
             {
                 if (comboTime > 0)
                 {
-                    if (lastComboMove == PLD.TotalEclipse && level >= PLD.Levels.Prominence)
+                    if (lastComboMove == PLD.TotalEclipse && CanUseAction(PLD.Prominence))
                         return PLD.Prominence;
                 }
 

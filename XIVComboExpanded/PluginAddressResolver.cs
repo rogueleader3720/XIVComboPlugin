@@ -3,8 +3,6 @@ using System;
 using Dalamud.Game;
 using Dalamud.Logging;
 
-using FFXIVClientStructs.FFXIV.Client.Game;
-
 namespace XIVComboExpandedestPlugin
 {
     /// <summary>
@@ -38,7 +36,7 @@ namespace XIVComboExpandedestPlugin
         public IntPtr GetActionCooldown { get; private set; }
 
         /// <inheritdoc/>
-        protected unsafe override void Setup64Bit(SigScanner scanner)
+        protected override void Setup64Bit(SigScanner scanner)
         {
             this.ComboTimer = scanner.GetStaticAddressFromSig("48 89 2D ?? ?? ?? ?? 85 C0 74 0F");
 

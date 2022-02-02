@@ -105,7 +105,7 @@ namespace XIVComboExpandedestPlugin.Combos
             // Replace demi summons with enkindle
             if (actionID == SMN.SummonBahamut || actionID == SMN.SummonPhoenix || actionID == SMN.DreadwyrmTrance || actionID == SMN.Aethercharge)
             {
-                if (OriginalHook(SMN.Ruin1) == SMN.AstralImpulse && level >= SMN.Levels.SummonBahamut && IsActionOffCooldown(SMN.EnkindleBahamut))
+                if (OriginalHook(SMN.Ruin1) == SMN.AstralImpulse && CanUseAction(SMN.EnkindleBahamut) && IsActionOffCooldown(SMN.EnkindleBahamut))
                     return SMN.EnkindleBahamut;
                 if (OriginalHook(SMN.Ruin1) == SMN.FountainOfFire && IsActionOffCooldown(SMN.EnkindlePhoenix))
                     return SMN.EnkindlePhoenix;
@@ -146,11 +146,11 @@ namespace XIVComboExpandedestPlugin.Combos
             // Replace demi summons with enkindle
             if (actionID == SMN.Gemshine || actionID == SMN.PreciousBrilliance)
             {
-                if (OriginalHook(SMN.Ruin1) == SMN.AstralImpulse && level >= SMN.Levels.SummonBahamut)
+                if (OriginalHook(SMN.Ruin1) == SMN.AstralImpulse)
                 {
-                    if (IsEnabled(CustomComboPreset.SummonerShinyFlowCombo) && !IsActionOffCooldown(SMN.EnkindleBahamut))
+                    if (IsEnabled(CustomComboPreset.SummonerShinyFlowCombo) && (!IsActionOffCooldown(SMN.EnkindleBahamut) || !CanUseAction(SMN.EnkindleBahamut)) && CanUseAction(OriginalHook(SMN.AstralFlow)))
                         return OriginalHook(SMN.AstralFlow);
-                    return SMN.EnkindleBahamut;
+                    if (CanUseAction(SMN.EnkindleBahamut)) return SMN.EnkindleBahamut;
                 }
 
                 if (OriginalHook(SMN.Ruin1) == SMN.FountainOfFire)
@@ -174,7 +174,7 @@ namespace XIVComboExpandedestPlugin.Combos
             // Replace demi summons with enkindle
             if ((actionID == SMN.Gemshine || actionID == SMN.PreciousBrilliance) && !IsEnabled(CustomComboPreset.SummonerShinyDemiCombo))
             {
-                if (OriginalHook(SMN.Ruin1) == SMN.AstralImpulse && level >= SMN.Levels.SummonBahamut)
+                if (OriginalHook(SMN.Ruin1) == SMN.AstralImpulse && CanUseAction(OriginalHook(SMN.AstralFlow)))
                     return OriginalHook(SMN.AstralFlow);
                 if (OriginalHook(SMN.Ruin1) == SMN.FountainOfFire)
                     return OriginalHook(SMN.AstralFlow);
@@ -194,7 +194,7 @@ namespace XIVComboExpandedestPlugin.Combos
             {
                 var gauge = GetJobGauge<SMNGauge>();
 
-                if (!gauge.HasAetherflowStacks && IsEnabled(CustomComboPreset.SummonerLucidReminderFeature) && IsActionOffCooldown(All.LucidDreaming) && !IsActionOffCooldown(SMN.EnergyDrain) && LocalPlayer?.CurrentMp <= 9000) return All.LucidDreaming;
+                if (!gauge.HasAetherflowStacks && IsEnabled(CustomComboPreset.SummonerLucidReminderFeature) && IsActionOffCooldown(All.LucidDreaming) && !IsActionOffCooldown(SMN.EnergyDrain) && LocalPlayer?.CurrentMp <= 9000 && CanUseAction(All.LucidDreaming)) return All.LucidDreaming;
 
                 if (!gauge.HasAetherflowStacks)
                     return SMN.EnergyDrain;
@@ -214,12 +214,12 @@ namespace XIVComboExpandedestPlugin.Combos
             {
                 var gauge = GetJobGauge<SMNGauge>();
 
-                if (!gauge.HasAetherflowStacks && IsEnabled(CustomComboPreset.SummonerLucidReminderFeature) && IsActionOffCooldown(All.LucidDreaming) && !IsActionOffCooldown(SMN.EnergySyphon) && LocalPlayer?.CurrentMp <= 9000) return All.LucidDreaming;
+                if (!gauge.HasAetherflowStacks && IsEnabled(CustomComboPreset.SummonerLucidReminderFeature) && IsActionOffCooldown(All.LucidDreaming) && !IsActionOffCooldown(SMN.EnergySyphon) && LocalPlayer?.CurrentMp <= 9000 && CanUseAction(All.LucidDreaming)) return All.LucidDreaming;
 
                 if (!gauge.HasAetherflowStacks)
                     return SMN.EnergySyphon;
 
-                if (level >= SMN.Levels.Painflare)
+                if (CanUseAction(SMN.Painflare))
                     return SMN.Painflare;
 
                 return SMN.EnergySyphon;
@@ -272,7 +272,7 @@ namespace XIVComboExpandedestPlugin.Combos
             if (UsedIDs.Contains(actionID) || (actionID == SMN.Gemshine && IsEnabled(CustomComboPreset.SummonerRuiningShineFeature)))
             {
                 if (actionID != SMN.Gemshine && IsEnabled(CustomComboPreset.SummonerRuiningShineFeature)) return actionID;
-                if (OriginalHook(SMN.AstralFlow) != SMN.AstralFlow)
+                if (OriginalHook(SMN.AstralFlow) != SMN.AstralFlow && CanUseAction(OriginalHook(SMN.AstralFlow)))
                 {
                     if (OriginalHook(SMN.AstralFlow) == SMN.Deathflare || OriginalHook(SMN.AstralFlow) == SMN.Rekindle)
                         return IsActionOffCooldown(OriginalHook(SMN.AstralFlow)) ? OriginalHook(SMN.AstralFlow) : actionID;
@@ -348,7 +348,7 @@ namespace XIVComboExpandedestPlugin.Combos
             if (UsedIDs.Contains(actionID) || (actionID == SMN.PreciousBrilliance && IsEnabled(CustomComboPreset.SummonerOutburstOfBrillianceFeature)))
             {
                 if (actionID != SMN.PreciousBrilliance && IsEnabled(CustomComboPreset.SummonerOutburstOfBrillianceFeature)) return actionID;
-                if (OriginalHook(SMN.AstralFlow) != SMN.AstralFlow)
+                if (OriginalHook(SMN.AstralFlow) != SMN.AstralFlow && CanUseAction(OriginalHook(SMN.AstralFlow)))
                 {
                     if (OriginalHook(SMN.AstralFlow) == SMN.Deathflare || OriginalHook(SMN.AstralFlow) == SMN.Rekindle)
                         return IsActionOffCooldown(OriginalHook(SMN.AstralFlow)) ? OriginalHook(SMN.AstralFlow) : actionID;
@@ -419,7 +419,7 @@ namespace XIVComboExpandedestPlugin.Combos
 
         protected override uint Invoke(uint actionID, uint lastComboMove, float comboTime, byte level)
         {
-            return IsActionOffCooldown(All.LucidDreaming) && HasCondition(ConditionFlag.InCombat) && !IsActionOffCooldown(actionID) && LocalPlayer?.CurrentMp <= 9000 ? All.LucidDreaming : actionID;
+            return IsActionOffCooldown(All.LucidDreaming) && HasCondition(ConditionFlag.InCombat) && !IsActionOffCooldown(actionID) && LocalPlayer?.CurrentMp <= 9000 && CanUseAction(All.LucidDreaming) ? All.LucidDreaming : actionID;
         }
     }
 }

@@ -10,8 +10,6 @@ using Dalamud.Game.Gui;
 using Dalamud.IoC;
 using Dalamud.Plugin;
 
-using FFXIVClientStructs.FFXIV.Client.Game;
-
 namespace XIVComboExpandedestPlugin
 {
     /// <summary>
