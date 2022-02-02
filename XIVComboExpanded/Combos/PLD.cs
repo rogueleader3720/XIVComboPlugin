@@ -80,6 +80,16 @@ namespace XIVComboExpandedestPlugin.Combos
         }
     }
 
+    internal class PaladinAtonementFeature : CustomCombo
+    {
+        protected override CustomComboPreset Preset => CustomComboPreset.PaladinAtonementFeature;
+
+        protected override uint Invoke(uint actionID, uint lastComboMove, float comboTime, byte level)
+        {
+            return HasEffect(PLD.Buffs.SwordOath) && lastComboMove != PLD.FastBlade && lastComboMove != PLD.RiotBlade ? PLD.Atonement : actionID;
+        }
+    }
+
     internal class PaladinHolyCircleFeature : CustomCombo
     {
         protected override CustomComboPreset Preset => CustomComboPreset.PaladinHolyCircleFeature;
@@ -148,12 +158,6 @@ namespace XIVComboExpandedestPlugin.Combos
 
                     if (lastComboMove == PLD.RiotBlade && level >= PLD.Levels.RageOfHalone)
                         return OriginalHook(PLD.RageOfHalone);
-                }
-
-                if (IsEnabled(CustomComboPreset.PaladinAtonementFeature))
-                {
-                    if (HasEffect(PLD.Buffs.SwordOath))
-                        return PLD.Atonement;
                 }
 
                 return PLD.FastBlade;
