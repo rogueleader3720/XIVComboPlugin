@@ -666,7 +666,7 @@ namespace XIVComboExpandedestPlugin
 
         [OrderedEnum]
         [ConflictingCombos(PaladinGoringBladeAtonementFeature)]
-        [CustomComboInfo("Atonement Feature", "Replace Royal Authority with Atonement when under the effect of Sword Oath.", PLD.JobID, PLD.RoyalAuthority)]
+        [CustomComboInfo("Atonement Feature", "Replace Royal Authority with Atonement when under the effect of Sword Oath.", PLD.JobID, PLD.RageOfHalone, PLD.RoyalAuthority)]
         PaladinAtonementFeature = 1903,
 
         [OrderedEnum]
