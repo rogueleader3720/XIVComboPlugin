@@ -44,7 +44,7 @@ namespace XIVComboExpandedestPlugin.Combos
         {
             if (actionID == All.Raise || actionID == All.Resurrection || actionID == All.Ascend || actionID == All.Verraise || actionID == All.Egeiro)
             {
-                if ((IsActionOffCooldown(All.Swiftcast) && !HasEffect(RDM.Buffs.Dualcast) && CanUseAction(All.Swiftcast))
+                if ((IsActionOffCooldown(All.Swiftcast) && !HasEffect(RDM.Buffs.Dualcast))
                     || level <= All.Levels.Raise
                     || (level <= RDM.Levels.Verraise && actionID == All.Verraise))
                     return All.Swiftcast;
