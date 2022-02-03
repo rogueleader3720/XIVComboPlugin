@@ -105,7 +105,7 @@ namespace XIVComboExpandedestPlugin.Combos
         {
             if (actionID == WHM.Cure2)
             {
-                if (CanUseAction(WHM.Cure2))
+                if (level < WHM.Levels.Cure2)
                     return WHM.Cure;
             }
 

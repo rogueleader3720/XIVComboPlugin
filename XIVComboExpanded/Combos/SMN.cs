@@ -219,7 +219,7 @@ namespace XIVComboExpandedestPlugin.Combos
                 if (!gauge.HasAetherflowStacks)
                     return SMN.EnergySyphon;
 
-                if (CanUseAction(SMN.Painflare))
+                if (level >= SMN.Levels.Painflare)
                     return SMN.Painflare;
 
                 return SMN.EnergySyphon;
