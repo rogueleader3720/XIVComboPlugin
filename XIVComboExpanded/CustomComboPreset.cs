@@ -630,12 +630,14 @@ namespace XIVComboExpandedestPlugin
         NinjaGCDNinjutsuFeature = 3009,
 
         [OrderedEnum]
-        [ParentCombo(NinjaArmorCrushCombo)]
+        [CustomComboInfo("Ninjutsu Double-Tap Feature", "Double-tapping your last-used mudra executes your current Ninjutsu action, or replaces all three if it is currently Doton/Huton/Suiton/Goka/Hyosho.", NIN.JobID, NIN.Ten, NIN.Chi, NIN.Jin)]
+        NinjaTapNinjutsuFeature = 3020,
+
+        [OrderedEnum]
         [CustomComboInfo("Armor Crush / Forked Raiju Feature", "Replaces the Armor Crush combo with Forked Raiju when available.", NIN.JobID, NIN.ArmorCrush)]
         NinjaArmorCrushRaijuFeature = 3012,
 
         [OrderedEnum]
-        [ParentCombo(NinjaAeolianEdgeCombo)]
         [CustomComboInfo("Aeolian Edge / Fleeting Raiju Feature", "Replaces the Aeolian Edge combo with Fleeting Raiju when available.", NIN.JobID, NIN.AeolianEdge)]
         NinjaAeolianEdgeRaijuFeature = 3013,
 

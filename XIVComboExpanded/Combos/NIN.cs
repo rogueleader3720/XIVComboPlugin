@@ -20,21 +20,30 @@ namespace XIVComboExpandedestPlugin.Combos
             AeolianEdge = 2255,
             TrickAttack = 2258,
             Ninjutsu = 2260,
+            Ten = 2259,
             Chi = 2261,
-            JinNormal = 2263,
+            Jin = 2263,
             Kassatsu = 2264,
             ArmorCrush = 3563,
             DreamWithinADream = 3566,
             TenChiJin = 7403,
             HakkeMujinsatsu = 16488,
             Meisui = 16489,
-            Jin = 18807,
+            JinMudra = 18807,
             Bunshin = 16493,
             Huraijin = 25876,
             PhantomKamaitachi = 25774,
             ForkedRaiju = 25777,
             FleetingRaiju = 25778,
-            ThrowingDagger = 2247;
+            ThrowingDagger = 2247,
+            Raiton = 2267,
+            Katon = 2266,
+            Hyoton = 2268,
+            Huton = 2269,
+            Doton = 2270,
+            Suiton = 2271,
+            Goka = 16491,
+            Hyosho = 16492;
 
         public static class Buffs
         {
@@ -243,6 +252,29 @@ namespace XIVComboExpandedestPlugin.Combos
         }
     }
 
+    internal class NinjaTapNinjutsuFeature : CustomCombo
+    {
+        protected override CustomComboPreset Preset => CustomComboPreset.NinjaTapNinjutsuFeature;
+
+        protected override uint Invoke(uint actionID, uint lastComboMove, float comboTime, byte level)
+        {
+            var ninjutsu = OriginalHook(NIN.Ninjutsu);
+
+            if (ninjutsu == NIN.Goka || ninjutsu == NIN.Hyosho || ninjutsu == NIN.Huton || ninjutsu == NIN.Doton || ninjutsu == NIN.Suiton)
+                return ninjutsu;
+
+            if (ninjutsu == NIN.Raiton && actionID == NIN.Chi) return ninjutsu;
+
+            if (ninjutsu == NIN.Katon && actionID == NIN.Ten) return ninjutsu;
+
+            if (ninjutsu == NIN.Hyoton && actionID == NIN.Jin) return ninjutsu;
+
+            if (!CanUseAction(OriginalHook(NIN.Jin)) && ninjutsu != NIN.Ninjutsu && actionID == NIN.Chi) return ninjutsu;
+
+            return actionID;
+        }
+    }
+
     internal class NinjaKassatsuChiJinFeature : CustomCombo
     {
         protected override CustomComboPreset Preset => CustomComboPreset.NinjaKassatsuChiJinFeature;
@@ -252,7 +284,7 @@ namespace XIVComboExpandedestPlugin.Combos
             if (actionID == NIN.Chi)
             {
                 if (level >= NIN.Levels.EnhancedKassatsu && HasEffect(NIN.Buffs.Kassatsu))
-                    return NIN.Jin;
+                    return NIN.JinMudra;
             }
 
             return actionID;
