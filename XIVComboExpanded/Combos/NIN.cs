@@ -269,7 +269,7 @@ namespace XIVComboExpandedestPlugin.Combos
 
             if (ninjutsu == NIN.Hyoton && actionID == NIN.Jin) return ninjutsu;
 
-            if (!CanUseAction(OriginalHook(NIN.Jin)) && ninjutsu != NIN.Ninjutsu && actionID == NIN.Ten) return ninjutsu;
+            if (!CanUseAction(OriginalHook(NIN.Chi)) && ninjutsu != NIN.Ninjutsu && actionID == NIN.Ten) return ninjutsu;
 
             return actionID;
         }
