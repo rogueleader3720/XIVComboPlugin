@@ -258,18 +258,21 @@ namespace XIVComboExpandedestPlugin.Combos
 
         protected override uint Invoke(uint actionID, uint lastComboMove, float comboTime, byte level)
         {
-            var ninjutsu = OriginalHook(NIN.Ninjutsu);
+            if (actionID == NIN.Ten || actionID == NIN.Chi || actionID == NIN.Jin)
+            {
+                var ninjutsu = OriginalHook(NIN.Ninjutsu);
 
-            if (ninjutsu == NIN.Goka || ninjutsu == NIN.Hyosho || ninjutsu == NIN.Huton || ninjutsu == NIN.Doton || ninjutsu == NIN.Suiton)
-                return ninjutsu;
-
-            if (ninjutsu == NIN.Raiton && actionID == NIN.Chi) return ninjutsu;
-
-            if (ninjutsu == NIN.Katon && actionID == NIN.Ten) return ninjutsu;
-
-            if (ninjutsu == NIN.Hyoton && actionID == NIN.Jin) return ninjutsu;
-
-            if (!CanUseAction(OriginalHook(NIN.Chi)) && ninjutsu != NIN.Ninjutsu && actionID == NIN.Ten) return ninjutsu;
+                if ((ninjutsu == NIN.Goka || ninjutsu == NIN.Hyosho || ninjutsu == NIN.Huton || ninjutsu == NIN.Doton || ninjutsu == NIN.Suiton)
+                    ||
+                    (ninjutsu == NIN.Raiton && actionID == NIN.Chi)
+                    ||
+                    (ninjutsu == NIN.Katon && actionID == NIN.Ten)
+                    ||
+                    (ninjutsu == NIN.Hyoton && actionID == NIN.Jin)
+                    ||
+                    (!CanUseAction(OriginalHook(NIN.Chi)) && ninjutsu != NIN.Ninjutsu && actionID == NIN.Ten))
+                    return ninjutsu;
+            }
 
             return actionID;
         }
