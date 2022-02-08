@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Numerics;
 
 using Dalamud.Game.ClientState.Conditions;
 using Dalamud.Game.ClientState.JobGauge.Types;
@@ -299,16 +300,16 @@ namespace XIVComboExpandedestPlugin.Combos
         /// <returns>Double representing the distance from the target.</returns>
         protected static double GetTargetDistance()
         {
-            if (CurrentTarget is null)
+            if (CurrentTarget is null || LocalPlayer is null)
                 return 0;
 
             if (CurrentTarget is not BattleChara chara)
                 return 0;
 
-            double distanceX = chara.YalmDistanceX;
-            double distanceY = chara.YalmDistanceZ;
+            var position = new Vector2(chara.Position.X, chara.Position.Z);
+            var selfPosition = new Vector2(LocalPlayer.Position.X, LocalPlayer.Position.Z);
 
-            return Math.Sqrt(Math.Pow(distanceX, 2) + Math.Pow(distanceY, 2));
+            return Vector2.Distance(position, selfPosition) - chara.HitboxRadius;
         }
 
         /// <summary>
@@ -322,7 +323,7 @@ namespace XIVComboExpandedestPlugin.Combos
             if (distance == 0)
                 return true;
 
-            if (distance > 3)
+            if (distance > 3.5)
                 return false;
 
             return true;
