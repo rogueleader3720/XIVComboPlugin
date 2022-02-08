@@ -22,7 +22,8 @@ namespace XIVComboExpandedestPlugin.Combos
             FloodOfShadow = 16469,
             EdgeOfShadow = 16470,
             LivingShadow = 16472,
-            Shadowbringer = 25757;
+            Shadowbringer = 25757,
+            Unmend = 3624;
 
         public static class Buffs
         {
@@ -61,6 +62,12 @@ namespace XIVComboExpandedestPlugin.Combos
         {
             if (actionID == DRK.Souleater)
             {
+                if (IsEnabled(CustomComboPreset.DarkSoulmendFeature))
+                {
+                    if (CanUseAction(DRK.Unmend) && !InMeleeRange())
+                        return DRK.Unmend;
+                }
+
                 if (comboTime > 0)
                 {
                     if (lastComboMove == DRK.HardSlash && level >= DRK.Levels.SyphonStrike)

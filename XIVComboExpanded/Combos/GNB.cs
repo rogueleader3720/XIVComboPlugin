@@ -24,7 +24,8 @@ namespace XIVComboExpandedestPlugin.Combos
             FatedCircle = 16163,
             Bloodfest = 16164,
             DoubleDown = 25760,
-            Hypervelocity = 25759;
+            Hypervelocity = 25759,
+            LightningShot = 16143;
 
         public static class Buffs
         {
@@ -68,6 +69,12 @@ namespace XIVComboExpandedestPlugin.Combos
         {
             if (actionID == GNB.SolidBarrel)
             {
+                if (IsEnabled(CustomComboPreset.GunbreakerSolidShotFeature))
+                {
+                    if (CanUseAction(GNB.LightningShot) && !InMeleeRange())
+                        return GNB.LightningShot;
+                }
+
                 if (comboTime > 0)
                 {
                     if (lastComboMove == GNB.KeenEdge && level >= GNB.Levels.BrutalShell)

@@ -293,6 +293,11 @@ namespace XIVComboExpandedestPlugin
         DragoonFullThrustComboOption = 2210,
 
         [OrderedEnum]
+        [ParentCombo(DragoonFullThrustCombo)]
+        [CustomComboInfo("Full Thrust to Piercing Talon", "Full Thrust's combo is replaced with Piercing Talon when you are out of melee range.", DRG.JobID, DRG.FullThrust, DRG.HeavensThrust)]
+        DragoonFullThrustTalonFeature = 2211,
+
+        [OrderedEnum]
         [CustomComboInfo("Wheeling Thrust/Fang and Claw Option", "When you have either Enhanced Fang and Claw or Wheeling Thrust,\nChaos Thrust Combo becomes Wheeling Thrust and Full Thrust Combo becomes Fang and Claw.\nRequires Chaos Thrust Combo and Full Thrust Combo.", DRG.JobID, DRG.FullThrust, DRG.ChaosThrust)]
         DragoonFangThrustFeature = 2205,
 
@@ -315,6 +320,11 @@ namespace XIVComboExpandedestPlugin
         [OrderedEnum]
         [CustomComboInfo("Souleater Combo", "Replace Souleater with its combo chain.", DRK.JobID, DRK.Souleater)]
         DarkSouleaterCombo = 3201,
+
+        [OrderedEnum]
+        [ParentCombo(DarkSouleaterCombo)]
+        [CustomComboInfo("Souleater to Unmend", "Replace Souleater's combo with Unmend while out of melee range.", DRK.JobID, DRK.Souleater)]
+        DarkSoulmendFeature = 3208,
 
         [OrderedEnum]
         [CustomComboInfo("Stalwart Soul Combo", "Replace Stalwart Soul with its combo chain.", DRK.JobID, DRK.StalwartSoul, DRK.Unleash)]
@@ -345,6 +355,11 @@ namespace XIVComboExpandedestPlugin
         [OrderedEnum]
         [CustomComboInfo("Solid Barrel Combo", "Replace Solid Barrel with its combo chain.", GNB.JobID, GNB.SolidBarrel)]
         GunbreakerSolidBarrelCombo = 3701,
+
+        [OrderedEnum]
+        [ParentCombo(GunbreakerSolidBarrelCombo)]
+        [CustomComboInfo("Solid Barrel to Lightning Shot", "Replace Solid Barrel's combo with Lightning Shot while out of melee range.", GNB.JobID, GNB.SolidBarrel)]
+        GunbreakerSolidShotFeature = 3714,
 
         [OrderedEnum]
         [ParentCombo(GunbreakerSolidBarrelCombo)]
@@ -547,6 +562,10 @@ namespace XIVComboExpandedestPlugin
         MonkDragonKickBalanceFeature = 2005,
 
         [OrderedEnum]
+        [CustomComboInfo("Monk Dragon Clap Feature", "Replaces Dragon Kick with Thunderclap if you are out of range.", MNK.JobID, MNK.DragonKick)]
+        MonkDragonClapFeature = 2022,
+
+        [OrderedEnum]
         [CustomComboInfo("Howling Fist / Meditation Feature", "Replaces Howling Fist/Enlightenment with Meditation when the Fifth Chakra is not open.", MNK.JobID, MNK.HowlingFist, MNK.Enlightenment)]
         MonkHowlingFistMeditationFeature = 2003,
 
@@ -675,6 +694,11 @@ namespace XIVComboExpandedestPlugin
         [OrderedEnum]
         [CustomComboInfo("Royal Authority Combo", "Replace Royal Authority/Rage of Halone with its combo chain.", PLD.JobID, PLD.RoyalAuthority, PLD.RageOfHalone)]
         PaladinRoyalAuthorityCombo = 1902,
+
+        [OrderedEnum]
+        [ParentCombo(PaladinRoyalAuthorityCombo)]
+        [CustomComboInfo("Royal Authority to Shield Lob", "Replace Royal Authority/Rage of Halone's combo with Shield Lob when out of melee range.", PLD.JobID, PLD.RoyalAuthority, PLD.RageOfHalone)]
+        PaladinRoyalLobFeature = 1912,
 
         [OrderedEnum]
         [ConflictingCombos(PaladinGoringBladeAtonementFeature)]
@@ -846,6 +870,11 @@ namespace XIVComboExpandedestPlugin
         RedMageMeleeComboPlusVerholy = 3509,
 
         [OrderedEnum]
+        [ParentCombo(RedMageMeleeCombo)]
+        [CustomComboInfo("Redoublement Combo to Reprise", "Replaces Redoublement combo with Enchanted Reprise if you are out of melee range.", RDM.JobID, RDM.Redoublement)]
+        RedMageMeleeComboReprise = 3518,
+
+        [OrderedEnum]
         [SecretCustomCombo]
         [ParentCombo(RedMageMeleeCombo)]
         [CustomComboInfo("Redoublement Combo Plus Plus", "Replaces Redoublement/Moulinet with the combo spells after you have gained 3 mana stacks.\nVerflare or Verholy will be picked, whichever is more appropriate.", RDM.JobID, RDM.Redoublement, RDM.Moulinet)]
@@ -940,6 +969,11 @@ namespace XIVComboExpandedestPlugin
         [ParentCombo(SamuraiGekkoCombo)]
         [CustomComboInfo("Gekko Combo Option", "Start the Gekko combo chain with Jinpu instead of Hakaze.", SAM.JobID, SAM.Gekko)]
         SamuraiGekkoOption = 3415,
+
+        [OrderedEnum]
+        [ParentCombo(SamuraiGekkoCombo)]
+        [CustomComboInfo("Gekko to Enpi", "Replace Gekko Combo with Enpi if you are out of melee range.", SAM.JobID, SAM.Gekko)]
+        SamuraiGekkoEnpiFeature = 3425,
 
         [OrderedEnum]
         [CustomComboInfo("Kasha Combo", "Replace Kasha with its combo chain.", SAM.JobID, SAM.Kasha)]
@@ -1161,8 +1195,23 @@ namespace XIVComboExpandedestPlugin
         WarriorStormsPathCombo = 2101,
 
         [OrderedEnum]
+        [ParentCombo(WarriorStormsPathCombo)]
+        [CustomComboInfo("Storms Path to Tomahawk", "Replace Storms Path's combo with Tomahawk when out of melee range.", WAR.JobID, WAR.StormsPath)]
+        WarriorStormsPathahawkFeature = 2110,
+
+        [OrderedEnum]
         [CustomComboInfo("Storms Eye Combo", "Replace Storms Eye with its combo chain", WAR.JobID, WAR.StormsEye)]
         WarriorStormsEyeCombo = 2102,
+
+        [OrderedEnum]
+        [ParentCombo(WarriorStormsEyeCombo)]
+        [CustomComboInfo("Storms Eye to Tomahawk", "Replace Storms Eye's combo with Tomahawk when out of melee range.", WAR.JobID, WAR.StormsPath)]
+        WarriorStormsEyeahawkFeature = 2112,
+
+        [OrderedEnum]
+        [ParentCombo(WarriorStormsEyeCombo)]
+        [CustomComboInfo("Storms Eye Tomahawk Replacement", "Replace Storm's Eye's combo with Tomahawk while Storm's Eye is not available for use in combo.", WAR.JobID, WAR.StormsPath)]
+        WarriorStormsEyeHawkReplacementFeature = 2113,
 
         [OrderedEnum]
         [CustomComboInfo("Mythril Tempest Combo", "Replace Mythril Tempest with its combo chain", WAR.JobID, WAR.MythrilTempest)]
@@ -1179,6 +1228,11 @@ namespace XIVComboExpandedestPlugin
         [OrderedEnum]
         [CustomComboInfo("Inner Release Feature", "Replace Single-target and AoE combo with Fell Cleave/Decimate during Inner Release", WAR.JobID, WAR.MythrilTempest, WAR.StormsPath)]
         WarriorInnerReleaseFeature = 2106,
+
+        [OrderedEnum]
+        [ParentCombo(WarriorInnerReleaseFeature)]
+        [CustomComboInfo("Inner Release Feature Tomahawk Option", "Replace Storm's Eye with Tomahawk during Inner Release.", WAR.JobID, WAR.MythrilTempest, WAR.StormsPath)]
+        WarriorInnerReleaseahawkOption = 2111,
 
         [OrderedEnum]
         [CustomComboInfo("Nascent Flash Feature", "Replace Nascent Flash with Raw intuition when level synced below 76", WAR.JobID, WAR.NascentFlash)]

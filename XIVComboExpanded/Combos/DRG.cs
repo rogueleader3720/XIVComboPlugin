@@ -20,6 +20,7 @@ namespace XIVComboExpandedestPlugin.Combos
             WheelingThrust = 3556,
             FangAndClaw = 3554,
             RaidenThrust = 16479,
+            PiercingTalon = 90,
             // AoE
             DoomSpike = 86,
             SonicThrust = 7397,
@@ -160,6 +161,12 @@ namespace XIVComboExpandedestPlugin.Combos
         {
             if (actionID == DRG.FullThrust || actionID == DRG.HeavensThrust)
             {
+                if (IsEnabled(CustomComboPreset.DragoonFullThrustTalonFeature))
+                {
+                    if (CanUseAction(DRG.PiercingTalon) && !InMeleeRange())
+                        return DRG.PiercingTalon;
+                }
+
                 if (comboTime > 0)
                 {
                     if ((lastComboMove == DRG.TrueThrust || lastComboMove == DRG.RaidenThrust) && level >= DRG.Levels.VorpalThrust)

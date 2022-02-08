@@ -62,6 +62,7 @@ namespace XIVComboExpandedestPlugin.Combos
             public const byte
                 Slice = 1,
                 WaxingSlice = 5,
+                Harpe = 15,
                 SpinningScythe = 25,
                 InfernalSlice = 30,
                 NightmareScythe = 45,
@@ -197,7 +198,7 @@ namespace XIVComboExpandedestPlugin.Combos
 
                 if (IsEnabled(CustomComboPreset.ReaperHarpeSliceFeature))
                 {
-                    if (!(gauge.LemureShroud == 1 && level >= RPR.Levels.Communio) && !InMeleeRange())
+                    if (!(gauge.LemureShroud == 1 && level >= RPR.Levels.Communio) && !InMeleeRange() && level >= RPR.Levels.Harpe)
                         return RPR.Harpe;
                 }
 

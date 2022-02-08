@@ -26,7 +26,8 @@ namespace XIVComboExpandedestPlugin.Combos
             ChaoticCyclone = 16463,
             NascentFlash = 16464,
             InnerChaos = 16465,
-            PrimalRend = 25753;
+            PrimalRend = 25753,
+            Tomahawk = 46;
 
         public static class Buffs
         {
@@ -70,6 +71,12 @@ namespace XIVComboExpandedestPlugin.Combos
                     return OriginalHook(WAR.FellCleave);
                 }
 
+                if (IsEnabled(CustomComboPreset.WarriorStormsPathahawkFeature))
+                {
+                    if (CanUseAction(WAR.Tomahawk) && !InMeleeRange())
+                        return WAR.Tomahawk;
+                }
+
                 if (comboTime > 0)
                 {
                     if (lastComboMove == WAR.HeavySwing && CanUseAction(WAR.Maim))
@@ -96,19 +103,30 @@ namespace XIVComboExpandedestPlugin.Combos
             {
                 if (IsEnabled(CustomComboPreset.WarriorInnerReleaseFeature) && HasEffect(WAR.Buffs.InnerRelease))
                 {
+                    if (IsEnabled(CustomComboPreset.WarriorInnerReleaseahawkOption))
+                    {
+                        return WAR.Tomahawk;
+                    }
+
                     return OriginalHook(WAR.FellCleave);
+                }
+
+                if (IsEnabled(CustomComboPreset.WarriorStormsEyeahawkFeature))
+                {
+                    if (CanUseAction(WAR.Tomahawk) && !InMeleeRange())
+                        return WAR.Tomahawk;
                 }
 
                 if (comboTime > 0)
                 {
                     if (lastComboMove == WAR.HeavySwing && CanUseAction(WAR.Maim))
-                        return WAR.Maim;
+                        return IsEnabled(CustomComboPreset.WarriorStormsEyeHawkReplacementFeature) ? WAR.Tomahawk : WAR.Maim;
 
                     if (lastComboMove == WAR.Maim && CanUseAction(WAR.StormsEye))
                         return WAR.StormsEye;
                 }
 
-                return WAR.HeavySwing;
+                return IsEnabled(CustomComboPreset.WarriorStormsEyeHawkReplacementFeature) ? WAR.Tomahawk : WAR.HeavySwing;
             }
 
             return actionID;

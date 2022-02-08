@@ -3,6 +3,7 @@ using System.Linq;
 
 using Dalamud.Game.ClientState.Conditions;
 using Dalamud.Game.ClientState.JobGauge.Types;
+using Dalamud.Game.ClientState.Objects.Types;
 using Dalamud.Game.ClientState.Statuses;
 
 namespace XIVComboExpandedestPlugin.Combos
@@ -32,7 +33,8 @@ namespace XIVComboExpandedestPlugin.Combos
             ShadowOfTheDestroyer = 25767,
             RiddleOfFire = 7395,
             Brotherhood = 7396,
-            RiddleOfWind = 25766;
+            RiddleOfWind = 25766,
+            Thunderclap = 25762;
 
         public static class Buffs
         {
@@ -90,6 +92,9 @@ namespace XIVComboExpandedestPlugin.Combos
         {
             if (actionID == MNK.Bootshine)
             {
+                if (IsEnabled(CustomComboPreset.MonkBootshineFeature) && IsEnabled(CustomComboPreset.MonkDragonClapFeature) && (!InMeleeRange() || CurrentTarget?.ObjectKind == Dalamud.Game.ClientState.Objects.Enums.ObjectKind.Player) && CanUseAction(MNK.Thunderclap))
+                    return MNK.Thunderclap;
+
                 var gauge = new MyMNKGauge(GetJobGauge<MNKGauge>());
 
                 if (IsEnabled(CustomComboPreset.MonkBootshineFeature) && IsEnabled(CustomComboPreset.MonkDragonKickBalanceFeature))
@@ -109,6 +114,22 @@ namespace XIVComboExpandedestPlugin.Combos
                 }
 
                 return actionID;
+            }
+
+            return actionID;
+        }
+    }
+
+    internal class MonkDragonClapFeature : CustomCombo
+    {
+        protected override CustomComboPreset Preset => CustomComboPreset.MonkDragonClapFeature;
+
+        protected override uint Invoke(uint actionID, uint lastComboMove, float comboTime, byte level)
+        {
+            if (actionID == MNK.DragonKick && !IsEnabled(CustomComboPreset.MonkSTCombo))
+            {
+                if ((!InMeleeRange() || CurrentTarget?.ObjectKind == Dalamud.Game.ClientState.Objects.Enums.ObjectKind.Player) && CanUseAction(MNK.Thunderclap))
+                    return MNK.Thunderclap;
             }
 
             return actionID;
@@ -162,6 +183,9 @@ namespace XIVComboExpandedestPlugin.Combos
         {
             if (OriginalHook(MNK.MasterfulBlitz) != MNK.MasterfulBlitz && CanUseAction(OriginalHook(MNK.MasterfulBlitz)) && actionID == MNK.PerfectBalance && IsEnabled(CustomComboPreset.MonkPerfectBalanceFeature) && !HasEffect(MNK.Buffs.FormlessFist))
                 return OriginalHook(MNK.MasterfulBlitz);
+
+            if (actionID == MNK.TrueStrike && (!InMeleeRange() || CurrentTarget?.ObjectKind == Dalamud.Game.ClientState.Objects.Enums.ObjectKind.Player) && CanUseAction(MNK.Thunderclap))
+                return MNK.Thunderclap;
 
             if (!HasEffect(MNK.Buffs.PerfectBalance) && !HasEffect(MNK.Buffs.FormlessFist) && (actionID == MNK.TrueStrike || (actionID == MNK.TwinSnakes && !IsEnabled(CustomComboPreset.MonkSTComboOption))))
             {

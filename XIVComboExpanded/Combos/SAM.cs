@@ -33,7 +33,8 @@ namespace XIVComboExpandedestPlugin.Combos
             Ikishoten = 16482,
             Fuko = 25780,
             OgiNamikiri = 25781,
-            KaeshiNamikiri = 25782;
+            KaeshiNamikiri = 25782,
+            Enpi = 7486;
 
         public static class Buffs
         {
@@ -101,6 +102,12 @@ namespace XIVComboExpandedestPlugin.Combos
         {
             if (actionID == SAM.Gekko)
             {
+                if (IsEnabled(CustomComboPreset.SamuraiGekkoEnpiFeature))
+                {
+                    if (CanUseAction(SAM.Enpi) && !InMeleeRange())
+                        return SAM.Enpi;
+                }
+
                 if (HasEffect(SAM.Buffs.MeikyoShisui))
                     return SAM.Gekko;
 

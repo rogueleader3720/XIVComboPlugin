@@ -27,7 +27,8 @@ namespace XIVComboExpandedestPlugin.Combos
             BladeOfValor = 25750,
             SpiritsWithin = 29,
             Expiacion = 25747,
-            CircleOfScorn = 23;
+            CircleOfScorn = 23,
+            ShieldLob = 24;
 
         public static class Buffs
         {
@@ -151,6 +152,12 @@ namespace XIVComboExpandedestPlugin.Combos
         {
             if (actionID == PLD.RoyalAuthority || actionID == PLD.RageOfHalone)
             {
+                if (IsEnabled(CustomComboPreset.PaladinRoyalLobFeature))
+                {
+                    if (CanUseAction(PLD.ShieldLob) && !InMeleeRange())
+                        return PLD.ShieldLob;
+                }
+
                 if (comboTime > 0)
                 {
                     if (lastComboMove == PLD.FastBlade && level >= PLD.Levels.RiotBlade)
