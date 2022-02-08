@@ -582,6 +582,11 @@ namespace XIVComboExpandedestPlugin
         NinjaAeolianEdgeCombo = 3002,
 
         [OrderedEnum]
+        [ParentCombo(NinjaAeolianEdgeCombo)]
+        [CustomComboInfo("Aeolian Edge to Throwing Dagger", "Replace Aeolian Edge combo with Throwing Dagger if you are out of range.", NIN.JobID, NIN.ThrowingDagger)]
+        NinjaThrowingEdgeFeature = 3021,
+
+        [OrderedEnum]
         [CustomComboInfo("Hakke Mujinsatsu Combo", "Replace Hakke Mujinsatsu with its combo chain.", NIN.JobID, NIN.HakkeMujinsatsu, NIN.DeathBlossom)]
         NinjaHakkeMujinsatsuCombo = 3003,
 
@@ -720,6 +725,11 @@ namespace XIVComboExpandedestPlugin
         [ParentCombo(ReaperSliceCombo)]
         [CustomComboInfo("Infernal Slice Combo", "Replace Infernal Slice with its combo chain and removes Slice's combo.", RPR.JobID, RPR.InfernalSlice)]
         ReaperInfernalSliceCombo = 3910,
+
+        [OrderedEnum]
+        [ParentCombo(ReaperSliceCombo)]
+        [CustomComboInfo("Slice to Harpe", "Replace Slice combo with Harpe if you are out of range.", RPR.JobID, RPR.Slice)]
+        ReaperHarpeSliceFeature = 3921,
 
         [OrderedEnum]
         [CustomComboInfo("Scythe Combo", "Replace Spinning Scythe with its combo chain.", RPR.JobID, RPR.SpinningScythe, RPR.NightmareScythe)]

@@ -162,6 +162,12 @@ namespace XIVComboExpandedestPlugin.Combos
                     }
                 }
 
+                if (IsEnabled(CustomComboPreset.NinjaThrowingEdgeFeature))
+                {
+                    if (CanUseAction(NIN.ThrowingDagger) && !InMeleeRange())
+                        return NIN.ThrowingDagger;
+                }
+
                 if (comboTime > 0)
                 {
                     if (lastComboMove == NIN.SpinningEdge && level >= NIN.Levels.GustSlash)

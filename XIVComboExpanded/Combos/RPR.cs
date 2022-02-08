@@ -21,6 +21,7 @@ namespace XIVComboExpandedestPlugin.Combos
             ShadowOfDeath = 24378,
             BloodStalk = 24389,
             Gluttony = 24393,
+            Harpe = 24386,
             // AoE
             SpinningScythe = 24376,
             NightmareScythe = 24377,
@@ -193,6 +194,12 @@ namespace XIVComboExpandedestPlugin.Combos
 
                 if (OriginalHook(RPR.Soulsow) != RPR.HarvestMoon && !HasCondition(ConditionFlag.InCombat) && IsEnabled(CustomComboPreset.ReaperSoulsowReminderFeature) && level >= RPR.Levels.Soulsow)
                     return RPR.Soulsow;
+
+                if (IsEnabled(CustomComboPreset.ReaperHarpeSliceFeature))
+                {
+                    if (!(gauge.LemureShroud == 1 && level >= RPR.Levels.Communio) && !InMeleeRange())
+                        return RPR.Harpe;
+                }
 
                 if (IsEnabled(CustomComboPreset.ReaperLemureFeature))
                 {
