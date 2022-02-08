@@ -562,7 +562,7 @@ namespace XIVComboExpandedestPlugin
         MonkDragonKickBalanceFeature = 2005,
 
         [OrderedEnum]
-        [CustomComboInfo("Monk Dragon Clap Feature", "Replaces Dragon Kick with Thunderclap if you are out of range.", MNK.JobID, MNK.DragonKick)]
+        [CustomComboInfo("Monk Dragon Clap Feature", "Replaces Dragon Kick with Thunderclap if you are out of melee range, or have a player targeted.", MNK.JobID, MNK.DragonKick)]
         MonkDragonClapFeature = 2022,
 
         [OrderedEnum]

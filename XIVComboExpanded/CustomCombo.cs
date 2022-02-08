@@ -303,7 +303,7 @@ namespace XIVComboExpandedestPlugin.Combos
             if (CurrentTarget is null || LocalPlayer is null)
                 return 0;
 
-            if (CurrentTarget is not BattleChara chara)
+            if (CurrentTarget is not BattleChara chara || CurrentTarget.ObjectKind != Dalamud.Game.ClientState.Objects.Enums.ObjectKind.BattleNpc)
                 return 0;
 
             var position = new Vector2(chara.Position.X, chara.Position.Z);
