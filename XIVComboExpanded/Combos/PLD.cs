@@ -88,6 +88,14 @@ namespace XIVComboExpandedestPlugin.Combos
 
         protected override uint Invoke(uint actionID, uint lastComboMove, float comboTime, byte level)
         {
+            if (IsEnabled(CustomComboPreset.PaladinRoyalSpiritFeature))
+            {
+                if ((HasEffect(PLD.Buffs.Requiescat) && !HasEffect(PLD.Buffs.FightOrFlight))
+                    ||
+                    (IsEnabled(CustomComboPreset.PaladinConfiteorFeature) && OriginalHook(PLD.Confiteor) != PLD.Confiteor))
+                return actionID;
+            }
+
             return HasEffect(PLD.Buffs.SwordOath) && lastComboMove != PLD.FastBlade && lastComboMove != PLD.RiotBlade ? PLD.Atonement : actionID;
         }
     }
