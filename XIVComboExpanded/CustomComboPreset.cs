@@ -697,6 +697,11 @@ namespace XIVComboExpandedestPlugin
 
         [OrderedEnum]
         [ParentCombo(PaladinRoyalAuthorityCombo)]
+        [CustomComboInfo("Royal Authority to Holy Spirit", "Replace your Royal Authority combo with Holy Spirit if you have Requiescat up, and Fight or Flight is not up.", PLD.JobID)]
+        PaladinRoyalSpiritFeature = 1913,
+
+        [OrderedEnum]
+        [ParentCombo(PaladinRoyalAuthorityCombo)]
         [CustomComboInfo("Royal Authority to Shield Lob", "Replace Royal Authority/Rage of Halone's combo with Shield Lob when out of melee range.", PLD.JobID, PLD.RoyalAuthority, PLD.RageOfHalone)]
         PaladinRoyalLobFeature = 1912,
 
@@ -720,7 +725,7 @@ namespace XIVComboExpandedestPlugin
         PaladinRequiescatCombo = 1905,
 
         [OrderedEnum]
-        [CustomComboInfo("AoE to Holy Circle", "Replace your AoE combo with Holy Circle while you have Requiescat.", PLD.JobID, PLD.TotalEclipse, PLD.Prominence)]
+        [CustomComboInfo("AoE to Holy Circle", "Replace your AoE combo actions with Holy Circle while you have Requiescat.", PLD.JobID, PLD.TotalEclipse, PLD.Prominence)]
         PaladinHolyCircleFeature = 1910,
 
         [OrderedEnum]

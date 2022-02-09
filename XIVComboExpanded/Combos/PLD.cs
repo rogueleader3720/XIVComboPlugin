@@ -33,6 +33,7 @@ namespace XIVComboExpandedestPlugin.Combos
         public static class Buffs
         {
             public const ushort
+                FightOrFlight = 76,
                 Requiescat = 1368,
                 SwordOath = 1902;
         }
@@ -152,6 +153,27 @@ namespace XIVComboExpandedestPlugin.Combos
         {
             if (actionID == PLD.RoyalAuthority || actionID == PLD.RageOfHalone)
             {
+                if (IsEnabled(CustomComboPreset.PaladinRoyalSpiritFeature))
+                {
+                    if (IsEnabled(CustomComboPreset.PaladinConfiteorFeature))
+                    {
+                        if (OriginalHook(PLD.Confiteor) != PLD.Confiteor)
+                            return OriginalHook(PLD.Confiteor);
+                    }
+
+                    Status? requiescat = FindEffect(PLD.Buffs.Requiescat);
+
+                    if (requiescat != null && !HasEffect(PLD.Buffs.FightOrFlight) && LocalPlayer?.CurrentMp >= 1000)
+                    {
+                        if (requiescat.StackCount <= 1 && level >= PLD.Levels.Confiteor && IsEnabled(CustomComboPreset.PaladinConfiteorFeature))
+                        {
+                            return OriginalHook(PLD.Confiteor);
+                        }
+
+                        return PLD.HolySpirit;
+                    }
+                }
+
                 if (IsEnabled(CustomComboPreset.PaladinRoyalLobFeature))
                 {
                     if (CanUseAction(PLD.ShieldLob) && !InMeleeRange())
