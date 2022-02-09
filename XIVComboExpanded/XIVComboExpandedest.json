@@ -6,7 +6,9 @@
   "RepoUrl": "https://github.com/Grammernatzi/XIVComboPluginExpandedest",
   "IconUrl": "https://raw.githubusercontent.com/grammernatzi/XIVComboPluginExpandedest/master/res/icon.png",
   "ImageUrls": [],
-  "Changelog": "1.2.4.6: Royal Authority to Holy Spirit compatibility with Atonement Feature fixed.
+  "Changelog": "1.2.4.7: Fixed issue with Dragon Clap feature always being on with Monk Experimental Combo.
+  
+1.2.4.6: Royal Authority to Holy Spirit compatibility with Atonement Feature fixed.
 
 1.2.4.5: Royal Authority to Holy Spirit added.
 

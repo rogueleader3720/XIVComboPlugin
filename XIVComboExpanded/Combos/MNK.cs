@@ -184,7 +184,7 @@ namespace XIVComboExpandedestPlugin.Combos
             if (OriginalHook(MNK.MasterfulBlitz) != MNK.MasterfulBlitz && CanUseAction(OriginalHook(MNK.MasterfulBlitz)) && actionID == MNK.PerfectBalance && IsEnabled(CustomComboPreset.MonkPerfectBalanceFeature) && !HasEffect(MNK.Buffs.FormlessFist))
                 return OriginalHook(MNK.MasterfulBlitz);
 
-            if (actionID == MNK.TrueStrike && (!InMeleeRange() || CurrentTarget?.ObjectKind == Dalamud.Game.ClientState.Objects.Enums.ObjectKind.Player) && CanUseAction(MNK.Thunderclap))
+            if (IsEnabled(CustomComboPreset.MonkDragonClapFeature) && actionID == MNK.TrueStrike && (!InMeleeRange() || CurrentTarget?.ObjectKind == Dalamud.Game.ClientState.Objects.Enums.ObjectKind.Player) && CanUseAction(MNK.Thunderclap))
                 return MNK.Thunderclap;
 
             if (!HasEffect(MNK.Buffs.PerfectBalance) && !HasEffect(MNK.Buffs.FormlessFist) && (actionID == MNK.TrueStrike || (actionID == MNK.TwinSnakes && !IsEnabled(CustomComboPreset.MonkSTComboOption))))
