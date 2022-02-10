@@ -163,7 +163,9 @@ namespace XIVComboExpandedestPlugin.Combos
                     if (lastComboMove == RDM.Zwerchhau && level >= RDM.Levels.Redoublement)
                         return OriginalHook(RDM.Redoublement);
 
-                    if (IsEnabled(CustomComboPreset.RedMageMeleeComboReprise) && !InMeleeRange() && level >= RDM.Levels.Reprise && OriginalHook(RDM.Reprise) != RDM.Reprise)
+                    if (IsEnabled(CustomComboPreset.RedMageMeleeComboReprise) && level >= RDM.Levels.Reprise && OriginalHook(RDM.Reprise) != RDM.Reprise
+                        &&
+                        (!InMeleeRange() || (IsEnabled(CustomComboPreset.RedMageMeleeComboRepriseOption) && (gauge.BlackMana < 50 || gauge.WhiteMana < 50))))
                         return OriginalHook(RDM.Reprise);
                 }
 

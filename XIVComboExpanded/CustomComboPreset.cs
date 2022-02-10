@@ -880,6 +880,11 @@ namespace XIVComboExpandedestPlugin
         RedMageMeleeComboReprise = 3518,
 
         [OrderedEnum]
+        [ParentCombo(RedMageMeleeComboReprise)]
+        [CustomComboInfo("Redoublement Combo to Reprise Under-50 Option", "Enchanted Reprise will also replace Redoublement combo if you are under 50 black or white Mana.", RDM.JobID, RDM.Redoublement)]
+        RedMageMeleeComboRepriseOption = 3519,
+
+        [OrderedEnum]
         [SecretCustomCombo]
         [ParentCombo(RedMageMeleeCombo)]
         [CustomComboInfo("Redoublement Combo Plus Plus", "Replaces Redoublement/Moulinet with the combo spells after you have gained 3 mana stacks.\nVerflare or Verholy will be picked, whichever is more appropriate.", RDM.JobID, RDM.Redoublement, RDM.Moulinet)]
@@ -949,6 +954,10 @@ namespace XIVComboExpandedestPlugin
         [OrderedEnum]
         [CustomComboInfo("Eukrasia into Eukrasian Dosis", "Eukrasia turns into Eukrasian Dosis while you have it active.\nThis doesn't save a button or really much else, I just like how it feels.", SGE.JobID, SGE.Eukrasia)]
         SageEukrasiaDosisFeature = 4006,
+
+        /*[OrderedEnum]
+        [CustomComboInfo("Toxikon Movement Feature", "Dosis turns into Toxikon while you are moving and don't have Eukrasia.", SGE.JobID, SGE.Dosis, SGE.Dosis2, SGE.Dosis3)]
+        SageToxikonMovementFeature = 4008,*/
 
         [OrderedEnum]
         [CustomComboInfo("Extreme Button Saver", "This changes your targeted healing actions into AoE heals if you have no target.\nRecommended only if you have disabilities, or REALLY like having a smaller hotbar, at the expense of having to untarget a lot.", SGE.JobID, SGE.Haima, SGE.Druochole, SGE.Taurochole, SGE.Krasis, SGE.Diagnosis, SGE.Pneuma)]

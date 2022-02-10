@@ -1,4 +1,7 @@
-﻿using Dalamud.Game.ClientState.Conditions;
+﻿using System;
+using System.Numerics;
+
+using Dalamud.Game.ClientState.Conditions;
 using Dalamud.Game.ClientState.JobGauge.Types;
 
 namespace XIVComboExpandedestPlugin.Combos
@@ -9,6 +12,8 @@ namespace XIVComboExpandedestPlugin.Combos
 
         public const uint
             Dosis = 24283,
+            Dosis2 = 24306,
+            Dosis3 = 24312,
             Diagnosis = 24284,
             Prognosis = 24286,
             Holos = 24310,
@@ -85,6 +90,27 @@ namespace XIVComboExpandedestPlugin.Combos
             return actionID;
         }
     }
+
+    /*internal class SageToxikonMovementFeature : CustomCombo
+    {
+        protected override CustomComboPreset Preset => CustomComboPreset.SageToxikonMovementFeature;
+        internal static double distance = 0;
+
+        protected override uint Invoke(uint actionID, uint lastComboMove, float comboTime, byte level)
+        {
+            if (actionID == SGE.Dosis)
+            {
+                if (GetJobGauge<SGEGauge>().Eukrasia || LocalPlayer is null)
+                    return actionID;
+                var newDistance = GetTargetDistance();
+                if (distance != newDistance *//*&& CanUseAction(OriginalHook(SGE.Toxikon))*//*)
+                    return OriginalHook(SGE.Toxikon);
+                distance = GetTargetDistance();
+            }
+
+            return actionID;
+        }
+    }*/
 
     internal class SageExtremeButtonSaverFeature : CustomCombo
     {
