@@ -2,7 +2,6 @@ using System;
 
 using Dalamud.Game.ClientState.Conditions;
 using Dalamud.Game.ClientState.JobGauge.Enums;
-using Dalamud.Game.ClientState.JobGauge.Types;
 
 namespace XIVComboExpandedestPlugin.Combos
 {
@@ -319,16 +318,6 @@ namespace XIVComboExpandedestPlugin.Combos
         }
     }
 
-    internal class NinjaHuraijinCrushFeature : CustomCombo
-    {
-        protected override CustomComboPreset Preset => CustomComboPreset.NinjaHuraijinCrushFeature;
-
-        protected override uint Invoke(uint actionID, uint lastComboMove, float comboTime, byte level)
-        {
-            return lastComboMove == NIN.GustSlash && comboTime > 0 ? NIN.ArmorCrush : actionID;
-        }
-    }
-
     internal class NinjaHuraijinRaijuFeature : CustomCombo
     {
         protected override CustomComboPreset Preset => CustomComboPreset.NinjaHuraijinRaijuFeature;
@@ -339,7 +328,6 @@ namespace XIVComboExpandedestPlugin.Combos
             {
                 if (level >= NIN.Levels.Raiju && HasEffect(NIN.Buffs.RaijuReady))
                 {
-                    if (GetJobGauge<NINGauge>().HutonTimer > 0) return actionID;
                     if (IsEnabled(CustomComboPreset.NinjaSmartRaijuFeature))
                         return InMeleeRange() ? NIN.FleetingRaiju : NIN.ForkedRaiju;
                     return IsEnabled(CustomComboPreset.NinjaHuraijinFleetingRaijuFeature) ? NIN.FleetingRaiju : NIN.ForkedRaiju;
@@ -357,6 +345,16 @@ namespace XIVComboExpandedestPlugin.Combos
         protected override uint Invoke(uint actionID, uint lastComboMove, float comboTime, byte level)
         {
             return InMeleeRange() ? NIN.FleetingRaiju : NIN.ForkedRaiju;
+        }
+    }
+
+    internal class NinjaHuraijinCrushFeature : CustomCombo
+    {
+        protected override CustomComboPreset Preset => CustomComboPreset.NinjaHuraijinCrushFeature;
+
+        protected override uint Invoke(uint actionID, uint lastComboMove, float comboTime, byte level)
+        {
+            return lastComboMove == NIN.GustSlash && comboTime > 0 ? NIN.ArmorCrush : actionID;
         }
     }
 }

@@ -666,7 +666,7 @@ namespace XIVComboExpandedestPlugin
         NinjaAeolianEdgeRaijuFeature = 3013,
 
         [OrderedEnum]
-        [CustomComboInfo("Huraijin / Forked Raiju Feature", "Replaces Huraijin with Forked Raiju when available if Huton is not up.", NIN.JobID, NIN.Huraijin)]
+        [CustomComboInfo("Huraijin / Forked Raiju Feature", "Replaces Huraijin with Forked Raiju when available.", NIN.JobID, NIN.Huraijin)]
         NinjaHuraijinRaijuFeature = 3011,
 
         [OrderedEnum]
