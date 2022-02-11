@@ -944,7 +944,7 @@ namespace XIVComboExpandedestPlugin
         SagePhlegmaBalls = 4002,
 
         [OrderedEnum]
-        [CustomComboInfo("Phlegma into Toxikon", "Phlegma turns into Toxikon if you are out of charges, have Addersting.\nThis is prioritized over Dyskrasia if the 'Phlegma into Dyskrasia' feature is enabled.", SGE.JobID, SGE.Phlegma, SGE.Phlegmara, SGE.Phlegmaga)]
+        [CustomComboInfo("Phlegma into Toxikon", "Phlegma turns into Toxikon if you have addersting and are either out of range or out of charges.\nThis is prioritized over Dyskrasia if the 'Phlegma into Dyskrasia' feature is enabled.", SGE.JobID, SGE.Phlegma, SGE.Phlegmara, SGE.Phlegmaga)]
         SagePhlegmaToxicBalls = 4003,
 
         [OrderedEnum]
@@ -956,11 +956,11 @@ namespace XIVComboExpandedestPlugin
         SageEukrasiaDosisFeature = 4006,
 
         [OrderedEnum]
-        [CustomComboInfo("Toxikon Movement Feature", "Dosis turns into Toxikon while you are moving and don't have Eukrasia.\nThere is a very small chance this feature won't work on a press (like, frame-perfect unlucky timing), so be warned.", SGE.JobID, SGE.Dosis, SGE.Dosis2, SGE.Dosis3)]
+        [CustomComboInfo("Toxikon Movement Feature", "Dosis turns into Toxikon while you are moving and don't have Eukrasia.", SGE.JobID, SGE.Dosis, SGE.Dosis2, SGE.Dosis3)]
         SageToxikonMovementFeature = 4008,
 
         [OrderedEnum]
-        [CustomComboInfo("Phlegma Movement Feature", "Dosis turns into Phlegma while you are moving, don't have Eukrasia, and are in range to use it.\nThere is a very small chance this feature won't work on a press (like, frame-perfect unlucky timing), so be warned.", SGE.JobID, SGE.Dosis, SGE.Dosis2, SGE.Dosis3)]
+        [CustomComboInfo("Phlegma Movement Feature", "Dosis turns into Phlegma while you are moving, don't have Eukrasia, and are in range to use it.", SGE.JobID, SGE.Dosis, SGE.Dosis2, SGE.Dosis3)]
         SagePhlegmaMovementFeature = 4009,
 
         [OrderedEnum]
@@ -1120,7 +1120,7 @@ namespace XIVComboExpandedestPlugin
         ScholarRuinChainFeature = 2807,
 
         [OrderedEnum]
-        [CustomComboInfo("Ruin 2 Movement Feature", "Ruin/Broil becomes Ruin 2 while you are moving.\nThere is a very small chance this feature won't work on a press (like, frame-perfect unlucky timing), so be warned.", SCH.JobID, SCH.Ruin, SCH.Broil, SCH.Broil2, SCH.Broil3, SCH.Broil4)]
+        [CustomComboInfo("Ruin 2 Movement Feature", "Ruin/Broil becomes Ruin 2 while you are moving.", SCH.JobID, SCH.Ruin, SCH.Broil, SCH.Broil2, SCH.Broil3, SCH.Broil4)]
         ScholarRuin2MovementFeature = 2809,
 
         [OrderedEnum]
