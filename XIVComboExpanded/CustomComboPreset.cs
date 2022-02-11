@@ -610,14 +610,14 @@ namespace XIVComboExpandedestPlugin
         NinjaHakkeMujinsatsuCombo = 3003,
 
         [OrderedEnum]
-        [CustomComboInfo("Huraijin Armor Crush Feature", "Replaces Huraijin with Armor Crush after using Gust Slash.", NIN.JobID, NIN.Huraijin)]
-        NinjaHuraijinCrushFeature = 3018,
-
-        [OrderedEnum]
         [SecretCustomCombo]
         [ParentCombo(NinjaHakkeMujinsatsuCombo)]
         [CustomComboInfo("Evil Hakke Mujinsatsu Combo", "Replace Death Blossom with its combo chain instead.", NIN.JobID, NIN.HakkeMujinsatsu, NIN.DeathBlossom)]
         NinjaEvilHakkeMujinsatsuCombo = 3014,
+
+        [OrderedEnum]
+        [CustomComboInfo("Huraijin Armor Crush Feature", "Replaces Huraijin with Armor Crush after using Gust Slash.", NIN.JobID, NIN.Huraijin)]
+        NinjaHuraijinCrushFeature = 3018,
 
         [OrderedEnum]
         [CustomComboInfo("Kassatsu to Trick", "Replaces Kassatsu with Trick Attack while Suiton is up and Kassatsu is on cooldown, or Hidden is up.", NIN.JobID, NIN.Kassatsu)]
@@ -687,7 +687,7 @@ namespace XIVComboExpandedestPlugin
         PaladinGoringBladeCombo = 1901,
 
         [OrderedEnum]
-        [ConflictingCombos(PaladinAtonementFeature)]
+        [ConflictingCombos(PaladinRoyalAuthorityAtonementFeature)]
         [CustomComboInfo("Goring Blade Atonement Feature", "Replace Goring Blade with Atonement when under the effect of Sword Oath.\nThis conflicts with Atonement Feature because you always want to start a way to start your combo (dropping Sword Oath is very commonly necessary).", PLD.JobID, PLD.GoringBlade)]
         PaladinGoringBladeAtonementFeature = 1909,
 
@@ -707,8 +707,8 @@ namespace XIVComboExpandedestPlugin
 
         [OrderedEnum]
         [ConflictingCombos(PaladinGoringBladeAtonementFeature)]
-        [CustomComboInfo("Atonement Feature", "Replace Royal Authority with Atonement when under the effect of Sword Oath.", PLD.JobID, PLD.RageOfHalone, PLD.RoyalAuthority)]
-        PaladinAtonementFeature = 1903,
+        [CustomComboInfo("Royal Authority Atonement Feature", "Replace Royal Authority with Atonement when under the effect of Sword Oath.", PLD.JobID, PLD.RageOfHalone, PLD.RoyalAuthority)]
+        PaladinRoyalAuthorityAtonementFeature = 1903,
 
         [OrderedEnum]
         [CustomComboInfo("Prominence Combo", "Replace Prominence with its combo chain.", PLD.JobID, PLD.Prominence, PLD.TotalEclipse)]
@@ -955,9 +955,13 @@ namespace XIVComboExpandedestPlugin
         [CustomComboInfo("Eukrasia into Eukrasian Dosis", "Eukrasia turns into Eukrasian Dosis while you have it active.\nThis doesn't save a button or really much else, I just like how it feels.", SGE.JobID, SGE.Eukrasia)]
         SageEukrasiaDosisFeature = 4006,
 
-        /*[OrderedEnum]
-        [CustomComboInfo("Toxikon Movement Feature", "Dosis turns into Toxikon while you are moving and don't have Eukrasia.", SGE.JobID, SGE.Dosis, SGE.Dosis2, SGE.Dosis3)]
-        SageToxikonMovementFeature = 4008,*/
+        [OrderedEnum]
+        [CustomComboInfo("Toxikon Movement Feature", "Dosis turns into Toxikon while you are moving and don't have Eukrasia.\nThere is a very small chance this feature won't work on a press (like, frame-perfect unlucky timing), so be warned.", SGE.JobID, SGE.Dosis, SGE.Dosis2, SGE.Dosis3)]
+        SageToxikonMovementFeature = 4008,
+
+        [OrderedEnum]
+        [CustomComboInfo("Phlegma Movement Feature", "Dosis turns into Phlegma while you are moving, don't have Eukrasia, and are in range to use it.\nThere is a very small chance this feature won't work on a press (like, frame-perfect unlucky timing), so be warned.", SGE.JobID, SGE.Dosis, SGE.Dosis2, SGE.Dosis3)]
+        SagePhlegmaMovementFeature = 4009,
 
         [OrderedEnum]
         [CustomComboInfo("Extreme Button Saver", "This changes your targeted healing actions into AoE heals if you have no target.\nRecommended only if you have disabilities, or REALLY like having a smaller hotbar, at the expense of having to untarget a lot.", SGE.JobID, SGE.Haima, SGE.Druochole, SGE.Taurochole, SGE.Krasis, SGE.Diagnosis, SGE.Pneuma)]
@@ -1114,6 +1118,10 @@ namespace XIVComboExpandedestPlugin
         [OrderedEnum]
         [CustomComboInfo("Ruin 2 to Chain Stratagem", "Ruin 2 becomes Chain Stratagem for a short while after you have used any action (and if it's off cooldown).", SCH.JobID, SCH.Ruin2)]
         ScholarRuinChainFeature = 2807,
+
+        [OrderedEnum]
+        [CustomComboInfo("Ruin 2 Movement Feature", "Ruin/Broil becomes Ruin 2 while you are moving.\nThere is a very small chance this feature won't work on a press (like, frame-perfect unlucky timing), so be warned.", SCH.JobID, SCH.Ruin, SCH.Broil, SCH.Broil2, SCH.Broil3, SCH.Broil4)]
+        ScholarRuin2MovementFeature = 2809,
 
         [OrderedEnum]
         [CustomComboInfo("Scholar Lucid Dreaming Reminder", "All your non-role action cooldowns (that don't have charges) become Lucid Dreaming if they aren't up and Lucid Dreaming is, and you have less-than-or-equal-to 9000 MP.", SCH.JobID, SCH.Aetherflow, SCH.EmergencyTactics, SCH.WhisperingDawn, SCH.FeyIllumination, SCH.FeyBless, SCH.Dissipation, SCH.ChainStratagem, SCH.Indomitability, SCH.Excogitation, SCH.SacredSoil, SCH.Recitation, SCH.DeploymentTactics, SCH.SummonSeraph)]

@@ -61,6 +61,14 @@ namespace XIVComboExpandedestPlugin.Combos
         /// </summary>
         protected byte JobID { get; }
 
+        protected Vector2 Position { get; set; }
+
+        protected float PlayerSpeed { get; set; }
+
+        protected uint MovingCounter { get; set; }
+
+        protected bool IsMoving { get; set; }
+
         /// <summary>
         /// Gets the action IDs associated with this combo.
         /// </summary>
@@ -78,6 +86,30 @@ namespace XIVComboExpandedestPlugin.Combos
         public bool TryInvoke(uint actionID, uint lastComboActionID, float comboTime, byte level, out uint newActionID)
         {
             newActionID = 0;
+
+            Vector2 newPosition = LocalPlayer is null ? Vector2.Zero : new Vector2(LocalPlayer.Position.X, LocalPlayer.Position.Z);
+
+            this.PlayerSpeed = Vector2.Distance(newPosition, this.Position);
+
+            this.Position = LocalPlayer is null ? Vector2.Zero : newPosition;
+
+            if (this.MovingCounter == 0)
+            {
+                if (this.PlayerSpeed > 0)
+                {
+                    this.MovingCounter = 750;
+                    this.IsMoving = true;
+                }
+                else if (this.PlayerSpeed == 0)
+                {
+                    this.IsMoving = false;
+                }
+            }
+
+            if (this.MovingCounter > 0)
+            {
+                this.MovingCounter--;
+            }
 
             if (!IsEnabled(this.Preset))
                 return false;

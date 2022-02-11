@@ -84,7 +84,7 @@ namespace XIVComboExpandedestPlugin.Combos
 
     internal class PaladinAtonementFeature : CustomCombo
     {
-        protected override CustomComboPreset Preset => CustomComboPreset.PaladinAtonementFeature;
+        protected override CustomComboPreset Preset => CustomComboPreset.PaladinRoyalAuthorityAtonementFeature;
 
         protected override uint Invoke(uint actionID, uint lastComboMove, float comboTime, byte level)
         {

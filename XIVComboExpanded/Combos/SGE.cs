@@ -57,6 +57,7 @@ namespace XIVComboExpandedestPlugin.Combos
             public const ushort
                 Dosis = 1,
                 Prognosis = 10,
+                Phlegma = 26,
                 Soteria = 35,
                 Druochole = 45,
                 Kerachole = 50,
@@ -91,26 +92,43 @@ namespace XIVComboExpandedestPlugin.Combos
         }
     }
 
-    /*internal class SageToxikonMovementFeature : CustomCombo
+    internal class SagePhlegmaMovementFeature : CustomCombo
     {
-        protected override CustomComboPreset Preset => CustomComboPreset.SageToxikonMovementFeature;
-        internal static double distance = 0;
+        protected override CustomComboPreset Preset => CustomComboPreset.SagePhlegmaMovementFeature;
 
         protected override uint Invoke(uint actionID, uint lastComboMove, float comboTime, byte level)
         {
-            if (actionID == SGE.Dosis)
+            if (actionID == SGE.Dosis || actionID == SGE.Dosis2 || actionID == SGE.Dosis3)
             {
-                if (GetJobGauge<SGEGauge>().Eukrasia || LocalPlayer is null)
-                    return actionID;
-                var newDistance = GetTargetDistance();
-                if (distance != newDistance *//*&& CanUseAction(OriginalHook(SGE.Toxikon))*//*)
-                    return OriginalHook(SGE.Toxikon);
-                distance = GetTargetDistance();
+                if (this.IsMoving && level >= SGE.Levels.Phlegma && !GetJobGauge<SGEGauge>().Eukrasia && GetTargetDistance() <= 6)
+                {
+                    if (GetCooldown(OriginalHook(SGE.Phlegma)).CooldownRemaining > 45)
+                            return actionID;
+
+                    return OriginalHook(SGE.Phlegma);
+                }
             }
 
             return actionID;
         }
-    }*/
+    }
+
+    internal class SageToxikonMovementFeature : CustomCombo
+    {
+        protected override CustomComboPreset Preset => CustomComboPreset.SageToxikonMovementFeature;
+
+        protected override uint Invoke(uint actionID, uint lastComboMove, float comboTime, byte level)
+        {
+            if (actionID == SGE.Dosis || actionID == SGE.Dosis2 || actionID == SGE.Dosis3)
+            {
+                var gauge = GetJobGauge<SGEGauge>();
+                if (this.IsMoving && gauge.Addersting > 0 && !gauge.Eukrasia)
+                    return OriginalHook(SGE.Toxikon);
+            }
+
+            return actionID;
+        }
+    }
 
     internal class SageExtremeButtonSaverFeature : CustomCombo
     {
