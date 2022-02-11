@@ -65,6 +65,11 @@ namespace XIVComboExpandedestPlugin
         BlackEnochianFeature = 2501,
 
         [OrderedEnum]
+        [ParentCombo(BlackEnochianFeature)]
+        [CustomComboInfo("Blizzard 4/Fire 4 to Xenoglossy Movement Feature", "Change Fire 4 or Blizzard 4 to Xenoglossy while moving, if available and Triplecast/Swiftcast are not up.", BLM.JobID, BLM.Blizzard4, BLM.Fire4)]
+        BlackEnochianXenoglossyFeature = 2520,
+
+        [OrderedEnum]
         [SecretCustomCombo]
         [ParentCombo(BlackEnochianFeature)]
         [CustomComboInfo("Enochian Despair Feature", "Change Fire 4 or Blizzard 4 to Despair when in Astral Fire with less than 2400 mana.", BLM.JobID, BLM.Blizzard4, BLM.Fire4)]
@@ -77,6 +82,11 @@ namespace XIVComboExpandedestPlugin
         [OrderedEnum]
         [CustomComboInfo("Freeze/Flare Switcher", "Change Freeze or Flare to whichever action you can currently use.", BLM.JobID, BLM.Freeze, BLM.Flare)]
         BlackFreezeFlareFeature = 2502,
+
+        [OrderedEnum]
+        [ParentCombo(BlackFreezeFlareFeature)]
+        [CustomComboInfo("Freeze/Flare to Foul Movement Feature", "Change Freeze or Flare to Foul while moving, if instant cast foul is unlocked, it is available, and Triplecast/Swiftcast are not up.", BLM.JobID, BLM.Freeze, BLM.Flare)]
+        BlackFreezeFlareFoulFeature = 2521,
 
         [OrderedEnum]
         [CustomComboInfo("Umbral Soul Feature", "When you have no target, your ice spells become Umbral Soul while in Umbral Ice.", BLM.JobID, BLM.Freeze, BLM.Blizzard4, BLM.Blizzard, BLM.Blizzard2, BLM.Blizzard3, BLM.HighBlizzard2, BLM.Fire4, BLM.Flare)]
@@ -908,6 +918,11 @@ namespace XIVComboExpandedestPlugin
         [ParentCombo(RedMageVerprocComboPlus)]
         [CustomComboInfo("Verproc into Jolt Plus Opener Feature (Fire)", "Turns Verfire into Verthunder when out of combat.", RDM.JobID, RDM.Verfire)]
         RedMageVerprocOpenerFeatureFire = 3507,
+
+        [OrderedEnum]
+        [ParentCombo(RedMageVerprocCombo)]
+        [CustomComboInfo("Verproc into Reprise Movement Feature", "Verstone/Verfire additionally turn into Enchanted Reprise (if available) if you are moving and don't have any instant casts available.", RDM.JobID, RDM.Verstone, RDM.Verfire)]
+        RedMageVerprocComboReprise = 3520,
 
         [OrderedEnum]
         [ConflictingCombos(RedMageVerprocComboPlus)]
