@@ -87,23 +87,18 @@ namespace XIVComboExpandedestPlugin.Combos
         {
             newActionID = 0;
 
-            Vector2 newPosition = LocalPlayer is null ? Vector2.Zero : new Vector2(LocalPlayer.Position.X, LocalPlayer.Position.Z);
-
-            this.PlayerSpeed = Vector2.Distance(newPosition, this.Position);
-
-            this.Position = LocalPlayer is null ? Vector2.Zero : newPosition;
-
             if (this.MovingCounter == 0)
             {
-                if (this.PlayerSpeed > 0)
-                {
-                    this.MovingCounter = 750;
-                    this.IsMoving = true;
-                }
-                else if (this.PlayerSpeed == 0)
-                {
-                    this.IsMoving = false;
-                }
+                Vector2 newPosition = LocalPlayer is null ? Vector2.Zero : new Vector2(LocalPlayer.Position.X, LocalPlayer.Position.Z);
+
+                this.PlayerSpeed = Vector2.Distance(newPosition, this.Position);
+
+                this.IsMoving = this.PlayerSpeed > 0;
+
+                this.Position = LocalPlayer is null ? Vector2.Zero : newPosition;
+
+                // Ensure this runs only once every 50 Dalamud ticks to make sure we get an actual, accurate representation of speed, rather than just spamming 0.
+                this.MovingCounter = 50;
             }
 
             if (this.MovingCounter > 0)

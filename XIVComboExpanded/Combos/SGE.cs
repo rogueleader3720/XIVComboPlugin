@@ -171,15 +171,7 @@ namespace XIVComboExpandedestPlugin.Combos
 
             var gauge = GetJobGauge<SGEGauge>();
 
-            if (level >= SGE.Levels.Dosis3)
-                if (GetCooldown(SGE.Phlegmaga).CooldownRemaining > 45 && gauge.Addersting > 0)
-                    return OriginalHook(SGE.Toxikon);
-
-            if (level >= SGE.Levels.Dosis2)
-                if (GetCooldown(SGE.Phlegmara).CooldownRemaining > 45 && gauge.Addersting > 0)
-                    return OriginalHook(SGE.Toxikon);
-
-            if (GetCooldown(SGE.Phlegma).CooldownRemaining > 45 && gauge.Addersting > 0)
+            if ((GetCooldown(OriginalHook(SGE.Phlegma)).CooldownRemaining > 45 || GetTargetDistance() > 6) && gauge.Addersting > 0)
                 return OriginalHook(SGE.Toxikon);
 
             return actionID;
@@ -195,15 +187,7 @@ namespace XIVComboExpandedestPlugin.Combos
             if (CurrentTarget is null)
                 return OriginalHook(SGE.Dyskrasia);
 
-            if (level >= SGE.Levels.Dosis3)
-                if (GetCooldown(SGE.Phlegmaga).CooldownRemaining > 45)
-                    return OriginalHook(SGE.Dyskrasia);
-
-            if (level >= SGE.Levels.Dosis2)
-                if (GetCooldown(SGE.Phlegmara).CooldownRemaining > 45)
-                    return OriginalHook(SGE.Dyskrasia);
-
-            if (GetCooldown(SGE.Phlegma).CooldownRemaining > 45)
+            if (GetCooldown(OriginalHook(SGE.Phlegma)).CooldownRemaining > 45)
                 return OriginalHook(SGE.Dyskrasia);
 
             return actionID;
