@@ -34,7 +34,8 @@ namespace XIVComboExpandedestPlugin.Combos
             Fuko = 25780,
             OgiNamikiri = 25781,
             KaeshiNamikiri = 25782,
-            Enpi = 7486;
+            Enpi = 7486,
+            Meditate = 7497;
 
         public static class Buffs
         {
@@ -70,6 +71,16 @@ namespace XIVComboExpandedestPlugin.Combos
                 Shoha2 = 82,
                 Hyosetsu = 86,
                 OgiNamikiri = 90;
+        }
+    }
+
+    internal class SamuraiYukikazeMeditateFeature : CustomCombo
+    {
+        protected override CustomComboPreset Preset => CustomComboPreset.SamuraiYukikazeMeditateFeature;
+
+        protected override uint Invoke(uint actionID, uint lastComboMove, float comboTime, byte level)
+        {
+            return CurrentTarget is null && CanUseAction(SAM.Meditate) ? SAM.Meditate : actionID;
         }
     }
 

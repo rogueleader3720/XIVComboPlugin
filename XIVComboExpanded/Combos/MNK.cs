@@ -34,7 +34,8 @@ namespace XIVComboExpandedestPlugin.Combos
             RiddleOfFire = 7395,
             Brotherhood = 7396,
             RiddleOfWind = 25766,
-            Thunderclap = 25762;
+            Thunderclap = 25762,
+            Anatman = 16475;
 
         public static class Buffs
         {
@@ -84,6 +85,16 @@ namespace XIVComboExpandedestPlugin.Combos
         }
     }
 
+    internal class MonkDragonKickAnatmanFeature : CustomCombo
+    {
+        protected override CustomComboPreset Preset => CustomComboPreset.MonkDragonKickAnatmanFeature;
+
+        protected override uint Invoke(uint actionID, uint lastComboMove, float comboTime, byte level)
+        {
+            return CurrentTarget is null && CanUseAction(MNK.Anatman) && actionID == MNK.DragonKick ? MNK.Anatman : actionID;
+        }
+    }
+
     internal class MonkBootshineCombo : CustomCombo
     {
         protected override CustomComboPreset Preset => CustomComboPreset.MonkBootshineCombo;
@@ -92,6 +103,8 @@ namespace XIVComboExpandedestPlugin.Combos
         {
             if (actionID == MNK.Bootshine)
             {
+                if (CurrentTarget is null && CanUseAction(MNK.Anatman) && IsEnabled(CustomComboPreset.MonkBootshineFeature) && IsEnabled(CustomComboPreset.MonkDragonKickAnatmanFeature)) return MNK.Anatman;
+
                 if (IsEnabled(CustomComboPreset.MonkBootshineFeature) && IsEnabled(CustomComboPreset.MonkDragonClapFeature) && (!InMeleeRange() || CurrentTarget?.ObjectKind == Dalamud.Game.ClientState.Objects.Enums.ObjectKind.Player) && CanUseAction(MNK.Thunderclap))
                     return MNK.Thunderclap;
 
@@ -142,9 +155,14 @@ namespace XIVComboExpandedestPlugin.Combos
 
         protected override uint Invoke(uint actionID, uint lastComboMove, float comboTime, byte level)
         {
-            if (actionID == MNK.DragonKick)
+            if (actionID == (IsEnabled(CustomComboPreset.MonkDragonKickComboSnakeOption) ? MNK.TwinSnakes : MNK.DragonKick))
             {
                 var gauge = new MyMNKGauge(GetJobGauge<MNKGauge>());
+
+                if (CurrentTarget is null && CanUseAction(MNK.Anatman) && IsEnabled(CustomComboPreset.MonkDragonKickAnatmanFeature)) return MNK.Anatman;
+
+                if ((HasEffect(MNK.Buffs.PerfectBalance) || HasEffect(MNK.Buffs.FormlessFist)) && IsEnabled(CustomComboPreset.MonkDragonKickComboSnakeOption))
+                    return MNK.TwinSnakes;
 
                 if (IsEnabled(CustomComboPreset.MonkDragonKickBalanceFeature))
                 {
@@ -162,12 +180,14 @@ namespace XIVComboExpandedestPlugin.Combos
                                 return MNK.Bootshine;
                         }
 
-                        return actionID;
+                        return MNK.DragonKick;
                     }
 
                     if (HasEffect(MNK.Buffs.RaptorForm)) return MNK.TwinSnakes;
 
                     if (HasEffect(MNK.Buffs.CoeurlForm)) return MNK.Demolish;
+
+                    return MNK.DragonKick;
                 }
             }
 
@@ -186,6 +206,8 @@ namespace XIVComboExpandedestPlugin.Combos
 
             if (IsEnabled(CustomComboPreset.MonkDragonClapFeature) && actionID == MNK.TrueStrike && (!InMeleeRange() || CurrentTarget?.ObjectKind == Dalamud.Game.ClientState.Objects.Enums.ObjectKind.Player) && CanUseAction(MNK.Thunderclap))
                 return MNK.Thunderclap;
+
+            if (CurrentTarget is null && CanUseAction(MNK.Anatman) && actionID == MNK.TrueStrike && IsEnabled(CustomComboPreset.MonkDragonKickAnatmanFeature)) return MNK.Anatman;
 
             if (!HasEffect(MNK.Buffs.PerfectBalance) && !HasEffect(MNK.Buffs.FormlessFist) && (actionID == MNK.TrueStrike || (actionID == MNK.TwinSnakes && !IsEnabled(CustomComboPreset.MonkSTComboOption))))
             {
