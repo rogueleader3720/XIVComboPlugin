@@ -99,7 +99,7 @@ namespace XIVComboExpandedestPlugin.Combos
 
                 if (IsEnabled(CustomComboPreset.MonkBootshineFeature) && IsEnabled(CustomComboPreset.MonkDragonKickBalanceFeature))
                 {
-                    if (!gauge.BeastChakra.Contains(BeastChakra.NONE))
+                    if (!gauge.BeastChakra.Contains(BeastChakra.NONE) && CanUseAction(OriginalHook(MNK.MasterfulBlitz)))
                         return OriginalHook(MNK.MasterfulBlitz);
                 }
 
@@ -148,7 +148,7 @@ namespace XIVComboExpandedestPlugin.Combos
 
                 if (IsEnabled(CustomComboPreset.MonkDragonKickBalanceFeature))
                 {
-                    if (!gauge.BeastChakra.Contains(BeastChakra.NONE))
+                    if (!gauge.BeastChakra.Contains(BeastChakra.NONE) && CanUseAction(OriginalHook(MNK.MasterfulBlitz)))
                         return OriginalHook(MNK.MasterfulBlitz);
                 }
 

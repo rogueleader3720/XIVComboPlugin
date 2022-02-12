@@ -7,7 +7,9 @@
   "IconUrl": "https://raw.githubusercontent.com/grammernatzi/XIVComboPluginExpandedest/master/res/icon.png",
   "ImageUrls": [],
   "Changelog":
-"1.2.6.2: Searing Demi Feature added.
+"1.2.6.3: Dragon Kick Balance Feature fixed in 50-59 content when used with the Simple Monk Combos.
+
+1.2.6.2: Searing Demi Feature added.
 
 1.2.6.1: Shoha Features now turn into Shoha 2 if it is unlocked and you are in the middle of an AoE combo, or your last Iaijutsu action was Tenka Goken.
 
