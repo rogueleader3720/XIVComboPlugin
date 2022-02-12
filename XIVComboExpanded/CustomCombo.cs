@@ -69,6 +69,8 @@ namespace XIVComboExpandedestPlugin.Combos
 
         protected bool IsMoving { get; set; }
 
+        protected uint LastKaeshi { get; set; }
+
         /// <summary>
         /// Gets the action IDs associated with this combo.
         /// </summary>
@@ -86,6 +88,11 @@ namespace XIVComboExpandedestPlugin.Combos
         public bool TryInvoke(uint actionID, uint lastComboActionID, float comboTime, byte level, out uint newActionID)
         {
             newActionID = 0;
+
+            if (GetJobGauge<SAMGauge>().Kaeshi != Dalamud.Game.ClientState.JobGauge.Enums.Kaeshi.NONE && GetJobGauge<SAMGauge>().Kaeshi != Dalamud.Game.ClientState.JobGauge.Enums.Kaeshi.NAMIKIRI)
+            {
+                this.LastKaeshi = (uint)GetJobGauge<SAMGauge>().Kaeshi;
+            }
 
             if (this.MovingCounter == 0)
             {
