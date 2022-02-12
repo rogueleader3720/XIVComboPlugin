@@ -1220,6 +1220,10 @@ namespace XIVComboExpandedestPlugin
         SummonerCarbyFeature = 2704,
 
         [OrderedEnum]
+        [CustomComboInfo("Searing Demi Feature", "If Searing Light and Aethercharge/Dreadwyrm/Summon Bahamut/Phoenix are both off-cooldown, Searing Light replaces the latter.", SMN.JobID, SMN.Aethercharge, SMN.DreadwyrmTrance, SMN.SummonBahamut, SMN.SummonPhoenix)]
+        SummonerSearingDemiFeature = 2719,
+
+        [OrderedEnum]
         [CustomComboInfo("Summoner Lucid Dreaming Reminder", "All your non-role action cooldowns (that don't have charges) become Lucid Dreaming if they aren't up and Lucid Dreaming is, and you have less-than-or-equal-to 9000 MP.", SMN.JobID, SMN.EnergyDrain, SMN.EnergySyphon, SMN.RadiantAegis, SMN.SearingLight, SMN.SummonBahamut, SMN.DreadwyrmTrance, SMN.EnkindleBahamut, SMN.Aethercharge)]
         SummonerLucidReminderFeature = 2713,
 
