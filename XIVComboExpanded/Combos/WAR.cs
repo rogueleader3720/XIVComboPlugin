@@ -161,7 +161,7 @@ namespace XIVComboExpandedestPlugin.Combos
                     }
                 }
 
-                return WAR.Overpower;
+                return CurrentTarget is null && CanUseAction(WAR.MythrilTempest) ? WAR.MythrilTempest : WAR.Overpower;
             }
 
             return actionID;
@@ -197,6 +197,8 @@ namespace XIVComboExpandedestPlugin.Combos
                         return WAR.MythrilTempest;
                     }
                 }
+
+                return CurrentTarget is null && CanUseAction(WAR.MythrilTempest) ? WAR.MythrilTempest : WAR.Overpower;
             }
 
             return actionID;

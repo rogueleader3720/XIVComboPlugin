@@ -7,7 +7,9 @@
   "IconUrl": "https://raw.githubusercontent.com/grammernatzi/XIVComboPluginExpandedest/master/res/icon.png",
   "ImageUrls": [],
   "Changelog":
-"1.2.5.1: Black Mage Foul/Xenoglossy Movement Features and Red Mage Reprise Movement Feature added.
+"1.2.6.0: Warrior Overpower/Mythril Tempest Combos now default to Mythril Tempest while you have no target.
+
+1.2.5.1: Black Mage Foul/Xenoglossy Movement Features and Red Mage Reprise Movement Feature added.
 
 1.2.5.0: Player movement check optimized, range check added to Phlegma into Toxikon Feature.
 

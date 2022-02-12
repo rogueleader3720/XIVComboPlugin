@@ -1251,11 +1251,11 @@ namespace XIVComboExpandedestPlugin
         WarriorStormsEyeHawkReplacementFeature = 2113,
 
         [OrderedEnum]
-        [CustomComboInfo("Mythril Tempest Combo", "Replace Mythril Tempest with its combo chain", WAR.JobID, WAR.MythrilTempest)]
+        [CustomComboInfo("Mythril Tempest Combo", "Replace Mythril Tempest with its combo chain while you have a target.", WAR.JobID, WAR.MythrilTempest)]
         WarriorMythrilTempestCombo = 2103,
 
         [OrderedEnum]
-        [CustomComboInfo("Overpower Combo", "Replace Overpower with its combo chain (so that you can still use Mythril Tempest by itself in pulls)", WAR.JobID, WAR.Overpower)]
+        [CustomComboInfo("Overpower Combo", "Replace Overpower with its combo chain.", WAR.JobID, WAR.Overpower)]
         WarriorOverpowerCombo = 2104,
 
         [OrderedEnum]
