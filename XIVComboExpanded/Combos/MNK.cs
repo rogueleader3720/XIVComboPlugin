@@ -161,6 +161,9 @@ namespace XIVComboExpandedestPlugin.Combos
 
                 if (CurrentTarget is null && CanUseAction(MNK.Anatman) && IsEnabled(CustomComboPreset.MonkDragonKickAnatmanFeature)) return MNK.Anatman;
 
+                if (IsEnabled(CustomComboPreset.MonkDragonClapFeature) && (!InMeleeRange() || CurrentTarget?.ObjectKind == Dalamud.Game.ClientState.Objects.Enums.ObjectKind.Player) && CanUseAction(MNK.Thunderclap))
+                    return MNK.Thunderclap;
+
                 if ((HasEffect(MNK.Buffs.PerfectBalance) || HasEffect(MNK.Buffs.FormlessFist)) && IsEnabled(CustomComboPreset.MonkDragonKickComboSnakeOption))
                     return MNK.TwinSnakes;
 
