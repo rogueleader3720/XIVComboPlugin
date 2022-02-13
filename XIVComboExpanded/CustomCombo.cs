@@ -94,6 +94,9 @@ namespace XIVComboExpandedestPlugin.Combos
                 this.LastKaeshi = (uint)GetJobGauge<SAMGauge>().Kaeshi;
             }
 
+            if (LocalPlayer is not null && !LocalPlayer.StatusFlags.HasFlag(Dalamud.Game.ClientState.Objects.Enums.StatusFlags.InCombat))
+                this.LastKaeshi = (uint)Dalamud.Game.ClientState.JobGauge.Enums.Kaeshi.NONE;
+
             if (this.MovingCounter == 0)
             {
                 Vector2 newPosition = LocalPlayer is null ? Vector2.Zero : new Vector2(LocalPlayer.Position.X, LocalPlayer.Position.Z);
