@@ -491,57 +491,18 @@ namespace XIVComboExpandedestPlugin
         #region MONK
 
         [OrderedEnum]
-        [ConflictingCombos(MonkBootshineCombo, MonkDragonKickCombo)]
-        [CustomComboInfo("Monk Combos (Experimental)", "This is a very complex, experimental combo that intends to allow Monk single-target combos with minimal 'thinking' for you, keeping it as legit as possible.\n" +
-            "Normal Behavior: True Strike and Twin Snakes become Bootshine and Dragon Kick in Opo-Opo/no form, True Strike and Twin Snakes in Raptor, and Snap Punch and Demolish in Coeurl.\n" +
-            "Perfect Balance Behavior: Perfect Balance becomes Dragon Kick. Form Shift becomes Bootshine (if Bootshine Feature is not enabled). The other combos become Demolish and Twin Snakes, and change to Raptor/Coeurl moves based on which you pick.\n" +
-            "Formless Fist Behavior: True Strike becomes Dragon Kick. Twin Snakes stays normal. Perfect Balance becomes Demolish. Form Shift becomes Bootshine (Snap Punch with Bootshine feature).", MNK.JobID, MNK.TwinSnakes, MNK.TrueStrike, MNK.PerfectBalance, MNK.FormShift)]
-        MonkSTCombo = 2007,
-
-        [OrderedEnum]
-        [ParentCombo(MonkSTCombo)]
-        [CustomComboInfo("Monk Combos Twin Snakes Option", "Enabling this option makes it so that the Twin Snakes button doesn't get used for combos. This means you need Demolish on your bar.", MNK.JobID, MNK.FormShift)]
-        MonkSTComboOption = 2016,
-
-        [OrderedEnum]
-        [ParentCombo(MonkSTCombo)]
-        [CustomComboInfo("Monk Combos Dragon Kick Option", "Enabling this option makes it so that the True Strike button in Perfect Balance is replaced with Dragon Kick.", MNK.JobID, MNK.FormShift)]
-        MonkSTComboDragonKickOption = 2017,
-
-        [OrderedEnum]
-        [ParentCombo(MonkSTCombo)]
-        [CustomComboInfo("Monk Combos Double Solar Option", "Enabling this option makes it so that, if you use Opo-Opo first in Perfect Balance, Coeurl Form is chosen instead of Raptor Form.\nThis allows you to perform the Double Solar opener.", MNK.JobID, MNK.FormShift)]
-        MonkSTComboDoubleSolarOption = 2018,
-
-        [OrderedEnum]
-        [ParentCombo(MonkSTCombo)]
-        [CustomComboInfo("Monk Combos Opo-Opo Option", "Enabling this option makes it so that Dragon Kick/Bootshine replaces your combos in Perfect Balance if you have both Raptor and Coeurl Chakra.", MNK.JobID, MNK.TwinSnakes, MNK.TrueStrike)]
-        MonkSTComboOpoOpoOption = 2010,
-
-        [OrderedEnum]
-        [ParentCombo(MonkSTCombo)]
-        [CustomComboInfo("Monk Combos Perfect Balance Option", "Enabling this option makes it so that Perfect Balance under Formless Fist stays Perfect Balance for a short while after you use an action or if you have no target.", MNK.JobID, MNK.PerfectBalance)]
-        MonkSTComboDemolishOption = 2015,
-
-        [OrderedEnum]
-        [ParentCombo(MonkSTCombo)]
-        [ConflictingCombos(MonkAoEComboFormOption)]
-        [CustomComboInfo("Monk Combos Form Shift Option", "Enabling this option makes it so that Form Shift does not turn into Snap Punch with the Monk Combos feature.", MNK.JobID, MNK.FormShift)]
-        MonkSTComboFormOption = 2008,
-
-        [OrderedEnum]
         [ConflictingCombos(MonkSTCombo)]
-        [CustomComboInfo("Monk Simple Bootshine Combo", "Replace Bootshine with Monk's Bootshine/True Strike/Snap Punch combo.", MNK.JobID, MNK.Bootshine)]
+        [CustomComboInfo("Monk Bootshine Combo", "Replace Bootshine with Monk's Bootshine/True Strike/Snap Punch combo.", MNK.JobID, MNK.Bootshine)]
         MonkBootshineCombo = 2019,
 
         [OrderedEnum]
         [ConflictingCombos(MonkSTCombo)]
-        [CustomComboInfo("Monk Simple Dragon Kick Combo", "Replace Dragon Kick with Monk's Dragon Kick/Twin Snakes/Demolish combo.\nYou will still need Twin Snakes and Demolish on your bar for Perfect Balance and Form Shift.", MNK.JobID, MNK.DragonKick, MNK.TwinSnakes)]
+        [CustomComboInfo("Monk Dragon Kick Combo", "Replace Dragon Kick with Monk's Dragon Kick/Twin Snakes/Demolish combo.\nYou will still need Twin Snakes and Demolish on your bar for Perfect Balance and Form Shift.", MNK.JobID, MNK.DragonKick, MNK.TwinSnakes)]
         MonkDragonKickCombo = 2020,
 
         [OrderedEnum]
         [ParentCombo(MonkDragonKickCombo)]
-        [CustomComboInfo("Twin Snakes Option", "Instead of Dragon Kick being the combo's base action, Twin Snakes will be used, and will stay Twin Snakes during Perfect Balance and Formless Fist.", MNK.JobID)]
+        [CustomComboInfo("Twin Snakes Option", "Instead of Dragon Kick being the combo's base action, Twin Snakes will be used, and will stay Twin Snakes during Perfect Balance and Formless Fist.\nThis means you only additionally need Demolish on your hotbar, if you are using the Monk Dragon Kick Bootshine Feature", MNK.JobID)]
         MonkDragonKickComboSnakeOption = 2023,
 
         [OrderedEnum]
@@ -569,7 +530,7 @@ namespace XIVComboExpandedestPlugin
         // MonkAoEBalanceFeature = 2006,
 
         [OrderedEnum]
-        [CustomComboInfo("Monk Bootshine Feature", "Replaces Dragon Kick with Bootshine if Leaden Fist is up.", MNK.JobID, MNK.DragonKick)]
+        [CustomComboInfo("Monk Dragon Kick Bootshine Feature", "Replaces Dragon Kick with Bootshine if Leaden Fist is up, and vice-versa when Leaden Fist is not up in Bootshine-related combos.", MNK.JobID, MNK.DragonKick)]
         MonkBootshineFeature = 2002,
 
         [OrderedEnum]
@@ -604,6 +565,46 @@ namespace XIVComboExpandedestPlugin
         [OrderedEnum]
         [CustomComboInfo("Dragon Kick to Anatman", "Dragon Kick becomes Anatman while you have no target.", MNK.JobID, MNK.DragonKick)]
         MonkDragonKickAnatmanFeature = 2024,
+
+        [OrderedEnum]
+        [ConflictingCombos(MonkBootshineCombo, MonkDragonKickCombo)]
+        [CustomComboInfo("Monk Complex Combos", "This is a very complex legacy combo that saves one more additional button than the regular combos do (with Bootshine feature enabled), but is significantly more complicated (as it is designed to think for you as little as possible).\n" +
+            "It is heavily recommended that you use the regular combos instead unless you want to save a little extra hotbar space, or are already used to this combo.\n" +
+            "Normal Behavior: True Strike and Twin Snakes become Bootshine and Dragon Kick in Opo-Opo/no form, True Strike and Twin Snakes in Raptor, and Snap Punch and Demolish in Coeurl.\n" +
+            "Perfect Balance Behavior: Perfect Balance becomes Dragon Kick. Form Shift becomes Bootshine (if Bootshine Feature is not enabled). The other combos become Demolish and Twin Snakes, and change to Raptor/Coeurl moves based on which you pick.\n" +
+            "Formless Fist Behavior: True Strike becomes Dragon Kick. Twin Snakes stays normal. Perfect Balance becomes Demolish. Form Shift becomes Bootshine (Snap Punch with Bootshine feature).", MNK.JobID, MNK.TwinSnakes, MNK.TrueStrike, MNK.PerfectBalance, MNK.FormShift)]
+        MonkSTCombo = 2007,
+
+        [OrderedEnum]
+        [ParentCombo(MonkSTCombo)]
+        [CustomComboInfo("Twin Snake Option", "Enabling this option makes it so that the Twin Snakes button doesn't get used for combos. This means you need Demolish on your bar.", MNK.JobID, MNK.FormShift)]
+        MonkSTComboOption = 2016,
+
+        [OrderedEnum]
+        [ParentCombo(MonkSTCombo)]
+        [CustomComboInfo("Dragon Kick Option", "Enabling this option makes it so that the True Strike button in Perfect Balance is replaced with Dragon Kick.", MNK.JobID, MNK.FormShift)]
+        MonkSTComboDragonKickOption = 2017,
+
+        [OrderedEnum]
+        [ParentCombo(MonkSTCombo)]
+        [CustomComboInfo("Double Solar Option", "Enabling this option makes it so that, if you use Opo-Opo first in Perfect Balance, Coeurl Form is chosen instead of Raptor Form.\nThis allows you to perform the Double Solar opener.", MNK.JobID, MNK.FormShift)]
+        MonkSTComboDoubleSolarOption = 2018,
+
+        [OrderedEnum]
+        [ParentCombo(MonkSTCombo)]
+        [CustomComboInfo("Opo-Opo Option", "Enabling this option makes it so that Dragon Kick/Bootshine replaces your combos in Perfect Balance if you have both Raptor and Coeurl Chakra.", MNK.JobID, MNK.TwinSnakes, MNK.TrueStrike)]
+        MonkSTComboOpoOpoOption = 2010,
+
+        [OrderedEnum]
+        [ParentCombo(MonkSTCombo)]
+        [CustomComboInfo("Perfect Balance Option", "Enabling this option makes it so that Perfect Balance under Formless Fist stays Perfect Balance for a short while after you use an action or if you have no target.", MNK.JobID, MNK.PerfectBalance)]
+        MonkSTComboDemolishOption = 2015,
+
+        [OrderedEnum]
+        [ParentCombo(MonkSTCombo)]
+        [ConflictingCombos(MonkAoEComboFormOption)]
+        [CustomComboInfo("Form Shift Option", "Enabling this option makes it so that Form Shift does not turn into Snap Punch with the Monk Combos feature.", MNK.JobID, MNK.FormShift)]
+        MonkSTComboFormOption = 2008,
 
         #endregion
         // ====================================================================================
