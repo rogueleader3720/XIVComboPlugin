@@ -155,12 +155,12 @@ namespace XIVComboExpandedestPlugin
         #region BARD
 
         [OrderedEnum]
-        [CustomComboInfo("Wanderer's into Pitch Perfect", "Replaces Wanderer's Minuet with Pitch Perfect while in WM.", BRD.JobID, BRD.WanderersMinuet)]
-        BardWanderersPitchPerfectFeature = 2301,
-
-        [OrderedEnum]
         [CustomComboInfo("Heavy Shot into Straight Shot", "Replaces Heavy Shot/Burst Shot with Straight Shot/Refulgent Arrow when procced.", BRD.JobID, BRD.HeavyShot, BRD.BurstShot)]
         BardStraightShotUpgradeFeature = 2302,
+
+        [OrderedEnum]
+        [CustomComboInfo("Wanderer's into Pitch Perfect", "Replaces Wanderer's Minuet with Pitch Perfect while in WM.", BRD.JobID, BRD.WanderersMinuet)]
+        BardWanderersPitchPerfectFeature = 2301,
 
         [OrderedEnum]
         [CustomComboInfo("Iron Jaws Feature", "Iron Jaws is replaced with Stormbite/Windbite if it is not up, or you do not have Iron Jaws yet.", BRD.JobID, BRD.IronJaws)]
@@ -205,31 +205,10 @@ namespace XIVComboExpandedestPlugin
         #region DANCER
 
         [OrderedEnum]
-        [CustomComboInfo("Fan Dance Combos", "Change Fan Dance and Fan Dance 2 into Fan Dance 3 while under Threefold Fan Dance.", DNC.JobID, DNC.FanDance1, DNC.FanDance2)]
-        DancerFanDanceCombo = 3801,
-
-        [OrderedEnum]
-        [ParentCombo(DancerFanDanceCombo)]
-        [CustomComboInfo("Fan Dance IV Combo", "Additionally change Fan Dance and Fan Dance 2 into Fan Dance 4 while under Fourfold Fan Dance.", DNC.JobID, DNC.FanDance1, DNC.FanDance2)]
-        DancerFanDance4Combo = 3809,
-
-        [OrderedEnum]
         [SecretCustomCombo]
         [ConflictingCombos(DancerDanceComboCompatibility)]
         [CustomComboInfo("Dance Step Combo", "Change Standard Step and Technical Step into each dance step while dancing.", DNC.JobID, DNC.StandardStep, DNC.TechnicalStep)]
         DancerDanceStepCombo = 3802,
-
-        [OrderedEnum]
-        [CustomComboInfo("Flourish Proc Saver", "Change Flourish into any available procs before using.", DNC.JobID, DNC.Flourish)]
-        DancerFlourishFeature = 3803,
-
-        [OrderedEnum]
-        [CustomComboInfo("Flourish to Fan Dance IV", "Change Flourish into Fan Dance IV when it is ready.", DNC.JobID, DNC.Flourish)]
-        DancerFlourishFanDance4Feature = 3808,
-
-        [OrderedEnum]
-        [CustomComboInfo("Flourish to Fan Dance III", "Change Flourish into Fan Dance III when it is ready.\nTakes priority over Fan Dance IV if Flourish to Fan Dance IV is active.", DNC.JobID, DNC.Flourish)]
-        DancerFlourishFanDance3Feature = 3810,
 
         [OrderedEnum]
         [ConflictingCombos(DancerSingleTargetProcs)]
@@ -250,6 +229,27 @@ namespace XIVComboExpandedestPlugin
         [ConflictingCombos(DancerAoeMultibutton)]
         [CustomComboInfo("AoE to Procs", "Change AoE actions into procs when available.", DNC.JobID, DNC.Windmill, DNC.Bladeshower)]
         DancerAoeProcs = 3812,
+
+        [OrderedEnum]
+        [CustomComboInfo("Fan Dance Combos", "Change Fan Dance and Fan Dance 2 into Fan Dance 3 while under Threefold Fan Dance.", DNC.JobID, DNC.FanDance1, DNC.FanDance2)]
+        DancerFanDanceCombo = 3801,
+
+        [OrderedEnum]
+        [ParentCombo(DancerFanDanceCombo)]
+        [CustomComboInfo("Fan Dance IV Combo", "Additionally change Fan Dance and Fan Dance 2 into Fan Dance 4 while under Fourfold Fan Dance.", DNC.JobID, DNC.FanDance1, DNC.FanDance2)]
+        DancerFanDance4Combo = 3809,
+
+        [OrderedEnum]
+        [CustomComboInfo("Flourish Proc Saver", "Change Flourish into any available procs before using.", DNC.JobID, DNC.Flourish)]
+        DancerFlourishFeature = 3803,
+
+        [OrderedEnum]
+        [CustomComboInfo("Flourish to Fan Dance IV", "Change Flourish into Fan Dance IV when it is ready.", DNC.JobID, DNC.Flourish)]
+        DancerFlourishFanDance4Feature = 3808,
+
+        [OrderedEnum]
+        [CustomComboInfo("Flourish to Fan Dance III", "Change Flourish into Fan Dance III when it is ready.\nTakes priority over Fan Dance IV if Flourish to Fan Dance IV is active.", DNC.JobID, DNC.Flourish)]
+        DancerFlourishFanDance3Feature = 3810,
 
         [OrderedEnum]
         [CustomComboInfo("Devilment Feature", "Change Devilment into Starfall Dance after use.", DNC.JobID, DNC.Devilment)]
@@ -621,10 +621,6 @@ namespace XIVComboExpandedestPlugin
         // last used: 3018
 
         [OrderedEnum]
-        [CustomComboInfo("Armor Crush Combo", "Replace Armor Crush with its combo chain.", NIN.JobID, NIN.ArmorCrush)]
-        NinjaArmorCrushCombo = 3001,
-
-        [OrderedEnum]
         [CustomComboInfo("Aeolian Edge Combo", "Replace Aeolian Edge with its combo chain.", NIN.JobID, NIN.AeolianEdge)]
         NinjaAeolianEdgeCombo = 3002,
 
@@ -632,6 +628,10 @@ namespace XIVComboExpandedestPlugin
         [ParentCombo(NinjaAeolianEdgeCombo)]
         [CustomComboInfo("Aeolian Edge to Throwing Dagger", "Replace Aeolian Edge combo with Throwing Dagger if you are out of range.", NIN.JobID, NIN.ThrowingDagger)]
         NinjaThrowingEdgeFeature = 3021,
+
+        [OrderedEnum]
+        [CustomComboInfo("Armor Crush Combo", "Replace Armor Crush with its combo chain.", NIN.JobID, NIN.ArmorCrush)]
+        NinjaArmorCrushCombo = 3001,
 
         [OrderedEnum]
         [CustomComboInfo("Hakke Mujinsatsu Combo", "Replace Hakke Mujinsatsu with its combo chain.", NIN.JobID, NIN.HakkeMujinsatsu, NIN.DeathBlossom)]
@@ -711,15 +711,6 @@ namespace XIVComboExpandedestPlugin
         #region PALADIN
 
         [OrderedEnum]
-        [CustomComboInfo("Goring Blade Combo", "Replace Goring Blade with its combo chain.", PLD.JobID, PLD.GoringBlade)]
-        PaladinGoringBladeCombo = 1901,
-
-        [OrderedEnum]
-        [ConflictingCombos(PaladinRoyalAuthorityAtonementFeature)]
-        [CustomComboInfo("Goring Blade Atonement Feature", "Replace Goring Blade with Atonement when under the effect of Sword Oath.\nThis conflicts with Atonement Feature because you always want to start a way to start your combo (dropping Sword Oath is very commonly necessary).", PLD.JobID, PLD.GoringBlade)]
-        PaladinGoringBladeAtonementFeature = 1909,
-
-        [OrderedEnum]
         [CustomComboInfo("Royal Authority Combo", "Replace Royal Authority/Rage of Halone with its combo chain.", PLD.JobID, PLD.RoyalAuthority, PLD.RageOfHalone)]
         PaladinRoyalAuthorityCombo = 1902,
 
@@ -737,6 +728,15 @@ namespace XIVComboExpandedestPlugin
         [ConflictingCombos(PaladinGoringBladeAtonementFeature)]
         [CustomComboInfo("Royal Authority Atonement Feature", "Replace Royal Authority with Atonement when under the effect of Sword Oath.", PLD.JobID, PLD.RageOfHalone, PLD.RoyalAuthority)]
         PaladinRoyalAuthorityAtonementFeature = 1903,
+
+        [OrderedEnum]
+        [CustomComboInfo("Goring Blade Combo", "Replace Goring Blade with its combo chain.", PLD.JobID, PLD.GoringBlade)]
+        PaladinGoringBladeCombo = 1901,
+
+        [OrderedEnum]
+        [ConflictingCombos(PaladinRoyalAuthorityAtonementFeature)]
+        [CustomComboInfo("Goring Blade Atonement Feature", "Replace Goring Blade with Atonement when under the effect of Sword Oath.\nThis conflicts with Atonement Feature because you always want to start a way to start your combo (dropping Sword Oath is very commonly necessary).", PLD.JobID, PLD.GoringBlade)]
+        PaladinGoringBladeAtonementFeature = 1909,
 
         [OrderedEnum]
         [CustomComboInfo("Prominence Combo", "Replace Prominence with its combo chain.", PLD.JobID, PLD.Prominence, PLD.TotalEclipse)]
@@ -871,14 +871,6 @@ namespace XIVComboExpandedestPlugin
         #region RED MAGE
 
         [OrderedEnum]
-        [CustomComboInfo("Red Mage AoE Combo", "Replaces Veraero/Verthunder 2 with Impact when Dualcast or Swiftcast are active.", RDM.JobID, RDM.Veraero2, RDM.Verthunder2)]
-        RedMageAoECombo = 3501,
-
-        [OrderedEnum]
-        [CustomComboInfo("Moulinet Lockout Feature", "Prevents you from using Moulinet below 60/60 gauge by replacing it with Physick if you have Verflare unlocked.", RDM.JobID, RDM.Moulinet)]
-        RedMageMoulinetReminderFeature = 3514,
-
-        [OrderedEnum]
         [CustomComboInfo("Redoublement Combo", "Replaces Redoublement with its combo chain, following enchantment rules.", RDM.JobID, RDM.Redoublement, RDM.Moulinet)]
         RedMageMeleeCombo = 3502,
 
@@ -948,6 +940,14 @@ namespace XIVComboExpandedestPlugin
         RedMageVeraeroVerThunderScorchFeature = 3510,
 
         [OrderedEnum]
+        [CustomComboInfo("Red Mage AoE Combo", "Replaces Veraero/Verthunder 2 with Impact when Dualcast or Swiftcast are active.", RDM.JobID, RDM.Veraero2, RDM.Verthunder2)]
+        RedMageAoECombo = 3501,
+
+        [OrderedEnum]
+        [CustomComboInfo("Moulinet Lockout Feature", "Prevents you from using Moulinet below 60/60 gauge by replacing it with Physick if you have Verflare unlocked.", RDM.JobID, RDM.Moulinet)]
+        RedMageMoulinetReminderFeature = 3514,
+
+        [OrderedEnum]
         [CustomComboInfo("Embolden to Manaification", "Replaces Embolden with Manafication if the former is on cooldown and the latter is not.", RDM.JobID, RDM.Embolden)]
         RedMageEmboldenFeature = 3511,
 
@@ -1009,10 +1009,6 @@ namespace XIVComboExpandedestPlugin
         #region SAMURAI
 
         [OrderedEnum]
-        [CustomComboInfo("Yukikaze Combo", "Replace Yukikaze with its combo chain.", SAM.JobID, SAM.Yukikaze)]
-        SamuraiYukikazeCombo = 3401,
-
-        [OrderedEnum]
         [CustomComboInfo("Gekko Combo", "Replace Gekko with its combo chain.", SAM.JobID, SAM.Gekko)]
         SamuraiGekkoCombo = 3402,
 
@@ -1034,6 +1030,10 @@ namespace XIVComboExpandedestPlugin
         [ParentCombo(SamuraiKashaCombo)]
         [CustomComboInfo("Kasha Combo Option", "Start the Kasha combo chain with Shifu instead of Hakaze.", SAM.JobID, SAM.Kasha)]
         SamuraiKashaOption = 3416,
+
+        [OrderedEnum]
+        [CustomComboInfo("Yukikaze Combo", "Replace Yukikaze with its combo chain.", SAM.JobID, SAM.Yukikaze)]
+        SamuraiYukikazeCombo = 3401,
 
         [OrderedEnum]
         [CustomComboInfo("Mangetsu Combo", "Replace Mangetsu with its combo chain.", SAM.JobID, SAM.Mangetsu, SAM.Fuga, SAM.Fuko)]
