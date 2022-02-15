@@ -516,7 +516,7 @@ namespace XIVComboExpandedestPlugin
         [OrderedEnum]
         [ParentCombo(MonkAoECombo)]
         [ConflictingCombos(MonkSTComboFormOption)]
-        [CustomComboInfo("Monk AoE Combo Form Shift Option", "Enabling this option has Form Shift turn into Four-Point Fury in Formless Fist, and 1-2-3 AoE combo in Perfect Balance.\nIf using Monk Combos, you ideally should have Bootshine Feature enabled.", MNK.JobID, MNK.FormShift)]
+        [CustomComboInfo("Monk AoE Combo Form Shift Option", "Enabling this option has Form Shift turn into Four-Point Fury in Formless Fist, and 1-2-3 AoE combo in Perfect Balance.\nIf using Monk Complex Combos, you ideally should have Bootshine Feature enabled.", MNK.JobID, MNK.FormShift)]
         MonkAoEComboFormOption = 2009,
 
         [OrderedEnum]
@@ -531,7 +531,7 @@ namespace XIVComboExpandedestPlugin
 
         [OrderedEnum]
         [CustomComboInfo("Monk Dragon Kick Bootshine Feature", "Replaces Dragon Kick with Bootshine if Leaden Fist is up, and vice-versa when Leaden Fist is not up in Bootshine-related combos.", MNK.JobID, MNK.DragonKick)]
-        MonkBootshineFeature = 2002,
+        MonkDragonKickBootshineFeature = 2002,
 
         [OrderedEnum]
         [CustomComboInfo("Monk Dragon Kick Balance Feature", "Replaces Dragon Kick with Masterful Blitz if you have 3 Beast Chakra.", MNK.JobID, MNK.DragonKick)]
@@ -551,7 +551,7 @@ namespace XIVComboExpandedestPlugin
 
         [OrderedEnum]
         [ParentCombo(MonkPerfectBalanceFeature)]
-        [CustomComboInfo("Perfect Balance Feature: Lockout", "Perfect Balance becomes a useless action while Perfect Balance is active.\nDoes not work with the Experimental Monk Combos.", MNK.JobID, MNK.PerfectBalance)]
+        [CustomComboInfo("Perfect Balance Feature: Lockout", "Perfect Balance becomes a useless action while Perfect Balance is active.\nDoes not work with Monk Complex Combos.", MNK.JobID, MNK.PerfectBalance)]
         MonkPerfectBalanceFeatureLockout = 2021,
 
         [OrderedEnum]
@@ -568,7 +568,7 @@ namespace XIVComboExpandedestPlugin
 
         [OrderedEnum]
         [ConflictingCombos(MonkBootshineCombo, MonkDragonKickCombo)]
-        [CustomComboInfo("Monk Complex Combos", "This is a very complex legacy combo that saves one more additional button than the regular combos do (with Bootshine feature enabled), but is significantly more complicated (as it is designed to think for you as little as possible).\n" +
+        [CustomComboInfo("Monk Complex Combos", "This is a very complex legacy combo that saves one more additional button than the regular combos do (with Dragon Kick Bootshine feature enabled), but is significantly more complicated (as it is designed to think for you as little as possible).\n" +
             "It is heavily recommended that you use the regular combos instead unless you want to save a little extra hotbar space, or are already used to this combo.\n" +
             "Normal Behavior: True Strike and Twin Snakes become Bootshine and Dragon Kick in Opo-Opo/no form, True Strike and Twin Snakes in Raptor, and Snap Punch and Demolish in Coeurl.\n" +
             "Perfect Balance Behavior: Perfect Balance becomes Dragon Kick. Form Shift becomes Bootshine (if Bootshine Feature is not enabled). The other combos become Demolish and Twin Snakes, and change to Raptor/Coeurl moves based on which you pick.\n" +
@@ -578,7 +578,7 @@ namespace XIVComboExpandedestPlugin
         [OrderedEnum]
         [ParentCombo(MonkSTCombo)]
         [CustomComboInfo("Twin Snake Option", "Enabling this option makes it so that the Twin Snakes button doesn't get used for combos. This means you need Demolish on your bar.", MNK.JobID, MNK.FormShift)]
-        MonkSTComboOption = 2016,
+        MonkSTComboTwinSnakeOption = 2016,
 
         [OrderedEnum]
         [ParentCombo(MonkSTCombo)]
@@ -603,7 +603,7 @@ namespace XIVComboExpandedestPlugin
         [OrderedEnum]
         [ParentCombo(MonkSTCombo)]
         [ConflictingCombos(MonkAoEComboFormOption)]
-        [CustomComboInfo("Form Shift Option", "Enabling this option makes it so that Form Shift does not turn into Snap Punch with the Monk Combos feature.", MNK.JobID, MNK.FormShift)]
+        [CustomComboInfo("Form Shift Option", "Enabling this option makes it so that Form Shift does not turn into Snap Punch.", MNK.JobID, MNK.FormShift)]
         MonkSTComboFormOption = 2008,
 
         #endregion
