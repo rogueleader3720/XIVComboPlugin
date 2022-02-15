@@ -272,28 +272,6 @@ namespace XIVComboExpandedestPlugin
         #region DRAGOON
 
         [OrderedEnum]
-        [CustomComboInfo("Jump + Mirage Dive", "Replace (High) Jump with Mirage Dive when Dive Ready.", DRG.JobID, DRG.Jump, DRG.HighJump)]
-        DragoonJumpFeature = 2201,
-
-        [OrderedEnum]
-        [CustomComboInfo("Coerthan Torment Combo", "Replace Coerthan Torment with its combo chain.", DRG.JobID, DRG.CoerthanTorment)]
-        DragoonCoerthanTormentCombo = 2202,
-
-        [OrderedEnum]
-        [ParentCombo(DragoonCoerthanTormentCombo)]
-        [CustomComboInfo("Coerthan Torment Combo to Wyrmwind", "Coerthan Torment combo becomes Wyrmwind Thrust when you have two Firstminds' Focus.", DRG.JobID, DRG.CoerthanTorment)]
-        DragoonWyrmwindFeature = 2207,
-
-        [OrderedEnum]
-        [CustomComboInfo("Chaos Thrust Combo", "Replace Chaos Thrust with its combo chain.", DRG.JobID, DRG.ChaosThrust, DRG.ChaoticSpring)]
-        DragoonChaosThrustCombo = 2203,
-
-        [OrderedEnum]
-        [ParentCombo(DragoonChaosThrustCombo)]
-        [CustomComboInfo("Chaos Thrust Combo Disembowel Option", "Chaos Thrust's combo chain is instead replaced by Disembowel, not True Thrust, while you have no combo ongoing.", DRG.JobID, DRG.ChaosThrust, DRG.ChaoticSpring)]
-        DragoonChaosThrustComboOption = 2209,
-
-        [OrderedEnum]
         [CustomComboInfo("Full Thrust Combo", "Replace Full Thrust with its combo chain.", DRG.JobID, DRG.FullThrust, DRG.HeavensThrust)]
         DragoonFullThrustCombo = 2204,
 
@@ -308,8 +286,38 @@ namespace XIVComboExpandedestPlugin
         DragoonFullThrustTalonFeature = 2211,
 
         [OrderedEnum]
+        [CustomComboInfo("Chaos Thrust Combo", "Replace Chaos Thrust with its combo chain.", DRG.JobID, DRG.ChaosThrust, DRG.ChaoticSpring)]
+        DragoonChaosThrustCombo = 2203,
+
+        [OrderedEnum]
+        [ParentCombo(DragoonChaosThrustCombo)]
+        [CustomComboInfo("Chaos Thrust Combo Disembowel Option", "Chaos Thrust's combo chain is instead replaced by Disembowel, not True Thrust, while you have no combo ongoing.", DRG.JobID, DRG.ChaosThrust, DRG.ChaoticSpring)]
+        DragoonChaosThrustComboOption = 2209,
+
+        [OrderedEnum]
         [CustomComboInfo("Wheeling Thrust/Fang and Claw Option", "When you have either Enhanced Fang and Claw or Wheeling Thrust,\nChaos Thrust Combo becomes Wheeling Thrust and Full Thrust Combo becomes Fang and Claw.\nRequires Chaos Thrust Combo and Full Thrust Combo.", DRG.JobID, DRG.FullThrust, DRG.ChaosThrust)]
         DragoonFangThrustFeature = 2205,
+
+        [OrderedEnum]
+        [CustomComboInfo("Opposite Combo to Wyrmwind", "Replaces the opposite combo of the one you are using with Wyrmwind Thrust.\nBoth combos need to be enabled, obviously.", DRG.JobID, DRG.FullThrust, DRG.ChaosThrust)]
+        DragoonOppositeWyrmwindFeature = 2212,
+
+        [OrderedEnum]
+        [CustomComboInfo("True/Raiden Thrust to Wyrmwind", "Replace True/Raiden Thrust with Wyrmwind Thrust when available.", DRG.JobID, DRG.FullThrust, DRG.ChaosThrust, DRG.TrueThrust)]
+        DragoonRaidenWyrmwindFeature = 2213,
+
+        [OrderedEnum]
+        [CustomComboInfo("Coerthan Torment Combo", "Replace Coerthan Torment with its combo chain.", DRG.JobID, DRG.CoerthanTorment)]
+        DragoonCoerthanTormentCombo = 2202,
+
+        [OrderedEnum]
+        [ParentCombo(DragoonCoerthanTormentCombo)]
+        [CustomComboInfo("Coerthan Torment Combo to Wyrmwind", "Coerthan Torment combo becomes Wyrmwind Thrust when you have two Firstminds' Focus.", DRG.JobID, DRG.CoerthanTorment)]
+        DragoonWyrmwindFeature = 2207,
+
+        [OrderedEnum]
+        [CustomComboInfo("Jump to Mirage Dive", "Replace (High) Jump with Mirage Dive when Dive Ready.", DRG.JobID, DRG.Jump, DRG.HighJump)]
+        DragoonJumpFeature = 2201,
 
         [OrderedEnum]
         [ConflictingCombos(DragoonStarfireDiveFeature)]

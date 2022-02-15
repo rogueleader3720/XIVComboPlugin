@@ -117,6 +117,21 @@ namespace XIVComboExpandedestPlugin.Combos
         }
     }
 
+    internal class DragoonRaidenWyrmwindFeature : CustomCombo
+    {
+        protected override CustomComboPreset Preset => CustomComboPreset.DragoonRaidenWyrmwindFeature;
+
+        protected override uint Invoke(uint actionID, uint lastComboMove, float comboTime, byte level)
+        {
+            if (actionID == DRG.TrueThrust)
+            {
+                if (CanUseAction(DRG.WyrmwindThrust)) return DRG.WyrmwindThrust;
+            }
+
+            return actionID;
+        }
+    }
+
     internal class DragoonChaosThrustCombo : CustomCombo
     {
         protected override CustomComboPreset Preset => CustomComboPreset.DragoonChaosThrustCombo;
@@ -125,6 +140,11 @@ namespace XIVComboExpandedestPlugin.Combos
         {
             if (actionID == DRG.ChaosThrust || actionID == DRG.ChaoticSpring)
             {
+                if (IsEnabled(CustomComboPreset.DragoonOppositeWyrmwindFeature) && CanUseAction(DRG.WyrmwindThrust) &&
+                    (lastComboMove == DRG.VorpalThrust ||
+                    (lastComboMove == OriginalHook(DRG.FullThrust) && !IsEnabled(CustomComboPreset.DragoonFangThrustFeature)) ||
+                    (IsEnabled(CustomComboPreset.DragoonFangThrustFeature) && !CanUseAction(DRG.WheelingThrust) && CanUseAction(DRG.FangAndClaw))))
+                    return DRG.WyrmwindThrust;
                 if (comboTime > 0)
                 {
                     if ((lastComboMove == DRG.TrueThrust || lastComboMove == DRG.RaidenThrust) && level >= DRG.Levels.Disembowel)
@@ -146,7 +166,7 @@ namespace XIVComboExpandedestPlugin.Combos
                 if (IsEnabled(CustomComboPreset.DragoonChaosThrustComboOption))
                     return DRG.Disembowel;
 
-                return OriginalHook(DRG.TrueThrust);
+                return IsEnabled(CustomComboPreset.DragoonRaidenWyrmwindFeature) && CanUseAction(DRG.WyrmwindThrust) ? DRG.WyrmwindThrust : OriginalHook(DRG.TrueThrust);
             }
 
             return actionID;
@@ -161,6 +181,12 @@ namespace XIVComboExpandedestPlugin.Combos
         {
             if (actionID == DRG.FullThrust || actionID == DRG.HeavensThrust)
             {
+                if (IsEnabled(CustomComboPreset.DragoonOppositeWyrmwindFeature) && CanUseAction(DRG.WyrmwindThrust) &&
+                    (lastComboMove == DRG.Disembowel ||
+                    (lastComboMove == OriginalHook(DRG.ChaosThrust) && !IsEnabled(CustomComboPreset.DragoonFangThrustFeature)) ||
+                    (IsEnabled(CustomComboPreset.DragoonFangThrustFeature) && !CanUseAction(DRG.FangAndClaw) && CanUseAction(DRG.WheelingThrust))))
+                    return DRG.WyrmwindThrust;
+
                 if (IsEnabled(CustomComboPreset.DragoonFullThrustTalonFeature))
                 {
                     if (CanUseAction(DRG.PiercingTalon) && !InMeleeRange())
@@ -188,7 +214,7 @@ namespace XIVComboExpandedestPlugin.Combos
                 if (IsEnabled(CustomComboPreset.DragoonFullThrustComboOption))
                     return DRG.VorpalThrust;
 
-                return OriginalHook(DRG.TrueThrust);
+                return IsEnabled(CustomComboPreset.DragoonRaidenWyrmwindFeature) && CanUseAction(DRG.WyrmwindThrust) ? DRG.WyrmwindThrust : OriginalHook(DRG.TrueThrust);
             }
 
             return actionID;
