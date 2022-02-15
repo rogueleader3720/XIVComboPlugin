@@ -222,6 +222,8 @@ namespace XIVComboExpandedestPlugin.Combos
             if (actionID == SAM.TsubameGaeshi)
             {
                 var gauge = GetJobGauge<SAMGauge>();
+                if ((gauge.Kaeshi != Kaeshi.NONE && gauge.Kaeshi != Kaeshi.NAMIKIRI) && IsEnabled(CustomComboPreset.SamuraiShohaBetweenOption))
+                    return actionID;
                 if (level >= SAM.Levels.Shoha && gauge.MeditationStacks >= 3 && (GCDClipCheck() || OriginalHook(SAM.TsubameGaeshi) == SAM.TsubameGaeshi || OriginalHook(SAM.TsubameGaeshi) == SAM.KaeshiHiganbana || IsEnabled(CustomComboPreset.SamuraiShohaGCDOption)))
                 {
                     if (level >= SAM.Levels.Shoha2 && (lastComboMove == SAM.Fuga || lastComboMove == SAM.Fuko || lastComboMove == SAM.Oka || lastComboMove == SAM.Mangetsu || this.LastKaeshi == (uint)Kaeshi.GOKEN))
@@ -243,7 +245,7 @@ namespace XIVComboExpandedestPlugin.Combos
             if (actionID == SAM.Iaijutsu)
             {
                 var gauge = GetJobGauge<SAMGauge>();
-                if (gauge.Kaeshi != Kaeshi.NONE && IsEnabled(CustomComboPreset.SamuraiShohaBetweenOption))
+                if ((gauge.Kaeshi != Kaeshi.NONE && gauge.Kaeshi != Kaeshi.NAMIKIRI) && IsEnabled(CustomComboPreset.SamuraiShohaBetweenOption))
                     return actionID;
                 if (level >= SAM.Levels.Shoha && gauge.MeditationStacks >= 3 && (GCDClipCheck() || OriginalHook(SAM.TsubameGaeshi) == SAM.TsubameGaeshi || OriginalHook(SAM.TsubameGaeshi) == SAM.KaeshiHiganbana || IsEnabled(CustomComboPreset.SamuraiShohaGCDOption)))
                 {
