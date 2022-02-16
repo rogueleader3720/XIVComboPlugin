@@ -23,6 +23,7 @@ namespace XIVComboExpandedestPlugin.Combos
             EdgeOfShadow = 16470,
             LivingShadow = 16472,
             Shadowbringer = 25757,
+            AbyssalDrain = 3641,
             Unmend = 3624;
 
         public static class Buffs
@@ -151,6 +152,38 @@ namespace XIVComboExpandedestPlugin.Combos
                 if ((lastComboMove == DRK.Unleash || lastComboMove == DRK.StalwartSoul) ||
                     (!CanUseAction(OriginalHook(DRK.EdgeOfDarkness))))
                     return OriginalHook(DRK.FloodOfDarkness);
+            }
+
+            return actionID;
+        }
+    }
+
+    internal class DarkBloodspillerToQuietusFeature : CustomCombo
+    {
+        protected override CustomComboPreset Preset => CustomComboPreset.DarkBloodspillerToQuietusFeature;
+
+        protected override uint Invoke(uint actionID, uint lastComboMove, float comboTime, byte level)
+        {
+            if (actionID == DRK.Bloodspiller)
+            {
+                if ((lastComboMove == DRK.Unleash || lastComboMove == DRK.StalwartSoul) && level >= DRK.Levels.Quietus)
+                    return DRK.Quietus;
+            }
+
+            return actionID;
+        }
+    }
+
+    internal class DarkCarvetoDrainFeature : CustomCombo
+    {
+        protected override CustomComboPreset Preset => CustomComboPreset.DarkCarveToDrainFeature;
+
+        protected override uint Invoke(uint actionID, uint lastComboMove, float comboTime, byte level)
+        {
+            if (actionID == DRK.CarveAndSpit)
+            {
+                if (lastComboMove == DRK.Unleash || lastComboMove == DRK.StalwartSoul || !CanUseAction(DRK.CarveAndSpit))
+                    return DRK.AbyssalDrain;
             }
 
             return actionID;

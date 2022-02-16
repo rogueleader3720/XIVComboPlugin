@@ -370,6 +370,14 @@ namespace XIVComboExpandedestPlugin
         [CustomComboInfo("Edge to Flood Feature", "Replaces Edge of Darkness/Shadow with Flood of Darkness/Shadow if currently using your AoE combo (as well as synced content before you unlock Edge).", DRK.JobID, DRK.EdgeOfDarkness, DRK.EdgeOfShadow)]
         DarkEdgeToFloodFeature = 3209,
 
+        [OrderedEnum]
+        [CustomComboInfo("Bloodspiller to Quietus Feature", "Replaces Bloodspiller with Quietus if currently using your AoE combo.", DRK.JobID, DRK.Bloodspiller)]
+        DarkBloodspillerToQuietusFeature = 3210,
+
+        [OrderedEnum]
+        [CustomComboInfo("Carve and Spit to Abyssal Drain", "Replaces Carve and Spit with Abyssal Drain if currently using your AoE combo.", DRK.JobID, DRK.CarveAndSpit)]
+        DarkCarveToDrainFeature = 3211,
+
         #endregion
         // ====================================================================================
         #region GUNBREAKER
@@ -432,6 +440,10 @@ namespace XIVComboExpandedestPlugin
         [OrderedEnum]
         [CustomComboInfo("No Mercy to Double Down Feature", "Replace No Mercy with Double Down while No Mercy is active and it is off-cooldown.\nThis takes priority over Bow Shock/Sonic Break if the No Mercy feature is enabled.", GNB.JobID, GNB.NoMercy)]
         GunbreakerNoMercyDoubleDownFeature = 3712,
+
+        [OrderedEnum]
+        [CustomComboInfo("Burst Strike to Fated Circle Feature", "Replace Burst Strike with Fated Circle if you are currently using your AoE combo.", GNB.JobID, GNB.BurstStrike)]
+        GunbreakerBurstStrikeToFatedCircleFeature = 3715,
 
         [OrderedEnum]
         [SecretCustomCombo]
@@ -676,6 +688,10 @@ namespace XIVComboExpandedestPlugin
         NinjaHideMugFeature = 3007,
 
         [OrderedEnum]
+        [CustomComboInfo("Bhavacakra to Hellfrog Medium", "Replaces Bhavacakra with Hellfrog Medium while you are in the midst of your AoE combo.", NIN.JobID, NIN.Bhavacakra)]
+        NinjaBhavacakraToFroggieFeature = 3022,
+
+        [OrderedEnum]
         [ConflictingCombos(NinjaGCDNinjutsuFeature)]
         [CustomComboInfo("Aeolian to Ninjutsu Feature", "Replaces Aeolian Edge (combo) with your current Ninjutsu action if any Mudra are used.", NIN.JobID, NIN.AeolianEdge)]
         NinjaNinjutsuFeature = 3008,
@@ -855,12 +871,20 @@ namespace XIVComboExpandedestPlugin
         ReaperRegressFeature = 3908,
 
         [OrderedEnum]
-        [CustomComboInfo("Blood Stalk Feature", "When Gluttony is off-cooldown, Blood Stalk will turn into Gluttony.", RPR.JobID, RPR.BloodStalk)]
+        [CustomComboInfo("Blood Stalk to Gluttony Feature", "When Gluttony is off-cooldown, Blood Stalk will turn into Gluttony.", RPR.JobID, RPR.BloodStalk)]
         ReaperBloodStalkFeature = 3913,
 
         [OrderedEnum]
-        [CustomComboInfo("Grim Swathe Feature", "When Gluttony is off-cooldown, Grim Swathe will turn into Gluttony.", RPR.JobID, RPR.GrimSwathe)]
+        [CustomComboInfo("Grim Swathe to Gluttony Feature", "When Gluttony is off-cooldown, Grim Swathe will turn into Gluttony.", RPR.JobID, RPR.GrimSwathe)]
         ReaperGrimSwatheFeature = 3914,
+
+        [OrderedEnum]
+        [CustomComboInfo("Blood Stalk to Grim Swathe Feature", "Blood Stalk turns into Grim Swathe if you are in the midst of your AoE combo.", RPR.JobID, RPR.BloodStalk)]
+        ReaperBloodStalkToGrimSwatheFeature = 3922,
+
+        [OrderedEnum]
+        [CustomComboInfo("Soul Slice to Soul Scythe Feature", "Soul Slice turns into Soul Scythe if you are in the midst of your AoE combo.", RPR.JobID, RPR.SoulSlice)]
+        ReaperSoulSliceToSoulScytheFeature = 3923,
 
         [OrderedEnum]
         [CustomComboInfo("Soulsow Reminder Feature", "Slice Combo, Soul Slice and Shadow of Death become Soulsow out of combat if you don't have it active.", RPR.JobID, RPR.Slice, RPR.InfernalSlice, RPR.ShadowOfDeath, RPR.WaxingSlice, RPR.SoulSlice)]
@@ -1312,6 +1336,10 @@ namespace XIVComboExpandedestPlugin
         [OrderedEnum]
         [CustomComboInfo("Mythril Rend Feature", "Replace your AoE combos of choice with Primal Rend when available.", WAR.JobID, WAR.MythrilTempest)]
         WarriorMythrilRendFeature = 2109,
+
+        [OrderedEnum]
+        [CustomComboInfo("Fell Cleave to Decimate Feature", "Replaces Fell Cleave/Inner Beast with Decimate/Steel Cyclone if you are in the midst of your AoE combo.", WAR.JobID, WAR.FellCleave, WAR.InnerBeast)]
+        WarriorFellCleaveToDecimateFeature = 2115,
 
         [OrderedEnum]
         [CustomComboInfo("Upheaval to Orogeny", "Replace your Upheaval with Orogeny while you are in the midst of your AoE combo.", WAR.JobID, WAR.Upheaval)]

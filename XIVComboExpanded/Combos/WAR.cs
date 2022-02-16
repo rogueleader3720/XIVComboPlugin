@@ -237,6 +237,25 @@ namespace XIVComboExpandedestPlugin.Combos
         }
     }
 
+    internal class WarriorFellCleaveToDecimateFeature : CustomCombo
+    {
+        protected override CustomComboPreset Preset => CustomComboPreset.WarriorFellCleaveToDecimateFeature;
+
+        protected override uint Invoke(uint actionID, uint lastComboMove, float comboTime, byte level)
+        {
+            if (actionID == WAR.FellCleave || actionID == WAR.InnerBeast)
+            {
+                if (HasEffect(WAR.Buffs.NascentChaos) && level < WAR.Levels.InnerChaos)
+                    return OriginalHook(WAR.Decimate);
+
+                if (CanUseAction(OriginalHook(WAR.Decimate)) && (lastComboMove == WAR.MythrilTempest || lastComboMove == WAR.Overpower))
+                    return OriginalHook(WAR.Decimate);
+            }
+
+            return actionID;
+        }
+    }
+
     internal class WarriorUporgyFeature : CustomCombo
     {
         protected override CustomComboPreset Preset => CustomComboPreset.WarriorUporgyFeature;

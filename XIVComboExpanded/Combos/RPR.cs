@@ -27,6 +27,7 @@ namespace XIVComboExpandedestPlugin.Combos
             NightmareScythe = 24377,
             Guillotine = 24384,
             GrimSwathe = 24392,
+            SoulScythe = 24381,
             // Shroud
             Enshroud = 24394,
             Communio = 24398,
@@ -158,7 +159,7 @@ namespace XIVComboExpandedestPlugin.Combos
             var gauge = GetJobGauge<RPRGauge>();
 
             if (gauge.VoidShroud >= 2)
-                return OriginalHook(actionID);
+                return IsEnabled(CustomComboPreset.ReaperBloodStalkToGrimSwatheFeature) && (lastComboMove == RPR.SpinningScythe || lastComboMove == RPR.NightmareScythe) ? OriginalHook(RPR.GrimSwathe) : OriginalHook(actionID);
 
             if (gauge.LemureShroud >= 1)
             {
@@ -168,14 +169,15 @@ namespace XIVComboExpandedestPlugin.Combos
                         return RPR.Communio;
                 }
 
-                if (actionID == RPR.GrimSwathe) return OriginalHook(RPR.Guillotine);
+                if (actionID == RPR.GrimSwathe ||
+                    (actionID == RPR.BloodStalk && IsEnabled(CustomComboPreset.ReaperBloodStalkToGrimSwatheFeature) && (lastComboMove == RPR.SpinningScythe || lastComboMove == RPR.NightmareScythe))) return OriginalHook(RPR.Guillotine);
 
                 return HasEffect(RPR.Buffs.EnhancedCrossReaping) ? OriginalHook(RPR.Gallows) : OriginalHook(RPR.Gibbet);
             }
 
             if (HasEffect(RPR.Buffs.SoulReaver))
             {
-                if (actionID == RPR.GrimSwathe) return RPR.Guillotine;
+                if (actionID == RPR.GrimSwathe || (actionID == RPR.BloodStalk && IsEnabled(CustomComboPreset.ReaperBloodStalkToGrimSwatheFeature) && (lastComboMove == RPR.SpinningScythe || lastComboMove == RPR.NightmareScythe))) return RPR.Guillotine;
                 return HasEffect(RPR.Buffs.EnhancedGallows) ? RPR.Gallows : RPR.Gibbet;
             }
 
@@ -464,6 +466,26 @@ namespace XIVComboExpandedestPlugin.Combos
                 return RPR.Gluttony;
 
             return actionID;
+        }
+    }
+
+    internal class ReaperBloodStalkToGrimSwatheFeature : CustomCombo
+    {
+        protected override CustomComboPreset Preset => CustomComboPreset.ReaperBloodStalkToGrimSwatheFeature;
+
+        protected override uint Invoke(uint actionID, uint lastComboMove, float comboTime, byte level)
+        {
+            return actionID == RPR.BloodStalk && (lastComboMove == RPR.SpinningScythe || lastComboMove == RPR.NightmareScythe) && CanUseAction(RPR.GrimSwathe) ? RPR.GrimSwathe : actionID;
+        }
+    }
+
+    internal class ReaperSoulSliceToSoulScytheFeature : CustomCombo
+    {
+        protected override CustomComboPreset Preset => CustomComboPreset.ReaperSoulSliceToSoulScytheFeature;
+
+        protected override uint Invoke(uint actionID, uint lastComboMove, float comboTime, byte level)
+        {
+            return actionID == RPR.SoulSlice && (lastComboMove == RPR.SpinningScythe || lastComboMove == RPR.NightmareScythe) && CanUseAction(RPR.SoulScythe) ? RPR.SoulScythe : actionID;
         }
     }
 }

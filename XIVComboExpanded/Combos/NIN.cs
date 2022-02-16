@@ -43,7 +43,9 @@ namespace XIVComboExpandedestPlugin.Combos
             Doton = 2270,
             Suiton = 2271,
             Goka = 16491,
-            Hyosho = 16492;
+            Hyosho = 16492,
+            Bhavacakra = 7402,
+            HellfrogMedium = 7401;
 
         public static class Buffs
         {
@@ -73,6 +75,7 @@ namespace XIVComboExpandedestPlugin.Combos
                 ArmorCrush = 54,
                 DreamWithinADream = 56,
                 Huraijin = 60,
+                Bhavacakra = 68,
                 Meisui = 72,
                 EnhancedKassatsu = 76,
                 Bunshin = 80,
@@ -355,6 +358,16 @@ namespace XIVComboExpandedestPlugin.Combos
         protected override uint Invoke(uint actionID, uint lastComboMove, float comboTime, byte level)
         {
             return lastComboMove == NIN.GustSlash && comboTime > 0 ? NIN.ArmorCrush : actionID;
+        }
+    }
+
+    internal class NinjaBhavacakraToFroggieFeature : CustomCombo
+    {
+        protected override CustomComboPreset Preset => CustomComboPreset.NinjaBhavacakraToFroggieFeature;
+
+        protected override uint Invoke(uint actionID, uint lastComboMove, float comboTime, byte level)
+        {
+            return lastComboMove == NIN.DeathBlossom || lastComboMove == NIN.HakkeMujinsatsu || level < NIN.Levels.Bhavacakra ? NIN.HellfrogMedium : actionID;
         }
     }
 }
