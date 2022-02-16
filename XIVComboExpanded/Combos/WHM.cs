@@ -137,8 +137,7 @@ namespace XIVComboExpandedestPlugin.Combos
                     return WHM.AfflatusMisery;
                 // Unholy line of cursed code that must NEVER be mentioned, under any circumstances
                 // Feel free to remove it in any forks for absolutely no consequence, I assure you
-                if (HasEffect(WHM.Buffs.Zagadoo))
-                    return actionID;
+                if (HasEffect(WHM.Buffs.Zagadoo)) return actionID;
                 if (level >= WHM.Levels.AfflatusSolace && gauge.Lily > 0)
                     return WHM.AfflatusSolace;
             }
