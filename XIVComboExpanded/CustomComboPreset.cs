@@ -197,7 +197,7 @@ namespace XIVComboExpandedestPlugin
         BardBarrageFeature = 2308,
 
         [OrderedEnum]
-        [CustomComboInfo("Bloodletter to Rain of Death", "Replaces Bloodletter with Rain of Death if there are no self-applied DoTs on your target.", BRD.JobID, BRD.Bloodletter)]
+        [CustomComboInfo("Bloodletter to Rain of Death", "Replaces Bloodletter with Rain of Death if your last GCD was either Quick Nock/Ladonsbite or Shadowbite.", BRD.JobID, BRD.Bloodletter)]
         BardRainFeature = 2310,
 
         #endregion
@@ -1308,6 +1308,10 @@ namespace XIVComboExpandedestPlugin
         [OrderedEnum]
         [CustomComboInfo("Mythril Rend Feature", "Replace your AoE combos of choice with Primal Rend when available.", WAR.JobID, WAR.MythrilTempest)]
         WarriorMythrilRendFeature = 2109,
+
+        [OrderedEnum]
+        [CustomComboInfo("Upheaval to Orogeny", "Replace your Upheaval with Orogeny while you are in the midst of your AoE combo.", WAR.JobID, WAR.Upheaval)]
+        WarriorUporgyFeature = 2114,
 
         #endregion
         // ====================================================================================

@@ -71,6 +71,8 @@ namespace XIVComboExpandedestPlugin.Combos
 
         protected uint LastKaeshi { get; set; }
 
+        protected uint FilteredLastComboMove { get; set; }
+
         /// <summary>
         /// Gets the action IDs associated with this combo.
         /// </summary>
@@ -89,6 +91,12 @@ namespace XIVComboExpandedestPlugin.Combos
         {
             newActionID = 0;
 
+            if (lastComboActionID != BRD.EmpyrealArrow &&
+                lastComboActionID != BRD.RainOfDeath &&
+                lastComboActionID != BRD.ApexArrow &&
+                lastComboActionID != BRD.BlastArrow)
+                this.FilteredLastComboMove = lastComboActionID;
+
             if (GetJobGauge<SAMGauge>().Kaeshi != Dalamud.Game.ClientState.JobGauge.Enums.Kaeshi.NONE && GetJobGauge<SAMGauge>().Kaeshi != Dalamud.Game.ClientState.JobGauge.Enums.Kaeshi.NAMIKIRI)
             {
                 this.LastKaeshi = (uint)GetJobGauge<SAMGauge>().Kaeshi;
@@ -97,6 +105,7 @@ namespace XIVComboExpandedestPlugin.Combos
             if (LocalPlayer is not null && !LocalPlayer.StatusFlags.HasFlag(Dalamud.Game.ClientState.Objects.Enums.StatusFlags.InCombat))
                 this.LastKaeshi = (uint)Dalamud.Game.ClientState.JobGauge.Enums.Kaeshi.NONE;
 
+            // Speed Calculation
             if (this.MovingCounter == 0)
             {
                 Vector2 newPosition = LocalPlayer is null ? Vector2.Zero : new Vector2(LocalPlayer.Position.X, LocalPlayer.Position.Z);
@@ -131,6 +140,7 @@ namespace XIVComboExpandedestPlugin.Combos
                 return false;
 
             newActionID = resultingActionID;
+
             return true;
         }
 

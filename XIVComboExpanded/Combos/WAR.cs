@@ -27,7 +27,9 @@ namespace XIVComboExpandedestPlugin.Combos
             NascentFlash = 16464,
             InnerChaos = 16465,
             PrimalRend = 25753,
-            Tomahawk = 46;
+            Tomahawk = 46,
+            Orogeny = 25752,
+            Upheaval = 7387;
 
         public static class Buffs
         {
@@ -230,6 +232,19 @@ namespace XIVComboExpandedestPlugin.Combos
         {
             if (CanUseAction(WAR.PrimalRend))
                 return WAR.PrimalRend;
+
+            return actionID;
+        }
+    }
+
+    internal class WarriorUporgyFeature : CustomCombo
+    {
+        protected override CustomComboPreset Preset => CustomComboPreset.WarriorUporgyFeature;
+
+        protected override uint Invoke(uint actionID, uint lastComboMove, float comboTime, byte level)
+        {
+            if (actionID == WAR.Upheaval && CanUseAction(WAR.Orogeny) && (lastComboMove == WAR.Overpower || lastComboMove == WAR.MythrilTempest))
+                return WAR.Orogeny;
 
             return actionID;
         }

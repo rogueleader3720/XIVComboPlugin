@@ -7,7 +7,10 @@
   "IconUrl": "https://raw.githubusercontent.com/grammernatzi/XIVComboPluginExpandedest/master/res/icon.png",
   "ImageUrls": [],
   "Changelog":
-"1.2.7.3: Searing Demi Feature combat check added.
+"1.2.7.4: Upheaval to Orogeny added.
+				 Bloodletter to Rain of Death reworked; now checks for Quick Nock/Ladonsbite usage.
+
+1.2.7.3: Searing Demi Feature combat check added.
 
 1.2.7.0: Opposite Combo to Wyrmwind and True/Raiden Thrust to Wyrmwind added.
 
