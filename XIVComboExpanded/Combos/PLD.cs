@@ -271,6 +271,22 @@ namespace XIVComboExpandedestPlugin.Combos
         }
     }
 
+    internal class PaladinHolySpiritToHolyCircleFeature : CustomCombo
+    {
+        protected override CustomComboPreset Preset => CustomComboPreset.PaladinHolySpiritToHolyCircleFeature;
+
+        protected override uint Invoke(uint actionID, uint lastComboMove, float comboTime, byte level)
+        {
+            if (actionID == PLD.HolySpirit)
+            {
+                if ((this.FilteredLastComboMove == PLD.Prominence || this.FilteredLastComboMove == PLD.TotalEclipse) && level >= PLD.Levels.HolyCircle)
+                    return PLD.HolyCircle;
+            }
+
+            return actionID;
+        }
+    }
+
     internal class PaladinScornfulSpiritsFeature : CustomCombo
     {
         protected override CustomComboPreset Preset => CustomComboPreset.PaladinScornfulSpiritsFeature;

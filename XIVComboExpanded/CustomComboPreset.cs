@@ -777,6 +777,10 @@ namespace XIVComboExpandedestPlugin
         PaladinHolyCircleFeature = 1910,
 
         [OrderedEnum]
+        [CustomComboInfo("Holy Spirit to Holy Circle", "Replace Holy Spirit with Holy Circle if your last combo action was Total Eclipse or Prominence.", PLD.JobID, PLD.HolySpirit)]
+        PaladinHolySpiritToHolyCircleFeature = 1914,
+
+        [OrderedEnum]
         [CustomComboInfo("Shield Blash to Low Blow", "Replace Shield Bash to Low Blow when it is on cooldown.\nAlso works with Tank Interrupt feature.", PLD.JobID, PLD.ShieldBash)]
         PaladinLowBashFeature = 1911,
 

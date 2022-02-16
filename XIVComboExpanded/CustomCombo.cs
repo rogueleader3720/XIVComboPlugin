@@ -94,8 +94,13 @@ namespace XIVComboExpandedestPlugin.Combos
             if (lastComboActionID != BRD.EmpyrealArrow &&
                 lastComboActionID != BRD.RainOfDeath &&
                 lastComboActionID != BRD.ApexArrow &&
-                lastComboActionID != BRD.BlastArrow)
+                lastComboActionID != BRD.BlastArrow &&
+                lastComboActionID != PLD.HolyCircle &&
+                lastComboActionID != 0)
                 this.FilteredLastComboMove = lastComboActionID;
+
+            if (LocalPlayer is not null && !LocalPlayer.StatusFlags.HasFlag(Dalamud.Game.ClientState.Objects.Enums.StatusFlags.InCombat))
+                this.FilteredLastComboMove = 0;
 
             if (GetJobGauge<SAMGauge>().Kaeshi != Dalamud.Game.ClientState.JobGauge.Enums.Kaeshi.NONE && GetJobGauge<SAMGauge>().Kaeshi != Dalamud.Game.ClientState.JobGauge.Enums.Kaeshi.NAMIKIRI)
             {
