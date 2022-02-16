@@ -142,7 +142,7 @@ namespace XIVComboExpandedestPlugin.Combos
             {
                 if (IsEnabled(CustomComboPreset.DragoonOppositeWyrmwindFeature) && CanUseAction(DRG.WyrmwindThrust) &&
                     (lastComboMove == DRG.VorpalThrust ||
-                    (lastComboMove == OriginalHook(DRG.FullThrust) && !IsEnabled(CustomComboPreset.DragoonFangThrustFeature)) ||
+                    (this.FilteredLastComboMove == OriginalHook(DRG.FullThrust) && !IsEnabled(CustomComboPreset.DragoonFangThrustFeature) && (CanUseAction(DRG.FangAndClaw) || CanUseAction(DRG.WheelingThrust))) ||
                     (IsEnabled(CustomComboPreset.DragoonFangThrustFeature) && !CanUseAction(DRG.WheelingThrust) && CanUseAction(DRG.FangAndClaw))))
                     return DRG.WyrmwindThrust;
                 if (comboTime > 0)
@@ -157,10 +157,10 @@ namespace XIVComboExpandedestPlugin.Combos
                 if (IsEnabled(CustomComboPreset.DragoonFangThrustFeature) && (HasEffect(DRG.Buffs.SharperFangAndClaw) || HasEffect(DRG.Buffs.EnhancedWheelingThrust)))
                     return DRG.WheelingThrust;
 
-                if (HasEffect(DRG.Buffs.SharperFangAndClaw) && level >= DRG.Levels.FangAndClaw)
+                if (HasEffect(DRG.Buffs.SharperFangAndClaw) && level >= DRG.Levels.FangAndClaw && (this.FilteredLastComboMove == OriginalHook(DRG.ChaosThrust) || this.FilteredLastComboMove == 0))
                     return DRG.FangAndClaw;
 
-                if (HasEffect(DRG.Buffs.EnhancedWheelingThrust) && level >= DRG.Levels.WheelingThrust)
+                if (HasEffect(DRG.Buffs.EnhancedWheelingThrust) && level >= DRG.Levels.WheelingThrust && (this.FilteredLastComboMove == OriginalHook(DRG.ChaosThrust) || this.FilteredLastComboMove == 0))
                     return DRG.WheelingThrust;
 
                 if (IsEnabled(CustomComboPreset.DragoonChaosThrustComboOption))
@@ -183,7 +183,7 @@ namespace XIVComboExpandedestPlugin.Combos
             {
                 if (IsEnabled(CustomComboPreset.DragoonOppositeWyrmwindFeature) && CanUseAction(DRG.WyrmwindThrust) &&
                     (lastComboMove == DRG.Disembowel ||
-                    (lastComboMove == OriginalHook(DRG.ChaosThrust) && !IsEnabled(CustomComboPreset.DragoonFangThrustFeature)) ||
+                    (this.FilteredLastComboMove == OriginalHook(DRG.ChaosThrust) && !IsEnabled(CustomComboPreset.DragoonFangThrustFeature) && (CanUseAction(DRG.FangAndClaw) || CanUseAction(DRG.WheelingThrust))) ||
                     (IsEnabled(CustomComboPreset.DragoonFangThrustFeature) && !CanUseAction(DRG.FangAndClaw) && CanUseAction(DRG.WheelingThrust))))
                     return DRG.WyrmwindThrust;
 
@@ -205,10 +205,10 @@ namespace XIVComboExpandedestPlugin.Combos
                 if (IsEnabled(CustomComboPreset.DragoonFangThrustFeature) && (HasEffect(DRG.Buffs.SharperFangAndClaw) || HasEffect(DRG.Buffs.EnhancedWheelingThrust)))
                     return DRG.FangAndClaw;
 
-                if (HasEffect(DRG.Buffs.SharperFangAndClaw) && level >= DRG.Levels.FangAndClaw)
+                if (HasEffect(DRG.Buffs.SharperFangAndClaw) && level >= DRG.Levels.FangAndClaw && (this.FilteredLastComboMove == OriginalHook(DRG.FullThrust) || this.FilteredLastComboMove == 0))
                     return DRG.FangAndClaw;
 
-                if (HasEffect(DRG.Buffs.EnhancedWheelingThrust) && level >= DRG.Levels.WheelingThrust)
+                if (HasEffect(DRG.Buffs.EnhancedWheelingThrust) && level >= DRG.Levels.WheelingThrust && (this.FilteredLastComboMove == OriginalHook(DRG.FullThrust) || this.FilteredLastComboMove == 0))
                     return DRG.WheelingThrust;
 
                 if (IsEnabled(CustomComboPreset.DragoonFullThrustComboOption))

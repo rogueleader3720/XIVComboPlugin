@@ -71,6 +71,18 @@ namespace XIVComboExpandedestPlugin.Combos
 
         protected uint FilteredLastComboMove { get; set; }
 
+        protected uint[] FilteredLastComboMoves { get; set; } = new uint[]
+        {
+            BRD.EmpyrealArrow,
+            BRD.RainOfDeath,
+            BRD.ApexArrow,
+            BRD.BlastArrow,
+            PLD.HolyCircle,
+            DRG.FangAndClaw,
+            DRG.WheelingThrust,
+            0,
+        };
+
         /// <summary>
         /// Gets the action IDs associated with this combo.
         /// </summary>
@@ -89,14 +101,10 @@ namespace XIVComboExpandedestPlugin.Combos
         {
             newActionID = 0;
 
-            if (lastComboActionID != BRD.EmpyrealArrow &&
-                lastComboActionID != BRD.RainOfDeath &&
-                lastComboActionID != BRD.ApexArrow &&
-                lastComboActionID != BRD.BlastArrow &&
-                lastComboActionID != PLD.HolyCircle &&
-                lastComboActionID != 0)
+            if (!this.FilteredLastComboMoves.Contains(lastComboActionID))
                 this.FilteredLastComboMove = lastComboActionID;
 
+            // Reset filtered last combo move if out of combat.
             if (LocalPlayer is not null && !LocalPlayer.StatusFlags.HasFlag(Dalamud.Game.ClientState.Objects.Enums.StatusFlags.InCombat))
                 this.FilteredLastComboMove = 0;
 
