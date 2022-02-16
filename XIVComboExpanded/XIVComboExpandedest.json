@@ -7,7 +7,9 @@
   "IconUrl": "https://raw.githubusercontent.com/grammernatzi/XIVComboPluginExpandedest/master/res/icon.png",
   "ImageUrls": [],
   "Changelog":
-"1.2.7.7: Holy Spirit to Holy Circle added.
+"1.2.7.8: Shinten to Kyuten Feature added.
+
+1.2.7.7: Holy Spirit to Holy Circle added.
 
 1.2.7.6: Single-target to AoE features based on your last-used combo move added for WAR/RPR/NIN/DRK/GNB.
 
@@ -38,24 +40,5 @@
 
 1.2.6.0: Warrior Overpower/Mythril Tempest Combos now default to Mythril Tempest while you have no target.
 
-1.2.5.1: Black Mage Foul/Xenoglossy Movement Features and Red Mage Reprise Movement Feature added.
-
-1.2.5.0: Player movement check optimized, range check added to Phlegma into Toxikon Feature.
-
-1.2.4.9: Sage Phlegma/Toxikon Movement Features and Scholar Ruin 2 Movement Feature added.
-
-1.2.4.8: Melee Distance Offset added for abilities that use it.
-				 Redoublement Combo to Reprise Under-50 Option added.
-  
-1.2.4.7: Fixed issue with Dragon Clap feature always being on with Monk Experimental Combo.
-  
-1.2.4.6: Royal Authority to Holy Spirit compatibility with Atonement Feature fixed.
-
-1.2.4.5: Royal Authority to Holy Spirit added.
-
-1.2.3.8 to 1.2.4.4: Delay fixed on Raiju Switch feature, melee to ranged features added for every job that can make use of it.
-
-1.2.3.5 to 1.2.3.7: Ninjutsu Double-Tap Feature added.
-
-If a change isn't documented on this changelog, it is because it doesn't affect plugin functionality.",
+If a recent change isn't documented on this changelog, it is because it doesn't affect plugin functionality.",
 }

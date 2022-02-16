@@ -69,8 +69,6 @@ namespace XIVComboExpandedestPlugin.Combos
 
         protected bool IsMoving { get; set; }
 
-        protected uint LastKaeshi { get; set; }
-
         protected uint FilteredLastComboMove { get; set; }
 
         /// <summary>
@@ -101,14 +99,6 @@ namespace XIVComboExpandedestPlugin.Combos
 
             if (LocalPlayer is not null && !LocalPlayer.StatusFlags.HasFlag(Dalamud.Game.ClientState.Objects.Enums.StatusFlags.InCombat))
                 this.FilteredLastComboMove = 0;
-
-            if (GetJobGauge<SAMGauge>().Kaeshi != Dalamud.Game.ClientState.JobGauge.Enums.Kaeshi.NONE && GetJobGauge<SAMGauge>().Kaeshi != Dalamud.Game.ClientState.JobGauge.Enums.Kaeshi.NAMIKIRI)
-            {
-                this.LastKaeshi = (uint)GetJobGauge<SAMGauge>().Kaeshi;
-            }
-
-            if (LocalPlayer is not null && !LocalPlayer.StatusFlags.HasFlag(Dalamud.Game.ClientState.Objects.Enums.StatusFlags.InCombat))
-                this.LastKaeshi = (uint)Dalamud.Game.ClientState.JobGauge.Enums.Kaeshi.NONE;
 
             // Speed Calculation
             if (this.MovingCounter == 0)

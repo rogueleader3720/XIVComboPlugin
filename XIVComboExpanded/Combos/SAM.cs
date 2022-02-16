@@ -84,6 +84,25 @@ namespace XIVComboExpandedestPlugin.Combos
         }
     }
 
+    internal class SamuraiShintenToKyutenFeature : CustomCombo
+    {
+        protected override CustomComboPreset Preset => CustomComboPreset.SamuraiShintenToKyutenFeature;
+
+        protected override uint Invoke(uint actionID, uint lastComboMove, float comboTime, byte level)
+        {
+            if (actionID == SAM.Shinten && (this.FilteredLastComboMove == SAM.Fuga || this.FilteredLastComboMove == SAM.Fuko || this.FilteredLastComboMove == SAM.Oka || this.FilteredLastComboMove == SAM.Mangetsu))
+            {
+                if (IsEnabled(CustomComboPreset.SamuraiGurenFeature) && IsActionOffCooldown(SAM.Guren) && CanUseAction(SAM.Guren))
+                    return SAM.Guren;
+                if (IsEnabled(CustomComboPreset.SamuraiShoha2Feature) && CanUseAction(SAM.Shoha2))
+                    return SAM.Shoha2;
+                return SAM.Kyuten;
+            }
+
+            return actionID;
+        }
+    }
+
     internal class SamuraiYukikazeCombo : CustomCombo
     {
         protected override CustomComboPreset Preset => CustomComboPreset.SamuraiYukikazeCombo;
@@ -226,7 +245,7 @@ namespace XIVComboExpandedestPlugin.Combos
                     return actionID;
                 if (level >= SAM.Levels.Shoha && gauge.MeditationStacks >= 3 && (GCDClipCheck() || OriginalHook(SAM.TsubameGaeshi) == SAM.TsubameGaeshi || OriginalHook(SAM.TsubameGaeshi) == SAM.KaeshiHiganbana || IsEnabled(CustomComboPreset.SamuraiShohaGCDOption)))
                 {
-                    if (level >= SAM.Levels.Shoha2 && (lastComboMove == SAM.Fuga || lastComboMove == SAM.Fuko || lastComboMove == SAM.Oka || lastComboMove == SAM.Mangetsu || this.LastKaeshi == (uint)Kaeshi.GOKEN))
+                    if (level >= SAM.Levels.Shoha2 && (this.FilteredLastComboMove == SAM.Fuga || this.FilteredLastComboMove == SAM.Fuko || this.FilteredLastComboMove == SAM.Oka || this.FilteredLastComboMove == SAM.Mangetsu))
                         return SAM.Shoha2;
                     return SAM.Shoha;
                 }
@@ -249,7 +268,7 @@ namespace XIVComboExpandedestPlugin.Combos
                     return actionID;
                 if (level >= SAM.Levels.Shoha && gauge.MeditationStacks >= 3 && (GCDClipCheck() || OriginalHook(SAM.TsubameGaeshi) == SAM.TsubameGaeshi || OriginalHook(SAM.TsubameGaeshi) == SAM.KaeshiHiganbana || IsEnabled(CustomComboPreset.SamuraiShohaGCDOption)))
                 {
-                    if (level >= SAM.Levels.Shoha2 && (lastComboMove == SAM.Fuga || lastComboMove == SAM.Fuko || lastComboMove == SAM.Oka || lastComboMove == SAM.Mangetsu || this.LastKaeshi == (uint)Kaeshi.GOKEN))
+                    if (level >= SAM.Levels.Shoha2 && (this.FilteredLastComboMove == SAM.Fuga || this.FilteredLastComboMove == SAM.Fuko || this.FilteredLastComboMove == SAM.Oka || this.FilteredLastComboMove == SAM.Mangetsu))
                         return SAM.Shoha2;
                     return SAM.Shoha;
                 }
@@ -272,7 +291,7 @@ namespace XIVComboExpandedestPlugin.Combos
                     return actionID;
                 if (level >= SAM.Levels.Shoha && gauge.MeditationStacks >= 3 && (GCDClipCheck() || OriginalHook(SAM.OgiNamikiri) == SAM.OgiNamikiri || IsEnabled(CustomComboPreset.SamuraiShohaGCDOption)))
                 {
-                    if (level >= SAM.Levels.Shoha2 && (lastComboMove == SAM.Fuga || lastComboMove == SAM.Fuko || lastComboMove == SAM.Oka || lastComboMove == SAM.Mangetsu || this.LastKaeshi == (uint)Kaeshi.GOKEN))
+                    if (level >= SAM.Levels.Shoha2 && (this.FilteredLastComboMove == SAM.Fuga || this.FilteredLastComboMove == SAM.Fuko || this.FilteredLastComboMove == SAM.Oka || this.FilteredLastComboMove == SAM.Mangetsu))
                         return SAM.Shoha2;
                     return SAM.Shoha;
                 }
@@ -312,7 +331,7 @@ namespace XIVComboExpandedestPlugin.Combos
                     return IsEnabled(CustomComboPreset.SamuraiIaijutsuTsubameGaeshiFeature) && gauge.Kaeshi != Kaeshi.HIGANBANA ? OriginalHook(SAM.TsubameGaeshi) : actionID;
                 if (level >= SAM.Levels.Shoha && gauge.MeditationStacks >= 3 && (GCDClipCheck() || OriginalHook(SAM.TsubameGaeshi) == SAM.TsubameGaeshi || OriginalHook(SAM.TsubameGaeshi) == SAM.KaeshiHiganbana || IsEnabled(CustomComboPreset.SamuraiShohaGCDOption)))
                 {
-                    if (level >= SAM.Levels.Shoha2 && (lastComboMove == SAM.Fuga || lastComboMove == SAM.Fuko || lastComboMove == SAM.Oka || lastComboMove == SAM.Mangetsu || this.LastKaeshi == (uint)Kaeshi.GOKEN))
+                    if (level >= SAM.Levels.Shoha2 && (this.FilteredLastComboMove == SAM.Fuga || this.FilteredLastComboMove == SAM.Fuko || this.FilteredLastComboMove == SAM.Oka || this.FilteredLastComboMove == SAM.Mangetsu))
                         return SAM.Shoha2;
                     return SAM.Shoha;
                 }
@@ -463,7 +482,7 @@ namespace XIVComboExpandedestPlugin.Combos
                     {
                         if (gauge.MeditationStacks >= 3 && IsEnabled(CustomComboPreset.SamuraiNamikiriShohaFeature))
                         {
-                            if (level >= SAM.Levels.Shoha2 && (lastComboMove == SAM.Fuga || lastComboMove == SAM.Fuko || lastComboMove == SAM.Oka || lastComboMove == SAM.Mangetsu || this.LastKaeshi == (uint)Kaeshi.GOKEN))
+                            if (level >= SAM.Levels.Shoha2 && (this.FilteredLastComboMove == SAM.Fuga || this.FilteredLastComboMove == SAM.Fuko || this.FilteredLastComboMove == SAM.Oka || this.FilteredLastComboMove == SAM.Mangetsu))
                                 return SAM.Shoha2;
                             return SAM.Shoha;
                         }
@@ -477,7 +496,7 @@ namespace XIVComboExpandedestPlugin.Combos
                     {
                         if (gauge.MeditationStacks >= 3 && (GCDClipCheck() || IsEnabled(CustomComboPreset.SamuraiShohaGCDOption)) && !IsEnabled(CustomComboPreset.SamuraiShohaBetweenOption))
                         {
-                            if (level >= SAM.Levels.Shoha2 && (lastComboMove == SAM.Fuga || lastComboMove == SAM.Fuko || lastComboMove == SAM.Oka || lastComboMove == SAM.Mangetsu || this.LastKaeshi == (uint)Kaeshi.GOKEN))
+                            if (level >= SAM.Levels.Shoha2 && (this.FilteredLastComboMove == SAM.Fuga || this.FilteredLastComboMove == SAM.Fuko || this.FilteredLastComboMove == SAM.Oka || this.FilteredLastComboMove == SAM.Mangetsu))
                                 return SAM.Shoha2;
                             return SAM.Shoha;
                         }

@@ -1088,7 +1088,7 @@ namespace XIVComboExpandedestPlugin
 
         [OrderedEnum]
         [ConflictingCombos(SamuraiIaijutsuShohaFeature)]
-        [CustomComboInfo("Tsubame-gaeshi to Shoha", "Replace Tsubame-gaeshi with Shoha when meditation is 3 and either you have used Tsubame or it wouldn't clip the GCD. Becomes Shoha 2 if you are in the middle of an AoE combo or your last used Iaijutsu was Tenka Goken.", SAM.JobID, SAM.TsubameGaeshi)]
+        [CustomComboInfo("Tsubame-gaeshi to Shoha", "Replace Tsubame-gaeshi with Shoha when meditation is 3 and either you have used Tsubame or it wouldn't clip the GCD. Becomes Shoha 2 if your last combo action was Fuga/Fuko/Mangetsu/Oka.", SAM.JobID, SAM.TsubameGaeshi)]
         SamuraiTsubameGaeshiShohaFeature = 3407,
 
         [OrderedEnum]
@@ -1098,11 +1098,11 @@ namespace XIVComboExpandedestPlugin
 
         [OrderedEnum]
         [ConflictingCombos(SamuraiTsubameGaeshiShohaFeature)]
-        [CustomComboInfo("Iaijutsu to Shoha", "Replace Iaijutsu with Shoha when meditation is 3 and either you have used Tsubame or for a short period of time after Iaijutsu. Becomes Shoha 2 if you are in the middle of an AoE combo or your last used Iaijutsu was Tenka Goken.", SAM.JobID, SAM.Iaijutsu)]
+        [CustomComboInfo("Iaijutsu to Shoha", "Replace Iaijutsu with Shoha when meditation is 3 and either you have used Tsubame or for a short period of time after Iaijutsu. Becomes Shoha 2 if your last combo action was Fuga/Fuko/Mangetsu/Oka.", SAM.JobID, SAM.Iaijutsu)]
         SamuraiIaijutsuShohaFeature = 3409,
 
         [OrderedEnum]
-        [CustomComboInfo("Ogi-Namikiri to Shoha", "Replace Ogi-Namikiri with Shoha when meditation is 3 and either you have used Tsubame or it wouldn't clip the GCD. Becomes Shoha 2 if you are in the middle of an AoE combo or your last used Iaijutsu was Tenka Goken.", SAM.JobID, SAM.Ikishoten, SAM.OgiNamikiri)]
+        [CustomComboInfo("Ogi-Namikiri to Shoha", "Replace Ogi-Namikiri with Shoha when meditation is 3 and either you have used Tsubame or it wouldn't clip the GCD. Becomes Shoha 2 if your last combo action was Fuga/Fuko/Mangetsu/Oka.", SAM.JobID, SAM.Ikishoten, SAM.OgiNamikiri)]
         SamuraiNamikiriShohaFeature = 3423,
 
         [OrderedEnum]
@@ -1141,6 +1141,10 @@ namespace XIVComboExpandedestPlugin
         [OrderedEnum]
         [CustomComboInfo("Shinten to Shoha", "Replace Hissatsu: Shinten with Shoha when Meditation is full.", SAM.JobID, SAM.Shinten)]
         SamuraiShohaFeature = 3412,
+
+        [OrderedEnum]
+        [CustomComboInfo("Shinten to Kyuten", "Replace Hissatsu: Shinten with Kyuten if your last combo action was Fuga/Fuko/Mangetsu/Oka.", SAM.JobID, SAM.Shinten)]
+        SamuraiShintenToKyutenFeature = 3427,
 
         [OrderedEnum]
         [CustomComboInfo("Kyuten to Guren", "Replace Hissatsu: Kyuten with Guren when its cooldown is up.", SAM.JobID, SAM.Kyuten)]
