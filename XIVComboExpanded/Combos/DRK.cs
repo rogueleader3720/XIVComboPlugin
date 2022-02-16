@@ -139,4 +139,21 @@ namespace XIVComboExpandedestPlugin.Combos
             return actionID;
         }
     }
+
+    internal class DarkEdgeToFloodFeature : CustomCombo
+    {
+        protected override CustomComboPreset Preset => CustomComboPreset.DarkEdgeToFloodFeature;
+
+        protected override uint Invoke(uint actionID, uint lastComboMove, float comboTime, byte level)
+        {
+            if (actionID == DRK.EdgeOfShadow || actionID == DRK.EdgeOfDarkness)
+            {
+                if ((lastComboMove == DRK.Unleash || lastComboMove == DRK.StalwartSoul) ||
+                    (!CanUseAction(OriginalHook(DRK.EdgeOfDarkness))))
+                    return OriginalHook(DRK.FloodOfDarkness);
+            }
+
+            return actionID;
+        }
+    }
 }
