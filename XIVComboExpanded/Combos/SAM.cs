@@ -64,6 +64,7 @@ namespace XIVComboExpandedestPlugin.Combos
                 Oka = 45,
                 Yukikaze = 50,
                 Kaiten = 52,
+                Kyuten = 64,
                 Guren = 70,
                 Senei = 72,
                 TsubameGaeshi = 76,
@@ -90,7 +91,7 @@ namespace XIVComboExpandedestPlugin.Combos
 
         protected override uint Invoke(uint actionID, uint lastComboMove, float comboTime, byte level)
         {
-            if (actionID == SAM.Shinten && (this.FilteredLastComboMove == SAM.Fuga || this.FilteredLastComboMove == SAM.Fuko || this.FilteredLastComboMove == SAM.Oka || this.FilteredLastComboMove == SAM.Mangetsu))
+            if (actionID == SAM.Shinten && level >= SAM.Levels.Kyuten && (this.FilteredLastComboMove == SAM.Fuga || this.FilteredLastComboMove == SAM.Fuko || this.FilteredLastComboMove == SAM.Oka || this.FilteredLastComboMove == SAM.Mangetsu))
             {
                 if (IsEnabled(CustomComboPreset.SamuraiGurenFeature) && IsActionOffCooldown(SAM.Guren) && CanUseAction(SAM.Guren))
                     return SAM.Guren;
