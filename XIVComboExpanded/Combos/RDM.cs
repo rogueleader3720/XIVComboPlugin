@@ -114,7 +114,6 @@ namespace XIVComboExpandedestPlugin.Combos
         {
             RDM.Veraero2,
             RDM.Verthunder2,
-            RDM.Impact,
         };
 
         protected override CustomComboPreset Preset => CustomComboPreset.RedMageMeleeCombo;

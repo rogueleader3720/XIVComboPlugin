@@ -922,7 +922,7 @@ namespace XIVComboExpandedestPlugin
 
         [OrderedEnum]
         [ParentCombo(RedMageMeleeCombo)]
-        [CustomComboInfo("Redoublement Combo to Moulinet", "Replaces Redoublement Combo with Moulinet if you have been using Veraero/Verthunder 2 and Impact.", RDM.JobID, RDM.Redoublement)]
+        [CustomComboInfo("Redoublement Combo to Moulinet", "Replaces Redoublement Combo with Moulinet if you have been using Veraero/Verthunder 2.", RDM.JobID, RDM.Redoublement)]
         RedMageComboToMoulinetFeature = 3521,
 
         [OrderedEnum]
