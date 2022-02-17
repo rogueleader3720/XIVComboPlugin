@@ -124,7 +124,7 @@ namespace XIVComboExpandedestPlugin.Combos
             {
                 var gauge = GetJobGauge<RDMGauge>();
 
-                bool inAoE = this.filteredActions.Contains(this.FilteredLastComboMove) && CanUseAction(OriginalHook(RDM.Moulinet));
+                bool inAoE = this.filteredActions.Contains(this.FilteredLastComboMove) && CanUseAction(OriginalHook(RDM.Moulinet)) && IsEnabled(CustomComboPreset.RedMageComboToMoulinetFeature);
                 int manaCheck = inAoE ? 60 : 50;
 
                 if (IsEnabled(CustomComboPreset.RedMageMeleeComboPlus) && !IsEnabled(CustomComboPreset.RedMageMeleeComboPlusPlus))
