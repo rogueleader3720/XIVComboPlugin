@@ -67,6 +67,7 @@ namespace XIVComboExpandedestPlugin.Combos
                 SpinningScythe = 25,
                 InfernalSlice = 30,
                 NightmareScythe = 45,
+                GrimSwathe = 55,
                 Gluttony = 76,
                 Enshroud = 80,
                 Soulsow = 82,
@@ -475,7 +476,7 @@ namespace XIVComboExpandedestPlugin.Combos
 
         protected override uint Invoke(uint actionID, uint lastComboMove, float comboTime, byte level)
         {
-            return actionID == RPR.BloodStalk && (lastComboMove == RPR.SpinningScythe || lastComboMove == RPR.NightmareScythe) && CanUseAction(RPR.GrimSwathe) ? RPR.GrimSwathe : actionID;
+            return actionID == RPR.BloodStalk && (lastComboMove == RPR.SpinningScythe || lastComboMove == RPR.NightmareScythe) && level >= RPR.Levels.GrimSwathe ? OriginalHook(RPR.GrimSwathe) : actionID;
         }
     }
 
