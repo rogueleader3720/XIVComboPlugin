@@ -77,6 +77,7 @@ namespace XIVComboExpandedestPlugin.Combos
             BRD.RainOfDeath,
             BRD.ApexArrow,
             BRD.BlastArrow,
+            BRD.RadiantFinale,
             PLD.HolyCircle,
             DRG.FangAndClaw,
             DRG.WheelingThrust,
