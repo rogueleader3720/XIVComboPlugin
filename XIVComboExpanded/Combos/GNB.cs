@@ -185,22 +185,6 @@ namespace XIVComboExpandedestPlugin.Combos
         }
     }
 
-    internal class GunbreakerBurstStrikeToFatedCircleFeature : CustomCombo
-    {
-        protected override CustomComboPreset Preset => CustomComboPreset.GunbreakerBurstStrikeToFatedCircleFeature;
-
-        protected override uint Invoke(uint actionID, uint lastComboMove, float comboTime, byte level)
-        {
-            if (actionID == GNB.BurstStrike)
-            {
-                if (level >= GNB.Levels.FatedCircle && (lastComboMove == GNB.DemonSlice || lastComboMove == GNB.DemonSlaughter))
-                    return GNB.FatedCircle;
-            }
-
-            return actionID;
-        }
-    }
-
     internal class GunbreakerBloodfestOvercapFeature : CustomCombo
     {
         protected override CustomComboPreset Preset => CustomComboPreset.GunbreakerBloodfestOvercapFeature;
@@ -214,6 +198,22 @@ namespace XIVComboExpandedestPlugin.Combos
                 var gauge = GetJobGauge<GNBGauge>();
                 if (gauge.Ammo == 0 && level >= GNB.Levels.Bloodfest)
                     return GNB.Bloodfest;
+            }
+
+            return actionID;
+        }
+    }
+
+    internal class GunbreakerBurstStrikeToFatedCircleFeature : CustomCombo
+    {
+        protected override CustomComboPreset Preset => CustomComboPreset.GunbreakerBurstStrikeToFatedCircleFeature;
+
+        protected override uint Invoke(uint actionID, uint lastComboMove, float comboTime, byte level)
+        {
+            if (actionID == GNB.BurstStrike)
+            {
+                if (level >= GNB.Levels.FatedCircle && (lastComboMove == GNB.DemonSlice || lastComboMove == GNB.DemonSlaughter))
+                    return GNB.FatedCircle;
             }
 
             return actionID;
