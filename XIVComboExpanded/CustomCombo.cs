@@ -81,6 +81,12 @@ namespace XIVComboExpandedestPlugin.Combos
             PLD.HolyCircle,
             DRG.FangAndClaw,
             DRG.WheelingThrust,
+            RDM.Moulinet,
+            RDM.Manafication,
+            RDM.Verholy,
+            RDM.Verflare,
+            RDM.Scorch,
+            RDM.Resolution,
             3545, // Elixir Field
             25882, // Flint Strike
             3543, // Tornado Kick

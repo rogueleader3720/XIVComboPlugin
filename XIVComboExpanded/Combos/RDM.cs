@@ -1,3 +1,5 @@
+using System.Linq;
+
 using Dalamud.Game.ClientState.Conditions;
 using Dalamud.Game.ClientState.JobGauge.Types;
 
@@ -108,6 +110,13 @@ namespace XIVComboExpandedestPlugin.Combos
 
     internal class RedMageMeleeCombo : CustomCombo
     {
+        private uint[] filteredActions = new uint[]
+        {
+            RDM.Veraero2,
+            RDM.Verthunder2,
+            RDM.Impact,
+        };
+
         protected override CustomComboPreset Preset => CustomComboPreset.RedMageMeleeCombo;
 
         protected override uint Invoke(uint actionID, uint lastComboMove, float comboTime, byte level)
@@ -115,6 +124,9 @@ namespace XIVComboExpandedestPlugin.Combos
             if (actionID == RDM.Redoublement || actionID == RDM.Moulinet)
             {
                 var gauge = GetJobGauge<RDMGauge>();
+
+                bool inAoE = this.filteredActions.Contains(this.FilteredLastComboMove);
+                byte manaCheck = inAoE ? 60 : 50;
 
                 if (IsEnabled(CustomComboPreset.RedMageMeleeComboPlus) && !IsEnabled(CustomComboPreset.RedMageMeleeComboPlusPlus))
                 {
@@ -163,20 +175,20 @@ namespace XIVComboExpandedestPlugin.Combos
                     if (lastComboMove == RDM.Zwerchhau && level >= RDM.Levels.Redoublement)
                         return OriginalHook(RDM.Redoublement);
 
-                    if (IsEnabled(CustomComboPreset.RedMageMeleeComboReprise) && level >= RDM.Levels.Reprise && OriginalHook(RDM.Reprise) != RDM.Reprise
+                    if (gauge.ManaStacks == 0 && IsEnabled(CustomComboPreset.RedMageMeleeComboReprise) && level >= RDM.Levels.Reprise && OriginalHook(RDM.Reprise) != RDM.Reprise
                         &&
-                        (!InMeleeRange() || (IsEnabled(CustomComboPreset.RedMageMeleeComboRepriseOption) && (gauge.BlackMana < 50 || gauge.WhiteMana < 50))))
+                        (!InMeleeRange() || (IsEnabled(CustomComboPreset.RedMageMeleeComboRepriseOption) && (gauge.BlackMana < manaCheck || gauge.WhiteMana < manaCheck))))
                         return OriginalHook(RDM.Reprise);
                 }
 
-                if (level >= RDM.Levels.Verflare && (gauge.BlackMana < 50 || gauge.WhiteMana < 50) && IsEnabled(CustomComboPreset.RedMageComboReminderFeature) && actionID == RDM.Redoublement && gauge.ManaStacks == 0 && OriginalHook(RDM.Verthunder2) != RDM.Verflare && OriginalHook(RDM.Jolt2) == RDM.Jolt2)
+                if (level >= RDM.Levels.Verflare && IsEnabled(CustomComboPreset.RedMageComboReminderFeature) && actionID == RDM.Redoublement && gauge.ManaStacks == 0 && OriginalHook(RDM.Verthunder2) != RDM.Verflare && OriginalHook(RDM.Jolt2) == RDM.Jolt2 && (gauge.BlackMana < manaCheck || gauge.WhiteMana < manaCheck))
                 {
                     if (IsEnabled(CustomComboPreset.RedMageComboReminderOption))
                         return IsEnabled(CustomComboPreset.RedMageMeleeComboPlusVerholy) ? WHM.Holy : BLM.Flare;
                     return IsEnabled(CustomComboPreset.RedMageMeleeComboPlusVerholy) ? RDM.Verholy : RDM.Verflare;
                 }
 
-                if (actionID == RDM.Moulinet)
+                if ((actionID == RDM.Moulinet) || (inAoE && actionID == RDM.Redoublement))
                     return OriginalHook(RDM.Moulinet);
                 return OriginalHook(RDM.Riposte);
             }
