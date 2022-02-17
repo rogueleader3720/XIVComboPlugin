@@ -85,6 +85,16 @@ namespace XIVComboExpandedestPlugin.Combos
         }
     }
 
+    internal class MonkChakraToEnlightenment : CustomCombo
+    {
+        protected override CustomComboPreset Preset => CustomComboPreset.MonkChakraToEnlightmentFeature;
+
+        protected override uint Invoke(uint actionID, uint lastComboMove, float comboTime, byte level)
+        {
+            return OriginalHook(MNK.Meditation) != MNK.Meditation && (this.FilteredLastComboMove == MNK.ShadowOfTheDestroyer || this.FilteredLastComboMove == MNK.ArmOfTheDestroyer || this.FilteredLastComboMove == MNK.FourPointFury || this.FilteredLastComboMove == MNK.Rockbreaker) ? OriginalHook(MNK.Enlightenment) : actionID;
+        }
+    }
+
     internal class MonkDragonKickAnatmanFeature : CustomCombo
     {
         protected override CustomComboPreset Preset => CustomComboPreset.MonkDragonKickAnatmanFeature;

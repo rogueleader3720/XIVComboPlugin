@@ -81,6 +81,12 @@ namespace XIVComboExpandedestPlugin.Combos
             PLD.HolyCircle,
             DRG.FangAndClaw,
             DRG.WheelingThrust,
+            3545, // Elixir Field
+            25882, // Flint Strike
+            3543, // Tornado Kick
+            25768, // Rising Phoenix
+            25769, // Phantom Rush
+            25765, // Celestial Revolution (AKA Monk Bunny)
             0,
         };
 
