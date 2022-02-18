@@ -2,7 +2,7 @@
 
 # XIVComboPlugin Expandedest
 
-[![Build](https://github.com/grammernatzi/XIVComboPlugin/actions/workflows/build.yml/badge.svg)](https://github.com/grammernatzi/actions/workflows/build.yml)
+[![Build](https://github.com/grammernatzi/XIVComboPlugin/actions/workflows/build.yml/badge.svg)](https://github.com/grammernatzi/XIVComboPlugin/actions/workflows/build.yml)
 
 This is a version of Daemitus's XIVComboExpanded with added features. The majority of these new additions are for button consolidation, and while they have logic behind them, they aren't really designed to play the game for you, and more replace options you have either already used, can't be used at that moment, have a lower priority, or would be completely detrimental to use at that moment, so that, while you still have to think about which buttons you are pressing and not just spamming a single one, you also get to have a much smaller hotbar. Quite a few of these features can be replicated by something like ReAction with ease (or even macros in some cases), but look prettier with actual icon replacement.
 
