@@ -530,6 +530,11 @@ namespace XIVComboExpandedestPlugin
         MonkDragonKickComboSnakeOption = 2023,
 
         [OrderedEnum]
+        [ConflictingCombos(MonkSTCombo, MonkPerfectBalanceFeatureLockout)]
+        [CustomComboInfo("Perfect Balance to Demolish", "Replace Perfect Balance with Demolish while in Perfect Balance.", MNK.JobID, MNK.PerfectBalance)]
+        MonkPerfectBalanceDemolishFeature = 2026,
+
+        [OrderedEnum]
         [CustomComboInfo("Monk Meditation Reminder", "Your GCDs become Meditate out of combat if you don't have the Fifth Chakra open.", MNK.JobID, MNK.TwinSnakes, MNK.TrueStrike, MNK.FormShift, MNK.SnapPunch, MNK.Demolish, MNK.Bootshine, MNK.DragonKick, MNK.MasterfulBlitz, MNK.Rockbreaker, MNK.ArmOfTheDestroyer, MNK.ShadowOfTheDestroyer, MNK.FourPointFury, MNK.SixSidedStar)]
         MonkMeditationReminder = 2013,
 

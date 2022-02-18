@@ -208,6 +208,16 @@ namespace XIVComboExpandedestPlugin.Combos
         }
     }
 
+    internal class MonkPerfectBalanceDemolishFeature : CustomCombo
+    {
+        protected override CustomComboPreset Preset => CustomComboPreset.MonkPerfectBalanceDemolishFeature;
+
+        protected override uint Invoke(uint actionID, uint lastComboMove, float comboTime, byte level)
+        {
+            return actionID == MNK.PerfectBalance && HasEffect(MNK.Buffs.PerfectBalance) ? MNK.Demolish : actionID;
+        }
+    }
+
     internal class MonkSTCombo : CustomCombo
     {
         protected override CustomComboPreset Preset => CustomComboPreset.MonkSTCombo;
