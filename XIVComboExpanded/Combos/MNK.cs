@@ -132,7 +132,7 @@ namespace XIVComboExpandedestPlugin.Combos
 
                 if (IsEnabled(CustomComboPreset.MonkDragonKickBootshineFeature))
                 {
-                    if ((!HasEffect(MNK.Buffs.LeadenFist) || (!HasEffect(MNK.Buffs.OpoOpoForm) || !HasEffect(MNK.Buffs.FormlessFist) || !HasEffect(MNK.Buffs.PerfectBalance))) && level >= MNK.Levels.DragonKick)
+                    if ((!HasEffect(MNK.Buffs.LeadenFist) || (!HasEffect(MNK.Buffs.OpoOpoForm) && !HasEffect(MNK.Buffs.FormlessFist) && !HasEffect(MNK.Buffs.PerfectBalance))) && level >= MNK.Levels.DragonKick)
                         return MNK.DragonKick;
                 }
 
