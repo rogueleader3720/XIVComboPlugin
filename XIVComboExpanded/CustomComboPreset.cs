@@ -9,7 +9,7 @@ namespace XIVComboExpandedestPlugin
     public enum CustomComboPreset
     {
         // ====================================================================================
-        #region ALL CLASSES
+        #region MULTIPLE CLASSES/DOL
 
         [OrderedEnum]
         [CustomComboInfo("Raise to Swiftcast Feature", "Replaces the respective raise on RDM/SMN/SCH/WHM/AST/SGE with Swiftcast when it is off cooldown (and Dualcast isn't up).", All.JobID, All.Raise, All.Resurrection, All.Ascend, All.Verraise, All.Egeiro)]
@@ -22,6 +22,30 @@ namespace XIVComboExpandedestPlugin
         [OrderedEnum]
         [CustomComboInfo("Tank Interrupt Feature", "Low Blow becomes Interject if the opponent can be interrupted and Interject is off-cooldown.", All.JobID, All.LowBlow)]
         AllTankInterruptFeature = 9003,
+
+        [OrderedEnum]
+        [CustomComboInfo("Cast / Hook Feature", "Replace Cast with Hook when fishing.", All.JobID, All.Cast)]
+        DolCastHookFeature = 9004,
+
+        [OrderedEnum]
+        [CustomComboInfo("Cast / Gig Feature", "Replace Cast with Gig when underwater.", All.JobID, All.Cast)]
+        DolCastGigFeature = 9005,
+
+        [OrderedEnum]
+        [CustomComboInfo("Surface Slap / Veteran Trade Feature", "Replace Surface Slap with Veteran Trade when underwater.", All.JobID, All.SurfaceSlap)]
+        DolSurfaceTradeFeature = 9006,
+
+        [OrderedEnum]
+        [CustomComboInfo("Prize Catch / Nature's Bounty Feature", "Replace Prize Catch with Nature's Bounty when underwater.", All.JobID, All.PrizeCatch)]
+        DolPrizeBountyFeature = 9007,
+
+        [OrderedEnum]
+        [CustomComboInfo("Snagging / Salvage Feature", "Replace Snagging with Salvage when underwater.", All.JobID, All.Snagging)]
+        DolSnaggingSalvageFeature = 9008,
+
+        [OrderedEnum]
+        [CustomComboInfo("Cast Light / Electric Current Feature", "Replace Cast Light with Electric Current when underwater.", All.JobID, All.CastLight)]
+        DolCastLightElectricCurrentFeature = 9009,
 
         #endregion
 
