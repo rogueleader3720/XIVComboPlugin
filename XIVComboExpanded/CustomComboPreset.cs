@@ -323,7 +323,7 @@ namespace XIVComboExpandedestPlugin
         DragoonFangThrustFeature = 2205,
 
         [OrderedEnum]
-        [CustomComboInfo("Opposite Combo to Wyrmwind", "Replaces the opposite combo of the one you are using with Wyrmwind Thrust.\nBoth combos need to be enabled, obviously.", DRG.JobID, DRG.FullThrust, DRG.ChaosThrust)]
+        [CustomComboInfo("Opposite Combo/Disembowel to Wyrmwind", "Replaces the opposite combo of the one you are using (or Disembowel when not available) with Wyrmwind Thrust.", DRG.JobID, DRG.FullThrust, DRG.ChaosThrust, DRG.Disembowel)]
         DragoonOppositeWyrmwindFeature = 2212,
 
         [OrderedEnum]
