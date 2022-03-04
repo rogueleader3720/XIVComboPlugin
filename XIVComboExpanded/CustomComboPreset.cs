@@ -327,6 +327,14 @@ namespace XIVComboExpandedestPlugin
         DragoonOppositeWyrmwindFeature = 2212,
 
         [OrderedEnum]
+        [CustomComboInfo("Fang and Claw to Wheeling Thrust", "Fang and Claw becomes Wheeling Thrust if the latter is available.", DRG.JobID, DRG.FangAndClaw)]
+        DragoonFangToThrustFeature = 2214,
+
+        [OrderedEnum]
+        [CustomComboInfo("Full Thrust to Chaos Thrust", "Full Thrust becomes Chaos Thrust after using Disembowel.", DRG.JobID, DRG.FullThrust, DRG.HeavensThrust)]
+        DragoonFullChaosFeature = 2215,
+
+        [OrderedEnum]
         [CustomComboInfo("True/Raiden Thrust to Wyrmwind", "Replace True/Raiden Thrust with Wyrmwind Thrust when available.", DRG.JobID, DRG.FullThrust, DRG.ChaosThrust, DRG.TrueThrust)]
         DragoonRaidenWyrmwindFeature = 2213,
 

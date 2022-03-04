@@ -7,7 +7,11 @@
   "IconUrl": "https://raw.githubusercontent.com/grammernatzi/XIVComboPluginExpandedest/master/res/icon.png",
   "ImageUrls": [],
   "Changelog":
-"1.2.8.9: Perfect Balance to Demolish added.
+"1.2.9.4: Chaos Thrust combo bug fixed (it wasn't properly transitioning to Wheeling Thrust before Chaotic Spring).
+				 Fang and Claw to Wheeling Thrust added.
+				 Full Thrust to Chaos Thrust added.
+
+1.2.8.9: Perfect Balance to Demolish added.
 
 1.2.8.3: Redoublement Combo to Moulinet added.
 
