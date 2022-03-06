@@ -92,6 +92,7 @@ namespace XIVComboExpandedestPlugin.Combos
             RDM.Scorch,
             RDM.Resolution,
             RDM.Impact,
+            RDM.Scatter,
             3545, // Elixir Field
             25882, // Flint Strike
             3543, // Tornado Kick
