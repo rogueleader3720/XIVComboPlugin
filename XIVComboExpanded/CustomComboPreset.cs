@@ -319,6 +319,12 @@ namespace XIVComboExpandedestPlugin
         DragoonChaosThrustComboOption = 2209,
 
         [OrderedEnum]
+        [ConflictingCombos(DragoonFangThrustFeature, DragoonFullChaosFeature)]
+        [CustomComboInfo("Combos Wheeling Thrust/Fang and Claw Cosmetic Option", "This option makes it so that, when using your combos, only your current combo displays Wheeling Thrust/Fang and Claw.", DRG.JobID)]
+        DragoonComboCosmeticOption = 2216,
+
+        [OrderedEnum]
+        [ConflictingCombos(DragoonComboCosmeticOption)]
         [CustomComboInfo("Wheeling Thrust/Fang and Claw Option", "When you have either Enhanced Fang and Claw or Wheeling Thrust,\nChaos Thrust Combo becomes Wheeling Thrust and Full Thrust Combo becomes Fang and Claw.\nRequires Chaos Thrust Combo and Full Thrust Combo.", DRG.JobID, DRG.FullThrust, DRG.ChaosThrust)]
         DragoonFangThrustFeature = 2205,
 
@@ -331,7 +337,8 @@ namespace XIVComboExpandedestPlugin
         DragoonFangToThrustFeature = 2214,
 
         [OrderedEnum]
-        [CustomComboInfo("Full Thrust to Chaos Thrust", "Full Thrust becomes Chaos Thrust after using Disembowel.", DRG.JobID, DRG.FullThrust, DRG.HeavensThrust)]
+        [ConflictingCombos(DragoonComboCosmeticOption)]
+        [CustomComboInfo("Full Thrust to Chaos Thrust", "Full Thrust becomes Chaos Thrust after using Disembowel. Works even with combos on.", DRG.JobID, DRG.FullThrust, DRG.HeavensThrust)]
         DragoonFullChaosFeature = 2215,
 
         [OrderedEnum]
