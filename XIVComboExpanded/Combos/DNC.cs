@@ -38,7 +38,9 @@ namespace XIVComboExpandedestPlugin.Combos
         {
             public const ushort
                 FlourishingSymmetry = 2693,
+                SilkenSymmetry = 9999,
                 FlourishingFlow = 2694,
+                SilkenFlow = 9999,
                 FlourishingFinish = 2698,
                 FlourishingStarfall = 2700,
                 StandardStep = 1818,
@@ -189,33 +191,6 @@ namespace XIVComboExpandedestPlugin.Combos
         }
     }
 
-    internal class DancerFlourishFeature : CustomCombo
-    {
-        protected override CustomComboPreset Preset => CustomComboPreset.DancerFlourishFeature;
-
-        protected override uint Invoke(uint actionID, uint lastComboMove, float comboTime, byte level)
-        {
-            if (actionID == DNC.Flourish)
-            {
-                if (level >= DNC.Levels.Fountainfall && HasEffect(DNC.Buffs.FlourishingFlow))
-                    return DNC.Fountainfall;
-
-                if (level >= DNC.Levels.FanDance4 && HasEffect(DNC.Buffs.FourfoldFanDance))
-                    return DNC.FanDance4;
-
-                if (level >= DNC.Levels.ReverseCascade && HasEffect(DNC.Buffs.FlourishingSymmetry))
-                    return DNC.ReverseCascade;
-
-                if (level >= DNC.Levels.FanDance3 && HasEffect(DNC.Buffs.ThreefoldFanDance))
-                    return DNC.FanDance3;
-
-                return DNC.Flourish;
-            }
-
-            return actionID;
-        }
-    }
-
     internal class DancerSingleTargetMultibutton : CustomCombo
     {
         protected override CustomComboPreset Preset => CustomComboPreset.DancerSingleTargetMultibutton;
@@ -225,11 +200,11 @@ namespace XIVComboExpandedestPlugin.Combos
             if (actionID == DNC.Cascade)
             {
                 // From Fountain
-                if (level >= DNC.Levels.Fountainfall && HasEffect(DNC.Buffs.FlourishingFlow))
+                if (level >= DNC.Levels.Fountainfall && (HasEffect(DNC.Buffs.FlourishingFlow) || HasEffect(DNC.Buffs.SilkenFlow)))
                     return DNC.Fountainfall;
 
                 // From Cascade
-                if (level >= DNC.Levels.ReverseCascade && HasEffect(DNC.Buffs.FlourishingSymmetry))
+                if (level >= DNC.Levels.ReverseCascade && (HasEffect(DNC.Buffs.FlourishingSymmetry) || HasEffect(DNC.Buffs.SilkenSymmetry)))
                     return DNC.ReverseCascade;
 
                 // Cascade Combo
@@ -250,11 +225,11 @@ namespace XIVComboExpandedestPlugin.Combos
         protected override uint Invoke(uint actionID, uint lastComboMove, float comboTime, byte level)
         {
             if (actionID == DNC.Cascade)
-                if (level >= DNC.Levels.ReverseCascade && HasEffect(DNC.Buffs.FlourishingSymmetry))
+                if (level >= DNC.Levels.ReverseCascade && (HasEffect(DNC.Buffs.FlourishingSymmetry) || HasEffect(DNC.Buffs.SilkenSymmetry)))
                     return DNC.ReverseCascade;
 
             if (actionID == DNC.Fountain)
-                if (level >= DNC.Levels.Fountainfall && HasEffect(DNC.Buffs.FlourishingFlow))
+                if (level >= DNC.Levels.Fountainfall && (HasEffect(DNC.Buffs.FlourishingFlow) || HasEffect(DNC.Buffs.SilkenFlow)))
                     return DNC.Fountainfall;
 
             return actionID;
@@ -270,11 +245,11 @@ namespace XIVComboExpandedestPlugin.Combos
             if (actionID == DNC.Windmill)
             {
                 // From Bladeshower
-                if (level >= DNC.Levels.Bloodshower && HasEffect(DNC.Buffs.FlourishingFlow))
+                if (level >= DNC.Levels.Bloodshower && (HasEffect(DNC.Buffs.FlourishingFlow) || HasEffect(DNC.Buffs.SilkenFlow)))
                     return DNC.Bloodshower;
 
                 // From Windmill
-                if (level >= DNC.Levels.RisingWindmill && HasEffect(DNC.Buffs.FlourishingSymmetry))
+                if (level >= DNC.Levels.RisingWindmill && (HasEffect(DNC.Buffs.FlourishingSymmetry) || HasEffect(DNC.Buffs.SilkenSymmetry)))
                     return DNC.RisingWindmill;
 
                 // Windmill Combo
@@ -295,11 +270,11 @@ namespace XIVComboExpandedestPlugin.Combos
         protected override uint Invoke(uint actionID, uint lastComboMove, float comboTime, byte level)
         {
             if (actionID == DNC.Windmill)
-                if (level >= DNC.Levels.RisingWindmill && HasEffect(DNC.Buffs.FlourishingSymmetry))
+                if (level >= DNC.Levels.RisingWindmill && (HasEffect(DNC.Buffs.FlourishingSymmetry) || HasEffect(DNC.Buffs.SilkenSymmetry)))
                     return DNC.RisingWindmill;
 
             if (actionID == DNC.Bladeshower)
-                if (level >= DNC.Levels.Bloodshower && HasEffect(DNC.Buffs.FlourishingFlow))
+                if (level >= DNC.Levels.Bloodshower && (HasEffect(DNC.Buffs.FlourishingFlow) || HasEffect(DNC.Buffs.SilkenFlow)))
                     return DNC.Bloodshower;
 
             return actionID;

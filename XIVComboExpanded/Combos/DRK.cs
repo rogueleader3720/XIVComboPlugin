@@ -45,11 +45,11 @@ namespace XIVComboExpandedestPlugin.Combos
                 Souleater = 26,
                 FloodOfDarkness = 30,
                 EdgeOfDarkness = 40,
+                StalwartSoul = 40,
                 CarveAndSpit = 60,
                 Bloodpiller = 62,
                 Quietus = 64,
                 Delirium = 68,
-                StalwartSoul = 72,
                 Shadow = 74,
                 LivingShadow = 80;
         }

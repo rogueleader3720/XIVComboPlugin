@@ -183,10 +183,6 @@ namespace XIVComboExpandedestPlugin
         BardStraightShotUpgradeFeature = 2302,
 
         [OrderedEnum]
-        [CustomComboInfo("Wanderer's into Pitch Perfect", "Replaces Wanderer's Minuet with Pitch Perfect while in WM.", BRD.JobID, BRD.WanderersMinuet)]
-        BardWanderersPitchPerfectFeature = 2301,
-
-        [OrderedEnum]
         [CustomComboInfo("Iron Jaws Feature", "Iron Jaws is replaced with Stormbite/Windbite if it is not up, or you do not have Iron Jaws yet.", BRD.JobID, BRD.IronJaws)]
         BardIronJawsFeature = 2311,
 
@@ -262,10 +258,6 @@ namespace XIVComboExpandedestPlugin
         [ParentCombo(DancerFanDanceCombo)]
         [CustomComboInfo("Fan Dance IV Combo", "Additionally change Fan Dance and Fan Dance 2 into Fan Dance 4 while under Fourfold Fan Dance.", DNC.JobID, DNC.FanDance1, DNC.FanDance2)]
         DancerFanDance4Combo = 3809,
-
-        [OrderedEnum]
-        [CustomComboInfo("Flourish Proc Saver", "Change Flourish into any available procs before using.", DNC.JobID, DNC.Flourish)]
-        DancerFlourishFeature = 3803,
 
         [OrderedEnum]
         [CustomComboInfo("Flourish to Fan Dance IV", "Change Flourish into Fan Dance IV when it is ready.", DNC.JobID, DNC.Flourish)]
@@ -353,10 +345,6 @@ namespace XIVComboExpandedestPlugin
         [ParentCombo(DragoonCoerthanTormentCombo)]
         [CustomComboInfo("Coerthan Torment Combo to Wyrmwind", "Coerthan Torment combo becomes Wyrmwind Thrust when you have two Firstminds' Focus.", DRG.JobID, DRG.CoerthanTorment)]
         DragoonWyrmwindFeature = 2207,
-
-        [OrderedEnum]
-        [CustomComboInfo("Jump to Mirage Dive", "Replace (High) Jump with Mirage Dive when Dive Ready.", DRG.JobID, DRG.Jump, DRG.HighJump)]
-        DragoonJumpFeature = 2201,
 
         [OrderedEnum]
         [ConflictingCombos(DragoonStarfireDiveFeature)]
@@ -1167,19 +1155,6 @@ namespace XIVComboExpandedestPlugin
         SamuraiShohaBetweenOption = 3422,
 
         [OrderedEnum]
-        [CustomComboInfo("Iaijutsu to Kaiten", "Replace Iaijutsu/Ogi-Namikiri with Kaiten if Kaiten is not active, you have the gauge to use it, an Iaijutsu is ready, and you have just used an action.", SAM.JobID, SAM.Iaijutsu, SAM.OgiNamikiri)]
-        SamuraiKaitenFeature = 3418,
-
-        [OrderedEnum]
-        [ParentCombo(SamuraiKaitenFeature)]
-        [CustomComboInfo("Iaijutsu to Kaiten Persistence Option", "Makes it so Kaiten doesn't require you to have just used an action.", SAM.JobID, SAM.Iaijutsu)]
-        SamuraiKaitenFeatureGCDOption = 3420,
-
-        [OrderedEnum]
-        [CustomComboInfo("Kaiten to Iaijutsu", "Replace Kaiten with Iaijutsu if you have less than 20 Kenki or have used Kaiten.", SAM.JobID, SAM.Kaiten)]
-        SamuraiKaitenIaijutsuFeature = 3424,
-
-        [OrderedEnum]
         [CustomComboInfo("Ikishoten Namikiri Feature", "Replace Ikishoten with Ogi Namikiri and then Kaeshi Namikiri when available.", SAM.JobID, SAM.Ikishoten)]
         SamuraiIkishotenNamikiriFeature = 3411,
 
@@ -1326,7 +1301,7 @@ namespace XIVComboExpandedestPlugin
         SummonerOutburstOfBrillianceFeature = 2718,
 
         [OrderedEnum]
-        [CustomComboInfo("Carby Feature", "Every action that cannot be used without summoning carbuncle becomes Summon Carbuncle while a pet is not summoned.", SMN.JobID, SMN.RadiantAegis, SMN.SearingLight, SMN.Aethercharge, SMN.DreadwyrmTrance, SMN.SummonBahamut, SMN.SummonEmerald,
+        [CustomComboInfo("Carby Feature", "Every action that cannot be used without summoning carbuncle becomes Summon Carbuncle while a pet is not summoned.", SMN.JobID, SMN.RadiantAegis, SMN.Aethercharge, SMN.DreadwyrmTrance, SMN.SummonBahamut, SMN.SummonEmerald,
             SMN.SummonGaruda, SMN.SummonGaruda2, SMN.SummonRuby, SMN.SummonIfrit, SMN.SummonIfrit2, SMN.SummonTopaz, SMN.SummonTitan, SMN.SummonTitan2, SMN.Gemshine, SMN.PreciousBrilliance, SMN.AstralFlow)]
         SummonerCarbyFeature = 2704,
 
@@ -1343,8 +1318,13 @@ namespace XIVComboExpandedestPlugin
         #region WARRIOR
 
         [OrderedEnum]
-        [CustomComboInfo("Storms Path Combo", "Replace Storms Path with its combo chain", WAR.JobID, WAR.StormsPath)]
+        [CustomComboInfo("Storms Path Combo", "Replace Storms Path with its combo chain.", WAR.JobID, WAR.StormsPath)]
         WarriorStormsPathCombo = 2101,
+
+        [OrderedEnum]
+        [ParentCombo(WarriorStormsPathCombo)]
+        [CustomComboInfo("Storms Path to Storm's Eye", "Replace Storms Path in its combo with Storm's Eye if Surging Tempest is not up.\nSince you still want to reapply it before the buff runs out, this is not a button replacement, nor is it an auto-upkeep feature.", WAR.JobID, WAR.StormsPath)]
+        WarriorStormsPathEyeFeature = 2116,
 
         [OrderedEnum]
         [ParentCombo(WarriorStormsPathCombo)]
@@ -1352,7 +1332,7 @@ namespace XIVComboExpandedestPlugin
         WarriorStormsPathahawkFeature = 2110,
 
         [OrderedEnum]
-        [CustomComboInfo("Storms Eye Combo", "Replace Storms Eye with its combo chain", WAR.JobID, WAR.StormsEye)]
+        [CustomComboInfo("Storms Eye Combo", "Replace Storms Eye with its combo chain.", WAR.JobID, WAR.StormsEye)]
         WarriorStormsEyeCombo = 2102,
 
         [OrderedEnum]
@@ -1366,7 +1346,7 @@ namespace XIVComboExpandedestPlugin
         WarriorStormsEyeHawkReplacementFeature = 2113,
 
         [OrderedEnum]
-        [CustomComboInfo("Mythril Tempest Combo", "Replace Mythril Tempest with its combo chain while you have a target.", WAR.JobID, WAR.MythrilTempest)]
+        [CustomComboInfo("Mythril Tempest Combo", "Replace Mythril Tempest with its combo chain.", WAR.JobID, WAR.MythrilTempest)]
         WarriorMythrilTempestCombo = 2103,
 
         [OrderedEnum]
@@ -1374,11 +1354,11 @@ namespace XIVComboExpandedestPlugin
         WarriorOverpowerCombo = 2104,
 
         [OrderedEnum]
-        [CustomComboInfo("Warrior Gauge Overcap Feature", "Replace AoE combo with gauge spender if you are about to overcap", WAR.JobID, WAR.MythrilTempest, WAR.StormsEye, WAR.StormsPath)]
+        [CustomComboInfo("Warrior Gauge Overcap Feature", "Replace AoE combo with gauge spender if you are about to overcap.", WAR.JobID, WAR.MythrilTempest, WAR.StormsEye, WAR.StormsPath)]
         WarriorGaugeOvercapFeature = 2105,
 
         [OrderedEnum]
-        [CustomComboInfo("Inner Release Feature", "Replace Single-target and AoE combo with Fell Cleave/Decimate during Inner Release", WAR.JobID, WAR.MythrilTempest, WAR.StormsPath)]
+        [CustomComboInfo("Inner Release AoE to Decimate Feature", "Replace AoE combo with Decimate during Inner Release.", WAR.JobID, WAR.MythrilTempest)]
         WarriorInnerReleaseFeature = 2106,
 
         [OrderedEnum]

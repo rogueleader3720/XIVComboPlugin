@@ -163,12 +163,6 @@ namespace XIVComboExpandedestPlugin.Combos
             {
                 if (IsEnabled(CustomComboPreset.PaladinRoyalSpiritFeature))
                 {
-                    if (IsEnabled(CustomComboPreset.PaladinConfiteorFeature))
-                    {
-                        if (OriginalHook(PLD.Confiteor) != PLD.Confiteor)
-                            return OriginalHook(PLD.Confiteor);
-                    }
-
                     Status? requiescat = FindEffect(PLD.Buffs.Requiescat);
 
                     if (requiescat != null && !HasEffect(PLD.Buffs.FightOrFlight) && LocalPlayer?.CurrentMp >= 1000)

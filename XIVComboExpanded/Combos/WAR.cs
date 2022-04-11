@@ -36,7 +36,8 @@ namespace XIVComboExpandedestPlugin.Combos
             public const ushort
                 InnerRelease = 1177,
                 NascentChaos = 1897,
-                PrimalRendReady = 2624;
+                PrimalRendReady = 2624,
+                SurgingTempest = 2677;
         }
 
         public static class Debuffs
@@ -68,11 +69,6 @@ namespace XIVComboExpandedestPlugin.Combos
         {
             if (actionID == WAR.StormsPath)
             {
-                if (IsEnabled(CustomComboPreset.WarriorInnerReleaseFeature) && HasEffect(WAR.Buffs.InnerRelease))
-                {
-                    return OriginalHook(WAR.FellCleave);
-                }
-
                 if (IsEnabled(CustomComboPreset.WarriorStormsPathahawkFeature))
                 {
                     if (CanUseAction(WAR.Tomahawk) && !InMeleeRange())
@@ -85,7 +81,7 @@ namespace XIVComboExpandedestPlugin.Combos
                         return WAR.Maim;
 
                     if (lastComboMove == WAR.Maim && CanUseAction(WAR.StormsPath))
-                        return WAR.StormsPath;
+                        return IsEnabled(CustomComboPreset.WarriorStormsPathEyeFeature) && CanUseAction(WAR.StormsEye) && !HasEffect(WAR.Buffs.SurgingTempest) ? WAR.StormsEye : WAR.StormsPath;
                 }
 
                 return WAR.HeavySwing;
@@ -103,16 +99,6 @@ namespace XIVComboExpandedestPlugin.Combos
         {
             if (actionID == WAR.StormsEye)
             {
-                if (IsEnabled(CustomComboPreset.WarriorInnerReleaseFeature) && HasEffect(WAR.Buffs.InnerRelease))
-                {
-                    if (IsEnabled(CustomComboPreset.WarriorInnerReleaseahawkOption))
-                    {
-                        return WAR.Tomahawk;
-                    }
-
-                    return OriginalHook(WAR.FellCleave);
-                }
-
                 if (IsEnabled(CustomComboPreset.WarriorStormsEyeahawkFeature))
                 {
                     if (CanUseAction(WAR.Tomahawk) && !InMeleeRange())
