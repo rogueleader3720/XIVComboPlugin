@@ -16,7 +16,7 @@
 				 Warrior combos to Fell Cleave removed due to changes to Inner Release. AoE functionality still the same.
 				 Overpower combo no longer defaults to Mythril Tempest if you have no target.
 				 Storm's Path to Storm's Eye added. Only functions if the buff isn't up, so you will still need to keep Storm's Eye on your bar for upkeep.
-				 Royal Authority to Holy Spirit now doesn't change into your combo. This may be reverted if it turns out there's no reason to hold your Confiteor combo.
+				 Royal Authority to Holy Spirit now doesn't change into your Confiteor combo. This may be reverted if it turns out there's no reason to hold your Confiteor combo.
 
 If a recent change isn't documented on this changelog, it is because it doesn't affect plugin functionality, or is a minor bugfix.",
 }
