@@ -37,10 +37,10 @@ namespace XIVComboExpandedestPlugin.Combos
         public static class Buffs
         {
             public const ushort
-                FlourishingSymmetry = 2693,
-                SilkenSymmetry = 9999,
-                FlourishingFlow = 2694,
-                SilkenFlow = 9999,
+                FlourishingSymmetry = 3017,
+                SilkenSymmetry = 2693,
+                FlourishingFlow = 3018,
+                SilkenFlow = 2694,
                 FlourishingFinish = 2698,
                 FlourishingStarfall = 2700,
                 StandardStep = 1818,
