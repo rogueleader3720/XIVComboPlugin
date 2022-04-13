@@ -122,7 +122,7 @@ namespace XIVComboExpandedestPlugin.Combos
                     return RPR.Soulsow;
             }
 
-            if (OriginalHook(RPR.Soulsow) == RPR.HarvestMoon && actionID == (IsEnabled(CustomComboPreset.ReaperNightmareScytheCombo) ? RPR.NightmareScythe : RPR.SpinningScythe) && LocalPlayer?.TargetObject is not null && level >= RPR.Levels.Soulsow && !HasEffect(RPR.Buffs.SoulReaver))
+            if (OriginalHook(RPR.Soulsow) == RPR.HarvestMoon && actionID == (IsEnabled(CustomComboPreset.ReaperNightmareScytheCombo) ? RPR.NightmareScythe : RPR.SpinningScythe) && CurrentTarget is not null && level >= RPR.Levels.Soulsow && !HasEffect(RPR.Buffs.SoulReaver))
                 return RPR.HarvestMoon;
 
             return actionID;
@@ -254,7 +254,7 @@ namespace XIVComboExpandedestPlugin.Combos
         {
             if (actionID == (IsEnabled(CustomComboPreset.ReaperNightmareScytheCombo) ? RPR.NightmareScythe : RPR.SpinningScythe))
             {
-                if (OriginalHook(RPR.Soulsow) == RPR.HarvestMoon && IsEnabled(CustomComboPreset.ReaperSoulsowFeature) && LocalPlayer?.TargetObject is not null && level >= RPR.Levels.Soulsow && !HasEffect(RPR.Buffs.SoulReaver))
+                if (OriginalHook(RPR.Soulsow) == RPR.HarvestMoon && IsEnabled(CustomComboPreset.ReaperSoulsowFeature) && CurrentTarget is not null && level >= RPR.Levels.Soulsow && !HasEffect(RPR.Buffs.SoulReaver))
                     return RPR.HarvestMoon;
 
                 var gauge = GetJobGauge<RPRGauge>();
