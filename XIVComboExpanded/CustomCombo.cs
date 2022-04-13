@@ -124,7 +124,7 @@ namespace XIVComboExpandedestPlugin.Combos
                 this.FilteredLastComboMove = lastComboActionID;
 
             // Reset filtered last combo move if out of combat.
-            if (LocalPlayer is not null && !LocalPlayer.StatusFlags.HasFlag(Dalamud.Game.ClientState.Objects.Enums.StatusFlags.InCombat))
+            if (LocalPlayer is not null && !HasCondition(ConditionFlag.InCombat))
                 this.FilteredLastComboMove = 0;
 
             // Speed Calculation
