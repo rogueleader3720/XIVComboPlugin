@@ -179,6 +179,10 @@ namespace XIVComboExpandedestPlugin
         #region BARD
 
         [OrderedEnum]
+        [CustomComboInfo("Wanderer's Minuet Semi-Fix", "Turns Leg Graze into Wanderer's Minuet, letting you use it no matter what (because SE messed this up so bad, holy crap).", BRD.JobID, BRD.LegGraze)]
+        BardWanderersPitchPerfectFeature = 2301,
+
+        [OrderedEnum]
         [CustomComboInfo("Heavy Shot into Straight Shot", "Replaces Heavy Shot/Burst Shot with Straight Shot/Refulgent Arrow when procced.", BRD.JobID, BRD.HeavyShot, BRD.BurstShot)]
         BardStraightShotUpgradeFeature = 2302,
 

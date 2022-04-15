@@ -23,6 +23,7 @@ namespace XIVComboExpandedestPlugin.Combos
             Windbite = 113,
             BattleVoice = 118,
             WanderersMinuet = 3559,
+            LegGraze = 7554,
             IronJaws = 3560,
             Sidewinder = 3562,
             EmpyrealArrow = 3558,
@@ -139,6 +140,21 @@ namespace XIVComboExpandedestPlugin.Combos
                     return BRD.CausticBite;
 
                 return BRD.Stormbite;
+            }
+
+            return actionID;
+        }
+    }
+
+    internal class BardWanderersPitchPerfectFeature : CustomCombo
+    {
+        protected override CustomComboPreset Preset => CustomComboPreset.BardWanderersPitchPerfectFeature;
+
+        protected override uint Invoke(uint actionID, uint lastComboMove, float comboTime, byte level)
+        {
+            if (actionID == BRD.LegGraze)
+            {
+                return BRD.WanderersMinuet;
             }
 
             return actionID;
