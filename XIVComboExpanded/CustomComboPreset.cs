@@ -179,7 +179,7 @@ namespace XIVComboExpandedestPlugin
         #region BARD
 
         [OrderedEnum]
-        [CustomComboInfo("Wanderer's Minuet Semi-Fix", "Turns Leg Graze into Wanderer's Minuet to Pitch Perfect, letting you use it regardless of whatever other bards are doing (because SE messed this up so bad, holy crap).", BRD.JobID, BRD.LegGraze)]
+        [CustomComboInfo("Wanderer's Minuet Semi-Fix", "Turns Peloton into Wanderer's Minuet to Pitch Perfect while you have a target, letting you use it regardless of whatever other bards are doing (because SE messed this up so bad, holy crap).", BRD.JobID, BRD.Peloton)]
         BardWanderersPitchPerfectFeature = 2301,
 
         [OrderedEnum]

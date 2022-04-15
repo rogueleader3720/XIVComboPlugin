@@ -23,7 +23,7 @@ namespace XIVComboExpandedestPlugin.Combos
             Windbite = 113,
             BattleVoice = 118,
             WanderersMinuet = 3559,
-            LegGraze = 7554,
+            Peloton = 7557,
             IronJaws = 3560,
             Sidewinder = 3562,
             EmpyrealArrow = 3558,
@@ -152,9 +152,10 @@ namespace XIVComboExpandedestPlugin.Combos
 
         protected override uint Invoke(uint actionID, uint lastComboMove, float comboTime, byte level)
         {
-            if (actionID == BRD.LegGraze)
+            if (actionID == BRD.Peloton && CurrentTarget is not null)
             {
-                if (CanUseAction(BRD.PitchPerfect))
+                var gauge = GetJobGauge<BRDGauge>();
+                if (gauge.Song == Song.WANDERER)
                     return BRD.PitchPerfect;
                 return BRD.WanderersMinuet;
             }
