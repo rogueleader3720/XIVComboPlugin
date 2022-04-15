@@ -154,6 +154,8 @@ namespace XIVComboExpandedestPlugin.Combos
         {
             if (actionID == BRD.LegGraze)
             {
+                if (CanUseAction(BRD.PitchPerfect))
+                    return BRD.PitchPerfect;
                 return BRD.WanderersMinuet;
             }
 
