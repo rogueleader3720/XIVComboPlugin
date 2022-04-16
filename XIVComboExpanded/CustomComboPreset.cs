@@ -360,6 +360,14 @@ namespace XIVComboExpandedestPlugin
         [CustomComboInfo("Stardiver to Dragonfire Dive", "Stardiver becomes Dragonfire Dive when the latter is off-cooldown (and you have more than 7.5s of LotD left), or outside of Life of the Dragon.", DRG.JobID, DRG.Stardiver)]
         DragoonStarfireDiveFeature = 2208,
 
+        [OrderedEnum]
+        [CustomComboInfo("Lance Charge to Dragon Sight", "Lance Charge becomes Dragon Sight while on cooldown.\nDragon Sight takes priority over Battle Litany.", DRG.JobID, DRG.LanceCharge)]
+        DragoonLanceSightFeature = 2217,
+
+        [OrderedEnum]
+        [CustomComboInfo("Lance Charge to Battle Litany", "Lance Charge becomes Battle Litany while on cooldown.", DRG.JobID, DRG.LanceCharge)]
+        DragoonLancetanyFeature = 2218,
+
         #endregion
         // ====================================================================================
         #region DARK KNIGHT
