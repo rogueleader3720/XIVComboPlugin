@@ -549,6 +549,11 @@ namespace XIVComboExpandedestPlugin
         [CustomComboInfo("Drill / Air Anchor (Hot Shot) Feature", "Replace Drill and Air Anchor (Hot Shot) with one or the other (or Chainsaw) depending on which is on cooldown.", MCH.JobID, MCH.Drill, MCH.HotShot, MCH.AirAnchor)]
         MachinistHotShotDrillChainsawFeature = 3106,
 
+        [OrderedEnum]
+        [SecretCustomCombo]
+        [CustomComboInfo("Chainsaw Cycling Feature", "Replace Chainsaw with Air Anchor and then Drill, in a priority system. Does not replace any other actions, so you can easily watch their cooldowns.", MCH.JobID, MCH.Chainsaw)]
+        MachinistChainsawFeature = 3113,
+
         #endregion
         // ====================================================================================
         #region MONK
