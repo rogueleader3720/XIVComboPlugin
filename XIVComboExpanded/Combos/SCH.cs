@@ -33,7 +33,9 @@ namespace XIVComboExpandedestPlugin.Combos
             Broil = 3584,
             Broil2 = 7435,
             Broil3 = 16541,
-            Broil4 = 25865;
+            Broil4 = 25865,
+            Adloquium = 185,
+            Physick = 190;
 
         public static class Buffs
         {
@@ -50,8 +52,19 @@ namespace XIVComboExpandedestPlugin.Combos
         public static class Levels
         {
             public const byte
+                Adloquium = 30,
                 ChainStratagem = 66,
                 Recitation = 74;
+        }
+    }
+
+    internal class ScholarAdloPhysickSyncFeature : CustomCombo
+    {
+        protected override CustomComboPreset Preset => CustomComboPreset.ScholarAdloPhysickSyncFeature;
+
+        protected override uint Invoke(uint actionID, uint lastComboMove, float comboTime, byte level)
+        {
+            return actionID == SCH.Adloquium && level < SCH.Levels.Adloquium ? SCH.Physick : actionID;
         }
     }
 

@@ -179,10 +179,6 @@ namespace XIVComboExpandedestPlugin
         #region BARD
 
         [OrderedEnum]
-        [CustomComboInfo("Wanderer's Minuet Semi-Fix", "Turns Peloton into Wanderer's Minuet to Pitch Perfect while you have a target, letting you use it regardless of whatever other bards are doing (because SE messed this up so bad, holy crap).", BRD.JobID, BRD.Peloton)]
-        BardWanderersPitchPerfectFeature = 2301,
-
-        [OrderedEnum]
         [CustomComboInfo("Heavy Shot into Straight Shot", "Replaces Heavy Shot/Burst Shot with Straight Shot/Refulgent Arrow when procced.", BRD.JobID, BRD.HeavyShot, BRD.BurstShot)]
         BardStraightShotUpgradeFeature = 2302,
 
@@ -1208,7 +1204,11 @@ namespace XIVComboExpandedestPlugin
         #region SCHOLAR
 
         [OrderedEnum]
-        [CustomComboInfo("Seraph Fey Blessing/Consolation", "Change Fey Blessing into Consolation when Seraph is out.", SCH.JobID, SCH.FeyBless)]
+        [CustomComboInfo("Adloquium to Physick Level Sync", "Change Adloquium to Physick when level-synced.", SCH.JobID, SCH.Adloquium)]
+        ScholarAdloPhysickSyncFeature = 2810,
+
+        [OrderedEnum]
+        [CustomComboInfo("Seraph Fey Blessing/Consolation", "Change Fey Blessing into Consolation when Seraph is out.\nNot needed anymore, but some people still have the old XIVCombo muscle memory.", SCH.JobID, SCH.FeyBless)]
         ScholarSeraphConsolationFeature = 2801,
 
         [OrderedEnum]

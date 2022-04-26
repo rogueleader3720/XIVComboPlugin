@@ -146,24 +146,6 @@ namespace XIVComboExpandedestPlugin.Combos
         }
     }
 
-    internal class BardWanderersPitchPerfectFeature : CustomCombo
-    {
-        protected override CustomComboPreset Preset => CustomComboPreset.BardWanderersPitchPerfectFeature;
-
-        protected override uint Invoke(uint actionID, uint lastComboMove, float comboTime, byte level)
-        {
-            if (actionID == BRD.Peloton && CurrentTarget is not null)
-            {
-                var gauge = GetJobGauge<BRDGauge>();
-                if (gauge.Song == Song.WANDERER)
-                    return BRD.PitchPerfect;
-                return BRD.WanderersMinuet;
-            }
-
-            return actionID;
-        }
-    }
-
     internal class BardIronJawsFeature : CustomCombo
     {
         protected override CustomComboPreset Preset => CustomComboPreset.BardIronJawsFeature;
