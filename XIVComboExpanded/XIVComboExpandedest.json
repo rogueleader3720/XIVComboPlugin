@@ -6,7 +6,10 @@
   "RepoUrl": "https://github.com/Grammernatzi/XIVComboPluginExpandedest",
   "IconUrl": "https://raw.githubusercontent.com/grammernatzi/XIVComboPluginExpandedest/master/res/icon.png",
   "ImageUrls": [],
-  "Changelog": "1.3.1.3:
+  "Changelog": "1.3.1.4:
+* Blizzard 1/3 feature now reverts back to Blizzard 1 at Umbral Ice 3, regardless of Paradox state.
+    
+1.3.1.3:
 * Wanderer's Minuet Semi-Fix removed, as it SHOULD be fixed now in-game with 6.11.
 * Adloquium to Physick Sync added.
     
