@@ -367,12 +367,12 @@ namespace XIVComboExpandedestPlugin.Combos
                     return MNK.FourPointFury;
             }
 
-            if (actionID == MNK.MasterfulBlitz)
+            if (actionID == (IsEnabled(CustomComboPreset.MonkAoEComboBlitzOption) ? PLD.TotalEclipse : MNK.MasterfulBlitz))
             {
                 if (IsEnabled(CustomComboPreset.MonkAoEMeditationFeature) && OriginalHook(MNK.Meditation) != MNK.Meditation && CanUseAction(OriginalHook(MNK.HowlingFist)) && CurrentTarget is not null && HasCondition(ConditionFlag.InCombat) && GetCooldown(MNK.Bootshine).CooldownRemaining >= 0.5)
                     return OriginalHook(MNK.HowlingFist);
 
-                if (OriginalHook(MNK.MasterfulBlitz) != MNK.MasterfulBlitz && CanUseAction(OriginalHook(MNK.MasterfulBlitz)))
+                if (OriginalHook(MNK.MasterfulBlitz) != MNK.MasterfulBlitz && CanUseAction(OriginalHook(MNK.MasterfulBlitz)) && !IsEnabled(CustomComboPreset.MonkAoEComboBlitzOption))
                     return OriginalHook(MNK.MasterfulBlitz);
 
                 if (HasEffect(MNK.Buffs.PerfectBalance) || HasEffect(MNK.Buffs.FormlessFist))

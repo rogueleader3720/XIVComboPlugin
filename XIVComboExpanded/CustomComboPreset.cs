@@ -575,12 +575,18 @@ namespace XIVComboExpandedestPlugin
         MonkPerfectBalanceDemolishFeature = 2026,
 
         [OrderedEnum]
-        [CustomComboInfo("Monk Meditation Reminder", "Your GCDs become Meditate out of combat if you don't have the Fifth Chakra open.", MNK.JobID, MNK.TwinSnakes, MNK.TrueStrike, MNK.FormShift, MNK.SnapPunch, MNK.Demolish, MNK.Bootshine, MNK.DragonKick, MNK.MasterfulBlitz, MNK.Rockbreaker, MNK.ArmOfTheDestroyer, MNK.ShadowOfTheDestroyer, MNK.FourPointFury, MNK.SixSidedStar)]
+        [CustomComboInfo("Monk Meditation Reminder", "Your GCDs become Meditate out of combat if you don't have the Fifth Chakra open.", MNK.JobID, MNK.TwinSnakes, MNK.TrueStrike, MNK.FormShift, MNK.SnapPunch, MNK.Demolish, MNK.Bootshine, MNK.DragonKick, MNK.MasterfulBlitz, MNK.Rockbreaker, MNK.ArmOfTheDestroyer, MNK.ShadowOfTheDestroyer, MNK.FourPointFury, MNK.SixSidedStar, PLD.TotalEclipse)]
         MonkMeditationReminder = 2013,
 
         [OrderedEnum]
-        [CustomComboInfo("Monk AoE Combo", "Replaces Masterful Blitz (for bug reasons) with the AoE combo chain, or whatever your most damaging move is when Perfect Balance is active.\nFour-Point Fury becomes AoE combo chain in order of forms during Perfect Balance.\nMasterful Blitz replaces the AoE combo when you have 3 Beast Chakra.", MNK.JobID, MNK.MasterfulBlitz, MNK.FourPointFury, MNK.FormShift)]
+        [CustomComboInfo("Monk AoE Combo", "Replaces Masterful Blitz (for bug reasons) with the AoE combo chain, or whatever your most damaging move is when Perfect Balance is active.\nFour-Point Fury becomes AoE combo chain in order of forms during Perfect Balance.\nMasterful Blitz replaces the AoE combo when you have 3 Beast Chakra.", MNK.JobID, MNK.MasterfulBlitz, MNK.FourPointFury, MNK.FormShift, PLD.TotalEclipse)]
         MonkAoECombo = 2001,
+
+        [OrderedEnum]
+        [ParentCombo(MonkAoECombo)]
+        [CustomComboInfo("Monk AoE Combo Experimental No-Blitz Option", "Enabling this option makes it so that Total Eclipse is the basis for your main AoE combo, and Masterful Blitz is untouched.\n" +
+            "To get Total Eclipse onto your Monk hotbar, use a shared hotbar, a macro, or a plugin like ReAction.", MNK.JobID)]
+        MonkAoEComboBlitzOption = 2027,
 
         [OrderedEnum]
         [ParentCombo(MonkAoECombo)]
