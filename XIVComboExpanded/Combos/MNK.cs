@@ -46,6 +46,7 @@ namespace XIVComboExpandedestPlugin.Combos
                 CoeurlForm = 109,
                 PerfectBalance = 110,
                 LeadenFist = 1861,
+                Brotherhood = 1185,
                 FormlessFist = 2513;
         }
 
@@ -72,6 +73,37 @@ namespace XIVComboExpandedestPlugin.Combos
                 RiddleOfWind = 72,
                 Enlightenment = 74,
                 ShadowOfTheDestroyer = 82;
+        }
+    }
+
+    internal class MonkBrotherhoodLockoutFeature : CustomCombo
+    {
+        protected override CustomComboPreset Preset => CustomComboPreset.MonkBrotherhoodLockoutFeature;
+
+        protected override uint Invoke(uint actionID, uint lastComboMove, float comboTime, byte level)
+        {
+            return actionID == MNK.Brotherhood && HasEffectAny(MNK.Buffs.Brotherhood) && FindEffectAny(MNK.Buffs.Brotherhood)?.RemainingTime > 3 && IsActionOffCooldown(MNK.Brotherhood) ? SMN.Physick : MNK.Brotherhood;
+        }
+    }
+
+    internal class MonkRiddleToBrotherFeature : CustomCombo
+    {
+        protected override CustomComboPreset Preset => CustomComboPreset.MonkRiddleToBrotherFeature;
+
+        protected override uint Invoke(uint actionID, uint lastComboMove, float comboTime, byte level)
+        {
+            return (actionID == MNK.RiddleOfFire && IsActionOffCooldown(MNK.Brotherhood) && !IsActionOffCooldown(MNK.RiddleOfFire) && CanUseAction(MNK.Brotherhood))
+                && (!IsEnabled(CustomComboPreset.MonkBrotherhoodLockoutFeature) || !(HasEffectAny(MNK.Buffs.Brotherhood) && FindEffectAny(MNK.Buffs.Brotherhood)?.RemainingTime > 3)) ? MNK.Brotherhood : actionID;
+        }
+    }
+
+    internal class MonkRiddleToRiddleFeature : CustomCombo
+    {
+        protected override CustomComboPreset Preset => CustomComboPreset.MonkRiddleToRiddleFeature;
+
+        protected override uint Invoke(uint actionID, uint lastComboMove, float comboTime, byte level)
+        {
+            return (actionID == MNK.RiddleOfFire && IsActionOffCooldown(MNK.RiddleOfWind) && !IsActionOffCooldown(MNK.RiddleOfFire) && level >= MNK.Levels.RiddleOfWind) ? MNK.RiddleOfWind : actionID;
         }
     }
 
@@ -470,26 +502,6 @@ namespace XIVComboExpandedestPlugin.Combos
             }
 
             return actionID;
-        }
-    }
-
-    internal class MonkRiddleToBrotherFeature : CustomCombo
-    {
-        protected override CustomComboPreset Preset => CustomComboPreset.MonkRiddleToBrotherFeature;
-
-        protected override uint Invoke(uint actionID, uint lastComboMove, float comboTime, byte level)
-        {
-            return (IsActionOffCooldown(MNK.Brotherhood) && !IsActionOffCooldown(MNK.RiddleOfFire) && CanUseAction(MNK.Brotherhood)) ? MNK.Brotherhood : actionID;
-        }
-    }
-
-    internal class MonkRiddleToRiddleFeature : CustomCombo
-    {
-        protected override CustomComboPreset Preset => CustomComboPreset.MonkRiddleToRiddleFeature;
-
-        protected override uint Invoke(uint actionID, uint lastComboMove, float comboTime, byte level)
-        {
-            return (IsActionOffCooldown(MNK.RiddleOfWind) && !IsActionOffCooldown(MNK.RiddleOfFire) && level >= MNK.Levels.RiddleOfWind) ? MNK.RiddleOfWind : actionID;
         }
     }
 

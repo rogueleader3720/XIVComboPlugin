@@ -46,7 +46,8 @@ namespace XIVComboExpandedestPlugin.Combos
 
         public static class Debuffs
         {
-            public const ushort Placeholder = 0;
+            public const ushort
+                ChainStratagem = 1221;
         }
 
         public static class Levels
@@ -88,7 +89,18 @@ namespace XIVComboExpandedestPlugin.Combos
 
         protected override uint Invoke(uint actionID, uint lastComboMove, float comboTime, byte level)
         {
-            return IsActionOffCooldown(SCH.ChainStratagem) && GetCooldown(SCH.Ruin2).CooldownRemaining >= 0.5 && level >= SCH.Levels.ChainStratagem ? SCH.ChainStratagem : actionID;
+            return actionID == SCH.ChainStratagem && IsActionOffCooldown(SCH.ChainStratagem) && GetCooldown(SCH.Ruin2).CooldownRemaining >= 0.5 && level >= SCH.Levels.ChainStratagem
+                && !(IsEnabled(CustomComboPreset.ScholarChainLockoutFeature) && TargetHasEffectAny(SCH.Debuffs.ChainStratagem) && FindTargetEffectAny(SCH.Debuffs.ChainStratagem)?.RemainingTime > 3) ? SCH.ChainStratagem : actionID;
+        }
+    }
+
+    internal class ScholarChainLockoutFeature : CustomCombo
+    {
+        protected override CustomComboPreset Preset => CustomComboPreset.ScholarChainLockoutFeature;
+
+        protected override uint Invoke(uint actionID, uint lastComboMove, float comboTime, byte level)
+        {
+            return actionID == SCH.ChainStratagem && IsActionOffCooldown(SCH.ChainStratagem) && TargetHasEffectAny(SCH.Debuffs.ChainStratagem) && FindTargetEffectAny(SCH.Debuffs.ChainStratagem)?.RemainingTime > 3 ? SMN.Physick : actionID;
         }
     }
 

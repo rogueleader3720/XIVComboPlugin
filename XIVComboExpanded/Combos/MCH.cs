@@ -4,7 +4,6 @@ using Dalamud.Game.ClientState.JobGauge.Types;
 
 namespace XIVComboExpandedestPlugin.Combos
 {
-
     internal static class MCH
     {
         public const byte JobID = 31;
