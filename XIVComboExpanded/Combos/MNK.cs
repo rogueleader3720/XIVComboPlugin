@@ -72,7 +72,8 @@ namespace XIVComboExpandedestPlugin.Combos
                 Brotherhood = 70,
                 RiddleOfWind = 72,
                 Enlightenment = 74,
-                ShadowOfTheDestroyer = 82;
+                ShadowOfTheDestroyer = 82,
+                TwinSnakes = 18;
         }
     }
 
@@ -462,6 +463,44 @@ namespace XIVComboExpandedestPlugin.Combos
 
                 if (level < MNK.Levels.DragonKick)
                     return MNK.Bootshine;
+            }
+
+            return actionID;
+        }
+    }
+
+    internal class MonkTwinSnakesTrueStrikeFeature : CustomCombo
+    {
+        protected override CustomComboPreset Preset => CustomComboPreset.MonkTwinSnakesTrueStrikeFeature;
+
+        protected override uint Invoke(uint actionID, uint lastComboMove, float comboTime, byte level)
+        {
+            if (actionID == MNK.TwinSnakes)
+            {
+                if (HasEffect(MNK.Buffs.TwinSnakes) && (HasEffect(MNK.Buffs.RaptorForm) || HasEffect(MNK.Buffs.FormlessFist) || HasEffect(MNK.Buffs.PerfectBalance)))
+                    return MNK.TrueStrike;
+
+                if (level < MNK.Levels.TwinSnakes)
+                    return MNK.TrueStrike;
+            }
+
+            return actionID;
+        }
+    }
+
+    internal class MonkDemolishSnapPunchFeature : CustomCombo
+    {
+        protected override CustomComboPreset Preset => CustomComboPreset.MonkDemolishSnapPunchFeature;
+
+        protected override uint Invoke(uint actionID, uint lastComboMove, float comboTime, byte level)
+        {
+            if (actionID == MNK.Demolish)
+            {
+                if (HasEffect(MNK.Debuffs.Demolish) && (HasEffect(MNK.Buffs.CoeurlForm) || HasEffect(MNK.Buffs.FormlessFist) || HasEffect(MNK.Buffs.PerfectBalance)))
+                    return MNK.SnapPunch;
+
+                if (level < MNK.Levels.Demolish)
+                    return MNK.SnapPunch;
             }
 
             return actionID;

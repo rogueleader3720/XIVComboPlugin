@@ -265,7 +265,6 @@ namespace XIVComboExpandedestPlugin.Combos
         }
     }
 
-
     internal class NinjaMugLockoutFeature : CustomCombo
     {
         protected override CustomComboPreset Preset => CustomComboPreset.NinjaMugLockoutFeature;

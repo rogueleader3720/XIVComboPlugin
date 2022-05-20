@@ -639,6 +639,14 @@ namespace XIVComboExpandedestPlugin
         MonkDragonKickBootshineFeature = 2002,
 
         [OrderedEnum]
+        [CustomComboInfo("Monk Demolish Snap Punch Feature", "Replaces Demolish with Snap Punch if Demolish debuff is up.", MNK.JobID, MNK.Demolish)]
+        MonkTwinSnakesTrueStrikeFeature = 2029,
+
+        [OrderedEnum]
+        [CustomComboInfo("Monk Twin Snakes True Strike Feature", "Replaced Twin Snakes with True Strike while buff is up.", MNK.JobID, MNK.TwinSnakes)]
+        MonkDemolishSnapPunchFeature = 2030,
+
+        [OrderedEnum]
         [CustomComboInfo("Monk Dragon Kick Balance Feature", "Replaces Dragon Kick with Masterful Blitz if you have 3 Beast Chakra.", MNK.JobID, MNK.DragonKick)]
         MonkDragonKickBalanceFeature = 2005,
 
