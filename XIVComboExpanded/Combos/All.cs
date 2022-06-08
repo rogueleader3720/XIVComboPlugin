@@ -21,6 +21,7 @@ namespace XIVComboExpandedestPlugin.Combos
             WiseToTheWorldBTN = 26522,
             LowBlow = 7540,
             Interject = 7538,
+            Reprisal = 7535,
             LucidDreaming = 7562,
             Cast = 289,
             Hook = 296,
@@ -39,6 +40,12 @@ namespace XIVComboExpandedestPlugin.Combos
             public const ushort
                 Swiftcast = 167,
                 EurekaMoment = 2765;
+        }
+
+        public static class Debuffs
+        {
+            public const ushort
+                Reprisal = 1193;
         }
 
         public static class Levels
@@ -201,6 +208,22 @@ namespace XIVComboExpandedestPlugin.Combos
             {
                 if (CanInterruptEnemy() && IsActionOffCooldown(All.Interject) && CanUseAction(All.Interject))
                     return All.Interject;
+            }
+
+            return actionID;
+        }
+    }
+
+    internal class AllReprisalLockoutFeature : CustomCombo
+    {
+        protected override CustomComboPreset Preset => CustomComboPreset.AllReprisalLockoutFeature;
+
+        protected override uint Invoke(uint actionID, uint lastComboMove, float comboTime, byte level)
+        {
+            if (actionID == All.Reprisal)
+            {
+                var reprisalDebuff = FindTargetEffectAny(All.Debuffs.Reprisal);
+                if (reprisalDebuff != null && reprisalDebuff.RemainingTime > 3 && IsActionOffCooldown(All.Reprisal)) return SMN.Physick;
             }
 
             return actionID;

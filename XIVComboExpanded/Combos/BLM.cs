@@ -71,6 +71,7 @@ namespace XIVComboExpandedestPlugin.Combos
                 Blizzard4 = 58,
                 Fire4 = 60,
                 BetweenTheLines = 62,
+                Foul = 70,
                 Despair = 72,
                 UmbralSoul = 76,
                 Xenoglossy = 80,
@@ -177,6 +178,7 @@ namespace XIVComboExpandedestPlugin.Combos
         {
             if (actionID == BLM.Fire4 || actionID == BLM.Blizzard4)
             {
+                var aoeSpells = new List<uint>() { BLM.Thunder4, BLM.Fire2, BLM.HighFire2, BLM.Flare, BLM.Blizzard2, BLM.HighBlizzard2, BLM.Freeze, BLM.Foul };
                 var gauge = GetJobGauge<BLMGauge>();
 
                 if (IsEnabled(CustomComboPreset.BlackEnochianDespairFeature) && gauge.InAstralFire)
@@ -186,7 +188,7 @@ namespace XIVComboExpandedestPlugin.Combos
                 }
 
                 if (IsEnabled(CustomComboPreset.BlackEnochianXenoglossyFeature) && gauge.PolyglotStacks > 0 && level >= BLM.Levels.Xenoglossy && this.IsMoving && !HasEffect(BLM.Buffs.Triplecast) && !HasEffect(All.Buffs.Swiftcast) && CurrentTarget is not null)
-                    return BLM.Xenoglossy;
+                    return IsEnabled(CustomComboPreset.BlackXenoFoulFeature) && aoeSpells.Contains(this.FilteredLastComboMove) ? BLM.Foul : BLM.Xenoglossy;
 
                 return gauge.InUmbralIce ? (level < BLM.Levels.Blizzard4 ? BLM.Blizzard : BLM.Blizzard4) : (level < BLM.Levels.Fire4 ? BLM.Fire : BLM.Fire4);
             }
@@ -354,6 +356,17 @@ namespace XIVComboExpandedestPlugin.Combos
         }
     }
 
+    internal class BlackXenoFoulFeature : CustomCombo
+    {
+        protected override CustomComboPreset Preset => CustomComboPreset.BlackXenoFoulFeature;
+
+        protected override uint Invoke(uint actionID, uint lastComboMove, float comboTime, byte level)
+        {
+            var aoeSpells = new List<uint>() { BLM.Thunder4, BLM.Fire2, BLM.HighFire2, BLM.Flare, BLM.Blizzard2, BLM.HighBlizzard2, BLM.Freeze, BLM.Foul };
+            return aoeSpells.Contains(this.FilteredLastComboMove) || level < BLM.Levels.Xenoglossy ? BLM.Foul : actionID;
+        }
+    }
+
     internal class BlackSharpThunderFeature : CustomCombo
     {
         protected override CustomComboPreset Preset => CustomComboPreset.BlackSharpThunderFeature;
@@ -372,10 +385,13 @@ namespace XIVComboExpandedestPlugin.Combos
         {
             if (actionID == BLM.Scathe && level >= BLM.Levels.Xenoglossy)
             {
+                var aoeSpells = new List<uint>() { BLM.Thunder4, BLM.Fire2, BLM.HighFire2, BLM.Flare, BLM.Blizzard2, BLM.HighBlizzard2, BLM.Freeze, BLM.Foul };
                 var gauge = GetJobGauge<BLMGauge>();
                 if (((IsActionOffCooldown(BLM.Amplifier) && GetCooldown(BLM.Fire).CooldownRemaining > 0.5 && gauge.PolyglotStacks < 2) || CurrentTarget is null) && level >= BLM.Levels.Amplifier && IsEnabled(CustomComboPreset.BlackXenoAmpFeature))
                     return BLM.Amplifier;
-                return gauge.PolyglotStacks > 0 ? BLM.Xenoglossy : BLM.Scathe;
+                if (gauge.PolyglotStacks == 0) return actionID;
+                if (IsEnabled(CustomComboPreset.BlackXenoFoulFeature) && aoeSpells.Contains(this.FilteredLastComboMove)) return BLM.Foul;
+                return BLM.Xenoglossy;
             }
 
             return actionID;

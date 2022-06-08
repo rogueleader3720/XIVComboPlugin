@@ -11,6 +11,8 @@ namespace XIVComboExpandedestPlugin
         // ====================================================================================
         #region MULTIPLE CLASSES/DOL
 
+        // Latest enum: 9010
+
         [OrderedEnum]
         [CustomComboInfo("Raise to Swiftcast Feature", "Replaces the respective raise on RDM/SMN/SCH/WHM/AST/SGE with Swiftcast when it is off cooldown (and Dualcast isn't up).", All.JobID, All.Raise, All.Resurrection, All.Ascend, All.Verraise, All.Egeiro)]
         AllSwiftcastFeature = 9001,
@@ -22,6 +24,10 @@ namespace XIVComboExpandedestPlugin
         [OrderedEnum]
         [CustomComboInfo("Tank Interrupt Feature", "Low Blow becomes Interject if the opponent can be interrupted and Interject is off-cooldown.", All.JobID, All.LowBlow)]
         AllTankInterruptFeature = 9003,
+
+        [OrderedEnum]
+        [CustomComboInfo("Reprisal Lockout Feature", "Locks out Reprisal while it is available and more than 3s remain on its debuff, to prevent overwriting it.", All.JobID, All.Reprisal)]
+        AllReprisalLockoutFeature = 9010,
 
         [OrderedEnum]
         [CustomComboInfo("Cast / Hook Feature", "Replace Cast with Hook when fishing.", All.JobID, All.Cast)]
@@ -89,6 +95,8 @@ namespace XIVComboExpandedestPlugin
         #endregion
         // ====================================================================================
         #region BLACK MAGE
+
+        // latest enum: 2522
 
         [OrderedEnum]
         [CustomComboInfo("Blizzard 4/Fire 4 Switcher", "Change Fire 4 or Blizzard 4 to whichever action you can currently use.", BLM.JobID, BLM.Blizzard4, BLM.Fire4)]
@@ -175,6 +183,10 @@ namespace XIVComboExpandedestPlugin
         [OrderedEnum]
         [CustomComboInfo("Xenoglossy/Foul to Amplifier", "Xenoglossy/Foul become Amplifier when it's available, you have just used an action, and you have less than two Polyglot stacks, or if you have no target or have no Polyglot.", BLM.JobID, BLM.Xenoglossy, BLM.Foul)]
         BlackXenoAmpFeature = 2512,
+
+        [OrderedEnum]
+        [CustomComboInfo("Xenoglossy to Foul", "Xenoglossy becomes Foul if you are using AoE spells or if you do not have Xenoglossy.", BLM.JobID, BLM.Xenoglossy)]
+        BlackXenoFoulFeature = 2522,
 
         [OrderedEnum]
         [CustomComboInfo("Thunder 3/4 to Sharpcast", "Thunder 3/4 become Sharpcast when it is available, you have just used an action, and the effect is not currently up, or if you have no target.", BLM.JobID, BLM.Thunder, BLM.Thunder2, BLM.Thunder3, BLM.Thunder4)]

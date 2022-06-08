@@ -168,7 +168,7 @@ namespace XIVComboExpandedestPlugin
 
                         var description = $"#{i}: {info.Description}";
 
-                        ImGui.TextColored(this.shadedColor, description);
+                        ImGui.TextWrapped(description);
                         ImGui.Spacing();
 
                         if (conflicts.Length > 0)
