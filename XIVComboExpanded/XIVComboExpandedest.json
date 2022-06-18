@@ -6,7 +6,10 @@
   "RepoUrl": "https://github.com/Grammernatzi/XIVComboPluginExpandedest",
   "IconUrl": "https://raw.githubusercontent.com/grammernatzi/XIVComboPluginExpandedest/master/res/icon.png",
   "ImageUrls": [],
-  "Changelog": "1.3.1.7:
+  "Changelog": "1.3.1.8:
+* Changed Gibbet and Gallows Enhanced Option to Enhanced Gallows on Gibbet Feature. It still works the same as before, but it also works on Gibbet by itself, and will only affect it if used standalone.
+    
+1.3.1.7:
 * Added Reprisal Lockout Feature.
 * Added Xenoglossy to Foul Feature.
 * Description text for features now properly wraps (creates new lines if the window is too small).    

@@ -151,6 +151,27 @@ namespace XIVComboExpandedestPlugin.Combos
         }
     }
 
+    internal class ReaperGibbetGallowsOption : CustomCombo
+    {
+        protected override CustomComboPreset Preset => CustomComboPreset.ReaperGibbetGallowsOption;
+
+        protected override uint Invoke(uint actionID, uint lastComboMove, float comboTime, byte level)
+        {
+            if (actionID == RPR.Gibbet)
+            {
+                var gauge = GetJobGauge<RPRGauge>();
+
+                if (HasEffect(RPR.Buffs.EnhancedGallows) && gauge.EnshroudedTimeRemaining == 0)
+                    return RPR.Gallows;
+
+                if (HasEffect(RPR.Buffs.EnhancedCrossReaping))
+                    return OriginalHook(RPR.Gallows);
+            }
+
+            return actionID;
+        }
+    }
+
     internal class ReaperStalkingSwathingFeature : CustomCombo
     {
         protected override CustomComboPreset Preset => CustomComboPreset.ReaperStalkingSwathingFeature;
