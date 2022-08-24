@@ -42,16 +42,13 @@ namespace XIVComboExpandedestPlugin
 
             this.GetAdjustedActionId = scanner.ScanText("E8 ?? ?? ?? ?? 8B F8 3B DF");  // Client::Game::ActionManager.GetAdjustedActionId
 
-            this.IsActionIdReplaceable = scanner.ScanText("81 F9 ?? ?? ?? ?? 7F 35");
-
-            this.GetActionCooldown = scanner.ScanText("E8 ?? ?? ?? ?? 48 85 C0 74 18 80 38 00");
+            this.IsActionIdReplaceable = scanner.ScanText("E8 ?? ?? ?? ?? 84 C0 74 4C 8B D3");
 
             PluginLog.Verbose("===== X I V C O M B O =====");
             PluginLog.Verbose($"GetAdjustedActionId   0x{this.GetAdjustedActionId:X}");
             PluginLog.Verbose($"IsActionIdReplaceable 0x{this.IsActionIdReplaceable:X}");
             PluginLog.Verbose($"ComboTimer            0x{this.ComboTimer:X}");
             PluginLog.Verbose($"LastComboMove         0x{this.LastComboMove:X}");
-            PluginLog.Verbose($"GetActionCooldown     0x{this.GetActionCooldown:X}");
         }
     }
 }

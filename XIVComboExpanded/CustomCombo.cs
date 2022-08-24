@@ -338,7 +338,7 @@ namespace XIVComboExpandedestPlugin.Combos
 
             foreach (var status in chara.StatusList)
             {
-                if (status.StatusId == effectID && (!sourceID.HasValue || status.SourceID == 0 || status.SourceID == InvalidObjectID || status.SourceID == sourceID))
+                if (status.StatusId == effectID && (!sourceID.HasValue || status.SourceId == 0 || status.SourceId == InvalidObjectID || status.SourceId == sourceID))
                     return status;
             }
 

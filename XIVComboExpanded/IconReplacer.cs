@@ -44,8 +44,6 @@ namespace XIVComboExpandedestPlugin
 
             this.UpdateEnabledActionIDs();
 
-            this.getActionCooldownSlot = Marshal.GetDelegateForFunctionPointer<GetActionCooldownSlotDelegate>(Service.Address.GetActionCooldown);
-
             this.getIconHook = new Hook<GetIconDelegate>(Service.Address.GetAdjustedActionId, this.GetIconDetour);
             this.isIconReplaceableHook = new Hook<IsIconReplaceableDelegate>(Service.Address.IsActionIdReplaceable, this.IsIconReplaceableDetour);
 
@@ -133,23 +131,24 @@ namespace XIVComboExpandedestPlugin
     internal sealed partial class IconReplacer
     {
         private readonly Dictionary<uint, byte> cooldownGroupCache = new();
-        private readonly GetActionCooldownSlotDelegate getActionCooldownSlot;
-
-        private delegate IntPtr GetActionCooldownSlotDelegate(IntPtr actionManager, int cooldownGroup);
 
         /// <summary>
         /// Gets the cooldown data for an action.
         /// </summary>
         /// <param name="actionID">Action ID to check.</param>
         /// <returns>Cooldown data.</returns>
-        internal CooldownData GetCooldown(uint actionID)
+        internal unsafe CooldownData GetCooldown(uint actionID)
         {
             var cooldownGroup = this.GetCooldownGroup(actionID);
             if (this.actionManager == IntPtr.Zero)
                 return new CooldownData() { ActionID = actionID };
 
-            var cooldownPtr = this.getActionCooldownSlot(this.actionManager, cooldownGroup - 1);
-            return Marshal.PtrToStructure<CooldownData>(cooldownPtr);
+            if (this.clientStructActionManager == null)
+                return new CooldownData() { ActionID = actionID };
+
+            var cooldownPtr = this.clientStructActionManager->GetRecastGroupDetail(cooldownGroup - 1);
+            cooldownPtr->ActionID = actionID;
+            return Marshal.PtrToStructure<CooldownData>((IntPtr)cooldownPtr);
         }
 
         private byte GetCooldownGroup(uint actionID)
