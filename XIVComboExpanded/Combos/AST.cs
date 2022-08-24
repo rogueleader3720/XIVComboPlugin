@@ -123,28 +123,6 @@ namespace XIVComboExpandedestPlugin.Combos
         }
     }
 
-    internal class AstrologianMinorArcanaPlayFeature : CustomCombo
-    {
-        protected override CustomComboPreset Preset => CustomComboPreset.AstrologianMinorArcanaPlayFeature;
-
-        protected override uint Invoke(uint actionID, uint lastComboMove, float comboTime, byte level)
-        {
-            if (actionID == AST.MinorArcana && !IsEnabled(CustomComboPreset.AstrologianMinorArcanaPlayOption))
-            {
-                if (HasEffect(AST.Buffs.LordOfCrownsDrawn) || HasEffect(AST.Buffs.LadyOfCrownsDrawn))
-                    return OriginalHook(AST.CrownPlay);
-            }
-
-            if (actionID == AST.CrownPlay && IsEnabled(CustomComboPreset.AstrologianMinorArcanaPlayOption))
-            {
-                if (!(HasEffect(AST.Buffs.LordOfCrownsDrawn) || HasEffect(AST.Buffs.LadyOfCrownsDrawn)))
-                    return OriginalHook(AST.MinorArcana);
-            }
-
-            return actionID;
-        }
-    }
-
     internal class AstrologianBeneficFeature : CustomCombo
     {
         protected override CustomComboPreset Preset => CustomComboPreset.AstrologianBeneficFeature;

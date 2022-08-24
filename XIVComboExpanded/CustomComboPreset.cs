@@ -72,15 +72,6 @@ namespace XIVComboExpandedestPlugin
         AstrologianDrawLockoutFeature = 3306,
 
         [OrderedEnum]
-        [CustomComboInfo("Minor Arcana to Crown Play", "Changes Minor Arcana to Crown Play when a card is not drawn.", AST.JobID, AST.MinorArcana, AST.CrownPlay)]
-        AstrologianMinorArcanaPlayFeature = 3302,
-
-        [OrderedEnum]
-        [ParentCombo(AstrologianMinorArcanaPlayFeature)]
-        [CustomComboInfo("Crown Play to Minor Arcana", "Changes Crown Play to Minor Arcana instead of the other way around.", AST.JobID, AST.CrownPlay)]
-        AstrologianMinorArcanaPlayOption = 3307,
-
-        [OrderedEnum]
         [CustomComboInfo("Benefic 2 to Benefic Level Sync", "Changes Benefic 2 to Benefic when below level 26 in synced content.", AST.JobID, AST.Benefic2)]
         AstrologianBeneficFeature = 3303,
 
@@ -381,6 +372,10 @@ namespace XIVComboExpandedestPlugin
         [ParentCombo(DragoonCoerthanTormentCombo)]
         [CustomComboInfo("Coerthan Torment Combo to Wyrmwind", "Coerthan Torment combo becomes Wyrmwind Thrust when you have two Firstminds' Focus.", DRG.JobID, DRG.CoerthanTorment)]
         DragoonWyrmwindFeature = 2207,
+
+        [OrderedEnum]
+        [CustomComboInfo("Jump to Mirage Dive", "Replace (High) Jump with Mirage Dive when Dive Ready.", DRG.JobID, DRG.Jump, DRG.HighJump)]
+        DragoonJumpFeature = 2201,
 
         [OrderedEnum]
         [ConflictingCombos(DragoonStarfireDiveFeature)]

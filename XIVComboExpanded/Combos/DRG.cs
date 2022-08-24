@@ -76,6 +76,24 @@ namespace XIVComboExpandedestPlugin.Combos
         }
     }
 
+    internal class DragoonJumpFeature : CustomCombo
+    {
+        protected override CustomComboPreset Preset => CustomComboPreset.DragoonJumpFeature;
+
+        protected override uint Invoke(uint actionID, uint lastComboMove, float comboTime, byte level)
+        {
+            if (actionID == DRG.Jump || actionID == DRG.HighJump)
+            {
+                if (HasEffect(DRG.Buffs.DiveReady))
+                    return DRG.MirageDive;
+
+                return OriginalHook(DRG.Jump);
+            }
+
+            return actionID;
+        }
+    }
+
     internal class DragoonCoerthanTormentCombo : CustomCombo
     {
         protected override CustomComboPreset Preset => CustomComboPreset.DragoonCoerthanTormentCombo;
