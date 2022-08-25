@@ -101,7 +101,7 @@ namespace XIVComboExpandedestPlugin.Combos
         {
             if (actionID == SGE.Dosis || actionID == SGE.Dosis2 || actionID == SGE.Dosis3)
             {
-                if (this.IsMoving && level >= SGE.Levels.Phlegma && !GetJobGauge<SGEGauge>().Eukrasia && GetTargetDistance() <= 6)
+                if (IsMoving() && level >= SGE.Levels.Phlegma && !GetJobGauge<SGEGauge>().Eukrasia && GetTargetDistance() <= 6)
                 {
                     if (GetCooldown(OriginalHook(SGE.Phlegma)).CooldownRemaining > 45)
                             return actionID;
@@ -123,7 +123,7 @@ namespace XIVComboExpandedestPlugin.Combos
             if (actionID == SGE.Dosis || actionID == SGE.Dosis2 || actionID == SGE.Dosis3)
             {
                 var gauge = GetJobGauge<SGEGauge>();
-                if (this.IsMoving && gauge.Addersting > 0 && !gauge.Eukrasia && level >= SGE.Levels.Toxikon)
+                if (IsMoving() && gauge.Addersting > 0 && !gauge.Eukrasia && level >= SGE.Levels.Toxikon)
                     return OriginalHook(SGE.Toxikon);
             }
 

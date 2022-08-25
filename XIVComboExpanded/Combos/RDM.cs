@@ -239,7 +239,7 @@ namespace XIVComboExpandedestPlugin.Combos
                         return OriginalHook(RDM.Verthunder);
                 }
 
-                if (IsEnabled(CustomComboPreset.RedMageVerprocComboReprise) && level >= RDM.Levels.Reprise && OriginalHook(RDM.Reprise) != RDM.Reprise && this.IsMoving)
+                if (IsEnabled(CustomComboPreset.RedMageVerprocComboReprise) && level >= RDM.Levels.Reprise && OriginalHook(RDM.Reprise) != RDM.Reprise && IsMoving())
                     return OriginalHook(RDM.Reprise);
 
                 if (actionID == RDM.Verstone && HasEffect(RDM.Buffs.VerstoneReady))

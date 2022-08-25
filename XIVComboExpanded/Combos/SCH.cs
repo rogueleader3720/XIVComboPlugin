@@ -112,7 +112,7 @@ namespace XIVComboExpandedestPlugin.Combos
         {
             if (actionID == SCH.Ruin || actionID == SCH.Broil || actionID == SCH.Broil2 || actionID == SCH.Broil3 || actionID == SCH.Broil4)
             {
-                if (this.IsMoving)
+                if (IsMoving())
                     return SCH.Ruin2;
             }
 
