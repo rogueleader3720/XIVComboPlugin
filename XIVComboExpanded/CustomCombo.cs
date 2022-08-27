@@ -219,7 +219,11 @@ namespace XIVComboExpandedestPlugin.Combos
         /// Gets bool determining if player is moving.
         /// </summary>
         /// <returns>A bool value of whether the player is moving or not.</returns>
-        protected static bool IsMoving() => Service.IconReplacer.IsMoving();
+        protected static unsafe bool IsMoving()
+        {
+            var agentMap = FFXIVClientStructs.FFXIV.Client.UI.Agent.AgentMap.Instance();
+            return agentMap != null && agentMap->IsPlayerMoving > 0 ? true : false;
+        }
 
         /// <summary>
         /// Determine if the given preset is enabled.
