@@ -93,7 +93,7 @@ namespace XIVComboExpandedestPlugin
         /// Gets bool determining if player is moving.
         /// </summary>
         /// <returns>A bool value of whether the player is moving or not.</returns>
-        internal bool IsMoving() => this.isPlayerMoving;
+        // internal bool IsMoving() => this.isPlayerMoving;
 
         /// <summary>
         /// Update what action IDs are allowed to be modified. This pulls from <see cref="PluginConfiguration.EnabledActions"/>.
