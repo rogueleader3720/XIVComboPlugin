@@ -226,7 +226,7 @@ namespace XIVComboExpandedestPlugin.Combos
                         return RPR.Harpe;
                 }
 
-                if (IsEnabled(CustomComboPreset.ReaperLemureFeature))
+                if (IsEnabled(CustomComboPreset.ReaperLemureFeature) && IsEnabled(CustomComboPreset.ReaperGibbetGallowsFeature))
                 {
                     if (HasEffect(RPR.Buffs.Enshrouded) && gauge.VoidShroud >= 2)
                     {
@@ -234,7 +234,7 @@ namespace XIVComboExpandedestPlugin.Combos
                     }
                 }
 
-                if (IsEnabled(CustomComboPreset.ReaperComboCommunioFeature))
+                if (IsEnabled(CustomComboPreset.ReaperComboCommunioFeature) && IsEnabled(CustomComboPreset.ReaperGibbetGallowsFeature))
                 {
                     if (HasEffect(RPR.Buffs.Enshrouded) && gauge.LemureShroud == 1 && level >= RPR.Levels.Communio)
                         return RPR.Communio;
@@ -280,7 +280,7 @@ namespace XIVComboExpandedestPlugin.Combos
 
                 var gauge = GetJobGauge<RPRGauge>();
 
-                if (IsEnabled(CustomComboPreset.ReaperLemureFeature))
+                if (IsEnabled(CustomComboPreset.ReaperLemureFeature) && IsEnabled(CustomComboPreset.ReaperGuillotineFeature))
                 {
                     if (HasEffect(RPR.Buffs.Enshrouded) && gauge.VoidShroud >= 2)
                     {
@@ -288,7 +288,7 @@ namespace XIVComboExpandedestPlugin.Combos
                     }
                 }
 
-                if (IsEnabled(CustomComboPreset.ReaperComboCommunioFeature))
+                if (IsEnabled(CustomComboPreset.ReaperComboCommunioFeature) && IsEnabled(CustomComboPreset.ReaperGuillotineFeature))
                 {
                     if (HasEffect(RPR.Buffs.Enshrouded) && gauge.LemureShroud == 1 && level >= RPR.Levels.Communio)
                         return RPR.Communio;
