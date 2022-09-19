@@ -32,23 +32,12 @@ namespace XIVComboExpandedestPlugin
 
         private HashSet<uint> comboActionIDs = new();
 
-        // private Vector2 position;
-
-        // private float playerSpeed;
-
-        // private bool isPlayerMoving;
-
         /// <summary>
         /// Initializes a new instance of the <see cref="IconReplacer"/> class.
         /// </summary>
         public unsafe IconReplacer()
         {
             this.clientStructActionManager = ActionManager.Instance();
-
-            // this.tick = new Stopwatch();
-            // this.tick.Start();
-
-            // XIVComboExpandedestPlugin.Framework.Update += this.OnFrameworkUpdate;
 
             this.customCombos = Assembly.GetAssembly(typeof(CustomCombo))!.GetTypes()
                 .Where(t => t.BaseType == typeof(CustomCombo))
@@ -88,12 +77,6 @@ namespace XIVComboExpandedestPlugin
         {
             return clientStructActionManager->GetActionStatus(ActionType.Spell, actionID, targetID, 0, 1) == 0;
         }
-
-        /// <summary>
-        /// Gets bool determining if player is moving.
-        /// </summary>
-        /// <returns>A bool value of whether the player is moving or not.</returns>
-        // internal bool IsMoving() => this.isPlayerMoving;
 
         /// <summary>
         /// Update what action IDs are allowed to be modified. This pulls from <see cref="PluginConfiguration.EnabledActions"/>.

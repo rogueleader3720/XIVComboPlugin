@@ -9,6 +9,7 @@ using Dalamud.Game.ClientState.Objects.SubKinds;
 using Dalamud.Game.ClientState.Objects.Types;
 using Dalamud.Game.ClientState.Statuses;
 using Dalamud.Utility;
+using FFXIVClientStructs.FFXIV.Client.UI.Agent;
 using XIVComboExpandedestPlugin.Attributes;
 
 namespace XIVComboExpandedestPlugin.Combos
@@ -219,11 +220,7 @@ namespace XIVComboExpandedestPlugin.Combos
         /// Gets bool determining if player is moving.
         /// </summary>
         /// <returns>A bool value of whether the player is moving or not.</returns>
-        protected static unsafe bool IsMoving()
-        {
-            var agentMap = FFXIVClientStructs.FFXIV.Client.UI.Agent.AgentMap.Instance();
-            return agentMap != null && agentMap->IsPlayerMoving > 0 ? true : false;
-        }
+        protected static unsafe bool IsMoving() => AgentMap.Instance() != null && AgentMap.Instance()->IsPlayerMoving > 0 ? true : false;
 
         /// <summary>
         /// Determine if the given preset is enabled.

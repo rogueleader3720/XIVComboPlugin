@@ -6,7 +6,13 @@
   "RepoUrl": "https://github.com/Grammernatzi/XIVComboPluginExpandedest",
   "IconUrl": "https://raw.githubusercontent.com/grammernatzi/XIVComboPluginExpandedest/master/res/icon.png",
   "ImageUrls": [],
-  "Changelog": "1.4.0.0:
+  "Changelog": "1.4.0.3:
+* Sidewinder to Pitch Perfect added.
+* Minor dancer bug fixed where Flourish to Fan Dance 3 was toggled by the Fan Dance 4 version instead.
+* Red Mage Verproc into Jolt Plus Option added.
+* Drill to Bioblaster added.
+  
+1.4.0.0:
 * 6.2 support (obviously)
 * Jump to Mirage Dive re-added, Minor Arcana to Crown Play removed.
 

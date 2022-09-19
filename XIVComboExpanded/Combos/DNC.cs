@@ -162,7 +162,7 @@ namespace XIVComboExpandedestPlugin.Combos
 
     internal class DancerFlourishFanDance3Feature : CustomCombo
     {
-        protected override CustomComboPreset Preset => CustomComboPreset.DancerFlourishFanDance4Feature;
+        protected override CustomComboPreset Preset => CustomComboPreset.DancerFlourishFanDance3Feature;
 
         protected override uint Invoke(uint actionID, uint lastComboMove, float comboTime, byte level)
         {
