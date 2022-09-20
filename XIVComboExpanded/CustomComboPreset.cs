@@ -599,12 +599,19 @@ namespace XIVComboExpandedestPlugin
         // ====================================================================================
         #region MONK
 
-        // latest enum: 2028
+        // latest enum: 2029
 
         [OrderedEnum]
         [ConflictingCombos(MonkSTCombo)]
-        [CustomComboInfo("Monk Bootshine Combo", "Replace Bootshine with Monk's Bootshine/True Strike/Snap Punch combo.", MNK.JobID, MNK.Bootshine)]
+        [CustomComboInfo("Monk Bootshine Combo", "Replace Bootshine with Monk's Bootshine/True Strike/Snap Punch combo.", MNK.JobID, MNK.Bootshine, MNK.DragonKick)]
         MonkBootshineCombo = 2019,
+
+        [OrderedEnum]
+        [ParentCombo(MonkBootshineCombo)]
+        [CustomComboInfo("Monk Bootshine Combo Level Sync", "Also replace Dragon Kick with Monk's Bootshine/True Strike/Snap Punch combo if Dragon Kick is not yet unlocked." +
+            "\nMostly for Dragon Kick meme rotation muscle memory, if you like that sort of thing." +
+            "\nNot compatible with Dragon Kick Combo without Twin Snakes option.", MNK.JobID, MNK.DragonKick)]
+        MonkBootshineComboDragonKickSync = 2029,
 
         [OrderedEnum]
         [ConflictingCombos(MonkSTCombo)]

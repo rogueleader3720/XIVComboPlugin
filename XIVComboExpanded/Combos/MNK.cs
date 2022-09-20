@@ -143,7 +143,7 @@ namespace XIVComboExpandedestPlugin.Combos
 
         protected override uint Invoke(uint actionID, uint lastComboMove, float comboTime, byte level)
         {
-            if (actionID == MNK.Bootshine)
+            if (actionID == MNK.Bootshine || (actionID == MNK.DragonKick && !CanUseAction(MNK.DragonKick) && IsEnabled(CustomComboPreset.MonkBootshineComboDragonKickSync)))
             {
                 if (CurrentTarget is null && CanUseAction(MNK.Anatman) && IsEnabled(CustomComboPreset.MonkDragonKickBootshineFeature) && IsEnabled(CustomComboPreset.MonkDragonKickAnatmanFeature)) return MNK.Anatman;
 
