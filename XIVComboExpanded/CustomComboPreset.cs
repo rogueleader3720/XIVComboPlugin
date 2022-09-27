@@ -87,7 +87,7 @@ namespace XIVComboExpandedestPlugin
         // ====================================================================================
         #region BLACK MAGE
 
-        // latest enum: 2522
+        // latest enum: 2523
 
         [OrderedEnum]
         [CustomComboInfo("Blizzard 4/Fire 4 Switcher", "Change Fire 4 or Blizzard 4 to whichever action you can currently use.", BLM.JobID, BLM.Blizzard4, BLM.Fire4)]
@@ -182,6 +182,10 @@ namespace XIVComboExpandedestPlugin
         [OrderedEnum]
         [CustomComboInfo("Thunder 3/4 to Sharpcast", "Thunder 3/4 become Sharpcast when it is available, you have just used an action, and the effect is not currently up, or if you have no target.", BLM.JobID, BLM.Thunder, BLM.Thunder2, BLM.Thunder3, BLM.Thunder4)]
         BlackSharpThunderFeature = 2513,
+
+        [OrderedEnum]
+        [CustomComboInfo("Triplecast to Swiftcast", "Triplecast becomes Swiftcast if you aren't capped out on charges and Swiftcast is ready, or if Triplecast is not unlocked.", BLM.JobID, BLM.Triplecast)]
+        BlackTripleswiftFeature = 2523,
 
         #endregion
         // ====================================================================================
@@ -1335,7 +1339,7 @@ namespace XIVComboExpandedestPlugin
         // ====================================================================================
         #region SUMMONER
 
-        // latest enum: 2720
+        // latest enum: 2721
 
         [OrderedEnum]
         [CustomComboInfo("Enkindle/Summon Switch", "When Bahamut/Phoenix are summoned, Enkindle Bahamut/Phoenix will replace Summon Bahamut/Phoenix.", SMN.JobID, SMN.SummonBahamut, SMN.SummonPhoenix, SMN.DreadwyrmTrance, SMN.Aethercharge)]
@@ -1362,6 +1366,10 @@ namespace XIVComboExpandedestPlugin
         [OrderedEnum]
         [CustomComboInfo("ES Painflare", "Change Painflare into Energy Syphon when out of Aetherflow stacks", SMN.JobID, SMN.Painflare)]
         SummonerESPainflareCombo = 2703,
+
+        [OrderedEnum]
+        [CustomComboInfo("ES Level Sync", "Change Energy Siphon into Energy Drain when level synced below its acquisition.", SMN.JobID, SMN.Painflare, SMN.EnergySyphon)]
+        SummonerEStoED = 2721,
 
         [OrderedEnum]
         [CustomComboInfo("Mountain Buster Feature", "Gemshine and Precious Brilliance become Mountain Buster while you have Titan's Favor.", SMN.JobID, SMN.Ruin1, SMN.Ruin2, SMN.Ruin3, SMN.Gemshine, SMN.Outburst, SMN.TriDisaster, SMN.PreciousBrilliance)]

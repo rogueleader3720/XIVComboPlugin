@@ -228,15 +228,25 @@ namespace XIVComboExpandedestPlugin.Combos
                 if (!gauge.HasAetherflowStacks && IsEnabled(CustomComboPreset.SummonerLucidReminderFeature) && IsActionOffCooldown(All.LucidDreaming) && !IsActionOffCooldown(SMN.EnergySyphon) && LocalPlayer?.CurrentMp <= 9000 && CanUseAction(All.LucidDreaming)) return All.LucidDreaming;
 
                 if (!gauge.HasAetherflowStacks)
-                    return SMN.EnergySyphon;
+                    return IsEnabled(CustomComboPreset.SummonerEStoED) && level < SMN.Levels.EnergySyphon ? SMN.EnergyDrain : SMN.EnergySyphon;
 
                 if (level >= SMN.Levels.Painflare)
                     return SMN.Painflare;
 
-                return SMN.EnergySyphon;
+                return IsEnabled(CustomComboPreset.SummonerEStoED) && level < SMN.Levels.EnergySyphon ? SMN.EnergyDrain : SMN.EnergySyphon;
             }
 
             return actionID;
+        }
+    }
+
+    internal class SummonerEStoED : CustomCombo
+    {
+        protected override CustomComboPreset Preset => CustomComboPreset.SummonerEStoED;
+
+        protected override uint Invoke(uint actionID, uint lastComboMove, float comboTime, byte level)
+        {
+            return actionID == SMN.EnergySyphon && IsEnabled(CustomComboPreset.SummonerEStoED) && level < SMN.Levels.EnergySyphon ? SMN.EnergyDrain : actionID;
         }
     }
 

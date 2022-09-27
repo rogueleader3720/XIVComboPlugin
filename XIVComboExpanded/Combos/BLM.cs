@@ -38,7 +38,8 @@ namespace XIVComboExpandedestPlugin.Combos
             Xenoglossy = 16507,
             HighFire2 = 25794,
             HighBlizzard2 = 25795,
-            Amplifier = 25796;
+            Amplifier = 25796,
+            Triplecast = 7421;
 
         public static class Buffs
         {
@@ -71,6 +72,7 @@ namespace XIVComboExpandedestPlugin.Combos
                 Blizzard4 = 58,
                 Fire4 = 60,
                 BetweenTheLines = 62,
+                Triplecast = 66,
                 Foul = 70,
                 Despair = 72,
                 UmbralSoul = 76,
@@ -181,12 +183,6 @@ namespace XIVComboExpandedestPlugin.Combos
                 var aoeSpells = new List<uint>() { BLM.Thunder4, BLM.Fire2, BLM.HighFire2, BLM.Flare, BLM.Blizzard2, BLM.HighBlizzard2, BLM.Freeze, BLM.Foul };
                 var gauge = GetJobGauge<BLMGauge>();
 
-                if (IsEnabled(CustomComboPreset.BlackEnochianDespairFeature) && gauge.InAstralFire)
-                {
-                    if (level >= BLM.Levels.Despair && LocalPlayer?.CurrentMp < 2400)
-                        return BLM.Despair;
-                }
-
                 var isAoE = false;
 
                 if (IsEnabled(CustomComboPreset.BlackXenoFoulFeature) && IsEnabled(CustomComboPreset.BlackEnochianXenoglossyFeature))
@@ -194,6 +190,14 @@ namespace XIVComboExpandedestPlugin.Combos
 
                 if (IsEnabled(CustomComboPreset.BlackEnochianXenoglossyFeature) && gauge.PolyglotStacks > 0 && level >= BLM.Levels.Xenoglossy && IsMoving() && !HasEffect(BLM.Buffs.Triplecast) && !HasEffect(All.Buffs.Swiftcast))
                     return isAoE ? BLM.Foul : BLM.Xenoglossy;
+
+                if (IsEnabled(CustomComboPreset.BlackEnochianDespairFeature) && gauge.InAstralFire)
+                {
+                    if (level >= BLM.Levels.Despair && LocalPlayer?.CurrentMp < 2400)
+                        return BLM.Despair;
+                }
+
+                if (gauge.ElementTimeRemaining <= 0) return actionID;
 
                 return gauge.InUmbralIce ? (level < BLM.Levels.Blizzard4 ? BLM.Blizzard : BLM.Blizzard4) : (level < BLM.Levels.Fire4 ? BLM.Fire : BLM.Fire4);
             }
@@ -236,6 +240,8 @@ namespace XIVComboExpandedestPlugin.Combos
 
                 if (TargetHasEffect(BLM.Debuffs.Thunder3) && IsEnabled(CustomComboPreset.BlackFlareDespairFeature) && level >= BLM.Levels.Despair && gauge.InAstralFire)
                     return BLM.Despair;
+
+                if (gauge.ElementTimeRemaining <= 0) return actionID;
 
                 return gauge.InUmbralIce ? BLM.Freeze : BLM.Flare;
             }
@@ -403,6 +409,16 @@ namespace XIVComboExpandedestPlugin.Combos
             }
 
             return actionID;
+        }
+    }
+
+    internal class BlackTripleSwiftFeature : CustomCombo
+    {
+        protected override CustomComboPreset Preset => CustomComboPreset.BlackTripleswiftFeature;
+
+        protected override uint Invoke(uint actionID, uint lastComboMove, float comboTime, byte level)
+        {
+            return actionID == BLM.Triplecast && ((!IsActionOffCooldown(BLM.Triplecast) && IsActionOffCooldown(All.Swiftcast)) || level < BLM.Levels.Triplecast) ? All.Swiftcast : actionID;
         }
     }
 }
