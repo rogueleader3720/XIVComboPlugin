@@ -6,7 +6,10 @@
   "RepoUrl": "https://github.com/Grammernatzi/XIVComboPluginExpandedest",
   "IconUrl": "https://raw.githubusercontent.com/grammernatzi/XIVComboPluginExpandedest/master/res/icon.png",
   "ImageUrls": [],
-  "Changelog": "1.4.0.3:
+  "Changelog": "1.4.0.7:
+* Minor dancer overhaul. Procs can be disabled on combos, proc combos are now also available separately, Fan Dance 1 to 2 available.
+    
+1.4.0.3:
 * Sidewinder to Pitch Perfect added.
 * Minor dancer bug fixed where Flourish to Fan Dance 3 was toggled by the Fan Dance 4 version instead.
 * Red Mage Verproc into Jolt Plus Option added.

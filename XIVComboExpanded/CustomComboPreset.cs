@@ -251,7 +251,7 @@ namespace XIVComboExpandedestPlugin
         // ====================================================================================
         #region DANCER
 
-        // latest enum: 3813
+        // latest enum: 3820
 
         [OrderedEnum]
         [SecretCustomCombo]
@@ -261,8 +261,22 @@ namespace XIVComboExpandedestPlugin
 
         [OrderedEnum]
         [ConflictingCombos(DancerSingleTargetProcs)]
-        [CustomComboInfo("Single Target Multibutton", "Change Cascade into procs and combos as available.", DNC.JobID, DNC.Cascade)]
+        [CustomComboInfo("Cascade Combo", "Change Cascade into procs and combos as available.", DNC.JobID, DNC.Cascade)]
         DancerSingleTargetMultibutton = 3804,
+
+        [OrderedEnum]
+        [ParentCombo(DancerSingleTargetMultibutton)]
+        [CustomComboInfo("No Cascade Combo Procs", "Don't change Cascade combo into procs.", DNC.JobID)]
+        DancerSingleTargetMultibuttonNoProcs = 3814,
+
+        [OrderedEnum]
+        [CustomComboInfo("Reverse Cascade Combo", "Change Reverse Cascade into Fountainfall if available.", DNC.JobID, DNC.ReverseCascade)]
+        DancerReverseCascadeCombo = 3818,
+
+        [OrderedEnum]
+        [ParentCombo(DancerReverseCascadeCombo)]
+        [CustomComboInfo("Change on AoE", "Become Rising Windmill Combo if you're using AoE actions.", DNC.JobID)]
+        DancerReverseCascadeComboAoE = 3819,
 
         [OrderedEnum]
         [ConflictingCombos(DancerSingleTargetMultibutton)]
@@ -271,13 +285,26 @@ namespace XIVComboExpandedestPlugin
 
         [OrderedEnum]
         [ConflictingCombos(DancerAoeProcs)]
-        [CustomComboInfo("AoE Multibutton", "Change Windmill into procs and combos as available.", DNC.JobID, DNC.Windmill)]
+        [CustomComboInfo("Windmill Combo", "Change Windmill into procs and combos as available.", DNC.JobID, DNC.Windmill)]
         DancerAoeMultibutton = 3805,
+
+        [OrderedEnum]
+        [ParentCombo(DancerAoeMultibutton)]
+        [CustomComboInfo("No Windmill Combo Procs", "Don't change Windmill combo into procs.", DNC.JobID)]
+        DancerAoeMultibuttonNoProcs = 3816,
+
+        [OrderedEnum]
+        [CustomComboInfo("Rising Windmill Combo", "Change Rising Windmill into Bloodshower if available.", DNC.JobID, DNC.RisingWindmill)]
+        DancerRisingWindmillCombo = 3817,
 
         [OrderedEnum]
         [ConflictingCombos(DancerAoeMultibutton)]
         [CustomComboInfo("AoE to Procs", "Change AoE actions into procs when available.", DNC.JobID, DNC.Windmill, DNC.Bladeshower)]
         DancerAoeProcs = 3812,
+
+        [OrderedEnum]
+        [CustomComboInfo("Fan Dance I to II", "Change Fan Dance I to II if you are currently using your AoE combo.", DNC.JobID, DNC.FanDance1)]
+        DancerFanDance1to2 = 3820,
 
         [OrderedEnum]
         [CustomComboInfo("Fan Dance Combos", "Change Fan Dance and Fan Dance 2 into Fan Dance 3 while under Threefold Fan Dance.", DNC.JobID, DNC.FanDance1, DNC.FanDance2)]
