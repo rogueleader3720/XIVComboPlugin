@@ -878,14 +878,12 @@ namespace XIVComboExpandedestPlugin
         // ====================================================================================
         #region PALADIN
 
+        // used enums: 1913, 1903, 1901, 1909, 1910, 1906
+        // latest enum: 1918
+
         [OrderedEnum]
         [CustomComboInfo("Royal Authority Combo", "Replace Royal Authority/Rage of Halone with its combo chain.", PLD.JobID, PLD.RoyalAuthority, PLD.RageOfHalone)]
         PaladinRoyalAuthorityCombo = 1902,
-
-        [OrderedEnum]
-        [ParentCombo(PaladinRoyalAuthorityCombo)]
-        [CustomComboInfo("Royal Authority to Holy Spirit", "Replace your Royal Authority combo with Holy Spirit if you have Requiescat up, and Fight or Flight is not up.", PLD.JobID)]
-        PaladinRoyalSpiritFeature = 1913,
 
         [OrderedEnum]
         [ParentCombo(PaladinRoyalAuthorityCombo)]
@@ -893,22 +891,17 @@ namespace XIVComboExpandedestPlugin
         PaladinRoyalLobFeature = 1912,
 
         [OrderedEnum]
-        [ConflictingCombos(PaladinGoringBladeAtonementFeature)]
-        [CustomComboInfo("Royal Authority Atonement Feature", "Replace Royal Authority with Atonement when under the effect of Sword Oath.", PLD.JobID, PLD.RageOfHalone, PLD.RoyalAuthority)]
-        PaladinRoyalAuthorityAtonementFeature = 1903,
-
-        [OrderedEnum]
-        [CustomComboInfo("Goring Blade Combo", "Replace Goring Blade with its combo chain.", PLD.JobID, PLD.GoringBlade)]
-        PaladinGoringBladeCombo = 1901,
-
-        [OrderedEnum]
-        [ConflictingCombos(PaladinRoyalAuthorityAtonementFeature)]
-        [CustomComboInfo("Goring Blade Atonement Feature", "Replace Goring Blade with Atonement when under the effect of Sword Oath.\nThis conflicts with Atonement Feature because you always want to start a way to start your combo (dropping Sword Oath is very commonly necessary).", PLD.JobID, PLD.GoringBlade)]
-        PaladinGoringBladeAtonementFeature = 1909,
+        [CustomComboInfo("Holy Spirit to Atonement", "Replace Holy Spirit with Atonement while Divine Might or Requiescat are not up.", PLD.JobID, PLD.HolySpirit)]
+        PaladinNotBurstStrikeToAtonement = 1916,
 
         [OrderedEnum]
         [CustomComboInfo("Prominence Combo", "Replace Prominence with its combo chain.", PLD.JobID, PLD.Prominence, PLD.TotalEclipse)]
         PaladinProminenceCombo = 1904,
+
+        [OrderedEnum]
+        [ParentCombo(PaladinProminenceCombo)]
+        [CustomComboInfo("AoE Combo to Holy Circle", "Add Holy Circle before Prominence in your combo if Divine Might is active.", PLD.JobID)]
+        PaladinNotFatedCircleOvercapFeature = 1918,
 
         [OrderedEnum]
         [SecretCustomCombo]
@@ -921,21 +914,25 @@ namespace XIVComboExpandedestPlugin
         PaladinRequiescatCombo = 1905,
 
         [OrderedEnum]
-        [CustomComboInfo("AoE to Holy Circle", "Replace your AoE combo actions with Holy Circle while you have Requiescat.", PLD.JobID, PLD.TotalEclipse, PLD.Prominence)]
-        PaladinHolyCircleFeature = 1910,
+        [ParentCombo(PaladinRequiescatCombo)]
+        [CustomComboInfo("Requiescat Confiteor Level-sync Feature", "Replace Requiescat with Holy Spirit if Confiteor is not available.", PLD.JobID, PLD.Requiescat)]
+        PaladinRequiescatComboSpirit = 1917,
+
+        [OrderedEnum]
+        [CustomComboInfo("AoE Combo to Requiescat Spells", "Replace your AoE combo actions with applicable spells while you have Requiescat", PLD.JobID, PLD.TotalEclipse, PLD.Prominence)]
+        PaladinNotFatedCircleFeature = 1910,
 
         [OrderedEnum]
         [CustomComboInfo("Holy Spirit to Holy Circle", "Replace Holy Spirit with Holy Circle if your last combo action was Total Eclipse or Prominence.", PLD.JobID, PLD.HolySpirit)]
         PaladinHolySpiritToHolyCircleFeature = 1914,
 
         [OrderedEnum]
-        [CustomComboInfo("Shield Blash to Low Blow", "Replace Shield Bash to Low Blow when it is on cooldown.\nAlso works with Tank Interrupt feature.", PLD.JobID, PLD.ShieldBash)]
-        PaladinLowBashFeature = 1911,
+        [CustomComboInfo("Fight or Flight to Goring Blade", "Replace Fight or Flight with Goring Blade while the effect is active.", PLD.JobID, PLD.FightOrFlight)]
+        PaladinNotNoMercyToNotSonicBreak = 1915,
 
         [OrderedEnum]
-        [SecretCustomCombo]
-        [CustomComboInfo("Confiteor Feature", "Replace Holy Spirit/Circle with Confiteor when Requiescat has one stack left. Includes Confiteor combo.", PLD.JobID, PLD.HolySpirit, PLD.HolyCircle)]
-        PaladinConfiteorFeature = 1906,
+        [CustomComboInfo("Shield Blash to Low Blow", "Replace Shield Bash to Low Blow when it is on cooldown.\nAlso works with Tank Interrupt feature.", PLD.JobID, PLD.ShieldBash)]
+        PaladinLowBashFeature = 1911,
 
         [OrderedEnum]
         [SecretCustomCombo]

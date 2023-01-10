@@ -206,6 +206,42 @@ namespace XIVComboExpandedestPlugin.Combos
         }
     }
 
+    internal class BlackEnochianButNotFeature : CustomCombo
+    {
+        protected override CustomComboPreset Preset => CustomComboPreset.BlackEnochianButNotFeature;
+
+        protected override uint Invoke(uint actionID, uint lastComboMove, float comboTime, byte level)
+        {
+            if (actionID == BLM.Fire || actionID == BLM.Blizzard)
+            {
+                var gauge = GetJobGauge<BLMGauge>();
+
+                if (gauge.ElementTimeRemaining <= 0) return actionID;
+
+                if (gauge.InUmbralIce)
+                {
+                    if ((gauge.IsParadoxActive && (gauge.InUmbralIce || (LocalPlayer?.CurrentMp >= 1600 && gauge.InAstralFire))) || gauge.UmbralIceStacks == 3)
+                        return OriginalHook(BLM.Blizzard);
+                    if (level >= BLM.Levels.Blizzard3 && IsEnabled(CustomComboPreset.BlackBlizzardFeature))
+                        return BLM.Blizzard3;
+                    return OriginalHook(BLM.Blizzard);
+                }
+                else
+                {
+                    if (IsEnabled(CustomComboPreset.BlackFireOption) && gauge.AstralFireStacks < 3 && level >= BLM.Levels.Fire3)
+                        return BLM.Fire3;
+                    if (gauge.IsParadoxActive && gauge.InUmbralIce)
+                        return OriginalHook(BLM.Fire);
+                    if (level >= BLM.Levels.Fire3 && IsEnabled(CustomComboPreset.BlackFireFeature) && (!gauge.InAstralFire || HasEffect(BLM.Buffs.Firestarter)))
+                        return BLM.Fire3;
+                    return OriginalHook(BLM.Fire);
+                }
+            }
+
+            return actionID;
+        }
+    }
+
     internal class BlackFlareDespairFeature : CustomCombo
     {
         protected override CustomComboPreset Preset => CustomComboPreset.BlackFlareDespairFeature;
