@@ -105,6 +105,10 @@ namespace XIVComboExpandedestPlugin
         BlackEnochianDespairFeature = 2510,
 
         [OrderedEnum]
+        [CustomComboInfo("Blizzard/Fire Switcher", "Change Fire or Blizzard to whichever element you are currently aspected to.", BLM.JobID, BLM.Blizzard, BLM.Fire)]
+        BlackEnochianButNotFeature = 2524,
+
+        [OrderedEnum]
         [CustomComboInfo("Flare to Despair Feature", "Change Flare to Despair when Thunder III is applied to your target.", BLM.JobID, BLM.Flare, BLM.Freeze, BLM.Fire2, BLM.HighFire2)]
         BlackFlareDespairFeature = 2511,
 

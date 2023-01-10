@@ -74,7 +74,7 @@ namespace XIVComboExpandedestPlugin.Combos
         }
     }
 
-    internal class GunbreakerNoMercyFeature : CustomCombo
+    internal class PaladinNoMercyFeature : CustomCombo
     {
         protected override CustomComboPreset Preset => CustomComboPreset.PaladinNotNoMercyToNotSonicBreak;
 
