@@ -161,7 +161,7 @@ namespace XIVComboExpandedestPlugin.Combos
             {
                 if (IsEnabled(CustomComboPreset.PaladinRoyalLobFeature))
                 {
-                    if (CanUseAction(PLD.ShieldLob) && !InMeleeRange())
+                    if (CanUseAction(PLD.ShieldLob) && !InMeleeRange() && !(IsEnabled(CustomComboPreset.PaladinRoyalAuthorityNotBurstStrikeFeature) && HasEffect(PLD.Buffs.DivineMight) && LocalPlayer?.CurrentMp >= 1000 && lastComboMove == PLD.RiotBlade))
                         return PLD.ShieldLob;
                 }
 
