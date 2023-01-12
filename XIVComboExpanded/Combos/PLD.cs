@@ -113,6 +113,22 @@ namespace XIVComboExpandedestPlugin.Combos
         }
     }*/
 
+    internal class PaladinConfiteorFeature : CustomCombo
+    {
+        protected override CustomComboPreset Preset => CustomComboPreset.PaladinConfiteorFeature;
+
+        protected override uint Invoke(uint actionID, uint lastComboMove, float comboTime, byte level)
+        {
+            if (actionID == PLD.NotBurstStrike || actionID == PLD.NotFatedCircle)
+            {
+                if (CanUseAction(OriginalHook(PLD.NotGnashingFangCombo)))
+                    return OriginalHook(PLD.NotGnashingFangCombo);
+            }
+
+            return actionID;
+        }
+    }
+
     internal class PaladinHolyCircleFeature : CustomCombo
     {
         protected override CustomComboPreset Preset => CustomComboPreset.PaladinNotFatedCircleFeature;
@@ -155,7 +171,7 @@ namespace XIVComboExpandedestPlugin.Combos
                         return PLD.RiotBlade;
 
                     if (lastComboMove == PLD.RiotBlade && level >= PLD.Levels.RageOfHalone)
-                        return OriginalHook(PLD.RageOfHalone);
+                        return IsEnabled(CustomComboPreset.PaladinRoyalAuthorityNotBurstStrikeFeature) && HasEffect(PLD.Buffs.DivineMight) && LocalPlayer?.CurrentMp >= 1000 ? PLD.NotBurstStrike : OriginalHook(PLD.RageOfHalone);
                 }
 
                 return PLD.FastBlade;
@@ -175,8 +191,8 @@ namespace XIVComboExpandedestPlugin.Combos
             {
                 if (comboTime > 0)
                 {
-                    if (lastComboMove == PLD.TotalEclipse && CanUseAction(PLD.Prominence) && LocalPlayer?.CurrentMp >= 1000)
-                        return IsEnabled(CustomComboPreset.PaladinNotFatedCircleOvercapFeature) && HasEffect(PLD.Buffs.DivineMight) && level >= PLD.Levels.NotFatedCircle ? PLD.NotFatedCircle : PLD.Prominence;
+                    if (lastComboMove == PLD.TotalEclipse && CanUseAction(PLD.Prominence))
+                        return IsEnabled(CustomComboPreset.PaladinNotFatedCircleOvercapFeature) && HasEffect(PLD.Buffs.DivineMight) && level >= PLD.Levels.NotFatedCircle && LocalPlayer?.CurrentMp >= 1000 ? PLD.NotFatedCircle : PLD.Prominence;
                 }
 
                 return PLD.TotalEclipse;

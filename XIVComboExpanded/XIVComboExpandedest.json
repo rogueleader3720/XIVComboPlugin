@@ -10,5 +10,9 @@
 * Black Mage Fire/Blizzard Switch Feature added.
 * Extensive Paladin changes. Some new features, some changed ones, a lot of removed ones.
 
+1.4.1.2:
+* Paladin Confiteor Feature returned (but it works differently and much more simply).
+* Paladin Royal Authority to Holy Spirit Feature added.
+
 If a recent change isn't documented on this changelog, it is because it doesn't affect plugin functionality, or is a minor bugfix.",
 }
