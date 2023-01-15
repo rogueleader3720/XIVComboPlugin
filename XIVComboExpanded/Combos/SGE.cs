@@ -10,6 +10,8 @@ namespace XIVComboExpandedestPlugin.Combos
     {
         public const byte JobID = 40;
 
+        public const uint PhlegmaCD = 40;
+
         public const uint
             Dosis = 24283,
             Dosis2 = 24306,
@@ -103,7 +105,7 @@ namespace XIVComboExpandedestPlugin.Combos
             {
                 if (IsMoving() && level >= SGE.Levels.Phlegma && !GetJobGauge<SGEGauge>().Eukrasia && GetTargetDistance() <= 6)
                 {
-                    if (GetCooldown(OriginalHook(SGE.Phlegma)).CooldownRemaining > 45)
+                    if (GetCooldown(OriginalHook(SGE.Phlegma)).CooldownRemaining > SGE.PhlegmaCD)
                             return actionID;
 
                     return OriginalHook(SGE.Phlegma);
@@ -172,7 +174,7 @@ namespace XIVComboExpandedestPlugin.Combos
 
             var gauge = GetJobGauge<SGEGauge>();
 
-            if ((GetCooldown(OriginalHook(SGE.Phlegma)).CooldownRemaining > 45 || GetTargetDistance() > 6) && gauge.Addersting > 0 && level >= SGE.Levels.Toxikon)
+            if ((GetCooldown(OriginalHook(SGE.Phlegma)).CooldownRemaining > SGE.PhlegmaCD || GetTargetDistance() > 6) && gauge.Addersting > 0 && level >= SGE.Levels.Toxikon)
                 return OriginalHook(SGE.Toxikon);
 
             return actionID;
@@ -188,7 +190,7 @@ namespace XIVComboExpandedestPlugin.Combos
             if (CurrentTarget is null)
                 return OriginalHook(SGE.Dyskrasia);
 
-            if (GetCooldown(OriginalHook(SGE.Phlegma)).CooldownRemaining > 45)
+            if (GetCooldown(OriginalHook(SGE.Phlegma)).CooldownRemaining > SGE.PhlegmaCD)
                 return OriginalHook(SGE.Dyskrasia);
 
             return actionID;
