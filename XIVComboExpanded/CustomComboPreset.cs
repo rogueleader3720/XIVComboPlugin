@@ -882,8 +882,8 @@ namespace XIVComboExpandedestPlugin
         // ====================================================================================
         #region PALADIN
 
-        // used enums: 1913, 1903, 1901, 1909, 1910, 1906
-        // latest enum: 1918
+        // used enums: 1913, 1901, 1909, 1910, 1906
+        // latest enum: 1921
 
         [OrderedEnum]
         [CustomComboInfo("Royal Authority Combo", "Replace Royal Authority/Rage of Halone with its combo chain.", PLD.JobID, PLD.RoyalAuthority, PLD.RageOfHalone)]
@@ -895,13 +895,16 @@ namespace XIVComboExpandedestPlugin
         PaladinRoyalLobFeature = 1912,
 
         [OrderedEnum]
-        [ParentCombo(PaladinRoyalAuthorityCombo)]
-        [CustomComboInfo("Royal Authority Holy Spirit Feature", "Replace Royal Authority with Holy Spirit while Divine Might is active", PLD.JobID, PLD.RoyalAuthority, PLD.RageOfHalone)]
+        [CustomComboInfo("Royal Authority to Holy Spirit", "Replace Royal Authority with Holy Spirit while Divine Might is active", PLD.JobID, PLD.RoyalAuthority, PLD.RageOfHalone)]
         PaladinRoyalAuthorityNotBurstStrikeFeature = 1919,
 
         [OrderedEnum]
         [CustomComboInfo("Royal Authority Atonement Feature", "Replace Royal Authority with Atonement when under the effect of Sword Oath.", PLD.JobID, PLD.RageOfHalone, PLD.RoyalAuthority)]
         PaladinRoyalAuthorityAtonementFeature = 1903,
+
+        [OrderedEnum]
+        [CustomComboInfo("Shield Lob to Holy Spirit", "Replace Shield Lob with Holy Spirit while Divine Might is active", PLD.JobID, PLD.ShieldLob)]
+        PaladinShieldLobToNotBurstStrikeFeature = 1921,
 
         /*[OrderedEnum]
         [CustomComboInfo("Holy Spirit to Atonement", "Replace Holy Spirit with Atonement while Divine Might or Requiescat are not up.", PLD.JobID, PLD.NotBurstStrike)]
@@ -942,6 +945,10 @@ namespace XIVComboExpandedestPlugin
         [OrderedEnum]
         [CustomComboInfo("Holy Spirit to Holy Circle", "Replace Holy Spirit with Holy Circle if your last combo action was Total Eclipse or Prominence.", PLD.JobID, PLD.NotBurstStrike)]
         PaladinHolySpiritToHolyCircleFeature = 1914,
+
+        [OrderedEnum]
+        [CustomComboInfo("Fight or Flight to Requiescat", "Replace Fight or Flight with Requiescat while the effect is active.\nIf Fight or Flight to Goring Blade is active, this only will take effect during the global cooldown.", PLD.JobID, PLD.NotNoMercy)]
+        PaladinNotNoMercyToRequiescat = 1920,
 
         [OrderedEnum]
         [CustomComboInfo("Fight or Flight to Goring Blade", "Replace Fight or Flight with Goring Blade while the effect is active.", PLD.JobID, PLD.NotNoMercy)]

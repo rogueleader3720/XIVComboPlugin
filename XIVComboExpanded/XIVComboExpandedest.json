@@ -17,5 +17,10 @@
 1.4.1.6:
 * Dropping Atonement is now no longer considered a damage gain. Therefore, Royal Authority to Atonement is back on the menu.
 
+1.4.1.8:
+* Royal Authority to Holy Spirit decoupled from combo (still works with it, of course).
+* Shield Lob to Holy Spirit added.
+* Fight or Flight to Requiescat added.
+
 If a recent change isn't documented on this changelog, it is because it doesn't affect plugin functionality, or is a minor bugfix.",
 }

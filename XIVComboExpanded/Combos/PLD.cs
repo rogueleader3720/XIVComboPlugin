@@ -74,7 +74,38 @@ namespace XIVComboExpandedestPlugin.Combos
         }
     }
 
-    internal class PaladinNotNoMercyFeature : CustomCombo
+    internal class PaladinShieldLobToNotBurstStrikeFeature : CustomCombo
+    {
+        protected override CustomComboPreset Preset => CustomComboPreset.PaladinShieldLobToNotBurstStrikeFeature;
+
+        protected override uint Invoke(uint actionID, uint lastComboMove, float comboTime, byte level)
+        {
+            return actionID == PLD.ShieldLob && HasEffect(PLD.Buffs.DivineMight) ? PLD.NotBurstStrike : actionID;
+        }
+    }
+
+    internal class PaladinNotNoMercyToRequiescatFeature : CustomCombo
+    {
+        protected override CustomComboPreset Preset => CustomComboPreset.PaladinNotNoMercyToRequiescat;
+
+        protected override uint Invoke(uint actionID, uint lastComboMove, float comboTime, byte level)
+        {
+            if (actionID == PLD.NotNoMercy)
+            {
+                if (HasEffect(PLD.Buffs.NotNoMercy))
+                {
+                    if (IsActionOffCooldown(PLD.Requiescat) && CanUseAction(PLD.Requiescat))
+                        return !IsEnabled(CustomComboPreset.PaladinNotNoMercyToNotSonicBreak) || GetCooldown(PLD.FastBlade).CooldownRemaining >= 0.5 ? PLD.Requiescat : actionID;
+                    if (!IsActionOffCooldown(PLD.NotSonicBreak) && CanUseAction(OriginalHook(PLD.NotGnashingFangCombo)))
+                        return OriginalHook(PLD.NotGnashingFangCombo);
+                }
+            }
+
+            return actionID;
+        }
+    }
+
+    internal class PaladinNotNoMercyToNotSonicBreakFeature : CustomCombo
     {
         protected override CustomComboPreset Preset => CustomComboPreset.PaladinNotNoMercyToNotSonicBreak;
 
@@ -92,7 +123,6 @@ namespace XIVComboExpandedestPlugin.Combos
             return actionID;
         }
     }
-
 
     internal class PaladinRoyalAuthorityAtonementFeature : CustomCombo
     {
@@ -152,6 +182,16 @@ namespace XIVComboExpandedestPlugin.Combos
         }
     }
 
+    internal class PaladinRoyalAuthorityNotBurstStrikeFeature : CustomCombo
+    {
+        protected override CustomComboPreset Preset => CustomComboPreset.PaladinRoyalAuthorityNotBurstStrikeFeature;
+
+        protected override uint Invoke(uint actionID, uint lastComboMove, float comboTime, byte level)
+        {
+            return !IsEnabled(CustomComboPreset.PaladinRoyalAuthorityCombo) && (actionID == PLD.RageOfHalone || actionID == PLD.RoyalAuthority) && HasEffect(PLD.Buffs.DivineMight) && LocalPlayer?.CurrentMp >= 1000 ? PLD.NotBurstStrike : actionID;
+        }
+    }
+
     internal class PaladinRoyalAuthorityCombo : CustomCombo
     {
         protected override CustomComboPreset Preset => CustomComboPreset.PaladinRoyalAuthorityCombo;
@@ -163,7 +203,7 @@ namespace XIVComboExpandedestPlugin.Combos
                 if (IsEnabled(CustomComboPreset.PaladinRoyalLobFeature))
                 {
                     if (CanUseAction(PLD.ShieldLob) && !InMeleeRange() && !(IsEnabled(CustomComboPreset.PaladinRoyalAuthorityNotBurstStrikeFeature) && HasEffect(PLD.Buffs.DivineMight) && LocalPlayer?.CurrentMp >= 1000 && lastComboMove == PLD.RiotBlade))
-                        return PLD.ShieldLob;
+                        return IsEnabled(CustomComboPreset.PaladinShieldLobToNotBurstStrikeFeature) && HasEffect(PLD.Buffs.DivineMight) ? PLD.NotBurstStrike : PLD.ShieldLob;
                 }
 
                 if (comboTime > 0)
