@@ -93,7 +93,7 @@ namespace XIVComboExpandedestPlugin.Combos
         }
     }
 
-    /*internal class PaladinRoyalAuthorityAtonementFeature : CustomCombo
+    internal class PaladinRoyalAuthorityAtonementFeature : CustomCombo
     {
         protected override CustomComboPreset Preset => CustomComboPreset.PaladinRoyalAuthorityAtonementFeature;
 
@@ -103,7 +103,7 @@ namespace XIVComboExpandedestPlugin.Combos
         }
     }
 
-    internal class PaladinAtonementFeature : CustomCombo
+    /*internal class PaladinAtonementFeature : CustomCombo
     {
         protected override CustomComboPreset Preset => CustomComboPreset.PaladinNotBurstStrikeToAtonement;
 

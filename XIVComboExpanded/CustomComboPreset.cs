@@ -889,9 +889,9 @@ namespace XIVComboExpandedestPlugin
         [CustomComboInfo("Royal Authority Combo", "Replace Royal Authority/Rage of Halone with its combo chain.", PLD.JobID, PLD.RoyalAuthority, PLD.RageOfHalone)]
         PaladinRoyalAuthorityCombo = 1902,
 
-        /*[OrderedEnum]
+        [OrderedEnum]
         [CustomComboInfo("Royal Authority Atonement Feature", "Replace Royal Authority with Atonement when under the effect of Sword Oath.", PLD.JobID, PLD.RageOfHalone, PLD.RoyalAuthority)]
-        PaladinRoyalAuthorityAtonementFeature = 1903,*/
+        PaladinRoyalAuthorityAtonementFeature = 1903,
 
         [OrderedEnum]
         [ParentCombo(PaladinRoyalAuthorityCombo)]
