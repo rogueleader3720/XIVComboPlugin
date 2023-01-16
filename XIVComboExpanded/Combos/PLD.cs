@@ -93,13 +93,14 @@ namespace XIVComboExpandedestPlugin.Combos
         }
     }
 
+
     internal class PaladinRoyalAuthorityAtonementFeature : CustomCombo
     {
         protected override CustomComboPreset Preset => CustomComboPreset.PaladinRoyalAuthorityAtonementFeature;
 
         protected override uint Invoke(uint actionID, uint lastComboMove, float comboTime, byte level)
         {
-            return HasEffect(PLD.Buffs.SwordOath) ? PLD.Atonement : actionID;
+            return HasEffect(PLD.Buffs.SwordOath) && (!IsEnabled(CustomComboPreset.PaladinRoyalLobFeature) || InMeleeRange()) ? PLD.Atonement : actionID;
         }
     }
 

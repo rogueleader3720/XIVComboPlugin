@@ -890,10 +890,6 @@ namespace XIVComboExpandedestPlugin
         PaladinRoyalAuthorityCombo = 1902,
 
         [OrderedEnum]
-        [CustomComboInfo("Royal Authority Atonement Feature", "Replace Royal Authority with Atonement when under the effect of Sword Oath.", PLD.JobID, PLD.RageOfHalone, PLD.RoyalAuthority)]
-        PaladinRoyalAuthorityAtonementFeature = 1903,
-
-        [OrderedEnum]
         [ParentCombo(PaladinRoyalAuthorityCombo)]
         [CustomComboInfo("Royal Authority to Shield Lob", "Replace Royal Authority/Rage of Halone's combo with Shield Lob when out of melee range.", PLD.JobID, PLD.RoyalAuthority, PLD.RageOfHalone)]
         PaladinRoyalLobFeature = 1912,
@@ -902,6 +898,10 @@ namespace XIVComboExpandedestPlugin
         [ParentCombo(PaladinRoyalAuthorityCombo)]
         [CustomComboInfo("Royal Authority Holy Spirit Feature", "Replace Royal Authority with Holy Spirit while Divine Might is active", PLD.JobID, PLD.RoyalAuthority, PLD.RageOfHalone)]
         PaladinRoyalAuthorityNotBurstStrikeFeature = 1919,
+
+        [OrderedEnum]
+        [CustomComboInfo("Royal Authority Atonement Feature", "Replace Royal Authority with Atonement when under the effect of Sword Oath.", PLD.JobID, PLD.RageOfHalone, PLD.RoyalAuthority)]
+        PaladinRoyalAuthorityAtonementFeature = 1903,
 
         /*[OrderedEnum]
         [CustomComboInfo("Holy Spirit to Atonement", "Replace Holy Spirit with Atonement while Divine Might or Requiescat are not up.", PLD.JobID, PLD.NotBurstStrike)]
