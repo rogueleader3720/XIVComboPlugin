@@ -208,12 +208,12 @@ namespace XIVComboExpandedestPlugin.Combos
 
         protected override uint Invoke(uint actionID, uint lastComboMove, float comboTime, byte level)
         {
-            if (actionID == PLD.Requiescat && HasEffect(PLD.Buffs.Requiescat))
+            if (actionID == PLD.Requiescat)
             {
-                if (level >= PLD.Levels.NotGnashingFangCombo || OriginalHook(PLD.NotGnashingFangCombo) != PLD.NotGnashingFangCombo)
+                if (CanUseAction(PLD.NotGnashingFangCombo) || OriginalHook(PLD.NotGnashingFangCombo) != PLD.NotGnashingFangCombo)
                     return OriginalHook(PLD.NotGnashingFangCombo);
 
-                if (IsEnabled(CustomComboPreset.PaladinRequiescatComboSpirit))
+                if (IsEnabled(CustomComboPreset.PaladinRequiescatComboSpirit) && HasEffect(PLD.Buffs.Requiescat))
                 {
                     if (CanUseAction(PLD.NotBurstStrike) && !CanUseAction(OriginalHook(PLD.NotGnashingFangCombo)))
                         return (this.FilteredLastComboMove == PLD.Prominence || this.FilteredLastComboMove == PLD.TotalEclipse) && level >= PLD.Levels.NotFatedCircle ? PLD.NotFatedCircle : PLD.NotBurstStrike;
