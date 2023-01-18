@@ -96,8 +96,10 @@ namespace XIVComboExpandedestPlugin.Combos
                 {
                     if (IsActionOffCooldown(PLD.Requiescat) && CanUseAction(PLD.Requiescat))
                         return !IsEnabled(CustomComboPreset.PaladinNotNoMercyToNotSonicBreak) || GetCooldown(PLD.FastBlade).CooldownRemaining >= 0.5 ? PLD.Requiescat : actionID;
-                    if (!IsActionOffCooldown(PLD.NotSonicBreak) && CanUseAction(OriginalHook(PLD.NotGnashingFangCombo)))
+                    if (!IsActionOffCooldown(PLD.NotSonicBreak) && CanUseAction(OriginalHook(PLD.NotGnashingFangCombo)) && IsEnabled(CustomComboPreset.PaladinRequiescatCombo))
                         return OriginalHook(PLD.NotGnashingFangCombo);
+                    if (!IsActionOffCooldown(PLD.NotSonicBreak) && HasEffect(PLD.Buffs.Requiescat) && IsEnabled(CustomComboPreset.PaladinRequiescatComboSpirit))
+                        return IsEnabled(CustomComboPreset.PaladinHolySpiritToHolyCircleFeature) && (this.FilteredLastComboMove == PLD.Prominence || this.FilteredLastComboMove == PLD.TotalEclipse) && level >= PLD.Levels.NotFatedCircle ? PLD.NotFatedCircle : PLD.NotBurstStrike;
                 }
             }
 
@@ -257,7 +259,7 @@ namespace XIVComboExpandedestPlugin.Combos
                 if (IsEnabled(CustomComboPreset.PaladinRequiescatComboSpirit) && HasEffect(PLD.Buffs.Requiescat))
                 {
                     if (CanUseAction(PLD.NotBurstStrike) && !CanUseAction(OriginalHook(PLD.NotGnashingFangCombo)))
-                        return (this.FilteredLastComboMove == PLD.Prominence || this.FilteredLastComboMove == PLD.TotalEclipse) && level >= PLD.Levels.NotFatedCircle ? PLD.NotFatedCircle : PLD.NotBurstStrike;
+                        return IsEnabled(CustomComboPreset.PaladinHolySpiritToHolyCircleFeature) && (this.FilteredLastComboMove == PLD.Prominence || this.FilteredLastComboMove == PLD.TotalEclipse) && level >= PLD.Levels.NotFatedCircle ? PLD.NotFatedCircle : PLD.NotBurstStrike;
                 }
             }
 
