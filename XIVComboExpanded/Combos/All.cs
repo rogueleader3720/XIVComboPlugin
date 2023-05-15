@@ -1,6 +1,8 @@
 ﻿using Dalamud.Game.ClientState.Conditions;
 using Dalamud.Game.ClientState.JobGauge.Enums;
 using Dalamud.Game.ClientState.JobGauge.Types;
+using Microsoft.VisualBasic;
+using System.Collections.Generic;
 
 namespace XIVComboExpandedestPlugin.Combos
 {
@@ -33,19 +35,29 @@ namespace XIVComboExpandedestPlugin.Combos
             NaturesBounty = 7909,
             Salvage = 7910,
             ElectricCurrent = 26872,
-            PrizeCatch = 26806;
+            PrizeCatch = 26806,
+            Feint = 7549,
+            Addle = 7560,
+            Troubadour = 7405,
+            Tactician = 16889,
+            ShieldSamba = 16012;
 
         public static class Buffs
         {
             public const ushort
                 Swiftcast = 167,
-                EurekaMoment = 2765;
+                EurekaMoment = 2765,
+                Troubadour = 1934,
+                Tactician = 1951,
+                ShieldSamba = 1826;
         }
 
         public static class Debuffs
         {
             public const ushort
-                Reprisal = 1193;
+                Reprisal = 1193,
+                Feint = 1195,
+                Addle = 1203;
         }
 
         public static class Levels
@@ -220,10 +232,53 @@ namespace XIVComboExpandedestPlugin.Combos
 
         protected override uint Invoke(uint actionID, uint lastComboMove, float comboTime, byte level)
         {
-            if (actionID == All.Reprisal)
+            if (new List<uint> { All.Reprisal, All.Addle, All.Feint }.Contains(actionID))
             {
-                var reprisalDebuff = FindTargetEffectAny(All.Debuffs.Reprisal);
-                if (reprisalDebuff != null && reprisalDebuff.RemainingTime > 3 && IsActionOffCooldown(All.Reprisal)) return SMN.Physick;
+                ushort debuffID = 0;
+
+                switch (actionID)
+                {
+                    case All.Reprisal:
+                        debuffID = All.Debuffs.Reprisal; break;
+                    case All.Addle:
+                        debuffID = All.Debuffs.Addle; break;
+                    case All.Feint:
+                        debuffID = All.Debuffs.Feint; break;
+
+                }
+
+                var debuff = FindTargetEffectAny(debuffID);
+                if (debuff != null && debuff.RemainingTime > 3 && IsActionOffCooldown(actionID)) return SCH.Physick;
+            }
+
+            return actionID;
+        }
+    }
+
+    internal class AllRangedDefenseCooldownLockoutFeature : CustomCombo
+    {
+        protected override CustomComboPreset Preset => CustomComboPreset.AllRangedDefenseCooldownLockoutFeature;
+
+        protected override uint Invoke(uint actionID, uint lastComboMove, float comboTime, byte level)
+        {
+            if (new List<uint> { All.Troubadour, All.Tactician, All.ShieldSamba }.Contains(actionID))
+            {
+                var buffs = new List<ushort>() { All.Buffs.Troubadour, All.Buffs.Tactician, All.Buffs.ShieldSamba };
+                ushort buffID = 0;
+
+                foreach (var buff in buffs)
+                {
+                    if (HasEffectAny(buff))
+                    {
+                        buffID = buff;
+                        break;
+                    }
+                }
+
+                if (buffID == 0) return actionID;
+
+                var buffStatus = FindEffectAny(buffID);
+                if (buffStatus != null && buffStatus.RemainingTime > 3 && IsActionOffCooldown(actionID)) return SCH.Physick;
             }
 
             return actionID;

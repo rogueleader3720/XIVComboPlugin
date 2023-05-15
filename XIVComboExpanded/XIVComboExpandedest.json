@@ -22,5 +22,10 @@
 * Shield Lob to Holy Spirit added.
 * Fight or Flight to Requiescat added.
 
+1.4.1.92:
+* Shield Lob to Holy Spirit Movement Option added.
+* Reprisal Lockout Feature now also includes Addle/Feint.
+* Physical Ranged DPS Defense Cooldown Lockout Feature added.
+
 If a recent change isn't documented on this changelog, it is because it doesn't affect plugin functionality, or is a minor bugfix.",
 }

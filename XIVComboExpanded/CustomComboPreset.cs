@@ -11,7 +11,7 @@ namespace XIVComboExpandedestPlugin
         // ====================================================================================
         #region MULTIPLE CLASSES/DOL
 
-        // Latest enum: 9010
+        // Latest enum: 9011
 
         [OrderedEnum]
         [CustomComboInfo("Raise to Swiftcast Feature", "Replaces the respective raise on RDM/SMN/SCH/WHM/AST/SGE with Swiftcast when it is off cooldown (and Dualcast isn't up).", All.JobID, All.Raise, All.Resurrection, All.Ascend, All.Verraise, All.Egeiro)]
@@ -26,8 +26,12 @@ namespace XIVComboExpandedestPlugin
         AllTankInterruptFeature = 9003,
 
         [OrderedEnum]
-        [CustomComboInfo("Reprisal Lockout Feature", "Locks out Reprisal while it is available and more than 3s remain on its debuff, to prevent overwriting it.", All.JobID, All.Reprisal)]
+        [CustomComboInfo("Reprisal/Addle/Feint Lockout Feature", "Locks out Reprisal, Addle and Feint while they are available, but currently in use and more than 3s remain on their debuff, to prevent overwriting it.", All.JobID, All.Reprisal, All.Addle, All.Feint)]
         AllReprisalLockoutFeature = 9010,
+
+        [OrderedEnum]
+        [CustomComboInfo("Physical Ranged DPS Defense Cooldown Lockout Feature", "Locks out your Physical Ranged DPS defense cooldown (ex: Troubadour) while it is available, but one is currently in use and more than 3s remain on its buff, to prevent overwriting it.", All.JobID, All.Tactician, All.Troubadour, All.ShieldSamba)]
+        AllRangedDefenseCooldownLockoutFeature = 9011,
 
         [OrderedEnum]
         [CustomComboInfo("Cast / Hook Feature", "Replace Cast with Hook when fishing.", All.JobID, All.Cast)]
@@ -883,7 +887,7 @@ namespace XIVComboExpandedestPlugin
         #region PALADIN
 
         // used enums: 1913, 1901, 1909, 1910, 1906
-        // latest enum: 1921
+        // latest enum: 1922
 
         [OrderedEnum]
         [CustomComboInfo("Royal Authority Combo", "Replace Royal Authority/Rage of Halone with its combo chain.", PLD.JobID, PLD.RoyalAuthority, PLD.RageOfHalone)]
@@ -903,8 +907,13 @@ namespace XIVComboExpandedestPlugin
         PaladinRoyalAuthorityAtonementFeature = 1903,
 
         [OrderedEnum]
-        [CustomComboInfo("Shield Lob to Holy Spirit", "Replace Shield Lob with Holy Spirit while Divine Might is active", PLD.JobID, PLD.ShieldLob)]
+        [CustomComboInfo("Shield Lob to Holy Spirit", "Replace Shield Lob with Holy Spirit while Divine Might is active.", PLD.JobID, PLD.ShieldLob)]
         PaladinShieldLobToNotBurstStrikeFeature = 1921,
+
+        [OrderedEnum]
+        [ParentCombo(PaladinShieldLobToNotBurstStrikeFeature)]
+        [CustomComboInfo("Shield Lob to Holy Spirit Movement Option", "Also replace Shield Lob with Holy Spirit while not moving, even if Divine Might is not active.", PLD.JobID, PLD.ShieldLob)]
+        PaladinShieldLobToNotBurstStrikeOption = 1922,
 
         /*[OrderedEnum]
         [CustomComboInfo("Holy Spirit to Atonement", "Replace Holy Spirit with Atonement while Divine Might or Requiescat are not up.", PLD.JobID, PLD.NotBurstStrike)]
