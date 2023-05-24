@@ -77,7 +77,7 @@ namespace XIVComboExpandedestPlugin.Combos
         {
             var gauge = GetJobGauge<SCHGauge>();
             if (!Service.BuddyList.PetBuddyPresent && gauge.SeraphTimer == 0 && !HasEffect(SCH.Buffs.Dissipation))
-                return IsEnabled(CustomComboPreset.ScholarSeleneOption) ? SCH.SummonSelene : SCH.SummonEos;
+                return SCH.SummonEos;
 
             return actionID;
         }

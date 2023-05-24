@@ -1372,11 +1372,6 @@ namespace XIVComboExpandedestPlugin
         ScholarFairyFeature = 2804,
 
         [OrderedEnum]
-        [ParentCombo(ScholarFairyFeature)]
-        [CustomComboInfo("Fairy Feature Selene Option", "Replaces Summon Eos replacing actions with Summon Selene, for if you think Eos is a skank.", SCH.JobID, SCH.WhisperingDawn, SCH.FeyIllumination, SCH.FeyBless, SCH.Aetherpact, SCH.Dissipation, SCH.SummonSeraph, SCH.Consolation)]
-        ScholarSeleneOption = 2805,
-
-        [OrderedEnum]
         [CustomComboInfo("Ruin 2 to Chain Stratagem", "Ruin 2 becomes Chain Stratagem for a short while after you have used any action (and if it's off cooldown).", SCH.JobID, SCH.Ruin2)]
         ScholarRuinChainFeature = 2807,
 
