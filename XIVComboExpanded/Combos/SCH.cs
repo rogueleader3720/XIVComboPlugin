@@ -40,6 +40,7 @@ namespace XIVComboExpandedestPlugin.Combos
         public static class Buffs
         {
             public const ushort
+                Aetherflow = 304,
                 Dissipation = 791,
                 Recitation = 1896;
         }
@@ -156,7 +157,8 @@ namespace XIVComboExpandedestPlugin.Combos
             if (actionID == SCH.EnergyDrain)
             {
                 var gauge = GetJobGauge<SCHGauge>();
-                if (gauge.Aetherflow == 0)
+                // if (gauge.Aetherflow == 0)
+                if (!HasEffect(SCH.Buffs.Aetherflow))
                     return SCH.Aetherflow;
             }
 
@@ -165,7 +167,8 @@ namespace XIVComboExpandedestPlugin.Combos
                 if (HasEffect(SCH.Buffs.Recitation) && (actionID == SCH.Indomitability || actionID == SCH.Excogitation))
                     return actionID;
                 var gauge = GetJobGauge<SCHGauge>();
-                if (gauge.Aetherflow == 0)
+                // if (gauge.Aetherflow == 0)
+                if (!HasEffect(SCH.Buffs.Aetherflow))
                     return SCH.Aetherflow;
             }
 
