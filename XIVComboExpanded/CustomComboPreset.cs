@@ -447,6 +447,7 @@ namespace XIVComboExpandedestPlugin
         #region DARK KNIGHT
 
         // unused enums: 3204
+        // last used enum: 3212
 
         [OrderedEnum]
         [CustomComboInfo("Souleater Combo", "Replace Souleater with its combo chain.", DRK.JobID, DRK.Souleater)]
@@ -490,6 +491,10 @@ namespace XIVComboExpandedestPlugin
         [OrderedEnum]
         [CustomComboInfo("Carve and Spit to Abyssal Drain", "Replaces Carve and Spit with Abyssal Drain if currently using your AoE combo.", DRK.JobID, DRK.CarveAndSpit)]
         DarkCarveToDrainFeature = 3211,
+
+        [OrderedEnum]
+        [CustomComboInfo("The Blackest Night to Oblation", "Replaces The Blackest Night with Oblation if The Blackest Night is on cooldown, Oblation is usable, and you currently do not have it applied to yourself.", DRK.JobID, DRK.TheBlackestNight)]
+        DarkTBNToOblationFeature = 3212,
 
         #endregion
         // ====================================================================================
@@ -1482,33 +1487,43 @@ namespace XIVComboExpandedestPlugin
         // ====================================================================================
         #region WARRIOR
 
+        // last used enum: 2117
+
         [OrderedEnum]
-        [CustomComboInfo("Storms Path Combo", "Replace Storms Path with its combo chain.", WAR.JobID, WAR.StormsPath)]
+        [CustomComboInfo("Storm's Path Combo", "Replace Storm's Path with its combo chain.", WAR.JobID, WAR.StormsPath)]
         WarriorStormsPathCombo = 2101,
 
         [OrderedEnum]
         [ParentCombo(WarriorStormsPathCombo)]
-        [CustomComboInfo("Storms Path to Storm's Eye", "Replace Storms Path in its combo with Storm's Eye if Surging Tempest is not up.\nSince you still want to reapply it before the buff runs out, this is not a button replacement, nor is it an auto-upkeep feature.", WAR.JobID, WAR.StormsPath)]
+        [CustomComboInfo("Storm's Path to Storm's Eye", "Replace Storm's Path in its combo with Storm's Eye if Surging Tempest is not up.\nSince you still want to reapply it before the buff runs out, this is not a button replacement, nor is it an auto-upkeep feature.", WAR.JobID, WAR.StormsPath)]
         WarriorStormsPathEyeFeature = 2116,
 
         [OrderedEnum]
         [ParentCombo(WarriorStormsPathCombo)]
-        [CustomComboInfo("Storms Path to Tomahawk", "Replace Storms Path's combo with Tomahawk when out of melee range.", WAR.JobID, WAR.StormsPath)]
+        [CustomComboInfo("Storm's Path to Tomahawk", "Replace Storm's Path's combo with Tomahawk when out of melee range.", WAR.JobID, WAR.StormsPath)]
         WarriorStormsPathahawkFeature = 2110,
 
         [OrderedEnum]
-        [CustomComboInfo("Storms Eye Combo", "Replace Storms Eye with its combo chain.", WAR.JobID, WAR.StormsEye)]
+        [CustomComboInfo("Storm's Eye Combo", "Replace Storm's Eye with its combo chain.", WAR.JobID, WAR.StormsEye)]
         WarriorStormsEyeCombo = 2102,
 
         [OrderedEnum]
         [ParentCombo(WarriorStormsEyeCombo)]
-        [CustomComboInfo("Storms Eye to Tomahawk", "Replace Storms Eye's combo with Tomahawk when out of melee range.", WAR.JobID, WAR.StormsPath)]
+        [ConflictingCombos(WarriorStormsEyeslaughtFeature)]
+        [CustomComboInfo("Storm's Eye to Tomahawk", "Replace Storm's Eye's combo with Tomahawk when out of melee range.", WAR.JobID, WAR.StormsEye)]
         WarriorStormsEyeahawkFeature = 2112,
 
         [OrderedEnum]
         [ParentCombo(WarriorStormsEyeCombo)]
-        [CustomComboInfo("Storms Eye Tomahawk Replacement", "Replace Storm's Eye's combo with Tomahawk while Storm's Eye is not available for use in combo.", WAR.JobID, WAR.StormsPath)]
+        [ConflictingCombos(WarriorStormsEyeslaughtFeature)]
+        [CustomComboInfo("Storm's Eye Tomahawk Replacement", "Replace Storm's Eye with Tomahawk while Storm's Eye is not available for use in combo.", WAR.JobID, WAR.StormsEye)]
         WarriorStormsEyeHawkReplacementFeature = 2113,
+
+        [OrderedEnum]
+        [ParentCombo(WarriorStormsEyeCombo)]
+        [ConflictingCombos(WarriorStormsEyeHawkReplacementFeature, WarriorStormsEyeahawkFeature)]
+        [CustomComboInfo("Storm's Eye Onslaught Replacement", "Replace Storm's Eye with Onslaught while Storm's Eye is not available for use in combo, or you are out of melee range.", WAR.JobID, WAR.StormsEye)]
+        WarriorStormsEyeslaughtFeature = 2117,
 
         [OrderedEnum]
         [CustomComboInfo("Mythril Tempest Combo", "Replace Mythril Tempest with its combo chain.", WAR.JobID, WAR.MythrilTempest)]

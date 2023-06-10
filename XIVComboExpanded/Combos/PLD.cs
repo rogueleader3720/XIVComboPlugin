@@ -81,8 +81,8 @@ namespace XIVComboExpandedestPlugin.Combos
         protected override uint Invoke(uint actionID, uint lastComboMove, float comboTime, byte level)
         {
             if (IsEnabled(CustomComboPreset.PaladinShieldLobToNotBurstStrikeOption))
-                return actionID == PLD.ShieldLob && LocalPlayer?.CurrentMp >= 1000 && (HasEffect(PLD.Buffs.DivineMight) || !IsMoving()) ? PLD.NotBurstStrike : actionID;
-            return actionID == PLD.ShieldLob && HasEffect(PLD.Buffs.DivineMight) && LocalPlayer?.CurrentMp >= 1000 ? PLD.NotBurstStrike : actionID;
+                return actionID == PLD.ShieldLob && CanUseAction(PLD.NotBurstStrike) && LocalPlayer?.CurrentMp >= 1000 && (HasEffect(PLD.Buffs.DivineMight) || !IsMoving()) ? PLD.NotBurstStrike : actionID;
+            return actionID == PLD.ShieldLob && LocalPlayer?.CurrentMp >= 1000 && HasEffect(PLD.Buffs.DivineMight) ? PLD.NotBurstStrike : actionID;
         }
     }
 
@@ -208,7 +208,7 @@ namespace XIVComboExpandedestPlugin.Combos
                 {
                     if (CanUseAction(PLD.ShieldLob) && !InMeleeRange()
                         && !(IsEnabled(CustomComboPreset.PaladinRoyalAuthorityNotBurstStrikeFeature) && HasEffect(PLD.Buffs.DivineMight) && LocalPlayer?.CurrentMp >= 1000 && lastComboMove == PLD.RiotBlade))
-                        return IsEnabled(CustomComboPreset.PaladinShieldLobToNotBurstStrikeFeature) && LocalPlayer?.CurrentMp >= 1000
+                        return IsEnabled(CustomComboPreset.PaladinShieldLobToNotBurstStrikeFeature) && LocalPlayer?.CurrentMp >= 1000 && CanUseAction(PLD.NotBurstStrike)
                             && (HasEffect(PLD.Buffs.DivineMight) || (IsEnabled(CustomComboPreset.PaladinShieldLobToNotBurstStrikeOption) && !IsMoving())) ? PLD.NotBurstStrike : PLD.ShieldLob;
                 }
 
