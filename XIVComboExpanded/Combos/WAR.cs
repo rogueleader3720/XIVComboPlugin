@@ -29,7 +29,8 @@ namespace XIVComboExpandedestPlugin.Combos
             PrimalRend = 25753,
             Tomahawk = 46,
             Orogeny = 25752,
-            Upheaval = 7387;
+            Upheaval = 7387,
+            Onslaught = 7386;
 
         public static class Buffs
         {
@@ -99,22 +100,24 @@ namespace XIVComboExpandedestPlugin.Combos
         {
             if (actionID == WAR.StormsEye)
             {
-                if (IsEnabled(CustomComboPreset.WarriorStormsEyeahawkFeature))
-                {
-                    if (CanUseAction(WAR.Tomahawk) && !InMeleeRange())
-                        return WAR.Tomahawk;
-                }
+                if (IsEnabled(CustomComboPreset.WarriorStormsEyeahawkFeature) && CanUseAction(WAR.Tomahawk) && !InMeleeRange())
+                   return WAR.Tomahawk;
+
+                if (IsEnabled(CustomComboPreset.WarriorStormsEyeslaughtFeature) && CanUseAction(WAR.Onslaught) && !InMeleeRange())
+                    return WAR.Onslaught;
 
                 if (comboTime > 0)
                 {
-                    if (lastComboMove == WAR.HeavySwing && CanUseAction(WAR.Maim))
-                        return IsEnabled(CustomComboPreset.WarriorStormsEyeHawkReplacementFeature) ? WAR.Tomahawk : WAR.Maim;
+                    if (lastComboMove == WAR.HeavySwing && CanUseAction(WAR.Maim) && !IsEnabled(CustomComboPreset.WarriorStormsEyeHawkReplacementFeature) && !IsEnabled(CustomComboPreset.WarriorStormsEyeslaughtFeature))
+                        return WAR.Maim;
 
                     if (lastComboMove == WAR.Maim && CanUseAction(WAR.StormsEye))
                         return WAR.StormsEye;
                 }
 
-                return IsEnabled(CustomComboPreset.WarriorStormsEyeHawkReplacementFeature) ? WAR.Tomahawk : WAR.HeavySwing;
+                if (IsEnabled(CustomComboPreset.WarriorStormsEyeslaughtFeature)) return WAR.Onslaught;
+                else if (IsEnabled(CustomComboPreset.WarriorStormsEyeHawkReplacementFeature)) return WAR.Tomahawk;
+                else return WAR.HeavySwing;
             }
 
             return actionID;

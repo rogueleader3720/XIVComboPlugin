@@ -2,13 +2,14 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Numerics;
-
+using System.Runtime.CompilerServices;
 using Dalamud.Game.ClientState.Conditions;
 using Dalamud.Game.ClientState.JobGauge.Types;
 using Dalamud.Game.ClientState.Objects.SubKinds;
 using Dalamud.Game.ClientState.Objects.Types;
 using Dalamud.Game.ClientState.Statuses;
 using Dalamud.Utility;
+using FFXIVClientStructs.FFXIV.Client.UI.Agent;
 using XIVComboExpandedestPlugin.Attributes;
 
 namespace XIVComboExpandedestPlugin.Combos
@@ -61,15 +62,9 @@ namespace XIVComboExpandedestPlugin.Combos
         /// </summary>
         protected byte JobID { get; }
 
-        protected Vector2 Position { get; set; }
-
-        protected float PlayerSpeed { get; set; }
-
-        protected uint MovingCounter { get; set; }
-
-        protected bool IsMoving { get; set; }
-
         protected uint FilteredLastComboMove { get; set; }
+
+        protected Vector2 Position { get; set; }
 
         protected uint[] FilteredLastComboMoves { get; set; } = new uint[]
         {
@@ -78,11 +73,11 @@ namespace XIVComboExpandedestPlugin.Combos
             BRD.ApexArrow,
             BRD.BlastArrow,
             BRD.RadiantFinale,
-            PLD.HolyCircle,
-            PLD.Confiteor,
-            PLD.BladeOfFaith,
-            PLD.BladeOfTruth,
-            PLD.BladeOfValor,
+            PLD.NotFatedCircle,
+            PLD.NotGnashingFangCombo,
+            PLD.NotGnashingFang,
+            PLD.NotSavageClaw,
+            PLD.NotWickedTalon,
             DRG.FangAndClaw,
             DRG.WheelingThrust,
             RDM.Moulinet,
@@ -126,26 +121,6 @@ namespace XIVComboExpandedestPlugin.Combos
             // Reset filtered last combo move if out of combat.
             if (LocalPlayer is not null && !HasCondition(ConditionFlag.InCombat))
                 this.FilteredLastComboMove = 0;
-
-            // Speed Calculation
-            if (this.MovingCounter == 0)
-            {
-                Vector2 newPosition = LocalPlayer is null ? Vector2.Zero : new Vector2(LocalPlayer.Position.X, LocalPlayer.Position.Z);
-
-                this.PlayerSpeed = Vector2.Distance(newPosition, this.Position);
-
-                this.IsMoving = this.PlayerSpeed > 0;
-
-                this.Position = LocalPlayer is null ? Vector2.Zero : newPosition;
-
-                // Ensure this runs only once every 50 Dalamud ticks to make sure we get an actual, accurate representation of speed, rather than just spamming 0.
-                this.MovingCounter = 50;
-            }
-
-            if (this.MovingCounter > 0)
-            {
-                this.MovingCounter--;
-            }
 
             if (!IsEnabled(this.Preset))
                 return false;
@@ -244,6 +219,12 @@ namespace XIVComboExpandedestPlugin.Combos
         protected static bool CanUseAction(uint actionID) => Service.IconReplacer.CanUseAction(actionID);
 
         /// <summary>
+        /// Gets bool determining if player is moving.
+        /// </summary>
+        /// <returns>A bool value of whether the player is moving or not.</returns>
+        protected static unsafe bool IsMoving() => Service.IconReplacer.IsMoving(); // AgentMap.Instance() != null && AgentMap.Instance()->IsPlayerMoving > 0 ? true : false;
+
+        /// <summary>
         /// Determine if the given preset is enabled.
         /// </summary>
         /// <param name="preset">Preset to check.</param>
@@ -338,7 +319,7 @@ namespace XIVComboExpandedestPlugin.Combos
 
             foreach (var status in chara.StatusList)
             {
-                if (status.StatusId == effectID && (!sourceID.HasValue || status.SourceID == 0 || status.SourceID == InvalidObjectID || status.SourceID == sourceID))
+                if (status.StatusId == effectID && (!sourceID.HasValue || status.SourceId == 0 || status.SourceId == InvalidObjectID || status.SourceId == sourceID))
                     return status;
             }
 

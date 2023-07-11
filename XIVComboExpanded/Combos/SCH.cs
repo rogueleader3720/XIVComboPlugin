@@ -40,6 +40,7 @@ namespace XIVComboExpandedestPlugin.Combos
         public static class Buffs
         {
             public const ushort
+                Aetherflow = 304,
                 Dissipation = 791,
                 Recitation = 1896;
         }
@@ -77,7 +78,7 @@ namespace XIVComboExpandedestPlugin.Combos
         {
             var gauge = GetJobGauge<SCHGauge>();
             if (!Service.BuddyList.PetBuddyPresent && gauge.SeraphTimer == 0 && !HasEffect(SCH.Buffs.Dissipation))
-                return IsEnabled(CustomComboPreset.ScholarSeleneOption) ? SCH.SummonSelene : SCH.SummonEos;
+                return SCH.SummonEos;
 
             return actionID;
         }
@@ -112,7 +113,7 @@ namespace XIVComboExpandedestPlugin.Combos
         {
             if (actionID == SCH.Ruin || actionID == SCH.Broil || actionID == SCH.Broil2 || actionID == SCH.Broil3 || actionID == SCH.Broil4)
             {
-                if (this.IsMoving)
+                if (IsMoving())
                     return SCH.Ruin2;
             }
 
@@ -156,7 +157,8 @@ namespace XIVComboExpandedestPlugin.Combos
             if (actionID == SCH.EnergyDrain)
             {
                 var gauge = GetJobGauge<SCHGauge>();
-                if (gauge.Aetherflow == 0)
+                // if (gauge.Aetherflow == 0)
+                if (!HasEffect(SCH.Buffs.Aetherflow))
                     return SCH.Aetherflow;
             }
 
@@ -165,7 +167,8 @@ namespace XIVComboExpandedestPlugin.Combos
                 if (HasEffect(SCH.Buffs.Recitation) && (actionID == SCH.Indomitability || actionID == SCH.Excogitation))
                     return actionID;
                 var gauge = GetJobGauge<SCHGauge>();
-                if (gauge.Aetherflow == 0)
+                // if (gauge.Aetherflow == 0)
+                if (!HasEffect(SCH.Buffs.Aetherflow))
                     return SCH.Aetherflow;
             }
 

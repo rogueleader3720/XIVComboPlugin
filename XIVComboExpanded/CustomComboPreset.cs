@@ -11,6 +11,8 @@ namespace XIVComboExpandedestPlugin
         // ====================================================================================
         #region MULTIPLE CLASSES/DOL
 
+        // Latest enum: 9011
+
         [OrderedEnum]
         [CustomComboInfo("Raise to Swiftcast Feature", "Replaces the respective raise on RDM/SMN/SCH/WHM/AST/SGE with Swiftcast when it is off cooldown (and Dualcast isn't up).", All.JobID, All.Raise, All.Resurrection, All.Ascend, All.Verraise, All.Egeiro)]
         AllSwiftcastFeature = 9001,
@@ -22,6 +24,14 @@ namespace XIVComboExpandedestPlugin
         [OrderedEnum]
         [CustomComboInfo("Tank Interrupt Feature", "Low Blow becomes Interject if the opponent can be interrupted and Interject is off-cooldown.", All.JobID, All.LowBlow)]
         AllTankInterruptFeature = 9003,
+
+        [OrderedEnum]
+        [CustomComboInfo("Reprisal/Addle/Feint Lockout Feature", "Locks out Reprisal, Addle and Feint while they are available, but currently in use and more than 3s remain on their debuff, to prevent overwriting it.", All.JobID, All.Reprisal, All.Addle, All.Feint)]
+        AllReprisalLockoutFeature = 9010,
+
+        [OrderedEnum]
+        [CustomComboInfo("Physical Ranged DPS Defense Cooldown Lockout Feature", "Locks out your Physical Ranged DPS defense cooldown (ex: Troubadour) while it is available, but one is currently in use and more than 3s remain on its buff, to prevent overwriting it.", All.JobID, All.Tactician, All.Troubadour, All.ShieldSamba)]
+        AllRangedDefenseCooldownLockoutFeature = 9011,
 
         [OrderedEnum]
         [CustomComboInfo("Cast / Hook Feature", "Replace Cast with Hook when fishing.", All.JobID, All.Cast)]
@@ -66,15 +76,6 @@ namespace XIVComboExpandedestPlugin
         AstrologianDrawLockoutFeature = 3306,
 
         [OrderedEnum]
-        [CustomComboInfo("Minor Arcana to Crown Play", "Changes Minor Arcana to Crown Play when a card is not drawn.", AST.JobID, AST.MinorArcana, AST.CrownPlay)]
-        AstrologianMinorArcanaPlayFeature = 3302,
-
-        [OrderedEnum]
-        [ParentCombo(AstrologianMinorArcanaPlayFeature)]
-        [CustomComboInfo("Crown Play to Minor Arcana", "Changes Crown Play to Minor Arcana instead of the other way around.", AST.JobID, AST.CrownPlay)]
-        AstrologianMinorArcanaPlayOption = 3307,
-
-        [OrderedEnum]
         [CustomComboInfo("Benefic 2 to Benefic Level Sync", "Changes Benefic 2 to Benefic when below level 26 in synced content.", AST.JobID, AST.Benefic2)]
         AstrologianBeneficFeature = 3303,
 
@@ -90,6 +91,8 @@ namespace XIVComboExpandedestPlugin
         // ====================================================================================
         #region BLACK MAGE
 
+        // latest enum: 2523
+
         [OrderedEnum]
         [CustomComboInfo("Blizzard 4/Fire 4 Switcher", "Change Fire 4 or Blizzard 4 to whichever action you can currently use.", BLM.JobID, BLM.Blizzard4, BLM.Fire4)]
         BlackEnochianFeature = 2501,
@@ -104,6 +107,10 @@ namespace XIVComboExpandedestPlugin
         [ParentCombo(BlackEnochianFeature)]
         [CustomComboInfo("Enochian Despair Feature", "Change Fire 4 or Blizzard 4 to Despair when in Astral Fire with less than 2400 mana.", BLM.JobID, BLM.Blizzard4, BLM.Fire4)]
         BlackEnochianDespairFeature = 2510,
+
+        [OrderedEnum]
+        [CustomComboInfo("Blizzard/Fire Switcher", "Change Fire or Blizzard to whichever element you are currently aspected to.", BLM.JobID, BLM.Blizzard, BLM.Fire)]
+        BlackEnochianButNotFeature = 2524,
 
         [OrderedEnum]
         [CustomComboInfo("Flare to Despair Feature", "Change Flare to Despair when Thunder III is applied to your target.", BLM.JobID, BLM.Flare, BLM.Freeze, BLM.Fire2, BLM.HighFire2)]
@@ -177,14 +184,22 @@ namespace XIVComboExpandedestPlugin
         BlackXenoAmpFeature = 2512,
 
         [OrderedEnum]
+        [CustomComboInfo("Xenoglossy to Foul", "Xenoglossy becomes Foul if you are using AoE spells or if you do not have Xenoglossy.", BLM.JobID, BLM.Xenoglossy)]
+        BlackXenoFoulFeature = 2522,
+
+        [OrderedEnum]
         [CustomComboInfo("Thunder 3/4 to Sharpcast", "Thunder 3/4 become Sharpcast when it is available, you have just used an action, and the effect is not currently up, or if you have no target.", BLM.JobID, BLM.Thunder, BLM.Thunder2, BLM.Thunder3, BLM.Thunder4)]
         BlackSharpThunderFeature = 2513,
+
+        [OrderedEnum]
+        [CustomComboInfo("Triplecast to Swiftcast", "Triplecast becomes Swiftcast if you aren't capped out on charges and Swiftcast is ready, or if Triplecast is not unlocked.", BLM.JobID, BLM.Triplecast)]
+        BlackTripleswiftFeature = 2523,
 
         #endregion
         // ====================================================================================
         #region BARD
 
-        // latest enum: 2313
+        // latest enum: 2314
 
         [OrderedEnum]
         [CustomComboInfo("Heavy Shot into Straight Shot", "Replaces Heavy Shot/Burst Shot with Straight Shot/Refulgent Arrow when procced.", BRD.JobID, BRD.HeavyShot, BRD.BurstShot)]
@@ -209,8 +224,12 @@ namespace XIVComboExpandedestPlugin
 
         [OrderedEnum]
         [SecretCustomCombo]
-        [CustomComboInfo("Empyreal Arrow to Sidewinder", "Replaces Empyreal Arrow to Sidewinder if the latter is off-cooldown and the former is on-cooldown.", BRD.JobID, BRD.EmpyrealArrow)]
+        [CustomComboInfo("Empyreal Arrow to Sidewinder", "Replaces Empyreal Arrow with Sidewinder if the latter is off-cooldown and the former is on-cooldown.", BRD.JobID, BRD.EmpyrealArrow)]
         BardSidewinderFeature = 2306,
+
+        [OrderedEnum]
+        [CustomComboInfo("Sidewinder to Pitch Perfect", "Replaces Sidewinder with Pitch Perfect during Wanderer's Minuet if Repertoire is maxed out or Sidewinder is on cooldown.", BRD.JobID, BRD.Sidewinder)]
+        BardPerfectSidesFeature = 2314,
 
         [OrderedEnum]
         [CustomComboInfo("Radiant Voice Feature", "Replaces Radiant Finale with Battle Voice if Battle Voice is off-cooldown.", BRD.JobID, BRD.RadiantFinale)]
@@ -240,7 +259,7 @@ namespace XIVComboExpandedestPlugin
         // ====================================================================================
         #region DANCER
 
-        // latest enum: 3813
+        // latest enum: 3820
 
         [OrderedEnum]
         [SecretCustomCombo]
@@ -250,8 +269,22 @@ namespace XIVComboExpandedestPlugin
 
         [OrderedEnum]
         [ConflictingCombos(DancerSingleTargetProcs)]
-        [CustomComboInfo("Single Target Multibutton", "Change Cascade into procs and combos as available.", DNC.JobID, DNC.Cascade)]
+        [CustomComboInfo("Cascade Combo", "Change Cascade into procs and combos as available.", DNC.JobID, DNC.Cascade)]
         DancerSingleTargetMultibutton = 3804,
+
+        [OrderedEnum]
+        [ParentCombo(DancerSingleTargetMultibutton)]
+        [CustomComboInfo("No Cascade Combo Procs", "Don't change Cascade combo into procs.", DNC.JobID)]
+        DancerSingleTargetMultibuttonNoProcs = 3814,
+
+        [OrderedEnum]
+        [CustomComboInfo("Reverse Cascade Combo", "Change Reverse Cascade into Fountainfall if available.", DNC.JobID, DNC.ReverseCascade)]
+        DancerReverseCascadeCombo = 3818,
+
+        [OrderedEnum]
+        [ParentCombo(DancerReverseCascadeCombo)]
+        [CustomComboInfo("Change on AoE", "Become Rising Windmill Combo if you're using AoE actions.", DNC.JobID)]
+        DancerReverseCascadeComboAoE = 3819,
 
         [OrderedEnum]
         [ConflictingCombos(DancerSingleTargetMultibutton)]
@@ -260,13 +293,26 @@ namespace XIVComboExpandedestPlugin
 
         [OrderedEnum]
         [ConflictingCombos(DancerAoeProcs)]
-        [CustomComboInfo("AoE Multibutton", "Change Windmill into procs and combos as available.", DNC.JobID, DNC.Windmill)]
+        [CustomComboInfo("Windmill Combo", "Change Windmill into procs and combos as available.", DNC.JobID, DNC.Windmill)]
         DancerAoeMultibutton = 3805,
+
+        [OrderedEnum]
+        [ParentCombo(DancerAoeMultibutton)]
+        [CustomComboInfo("No Windmill Combo Procs", "Don't change Windmill combo into procs.", DNC.JobID)]
+        DancerAoeMultibuttonNoProcs = 3816,
+
+        [OrderedEnum]
+        [CustomComboInfo("Rising Windmill Combo", "Change Rising Windmill into Bloodshower if available.", DNC.JobID, DNC.RisingWindmill)]
+        DancerRisingWindmillCombo = 3817,
 
         [OrderedEnum]
         [ConflictingCombos(DancerAoeMultibutton)]
         [CustomComboInfo("AoE to Procs", "Change AoE actions into procs when available.", DNC.JobID, DNC.Windmill, DNC.Bladeshower)]
         DancerAoeProcs = 3812,
+
+        [OrderedEnum]
+        [CustomComboInfo("Fan Dance I to II", "Change Fan Dance I to II if you are currently using your AoE combo.", DNC.JobID, DNC.FanDance1)]
+        DancerFanDance1to2 = 3820,
 
         [OrderedEnum]
         [CustomComboInfo("Fan Dance Combos", "Change Fan Dance and Fan Dance 2 into Fan Dance 3 while under Threefold Fan Dance.", DNC.JobID, DNC.FanDance1, DNC.FanDance2)]
@@ -371,6 +417,10 @@ namespace XIVComboExpandedestPlugin
         DragoonWyrmwindFeature = 2207,
 
         [OrderedEnum]
+        [CustomComboInfo("Jump to Mirage Dive", "Replace (High) Jump with Mirage Dive when Dive Ready.", DRG.JobID, DRG.Jump, DRG.HighJump)]
+        DragoonJumpFeature = 2201,
+
+        [OrderedEnum]
         [ConflictingCombos(DragoonStarfireDiveFeature)]
         [CustomComboInfo("Stardiver to Nastrond", "Stardiver becomes Nastrond when Nastrond is off-cooldown, and becomes Geirskogul outside of Life of the Dragon.", DRG.JobID, DRG.Stardiver)]
         DragoonNastrondFeature = 2206,
@@ -397,6 +447,7 @@ namespace XIVComboExpandedestPlugin
         #region DARK KNIGHT
 
         // unused enums: 3204
+        // last used enum: 3212
 
         [OrderedEnum]
         [CustomComboInfo("Souleater Combo", "Replace Souleater with its combo chain.", DRK.JobID, DRK.Souleater)]
@@ -440,6 +491,10 @@ namespace XIVComboExpandedestPlugin
         [OrderedEnum]
         [CustomComboInfo("Carve and Spit to Abyssal Drain", "Replaces Carve and Spit with Abyssal Drain if currently using your AoE combo.", DRK.JobID, DRK.CarveAndSpit)]
         DarkCarveToDrainFeature = 3211,
+
+        [OrderedEnum]
+        [CustomComboInfo("The Blackest Night to Oblation", "Replaces The Blackest Night with Oblation if The Blackest Night is on cooldown, Oblation is usable, and you currently do not have it applied to yourself.", DRK.JobID, DRK.TheBlackestNight)]
+        DarkTBNToOblationFeature = 3212,
 
         #endregion
         // ====================================================================================
@@ -517,6 +572,8 @@ namespace XIVComboExpandedestPlugin
         // ====================================================================================
         #region MACHINIST
 
+        // last used enum: 3114
+
         [OrderedEnum]
         [ConflictingCombos(MachinistHypercomboOption)]
         [CustomComboInfo("(Heated) Shot Combo", "Replace either form of Clean Shot with its combo chain.", MCH.JobID, MCH.CleanShot, MCH.HeatedCleanShot)]
@@ -558,6 +615,10 @@ namespace XIVComboExpandedestPlugin
         MachinistReassembleOption = 3112,
 
         [OrderedEnum]
+        [CustomComboInfo("Drill to Bioblaster", "Drill becomes Bioblaster if Reassemble is not active and your last combo action was Spread Shot/Scattergun.", MCH.JobID, MCH.Drill)]
+        MachinistBioDrillFeature = 3114,
+
+        [OrderedEnum]
         [SecretCustomCombo]
         [CustomComboInfo("Gauss Round / Ricochet Feature", "Replace Gauss Round and Ricochet with one or the other depending on which has more charges.", MCH.JobID, MCH.GaussRound, MCH.Ricochet)]
         MachinistGaussRoundRicochetFeature = 3105,
@@ -582,12 +643,19 @@ namespace XIVComboExpandedestPlugin
         // ====================================================================================
         #region MONK
 
-        // latest enum: 2028
+        // latest enum: 2029
 
         [OrderedEnum]
         [ConflictingCombos(MonkSTCombo)]
-        [CustomComboInfo("Monk Bootshine Combo", "Replace Bootshine with Monk's Bootshine/True Strike/Snap Punch combo.", MNK.JobID, MNK.Bootshine)]
+        [CustomComboInfo("Monk Bootshine Combo", "Replace Bootshine with Monk's Bootshine/True Strike/Snap Punch combo.", MNK.JobID, MNK.Bootshine, MNK.DragonKick)]
         MonkBootshineCombo = 2019,
+
+        [OrderedEnum]
+        [ParentCombo(MonkBootshineCombo)]
+        [CustomComboInfo("Monk Bootshine Combo Level Sync", "Also replace Dragon Kick with Monk's Bootshine/True Strike/Snap Punch combo if Dragon Kick is not yet unlocked." +
+            "\nMostly for Dragon Kick meme rotation muscle memory, if you like that sort of thing." +
+            "\nNot compatible with Dragon Kick Combo without Twin Snakes option.", MNK.JobID, MNK.DragonKick)]
+        MonkBootshineComboDragonKickSync = 2029,
 
         [OrderedEnum]
         [ConflictingCombos(MonkSTCombo)]
@@ -831,14 +899,12 @@ namespace XIVComboExpandedestPlugin
         // ====================================================================================
         #region PALADIN
 
+        // used enums: 1913, 1901, 1909, 1910, 1906
+        // latest enum: 1922
+
         [OrderedEnum]
         [CustomComboInfo("Royal Authority Combo", "Replace Royal Authority/Rage of Halone with its combo chain.", PLD.JobID, PLD.RoyalAuthority, PLD.RageOfHalone)]
         PaladinRoyalAuthorityCombo = 1902,
-
-        [OrderedEnum]
-        [ParentCombo(PaladinRoyalAuthorityCombo)]
-        [CustomComboInfo("Royal Authority to Holy Spirit", "Replace your Royal Authority combo with Holy Spirit if you have Requiescat up, and Fight or Flight is not up.", PLD.JobID)]
-        PaladinRoyalSpiritFeature = 1913,
 
         [OrderedEnum]
         [ParentCombo(PaladinRoyalAuthorityCombo)]
@@ -846,22 +912,34 @@ namespace XIVComboExpandedestPlugin
         PaladinRoyalLobFeature = 1912,
 
         [OrderedEnum]
-        [ConflictingCombos(PaladinGoringBladeAtonementFeature)]
+        [CustomComboInfo("Royal Authority to Holy Spirit", "Replace Royal Authority with Holy Spirit while Divine Might is active", PLD.JobID, PLD.RoyalAuthority, PLD.RageOfHalone)]
+        PaladinRoyalAuthorityNotBurstStrikeFeature = 1919,
+
+        [OrderedEnum]
         [CustomComboInfo("Royal Authority Atonement Feature", "Replace Royal Authority with Atonement when under the effect of Sword Oath.", PLD.JobID, PLD.RageOfHalone, PLD.RoyalAuthority)]
         PaladinRoyalAuthorityAtonementFeature = 1903,
 
         [OrderedEnum]
-        [CustomComboInfo("Goring Blade Combo", "Replace Goring Blade with its combo chain.", PLD.JobID, PLD.GoringBlade)]
-        PaladinGoringBladeCombo = 1901,
+        [CustomComboInfo("Shield Lob to Holy Spirit", "Replace Shield Lob with Holy Spirit while Divine Might is active.", PLD.JobID, PLD.ShieldLob)]
+        PaladinShieldLobToNotBurstStrikeFeature = 1921,
 
         [OrderedEnum]
-        [ConflictingCombos(PaladinRoyalAuthorityAtonementFeature)]
-        [CustomComboInfo("Goring Blade Atonement Feature", "Replace Goring Blade with Atonement when under the effect of Sword Oath.\nThis conflicts with Atonement Feature because you always want to start a way to start your combo (dropping Sword Oath is very commonly necessary).", PLD.JobID, PLD.GoringBlade)]
-        PaladinGoringBladeAtonementFeature = 1909,
+        [ParentCombo(PaladinShieldLobToNotBurstStrikeFeature)]
+        [CustomComboInfo("Shield Lob to Holy Spirit Movement Option", "Also replace Shield Lob with Holy Spirit while not moving, even if Divine Might is not active.", PLD.JobID, PLD.ShieldLob)]
+        PaladinShieldLobToNotBurstStrikeOption = 1922,
+
+        /*[OrderedEnum]
+        [CustomComboInfo("Holy Spirit to Atonement", "Replace Holy Spirit with Atonement while Divine Might or Requiescat are not up.", PLD.JobID, PLD.NotBurstStrike)]
+        PaladinNotBurstStrikeToAtonement = 1916,*/
 
         [OrderedEnum]
         [CustomComboInfo("Prominence Combo", "Replace Prominence with its combo chain.", PLD.JobID, PLD.Prominence, PLD.TotalEclipse)]
         PaladinProminenceCombo = 1904,
+
+        [OrderedEnum]
+        [ParentCombo(PaladinProminenceCombo)]
+        [CustomComboInfo("AoE Combo to Holy Circle", "Add Holy Circle before Prominence in your combo if Divine Might is active.", PLD.JobID)]
+        PaladinNotFatedCircleOvercapFeature = 1918,
 
         [OrderedEnum]
         [SecretCustomCombo]
@@ -874,21 +952,33 @@ namespace XIVComboExpandedestPlugin
         PaladinRequiescatCombo = 1905,
 
         [OrderedEnum]
-        [CustomComboInfo("AoE to Holy Circle", "Replace your AoE combo actions with Holy Circle while you have Requiescat.", PLD.JobID, PLD.TotalEclipse, PLD.Prominence)]
-        PaladinHolyCircleFeature = 1910,
+        [ParentCombo(PaladinRequiescatCombo)]
+        [CustomComboInfo("Requiescat Confiteor Level-sync Feature", "Replace Requiescat with Holy Spirit if Confiteor is not available, or already used and its combo is not unlocked.", PLD.JobID, PLD.Requiescat)]
+        PaladinRequiescatComboSpirit = 1917,
 
         [OrderedEnum]
-        [CustomComboInfo("Holy Spirit to Holy Circle", "Replace Holy Spirit with Holy Circle if your last combo action was Total Eclipse or Prominence.", PLD.JobID, PLD.HolySpirit)]
+        [CustomComboInfo("Confiteor Feature", "Replace Holy Spirit/Circle with Confiteor and its combo when it is available.", PLD.JobID, PLD.NotBurstStrike, PLD.NotFatedCircle)]
+        PaladinConfiteorFeature = 1906,
+
+        [OrderedEnum]
+        [CustomComboInfo("AoE Combo to Requiescat Spells", "Replace your AoE combo actions with applicable spells while you have Requiescat", PLD.JobID, PLD.TotalEclipse, PLD.Prominence)]
+        PaladinNotFatedCircleFeature = 1910,
+
+        [OrderedEnum]
+        [CustomComboInfo("Holy Spirit to Holy Circle", "Replace Holy Spirit with Holy Circle if your last combo action was Total Eclipse or Prominence.", PLD.JobID, PLD.NotBurstStrike)]
         PaladinHolySpiritToHolyCircleFeature = 1914,
+
+        [OrderedEnum]
+        [CustomComboInfo("Fight or Flight to Requiescat", "Replace Fight or Flight with Requiescat while the effect is active.\nIf Fight or Flight to Goring Blade is active, this only will take effect during the global cooldown.", PLD.JobID, PLD.NotNoMercy)]
+        PaladinNotNoMercyToRequiescat = 1920,
+
+        [OrderedEnum]
+        [CustomComboInfo("Fight or Flight to Goring Blade", "Replace Fight or Flight with Goring Blade while the effect is active.", PLD.JobID, PLD.NotNoMercy)]
+        PaladinNotNoMercyToNotSonicBreak = 1915,
 
         [OrderedEnum]
         [CustomComboInfo("Shield Blash to Low Blow", "Replace Shield Bash to Low Blow when it is on cooldown.\nAlso works with Tank Interrupt feature.", PLD.JobID, PLD.ShieldBash)]
         PaladinLowBashFeature = 1911,
-
-        [OrderedEnum]
-        [SecretCustomCombo]
-        [CustomComboInfo("Confiteor Feature", "Replace Holy Spirit/Circle with Confiteor when Requiescat has one stack left. Includes Confiteor combo.", PLD.JobID, PLD.HolySpirit, PLD.HolyCircle)]
-        PaladinConfiteorFeature = 1906,
 
         [OrderedEnum]
         [SecretCustomCombo]
@@ -898,6 +988,8 @@ namespace XIVComboExpandedestPlugin
         #endregion
         // ====================================================================================
         #region REAPER
+
+        // latest enum: 3923
 
         [OrderedEnum]
         [CustomComboInfo("Slice Combo", "Replace Slice with its combo chain.", RPR.JobID, RPR.Slice, RPR.InfernalSlice)]
@@ -950,8 +1042,7 @@ namespace XIVComboExpandedestPlugin
         ReaperGibbetGallowsShroudOption = 3920,
 
         [OrderedEnum]
-        [ParentCombo(ReaperGibbetGallowsFeature)]
-        [CustomComboInfo("Gibbet and Gallows Enhanced Option", "Slice now turns into Gallows when Gallows is Enhanced, and removes it from Shadow of Death/Soul Slice while you have Enhanced Gibbet/Gallows.", RPR.JobID, RPR.Slice)]
+        [CustomComboInfo("Enhanced Gallows on Gibbet Feature", "Gibbet becomes Gallows when Gallows is enhanced. If Gibbets and Gallows Feature is enabled, Gallows is removed from Shadow of Death/Soul Slice while either is enhanced.", RPR.JobID, RPR.Gibbet)]
         ReaperGibbetGallowsOption = 3905,
 
         [OrderedEnum]
@@ -1003,7 +1094,7 @@ namespace XIVComboExpandedestPlugin
         // ====================================================================================
         #region RED MAGE
 
-        // latest enum: 3522
+        // latest enum: 3523
 
         [OrderedEnum]
         [CustomComboInfo("Redoublement Combo", "Replaces Redoublement with its combo chain, following enchantment rules.", RDM.JobID, RDM.Redoublement, RDM.Moulinet)]
@@ -1068,6 +1159,11 @@ namespace XIVComboExpandedestPlugin
         [ParentCombo(RedMageVerprocComboPlus)]
         [CustomComboInfo("Verproc into Jolt Plus Opener Feature (Fire)", "Turns Verfire into Verthunder when out of combat.", RDM.JobID, RDM.Verfire)]
         RedMageVerprocOpenerFeatureFire = 3507,
+
+        [OrderedEnum]
+        [ParentCombo(RedMageVerprocComboPlus)]
+        [CustomComboInfo("Verproc into Jolt Plus Option", "Verstone/Verfire never get replaced by their respective long cast (Veraero/Verthunder) if usable (unless both are usable).\nMildly incompatible with current RDM opener.", RDM.JobID, RDM.Verstone, RDM.Verfire)]
+        RedMageVerprocComboPlusOption = 3523,
 
         [OrderedEnum]
         [ParentCombo(RedMageVerprocCombo)]
@@ -1289,11 +1385,6 @@ namespace XIVComboExpandedestPlugin
         ScholarFairyFeature = 2804,
 
         [OrderedEnum]
-        [ParentCombo(ScholarFairyFeature)]
-        [CustomComboInfo("Fairy Feature Selene Option", "Replaces Summon Eos replacing actions with Summon Selene, for if you think Eos is a skank.", SCH.JobID, SCH.WhisperingDawn, SCH.FeyIllumination, SCH.FeyBless, SCH.Aetherpact, SCH.Dissipation, SCH.SummonSeraph, SCH.Consolation)]
-        ScholarSeleneOption = 2805,
-
-        [OrderedEnum]
         [CustomComboInfo("Ruin 2 to Chain Stratagem", "Ruin 2 becomes Chain Stratagem for a short while after you have used any action (and if it's off cooldown).", SCH.JobID, SCH.Ruin2)]
         ScholarRuinChainFeature = 2807,
 
@@ -1313,7 +1404,7 @@ namespace XIVComboExpandedestPlugin
         // ====================================================================================
         #region SUMMONER
 
-        // latest enum: 2720
+        // latest enum: 2721
 
         [OrderedEnum]
         [CustomComboInfo("Enkindle/Summon Switch", "When Bahamut/Phoenix are summoned, Enkindle Bahamut/Phoenix will replace Summon Bahamut/Phoenix.", SMN.JobID, SMN.SummonBahamut, SMN.SummonPhoenix, SMN.DreadwyrmTrance, SMN.Aethercharge)]
@@ -1340,6 +1431,10 @@ namespace XIVComboExpandedestPlugin
         [OrderedEnum]
         [CustomComboInfo("ES Painflare", "Change Painflare into Energy Syphon when out of Aetherflow stacks", SMN.JobID, SMN.Painflare)]
         SummonerESPainflareCombo = 2703,
+
+        [OrderedEnum]
+        [CustomComboInfo("ES Level Sync", "Change Energy Siphon into Energy Drain when level synced below its acquisition.", SMN.JobID, SMN.Painflare, SMN.EnergySyphon)]
+        SummonerEStoED = 2721,
 
         [OrderedEnum]
         [CustomComboInfo("Mountain Buster Feature", "Gemshine and Precious Brilliance become Mountain Buster while you have Titan's Favor.", SMN.JobID, SMN.Ruin1, SMN.Ruin2, SMN.Ruin3, SMN.Gemshine, SMN.Outburst, SMN.TriDisaster, SMN.PreciousBrilliance)]
@@ -1400,33 +1495,43 @@ namespace XIVComboExpandedestPlugin
         // ====================================================================================
         #region WARRIOR
 
+        // last used enum: 2117
+
         [OrderedEnum]
-        [CustomComboInfo("Storms Path Combo", "Replace Storms Path with its combo chain.", WAR.JobID, WAR.StormsPath)]
+        [CustomComboInfo("Storm's Path Combo", "Replace Storm's Path with its combo chain.", WAR.JobID, WAR.StormsPath)]
         WarriorStormsPathCombo = 2101,
 
         [OrderedEnum]
         [ParentCombo(WarriorStormsPathCombo)]
-        [CustomComboInfo("Storms Path to Storm's Eye", "Replace Storms Path in its combo with Storm's Eye if Surging Tempest is not up.\nSince you still want to reapply it before the buff runs out, this is not a button replacement, nor is it an auto-upkeep feature.", WAR.JobID, WAR.StormsPath)]
+        [CustomComboInfo("Storm's Path to Storm's Eye", "Replace Storm's Path in its combo with Storm's Eye if Surging Tempest is not up.\nSince you still want to reapply it before the buff runs out, this is not a button replacement, nor is it an auto-upkeep feature.", WAR.JobID, WAR.StormsPath)]
         WarriorStormsPathEyeFeature = 2116,
 
         [OrderedEnum]
         [ParentCombo(WarriorStormsPathCombo)]
-        [CustomComboInfo("Storms Path to Tomahawk", "Replace Storms Path's combo with Tomahawk when out of melee range.", WAR.JobID, WAR.StormsPath)]
+        [CustomComboInfo("Storm's Path to Tomahawk", "Replace Storm's Path's combo with Tomahawk when out of melee range.", WAR.JobID, WAR.StormsPath)]
         WarriorStormsPathahawkFeature = 2110,
 
         [OrderedEnum]
-        [CustomComboInfo("Storms Eye Combo", "Replace Storms Eye with its combo chain.", WAR.JobID, WAR.StormsEye)]
+        [CustomComboInfo("Storm's Eye Combo", "Replace Storm's Eye with its combo chain.", WAR.JobID, WAR.StormsEye)]
         WarriorStormsEyeCombo = 2102,
 
         [OrderedEnum]
         [ParentCombo(WarriorStormsEyeCombo)]
-        [CustomComboInfo("Storms Eye to Tomahawk", "Replace Storms Eye's combo with Tomahawk when out of melee range.", WAR.JobID, WAR.StormsPath)]
+        [ConflictingCombos(WarriorStormsEyeslaughtFeature)]
+        [CustomComboInfo("Storm's Eye to Tomahawk", "Replace Storm's Eye's combo with Tomahawk when out of melee range.", WAR.JobID, WAR.StormsEye)]
         WarriorStormsEyeahawkFeature = 2112,
 
         [OrderedEnum]
         [ParentCombo(WarriorStormsEyeCombo)]
-        [CustomComboInfo("Storms Eye Tomahawk Replacement", "Replace Storm's Eye's combo with Tomahawk while Storm's Eye is not available for use in combo.", WAR.JobID, WAR.StormsPath)]
+        [ConflictingCombos(WarriorStormsEyeslaughtFeature)]
+        [CustomComboInfo("Storm's Eye Tomahawk Replacement", "Replace Storm's Eye with Tomahawk while Storm's Eye is not available for use in combo.", WAR.JobID, WAR.StormsEye)]
         WarriorStormsEyeHawkReplacementFeature = 2113,
+
+        [OrderedEnum]
+        [ParentCombo(WarriorStormsEyeCombo)]
+        [ConflictingCombos(WarriorStormsEyeHawkReplacementFeature, WarriorStormsEyeahawkFeature)]
+        [CustomComboInfo("Storm's Eye Onslaught Replacement", "Replace Storm's Eye with Onslaught while Storm's Eye is not available for use in combo, or you are out of melee range.", WAR.JobID, WAR.StormsEye)]
+        WarriorStormsEyeslaughtFeature = 2117,
 
         [OrderedEnum]
         [CustomComboInfo("Mythril Tempest Combo", "Replace Mythril Tempest with its combo chain.", WAR.JobID, WAR.MythrilTempest)]

@@ -24,13 +24,17 @@ namespace XIVComboExpandedestPlugin.Combos
             LivingShadow = 16472,
             Shadowbringer = 25757,
             AbyssalDrain = 3641,
-            Unmend = 3624;
+            Unmend = 3624,
+            TheBlackestNight = 7393,
+            Oblation = 25754;
 
         public static class Buffs
         {
             public const ushort
                 BloodWeapon = 742,
-                Delirium = 1972;
+                Delirium = 1972,
+                TheBlackestnight = 1178,
+                Oblation = 2682;
         }
 
         public static class Debuffs
@@ -184,6 +188,27 @@ namespace XIVComboExpandedestPlugin.Combos
             {
                 if (lastComboMove == DRK.Unleash || lastComboMove == DRK.StalwartSoul || !CanUseAction(DRK.CarveAndSpit))
                     return DRK.AbyssalDrain;
+            }
+
+            return actionID;
+        }
+    }
+
+    internal class DarkTBNToOblationFeature : CustomCombo
+    {
+        protected override CustomComboPreset Preset => CustomComboPreset.DarkTBNToOblationFeature;
+
+        protected override uint Invoke(uint actionID, uint lastComboMove, float comboTime, byte level)
+        {
+            if (actionID == DRK.TheBlackestNight)
+            {
+                if (CanUseAction(DRK.Oblation) && !IsActionOffCooldown(DRK.TheBlackestNight) && GetCooldown(DRK.Oblation).CooldownRemaining < 60)
+                {
+                    var oblationStatus = FindEffectAny(DRK.Buffs.Oblation);
+
+                    if (oblationStatus == null || oblationStatus.RemainingTime < 2)
+                        return DRK.Oblation;
+                }
             }
 
             return actionID;

@@ -436,7 +436,7 @@ namespace XIVComboExpandedestPlugin.Combos
 
                     if (OriginalHook(SAM.OgiNamikiri) == SAM.KaeshiNamikiri)
                     {
-                        if (gauge.MeditationStacks >= 3 && (GCDClipCheck() || IsEnabled(CustomComboPreset.SamuraiShohaGCDOption)) && !IsEnabled(CustomComboPreset.SamuraiShohaBetweenOption))
+                        if (gauge.MeditationStacks >= 3 && IsEnabled(CustomComboPreset.SamuraiNamikiriShohaFeature) && (GCDClipCheck() || IsEnabled(CustomComboPreset.SamuraiShohaGCDOption)) && !IsEnabled(CustomComboPreset.SamuraiShohaBetweenOption))
                         {
                             if (level >= SAM.Levels.Shoha2 && (this.FilteredLastComboMove == SAM.Fuga || this.FilteredLastComboMove == SAM.Fuko || this.FilteredLastComboMove == SAM.Oka || this.FilteredLastComboMove == SAM.Mangetsu))
                                 return SAM.Shoha2;

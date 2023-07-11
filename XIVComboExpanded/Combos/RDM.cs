@@ -220,10 +220,12 @@ namespace XIVComboExpandedestPlugin.Combos
 
                 if (IsEnabled(CustomComboPreset.RedMageVerprocComboPlus))
                 {
-                    if (actionID == RDM.Verstone && (HasEffect(RDM.Buffs.Swiftcast) || HasEffect(RDM.Buffs.Dualcast) || HasEffect(RDM.Buffs.LostChainspell) || HasEffect(RDM.Buffs.Acceleration)) && level >= RDM.Levels.Veraero)
+                    if (actionID == RDM.Verstone && (HasEffect(RDM.Buffs.Swiftcast) || HasEffect(RDM.Buffs.Dualcast) || HasEffect(RDM.Buffs.LostChainspell) || HasEffect(RDM.Buffs.Acceleration)) && level >= RDM.Levels.Veraero
+                        && (!IsEnabled(CustomComboPreset.RedMageVerprocComboPlusOption) || !HasEffect(RDM.Buffs.VerstoneReady) || (HasEffect(RDM.Buffs.VerstoneReady) && HasEffect(RDM.Buffs.VerfireReady))))
                         return OriginalHook(RDM.Veraero);
 
-                    if (actionID == RDM.Verfire && (HasEffect(RDM.Buffs.Swiftcast) || HasEffect(RDM.Buffs.Dualcast) || HasEffect(RDM.Buffs.LostChainspell) || HasEffect(RDM.Buffs.Acceleration)) && level >= RDM.Levels.Verthunder)
+                    if (actionID == RDM.Verfire && (HasEffect(RDM.Buffs.Swiftcast) || HasEffect(RDM.Buffs.Dualcast) || HasEffect(RDM.Buffs.LostChainspell) || HasEffect(RDM.Buffs.Acceleration)) && level >= RDM.Levels.Verthunder
+                        && (!IsEnabled(CustomComboPreset.RedMageVerprocComboPlusOption) || !HasEffect(RDM.Buffs.VerfireReady) || (HasEffect(RDM.Buffs.VerstoneReady) && HasEffect(RDM.Buffs.VerfireReady))))
                         return OriginalHook(RDM.Verthunder);
                 }
 
@@ -239,7 +241,7 @@ namespace XIVComboExpandedestPlugin.Combos
                         return OriginalHook(RDM.Verthunder);
                 }
 
-                if (IsEnabled(CustomComboPreset.RedMageVerprocComboReprise) && level >= RDM.Levels.Reprise && OriginalHook(RDM.Reprise) != RDM.Reprise && this.IsMoving)
+                if (IsEnabled(CustomComboPreset.RedMageVerprocComboReprise) && level >= RDM.Levels.Reprise && OriginalHook(RDM.Reprise) != RDM.Reprise && IsMoving())
                     return OriginalHook(RDM.Reprise);
 
                 if (actionID == RDM.Verstone && HasEffect(RDM.Buffs.VerstoneReady))

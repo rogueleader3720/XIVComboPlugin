@@ -1,17 +1,18 @@
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Reflection;
 using System.Runtime.InteropServices;
 
+using Dalamud.Game;
 using Dalamud.Hooking;
 using Dalamud.Logging;
 using Dalamud.Utility;
-
 using FFXIVClientStructs.FFXIV.Client.Game;
-
 using XIVComboExpandedestPlugin.Attributes;
 using XIVComboExpandedestPlugin.Combos;
+using System.Numerics;
 
 namespace XIVComboExpandedestPlugin
 {
@@ -25,9 +26,19 @@ namespace XIVComboExpandedestPlugin
         private readonly Hook<IsIconReplaceableDelegate> isIconReplaceableHook;
         private readonly Hook<GetIconDelegate> getIconHook;
 
+        private Stopwatch tick;
+
         private IntPtr actionManager = IntPtr.Zero;
 
         private HashSet<uint> comboActionIDs = new();
+
+        private Vector2 position;
+
+        private float playerSpeed;
+
+        private uint movingCounter;
+
+        private bool isPlayerMoving;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="IconReplacer"/> class.
@@ -36,6 +47,10 @@ namespace XIVComboExpandedestPlugin
         {
             this.clientStructActionManager = ActionManager.Instance();
 
+            this.tick = new Stopwatch();
+            this.tick.Start();
+            XIVComboExpandedestPlugin.Framework.Update += this.OnFrameworkUpdate;
+
             this.customCombos = Assembly.GetAssembly(typeof(CustomCombo))!.GetTypes()
                 .Where(t => t.BaseType == typeof(CustomCombo))
                 .Select(t => Activator.CreateInstance(t))
@@ -43,8 +58,6 @@ namespace XIVComboExpandedestPlugin
                 .ToList();
 
             this.UpdateEnabledActionIDs();
-
-            this.getActionCooldownSlot = Marshal.GetDelegateForFunctionPointer<GetActionCooldownSlotDelegate>(Service.Address.GetActionCooldown);
 
             this.getIconHook = new Hook<GetIconDelegate>(Service.Address.GetAdjustedActionId, this.GetIconDetour);
             this.isIconReplaceableHook = new Hook<IsIconReplaceableDelegate>(Service.Address.IsActionIdReplaceable, this.IsIconReplaceableDetour);
@@ -62,6 +75,8 @@ namespace XIVComboExpandedestPlugin
         {
             this.getIconHook.Dispose();
             this.isIconReplaceableHook.Dispose();
+            XIVComboExpandedestPlugin.Framework.Update -= this.OnFrameworkUpdate;
+            this.tick.Stop();
         }
 
         /// <summary>
@@ -72,8 +87,14 @@ namespace XIVComboExpandedestPlugin
         /// <returns>A bool value of whether the action can be used or not.</returns>
         internal unsafe bool CanUseAction(uint actionID, uint targetID = 0xE000_0000)
         {
-            return clientStructActionManager->GetActionStatus(ActionType.Spell, actionID, targetID, 0, 1) == 0;
+            return clientStructActionManager->GetActionStatus(ActionType.Spell, actionID, targetID, false, true) == 0;
         }
+
+        /// <summary>
+        /// Gets bool determining if player is moving.
+        /// </summary>
+        /// <returns>A bool value of whether the player is moving or not.</returns>
+        internal bool IsMoving() => this.isPlayerMoving;
 
         /// <summary>
         /// Update what action IDs are allowed to be modified. This pulls from <see cref="PluginConfiguration.EnabledActions"/>.
@@ -94,6 +115,29 @@ namespace XIVComboExpandedestPlugin
         /// <param name="actionID">Action ID.</param>
         /// <returns>The result from the hook.</returns>
         internal uint OriginalHook(uint actionID) => this.getIconHook.Original(this.actionManager, actionID);
+
+        private unsafe void OnFrameworkUpdate(Framework dFramework)
+        {
+            try
+            {
+                if (this.tick.ElapsedMilliseconds > 10)
+                {
+                    this.tick.Restart();
+                    var localPlayer = Service.ClientState.LocalPlayer;
+                    Vector2 newPosition = localPlayer is null ? Vector2.Zero : new Vector2(localPlayer.Position.X, localPlayer.Position.Z);
+
+                    this.playerSpeed = Vector2.Distance(newPosition, this.position);
+
+                    this.isPlayerMoving = this.playerSpeed > 0;
+
+                    this.position = localPlayer is null ? Vector2.Zero : newPosition;
+                }
+            }
+            catch (Exception ex)
+            {
+                PluginLog.LogError(ex.Message);
+            }
+        }
 
         private unsafe uint GetIconDetour(IntPtr actionManager, uint actionID)
         {
@@ -133,23 +177,24 @@ namespace XIVComboExpandedestPlugin
     internal sealed partial class IconReplacer
     {
         private readonly Dictionary<uint, byte> cooldownGroupCache = new();
-        private readonly GetActionCooldownSlotDelegate getActionCooldownSlot;
-
-        private delegate IntPtr GetActionCooldownSlotDelegate(IntPtr actionManager, int cooldownGroup);
 
         /// <summary>
         /// Gets the cooldown data for an action.
         /// </summary>
         /// <param name="actionID">Action ID to check.</param>
         /// <returns>Cooldown data.</returns>
-        internal CooldownData GetCooldown(uint actionID)
+        internal unsafe CooldownData GetCooldown(uint actionID)
         {
             var cooldownGroup = this.GetCooldownGroup(actionID);
             if (this.actionManager == IntPtr.Zero)
                 return new CooldownData() { ActionID = actionID };
 
-            var cooldownPtr = this.getActionCooldownSlot(this.actionManager, cooldownGroup - 1);
-            return Marshal.PtrToStructure<CooldownData>(cooldownPtr);
+            if (this.clientStructActionManager == null)
+                return new CooldownData() { ActionID = actionID };
+
+            var cooldownPtr = this.clientStructActionManager->GetRecastGroupDetail(cooldownGroup - 1);
+            cooldownPtr->ActionID = actionID;
+            return Marshal.PtrToStructure<CooldownData>((IntPtr)cooldownPtr);
         }
 
         private byte GetCooldownGroup(uint actionID)
